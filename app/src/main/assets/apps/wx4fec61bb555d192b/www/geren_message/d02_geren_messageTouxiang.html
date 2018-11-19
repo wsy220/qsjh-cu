@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>个人信息</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<style>
+			.mui-content {
+				margin-top: 0.08rem;
+				font-size: 0.2916rem;
+			}
+			
+			#zhaoxiang {
+				height: 2rem;
+			}
+			
+			#zhaoxiang.mui-table-view-cell {
+				padding-top: 0.5rem;
+				height: 130px;
+			}
+			
+			#zhaoxiang a span:after {
+				top: 40%;
+			}
+			
+			#head_image {
+				width: 90px;
+				height: 90px;
+				border-radius: 50px;
+				margin-top: 10px;
+			}
+			
+			.head {
+				margin-top: -0.6rem;
+				margin-right: 15px;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-bottom: 0.08rem;
+			}
+			
+			#libiao li {
+				height: 1.0rem;
+				padding-top: 0.25rem;
+			}
+			
+			#libiao li span {
+				margin-right: 20px;
+				font-size: 14px;
+			}
+			
+			.qianming {
+				width: 50%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: right;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 25px;
+				right: 5px;
+			}
+			
+			.mui-table-view-cell a {
+				color: #424242;
+				font-size: 15px;
+			}
+			
+			.mui-table-view-cell span {
+				color: #999999;
+			}
+			
+			#forward {
+				font-size: 0.3124rem;
+				font-weight: 400;
+			}
+			
+			#male {
+				color: #00c0ff;
+				height: 1.1rem;
+			}
+			
+			#female {
+				color: #ff0072;
+				height: 1.1rem;
+			}
+			
+			#male div,
+			#female div {
+				background: url(../../../image/tubiao2.png) no-repeat;
+			}
+			
+			.redword {
+				color: #FF3300 !important;
+			}
+			
+			.shengfen_upload {
+				max-width: 100%;
+				background: #FFFFFF;
+				height: 200px;
+				padding-top: 70px;
+			}
+			
+			.mui-content-padded a {
+				margin: 3px;
+				width: 50px;
+				height: 50px;
+				display: block;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				margin: 0 auto;
+			}
+			
+			.mui-content-padded a .mui-icon {
+				margin-top: 12px;
+				color: #000000;
+				margin-top: -7px;
+				margin-left: -6px;
+			}
+			
+			.mui-icon {
+				font-size: 60px;
+			}
+			
+			.upload_word {
+				margin: 10px auto;
+				display: block;
+				text-align: center;
+			}
+			
+			.shenfen_card,
+			.sign_name {
+				width: 70% !important;
+				height: 20px !important;
+				font-size: 14px;
+			}
+			
+			.error_shenfen_card {
+				border: 1px dotted rgba(0, 0, 0, 0) !important;
+			}
+			
+			.right_shenfen_card {
+				border: 1px solid rgba(0, 0, 0, 0) !important;
+			}
+			
+			.tishi {
+				width: 93%;
+				font-size: 13px;
+				color: #999999;
+				margin: auto;
+			}
+			
+			html,
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.mui-content {
+				height: 100%;
+				overflow: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">个人信息</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" id="zhaoxiang">
+					<a id="head_photo">头像：
+						<span class="mui-pull-right head">
+							<img class="head-img mui-action-preview" id="head_image" src="../images/001.png"/>
+						</span>
+					</a>
+				</li>
+			</ul>
+			<form action="">
+				<ul class="mui-table-view" id="libiao">
+					<li class="mui-table-view-cell">
+						<a id="geren_name">手机号：<span class="mui-pull-right" id="user_name"></span></a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a>性&nbsp;&nbsp;&nbsp;&nbsp;别：<span class="mui-pull-right">
+						<label id="sex"></label>
+						</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<!--<a id="signatureLi">真实姓名：<input type="text" class="sign_name error_shenfen_card mui-input" placeholder="请输入您的姓名" id="sign_name"><span class="mui-icon mui-icon-checkmarkempty duihao" style="font-size: 24px; display: none;"></span> </a>-->
+						<a id="signatureLi">真实姓名：<span class="mui-pull-right" id="sign_name"></span></a>
+					
+					</li>
+					<li class="mui-table-view-cell">
+						<!--<a id="signatureLi">身份证号：<input type="text" class="shenfen_card error_shenfen_card" placeholder="请输入您的身份证号" id="shenfen_card"><span class="mui-icon mui-icon-checkmarkempty duihao" style="font-size: 24px; display: none;"></span></a>-->
+						<a id="signatureLi">身份证号：<span class="mui-pull-right" id="shenfen_card"></span></a>
+					
+					</li>
+				</ul>
+			</form>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/mui.picker.js"></script>
+		<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+		<script type="text/javascript" src="../js/exif.js"></script>
+		<script type="text/javascript" src="../js/mobileBUGFix.mini.js"></script>
+		<script>
+			var user_img, username, leixing, nameinput, shenfen_cardinput, touxiang_img = [];
+			// 旧头像
+			var imgData_old = "";
+			// 新头像
+			var imgData_new = "";
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					//获得列表界面的webview
+					var list = plus.webview.getWebviewById("subpages/tab-webview-subpage-my.html");
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+					mui.fire(list, 'refresh');
+					//返回true，继续页面关闭逻辑
+					return true;
+				}
+			});
+			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({
+					softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+				});
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				var id = localStorage.getItem("TOKENID");
+				var username = localStorage.getItem("TOKEN");
+
+				var success = function(data) {
+					//console.log(JSON.stringify(data));
+					var image = data.data.patientavatar;
+					if(image != null && image != '' && (image.indexOf("client\\") == 0)) {
+						localStorage.setItem('HEAD_PHOTO', image.split("client\\")[1]);
+						document.getElementById('head_image').src = serverAddress + "/" + image.split("client\\")[1];
+					}
+					if(image != null && image != '' && (image.indexOf("client\\") < 0)) {
+						localStorage.setItem('HEAD_PHOTO', image);
+						document.getElementById("head_image").src = serverAddress + "/" + image;
+					}
+					if(image != null && image != '' && (image.indexOf("client/") == 0)) {
+						localStorage.setItem('HEAD_PHOTO', image.split("client/")[1]);
+						document.getElementById('head_image').src = serverAddress + "/" + image.split("client/")[1];
+					}
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					$("#user_name").html(data.data.tel);
+					$("#sign_name").html(data.data.realname == undefined ? "" : data.data.realname);
+					$("#shenfen_card").html(data.data.idnumber == undefined ? "" : data.data.idnumber);
+					$("#sex").html((data.data.gender == "0") ? "男" : "女");
+					//document.getElementById('head_image').src = localStorage.getItem("HEAD_PHOTO") == null ? '../images/001.png' : serverAddress + '\\' + localStorage.getItem("HEAD_PHOTO");
+				};
+				var url = serverAddress + "/api/patient/getmyinfo/" + id;
+				commonHttpUtils(url, "get", {}, success, error, true);
+
+				//头像
+				document.getElementById('head_photo').addEventListener('tap', function() {
+					if(mui.os.plus) {
+						var a = [{
+							title: "拍照"
+						}, {
+							title: "从手机相册选择"
+						}];
+						plus.nativeUI.actionSheet({
+							/*title: "修改用户头像",*/
+							cancel: "取消",
+							buttons: a
+						}, function(b) { /*actionSheet 按钮点击事件*/
+							switch(b.index) {
+								case 0:
+									break;
+								case 1:
+									getImage(); /*拍照*/
+									break;
+								case 2:
+									galleryImg(); /*打开相册*/
+									break;
+								default:
+									break;
+							}
+						})
+					}
+				}, false);
+
+				// 选择拍照
+				function getImage() {
+					var c = plus.camera.getCamera();
+
+//					var AVCaptureDevice = plus.ios.importClass("AVCaptureDevice");
+//					var Status = AVCaptureDevice.authorizationStatusForMediaType("vide");
+//					if(3 != Status) {
+//						var btnArray = ['确定'];
+//						mui.confirm('请在设置中允许使用相机',  btnArray, function(e) {});
+//						return false;
+//					} else {
+//						var btnArray = ['允许', '不允许'];
+//						mui.confirm('用户是否允许使用相机', '用户是否允许使用相机', btnArray, function(e) {
+//							if(e.index == 1) {
+//								return false;
+//							} else {
+								c.captureImage(function(e) {
+									plus.io.resolveLocalFileSystemURL(e, function(entry) {
+										var src = entry.toLocalURL();
+										mui.openWindow({
+											url: '../set/head_img.html',
+											id: 'head_img.html',
+											show: {
+												autoShow: false, //页面loaded事件发生后自动显示，默认为true
+												event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+											},
+											waiting: {
+												autoShow: true //自动显示等待框，默认为true
+											},
+											extras: {
+												imgPath: src //扩展参数    传值电话号向实名认证里
+											}
+										});
+									}, function(e) {
+										console.log(e.message);
+									});
+									//zoomImage(e, "image" + Math.random() + ".jpg");
+								}, function(s) {
+									console.log("error" + s);
+								}, {
+									filename: "_doc/head.png"
+								})
+//							}
+//						});
+//					}
+
+				}
+
+				// 本地相册选择 
+				function galleryImg() {
+//					var AVCaptureDevice = plus.ios.importClass("AVCaptureDevice");
+//					var Status = AVCaptureDevice.authorizationStatusForMediaType("vide");
+//					if(3 != Status) {
+//						var btnArray = ['确定'];
+//						mui.confirm('请在设置中允许使用相机',  btnArray, function(e) {});
+//						return false;
+//					} else {
+//						var btnArray = ['允许', '不允许'];
+//						mui.confirm('用户是否允许使用相机', '用户是否允许使用相机',btnArray, function(e) {
+//							if(e.index == 1) {
+//								return false;
+//							} else {
+								plus.gallery.pick(function(a) {
+									mui.openWindow({
+										url: '../set/head_img.html',
+										id: 'head_img.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										},
+										extras: {
+											imgPath: a //扩展参数    传值电话号向实名认证里
+										}
+									});
+									//zoomImage(a, "image" + Math.random() + ".jpg");
+								}, function(a) {}, {
+									filter: "image"
+								})
+//							}
+//						})
+//					}
+
+				};
+
+				//				//缩放图片
+				//				function zoomImage(filename, name) {
+				//					plus.nativeUI.showWaiting();
+				//					plus.zip.compressImage({
+				//							src: filename,
+				//							dst: name,
+				//							width: "30%",
+				//							quality: 50,
+				//							overwrite: true
+				//						},
+				//						function(event) {
+				//							var task = plus.uploader.createUpload(serverAddress + "/api/uploadImg", {
+				//									method: "POST",
+				//									blocksize: 204800,
+				//									priority: 100
+				//								},
+				//								function(t1, status) {
+				//									// 上传完成
+				//									if(t1.responseText != null) {
+				//										var data1 = JSON.parse(t1.responseText);
+				//										if(status == 200) {
+				//											plus.nativeUI.closeWaiting();
+				//											if(data1.result == "success") {
+				//												var imagePath = data1.obj.path.toString().split("client/")[1];
+				//												var url = serverAddress + "/api/patient/appverification";
+				//												var success = function(data) {
+				//													//服务器返回响应，根据响应结果，分析是否登录成功；
+				//													if(data.result = "success") {
+				//														mui.back();
+				//													}
+				//												};
+				//												commonHttpUtils(url, "post", {
+				//													patientavatar: data1.obj.path,
+				//													type: 0,
+				//													tel: username,
+				//													account: id
+				//												}, success, error, true);
+				//											}
+				//										} else {
+				//											plus.nativeUI.closeWaiting();
+				//											mui.alert("上传失败2: " + status);
+				//										}
+				//									}
+				//								}
+				//							);
+				//							task.addFile(event.target, {
+				//								key: "single-file"
+				//							});
+				//							task.start();
+				//						},
+				//						function(e) {
+				//							plus.nativeUI.closeWaiting();
+				//						});
+				//				}
+			});
+		</script>
+	</body>
+
+</html>

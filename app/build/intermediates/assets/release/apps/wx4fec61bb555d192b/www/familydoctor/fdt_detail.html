@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>团队详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+
+		<style>
+			.background-pic {
+				background-image: url(../images/fdt/tdxq.png);
+				background-size: cover;
+			}
+			
+			.icon-team {
+				margin: auto;
+				padding-top: 20px;
+				width: 30%;
+			}
+			
+			.icon-team-pic {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+			}
+			
+			.team-name {
+				text-align: center;
+				padding-top: 10px;
+				padding-bottom: 55px;
+			}
+			
+			.text-right {
+				text-align: right;
+			}
+			
+			.text-center p {
+				color: #000000;
+				font-size: 12px;
+			}
+			
+			.mui-table-view {
+				margin-bottom: 5px;
+			}
+			
+			.eliminate-interval {
+				padding: 0;
+			}
+			
+			.change-font-15 {
+				font-size: 15px;
+			}
+			
+			.change-font-13 {
+				font-size: 13px;
+				color: gainsboro;
+			}
+			
+			#gerenzhongxin {
+				background: url(../images/familydoctor/wodebg.png) no-repeat;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				height: 3.8rem;
+			}
+			
+			#head-img {
+				max-width: 1.8rem;
+				height: 1.8rem;
+				margin-top: 0.4rem;
+				border-radius: 50%;
+				margin-left: 0.8rem;
+				border: 3px solid #c9e3f3;
+			}
+			
+			#gerenzhongxin .upimg {
+				font-size: 15px;
+				padding-top: 0.55rem;
+			}
+			
+			#gerenzhongxin .mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.fenshu {
+				font-size: 0.2916rem;
+				color: #FFFFFF;
+				line-height: 1.5;
+				vertical-align: top;
+			}
+			
+			.danshu .mui-media-body {
+				text-align: center;
+			}
+			
+			.danshu {
+				position: absolute;
+				bottom: 0.1rem;
+				width: 100%;
+			}
+			
+			.danshu a span {
+				font-size: 0.22rem;
+			}
+			
+			.danshu_span {
+				color: #000 !important;
+				font-size: 0.32rem !important;
+			}
+			
+			.danshu .mui-table-view {
+				background: none;
+			}
+			
+			.xingxing img {
+				width: 0.3rem;
+			}
+			
+			.vip-driver {
+				position: relative;
+				margin-top: 5px;
+				color: #484848;
+				height: 40px;
+			}
+			
+			.vip-driver1 {
+				position: relative;
+				color: #484848;
+				height: 20px;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 12px;
+			}
+			
+			.driver-dengji {
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-size: 0.2292rem;
+			}
+			
+			.danshu_img {
+				width: 0.35rem;
+				vertical-align: middle;
+			}
+			
+			#geren_name {
+				font-size: 0.28rem;
+				color: #484848;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 0.5rem;
+				color: #E0E0E0;
+				right: 0;
+			}
+			
+			#table-viewX {
+				font-size: 0.2916rem;
+				margin-bottom: 0.08rem;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active {
+				background-color: transparent;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			@media screen and (min-width: 320px) and (max-width:375px) {
+				.geren_shanchang {
+					padding: 5px 25px;
+				}
+			}
+			
+			@media screen and (min-width: 375px) and (max-width:414px) {}
+			
+			@media screen and (min-width: 414px) and (max-width:576px) {}
+			
+			@media screen and (min-width: 576px) and (max-width:720px) {}
+			
+			.mui-badge-baihui {
+				background-color: #e3f1fa;
+				border-radius: 10px;
+				/*border: 1px solid #96c4de;
+				padding-left: 5px;
+				padding-right: 5px;*/
+				color: #afaeae;
+			}
+			
+			.mui-badge-dabaihui {
+				background-color: #dbeefa;
+				border-radius: 5px;
+				border: 0;
+				padding: 10px;
+				padding-right: 0.62rem;
+				padding-left: 0.62rem;
+			}
+			
+			.icon-ly1:before,
+			.icon-dh:before {
+				margin-right: 5px;
+			}
+			
+			#geren_shanchang .mui-media-body {
+				text-align: center;
+			}
+			
+			.mui-table-view-chevron .mui-table-view-cell {
+				padding-right: 40px;
+			}
+			
+			.aixin {
+				color: #da4937;
+			}
+			
+			.haopin {
+				color: #0693ff;
+			}
+			
+			.fuwu {
+				color: #e59c00;
+			}
+			
+			.fensi {
+				color: #e66831;
+			}
+			
+			.iconfont {
+				font-size: 0.5rem !important;
+				color: #80b853;
+			}
+			
+			.icon-pingxing:before,
+			.hongzi {
+				color: #ff3300;
+				font-size: 15px;
+			}
+			
+			.dowebok li {
+				margin-top: 10px;
+				margin-right: 15px;
+				background-color: #ffffff;
+				border-radius: 10px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				text-align: -webkit-center;
+				font-size: 12px;
+			}
+			
+			.libutton ul {
+				list-style-type: none;
+			}
+			
+			.libutton li {
+				display: inline-block;
+				margin: 5px 0;
+			}
+			
+			.libutton input.labelauty+label {
+				font: 15px "Microsoft Yahei";
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background: #fff;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0 !important;
+			}
+			
+			.mui-content-padded {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 42px;
+				max-width: 125px;
+				height: 80px;
+			}
+			
+			.mui-pull-right {
+				font-size: 12px;
+				font-weight: 400;
+				line-height: 1.2;
+				position: relative;
+				display: inline-block;
+				margin-bottom: 0;
+				padding: 4px 6px;
+			}
+			
+			.mui-table-view .mui-media,
+			.mui-table-view .mui-media-body {
+				overflow: hidden;
+				font-size: 15px;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				white-space: normal;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				font-size: 15px;
+			}
+			
+			.mingcheng {
+				width: 18%;
+				float: left;
+				font-size: 15px;
+			}
+			
+			.gangwei {
+				width: 30%;
+				float: left;
+				font-size: 12px;
+				color: #999999;
+			}
+			
+			.goutong {
+				width: 9%;
+				float: right;
+				margin-right: 20px;
+			}
+			
+			.mui-table-view-cell1 {
+				position: relative;
+				overflow: hidden;
+				padding: 8px 15px;
+				-webkit-touch-callout: none;
+			}
+			
+			.hang {
+				height: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ptitle">团队详情</h1>
+		</header>
+		<div class="mui-content" id="content">
+			<div id="memberListUl" class="memberListUl">
+				<ul class="mui-table-view">
+					<li class="no-padding">
+						<div class="background-pic">
+							<div class="icon-team">
+								<img id="teamimg" class="icon-team-pic" />
+							</div>
+							<div id="teamname" class="team-name">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../plugs/qs/qs.immersed.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/sharemethods.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script>
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				//返回true，继续页面关闭逻辑  
+				mui.back;
+				return true;
+			}
+		});
+
+		mui.plusReady(function() {
+			var currentView = plus.webview.currentWebview();
+			var teamInfo = currentView.teamInfo;
+			var signDate = ""
+			if(currentView.signDate) {
+				var signBeginDate = moment(currentView.signDate).format('YYYY年MM月DD日');
+				var signEndDate = moment(currentView.signDate).add('year', 1).format('YYYY年MM月DD日');
+				signDate = signBeginDate + "--" + signEndDate;
+			}
+
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			$("#teamimg").attr("src", serverAddress + teamInfo.logo.replace('client', '').replace(/\\/g, "/"));
+			$("#teamname").html(teamInfo.name);
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			$("#memberListUl").processTL(templateRegister.fdtmemberlistul, {
+				arr: teamInfo,
+				signDate: signDate
+			}, 'append', function() {
+
+			})
+			mui("#memberListUl").on("tap", ".goutong", function() {
+				var dataId = $(this).attr("data-id");
+				var name = $(this).attr("data-name");
+				console.log("聊天id=" + dataId);
+				mui.openWindow({
+					url: 'im-chat.html',
+					id: 'im-chat.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						TO_ACCOUNT: dataId,
+						TO_NAME: name
+					}
+				});
+			});
+			mui("#memberListUl").on("tap", ".teaminfo", function() {
+				mui.openWindow({
+					url: 'fdt_info.html',
+					id: 'fdt_info.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						summary: teamInfo.summary
+					}
+				});
+			});
+
+			////测试进入聊天列表
+			//	mui("#memberListUl").on("tap", ".teaminfo", function() {
+			//				mui.openWindow({
+			//					url: 'message_list.html',
+			//					id: 'message_list.html',
+			//					show: {
+			//						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+			//						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+			//					},
+			//					waiting: {
+			//						autoShow: true //自动显示等待框，默认为true
+			//					},
+			//					extras: {
+			//						summary: teamInfo.summary
+			//					}
+			//				});
+			//			});
+			//点击医护成员进入医护成员介绍页
+			mui("#memberListUl").on("tap", ".mingcheng", function() {
+				var memberId = $(this).attr("data-id");
+				var memberType = $(this).attr("data-memberType");
+				console.log("调用查看团队成员详情窗口：" + memberId);
+				console.log("Type：" + memberType);
+				mui.openWindow({
+					url: 'fdt_member_info.html',
+					id: 'fdt_member_info.html',
+					extras: {
+						memberId: memberId,
+						memberType: memberType
+						//fdt_id:currentView.fdt_id
+					},
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...', //等待对话框上显示的提示内容
+					}
+				});
+			});
+		});
+	</script>
+
+</html>

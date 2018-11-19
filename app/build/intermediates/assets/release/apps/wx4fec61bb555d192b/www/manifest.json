@@ -1,0 +1,2580 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "wx4fec61bb555d192b",
+	"name": "70佳护",
+	"version": {
+		"name": "1.3.110",
+		"code": "13110"
+	},
+	"description": "70佳护健康管理有限公司",
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "main.html",
+	"developer": {
+		"name": "70jiahu",
+		"email": "wangshuyu@70jiahu.com",
+		"url": "http://www.70jiahu.com"
+	},
+	"permissions": {
+		"Accelerometer": {
+			"description": "访问加速度感应器"
+		},
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+		"Downloader": {
+			"description": "文件下载管理"
+		},
+		"Events": {
+			"description": "应用扩展事件"
+		},
+		"File": {
+			"description": "访问本地文件系统"
+		},
+		"Gallery": {
+			"description": "访问系统相册"
+		},
+		"Invocation": {
+			"description": "使用Native.js能力"
+		},
+		"Orientation": {
+			"description": "访问方向感应器"
+		},
+		"Proximity": {
+			"description": "访问距离感应器"
+		},
+		"Storage": {
+			"description": "管理应用本地数据"
+		},
+		"UI": {},
+		"Uploader": {
+			"description": "管理文件上传任务"
+		},
+		"Runtime": {
+			"description": "访问运行期环境"
+		},
+		"XMLHttpRequest": {
+			"description": "跨域网络访问"
+		},
+		"Zip": {
+			"description": "文件压缩与解压缩"
+		},
+		"Webview": {},
+		"NativeUI": {},
+		"Navigator": {},
+		"NativeObj": {},
+		"Device": {},
+		"Barcode": {},
+		"Geolocation": {},
+		"Camera": {},
+		"Push": {},
+		"Payment": {
+			"description": "管理支付插件"
+		},
+		"qsPlugin": {
+			"description": "柒拾佳护"
+		},
+		"Maps": {},
+		"Audio": {},
+		"OAuth": {},
+		"Share": {}
+	},
+	"plus": {
+		"statusbar": {
+			"immersed": true
+		},
+		"splashscreen": {
+			"autoclose": true,
+			"waiting": true,
+			"delay": "0"
+		},
+		"runmode": "liberate",
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",
+		"distribute": {
+			"plugins": {
+				"share": {
+					"weixin": {
+						"appid": "wx4fec61bb555d192b",
+						"appsecret": "1fe69a8e20b8275a4e57081ade600886",
+						"description": "可选，微信分享"
+					},
+					"sina": {
+						"appkey": "1415521529",
+						"appsecret": "0585beccfa38bdd5d9e1e35df5c252f6",
+						"redirect_uri": "https://api.weibo.com/oauth2/default.html",
+						"description": "可选，新浪微博分享"
+					}
+				},
+				"oauth": {
+					"weixin": {
+						"appid": "wx4fec61bb555d192b",
+						"appsecret": "1fe69a8e20b8275a4e57081ade600886"
+					}
+				},
+				"push": {
+					"igexin": {
+						"appid": "6VVFiplGoeAWFA0kUh0x26",
+						"appkey": "9opBiDLoPU6tBWwi6EUMS3",
+						"appsecret": "R1XRZiBQOW5nU7R83iSOC9"
+					}
+				},
+				"maps": {
+					"baidu": {
+						"appkey_ios": "7F2BMBkboE08q1Veyhuuq9EcdtzpD9PI",
+						"appkey_android": "xASog0skex3rFo5IcxT74ugewrWbwvP1",
+						"appkey": "",
+						"description": ""
+					}
+				},
+				"payment": {
+					"alipay": {
+						"description": "阿里支付",
+						"scheme": ""
+					},
+					"appleiap": {
+						"description": "Apple应用内支付"
+					},
+					"weixin": {
+						"description": "微信支付",
+						"appid": "wx4fec61bb555d192b"
+					}
+				}
+			},
+			"apple": {
+				"appid": "",
+				"mobileprovision": "",
+				"password": "",
+				"p12": "",
+				"devices": "universal",
+				"UIReserverStatusOffset": false,
+				"frameworks": [],
+				"plistcmds": [
+					"Set :NSContactsUsageDescription 获取您的电话簿权限，帮您客服拨号",
+					"Set :NSMicrophoneUsageDescription 说明使用麦克风的原因",
+					"Set :NSPhotoLibraryUsageDescription 根据您的相册图片，，您可以任意选择相片来更换您的头像",
+					"Set :NSCameraUsageDescription 调取您的相机摄像头，您可以扫码识别充电桩设备信息",
+					"Set :NSPhotoLibraryAddUsageDescription  根据您的相册图片，，您可以任意选择相片来更换您的头像",
+					"Set :NSLocationAlwaysUsageDescription 我公司App产品申请获取使用者的地理位置，目的是通过获取到的地址信息，准确地为其就近分配服务人员，进一步便于服务人员规划上门服务路线。",
+					"Set :NSLocationWhenInUseUsageDescription 我公司App产品申请获取使用者的地理位置，目的是通过获取到的地址信息，准确地为其就近分配服务人员，进一步便于服务人员规划上门服务路线。",
+					"Set :NSLocationAlwaysAndWhenInUseUsageDescription 我公司App产品申请获取使用者的地理位置，目的是通过获取到的地址信息，准确地为其就近分配服务人员，进一步便于服务人员规划上门服务路线。"
+				],
+				"urltypes": [
+					{
+						"urlidentifier": "io.dcloud.jiahucustomer",
+						"urlschemes": [
+							"jiahucustomer"
+						]
+					}
+				]
+			},
+			"google": {
+				"packagename": "",
+				"keystore": "",
+				"password": "",
+				"aliasname": "",
+				"ImmersedStatusbar": true,
+				"permissions": [
+					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+					"<uses-permission android:name=\"android.permission.GET_TASKS\"/>",
+					"<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+					"<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+					"<uses-permission android:name=\"android.permission.SYSTEM_ALERT_WINDOW\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.CAMERA\"/>",
+					"<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+					"<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+					"<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>",
+					"<uses-permission android:name=\"android.permission.INTERNET\"/>",
+					"<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+					"<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+					"<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+					"<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+					"<uses-feature android:name=\"android.hardware.camera\"/>",
+					"<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+					"<uses-permission android:name=\"android.permission.RECEIVE_USER_PRESENT\"/>",
+					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+				],
+				"schemes": [
+					"jiahucustomer"
+				]
+			},
+			"orientation": [
+				"portrait-primary",
+				"portrait-secondary"
+			],
+			"icons": {
+				"ios": {
+					"prerendered": true,
+					"iphone": {
+						"normal": "unpackage/res/icons/57x57.png",
+						"retina": "unpackage/res/icons/114x114.png",
+						"spotlight-normal": "unpackage/res/icons/29x29.png",
+						"spotlight-retina": "unpackage/res/icons/58x58.png",
+						"settings-normal": "unpackage/res/icons/29x29.png",
+
+
+						"app@3x": "unpackage/res/icons/180x180.png",
+						"app@2x": "unpackage/res/icons/120x120.png",
+						"settings@2x": "unpackage/res/icons/58x58.png",
+						"settings@3x": "unpackage/res/icons/87x87.png",
+						"spotlight@2x": "unpackage/res/icons/80x80.png",
+						"spotlight@3x": "unpackage/res/icons/120x120.png",
+						"notification@2x": "unpackage/res/icons/40x40.png",
+						"notification@3x": "unpackage/res/icons/60x60.png"
+					},
+					"ipad": {
+						"normal": "unpackage/res/icons/72x72.png",
+						"retina": "unpackage/res/icons/144x144.png",
+						"spotlight-normal": "unpackage/res/icons/50x50.png",
+						"spotlight-retina": "unpackage/res/icons/100x100.png",
+						"app": "unpackage/res/icons/76x76.png",
+						"app@2x": "unpackage/res/icons/152x152.png",
+						"settings": "unpackage/res/icons/29x29.png",
+						"spotlight": "unpackage/res/icons/40x40.png",
+						"proapp@2x": "unpackage/res/icons/167x167.png",
+						"settings@2x": "unpackage/res/icons/58x58.png",
+						"spotlight@2x": "unpackage/res/icons/80x80.png",
+						"notification": "unpackage/res/icons/20x20.png",
+						"notification@2x": "unpackage/res/icons/40x40.png"
+					},
+					"appstore": "unpackage/res/icons/1024x1024.png"
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png",
+					"ldpi": "unpackage/res/icons/48x48.png",
+					"hdpi": "unpackage/res/icons/72x72.png",
+					"xhdpi": "unpackage/res/icons/96x96.png",
+					"xxhdpi": "unpackage/res/icons/144x144.png",
+					"xxxhdpi": "unpackage/res/icons/192x192.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "",
+						"retina35": "images/app/640960.png",
+						"retina40": "images/app/6401136.png",
+						"retina55": "images/app/12422208.png",
+						"retina47": "images/app/7501334.png",
+						"iphonex": "images/app/1125X2436.png"
+					},
+					"ipad": {
+						"portrait": "",
+						"portrait-retina": "",
+						"landscape": "",
+						"landscape-retina": "",
+						"portrait7": "",
+						"portrait-retina7": "",
+						"landscape7": "",
+						"landscape-retina7": ""
+					}
+				},
+				"android": {
+					"mdpi": "",
+					"ldpi": "",
+					"hdpi": "images/app/480762.png",
+					"xhdpi": "images/app/7201242.png",
+					"xxhdpi": "images/app/10801882.png"
+				}
+			},
+			"debug": false
+		},
+		"ads": {
+			"rp": false,
+			"splash": false,
+			"push": false
+		},
+		"adid": "126836020606"
+	},
+	"dependencies": {
+		"pages": {
+			"familydoctor/jiuzhen_notice.html": {
+				"href": "familydoctor/jiuzhen_notice.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery-labelauty.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"images/no_data/1-01.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"priority": 0
+			},
+			"familydoctor/message_list.html": {
+				"href": "familydoctor/message_list.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.imageviewer.css",
+					"js/mui.min.js",
+					"js/mui.imageViewer.js",
+					"js/arttmpl.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/qs/qs.immersed.js",
+					"js/jquery-3.1.1.js",
+					"js/sdk/lib/md5/spark-md5.js",
+					"js/sdk/lib/md5/md5.min.js",
+					"js/sdk/lib/base64/base64.js",
+					"js/sdk/webim.js",
+					"js/sdk/webim/sdk_sendmsg_api.js",
+					"js/sdk/webim/receive_new_msg.js",
+					"js/sdk/webim/login.js",
+					"images/001.png",
+					"js/sdk/webim/send_common_msg.js",
+					"js/sdk/webim/upload_and_send_pic_msg.js",
+					"js/sdk/webim/get_history_msg.js",
+					"js/sdk/webim/recent_contact_list_manager.js",
+					"js/sdk/webim/show_one_msg.js",
+					"images/familydoctor/u125.png",
+					"js/sdk/webim/switch_chat_obj.js",
+					"plugs/moment/moment.min.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js"
+				],
+				"priority": 1
+			},
+			"order/pingjia.html": {
+				"href": "order/pingjia.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/common.js",
+					"js/constants.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf"
+				],
+				"priority": 2
+			},
+			"order/wait-payment.html": {
+				"href": "order/wait-payment.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/xiachenshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.js",
+					"images/wx-01.png",
+					"images/zfb-01.png"
+				],
+				"priority": 3,
+				"refer": [
+					"subpages/tab-webview-subpage-order.html"
+				]
+			},
+			"familydoctor/im-chat.html": {
+				"href": "familydoctor/im-chat.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.imageviewer.css",
+					"images/familydoctor/lyy.png",
+					"js/mui.min.js",
+					"js/mui.previewimage.js",
+					"js/mui.imageViewer.js",
+					"js/mui.zoom.js",
+					"js/arttmpl.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/sdk/lib/md5/spark-md5.js",
+					"js/sdk/lib/md5/md5.min.js",
+					"js/constants.js",
+					"js/qs/qs.feedback.js",
+					"js/sdk/lib/base64/base64.js",
+					"js/sdk/webim/show_one_msg.js",
+					"js/sdk/webim/sdk_sendmsg_api.js",
+					"js/sdk/webim/receive_new_msg.js",
+					"js/sdk/webim/send_common_msg.js",
+					"js/sdk/webim/upload_and_send_pic_msg.js",
+					"js/sdk/webim/get_history_msg.js",
+					"js/sdk/webim.js",
+					"js/sdk/webim/login.js",
+					"plugs/moment/moment.min.js"
+				],
+				"priority": 4
+			},
+			"geren_message/d07_my_account.html": {
+				"href": "geren_message/d07_my_account.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"js/qs/qs.common.css",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/constants.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"images/no_data/1-01.png"
+				],
+				"priority": 5,
+				"refer": [
+					"geren_message/youhuijuan_message_xiangqing.html",
+					"order/service_item.html"
+				]
+			},
+			"online_answer_order/online_single_back.html": {
+				"href": "online_answer_order/online_single_back.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/mui.imageviewer.css",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"refer": [
+					"geren_message/d07_my_account.html"
+				],
+				"priority": 5
+			},
+			"online_answer_order/online_answer_order_xiangqing.html": {
+				"href": "online_answer_order/online_answer_order_xiangqing.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"plugs/moment/moment.min.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"js/common.js",
+					"js/mui.previewimage.js",
+					"js/mui.zoom.js",
+					"js/json_time.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/qs/qs.immersed.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"images/sj.png"
+				],
+				"refer": [
+					"order/pingjia.html",
+					"order/wait-payment.html",
+					"familydoctor/im-chat.html",
+					"online_answer_order/online_single_back.html"
+				],
+				"priority": 2
+			},
+			"set/follow_manage.html": {
+				"href": "set/follow_manage.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/bootstrap.min.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"js/sdk/lib/jquery.json2html-master/json2html.js",
+					"js/sdk/lib/jquery.json2html-master/jquery.json2html.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/bootstrap.min.css",
+					"images/zan.png"
+				],
+				"priority": 3
+			},
+			"order/map.html": {
+				"href": "order/map.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"plugs/moment/moment.min.js",
+					"images/dong.gif",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"priority": 5
+			},
+			"order/single_back.html": {
+				"href": "order/single_back.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/mui.imageviewer.css",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"refer": [
+					"geren_message/d07_my_account.html"
+				],
+				"priority": 6
+			},
+			"order/c02_order_xiangqing.html": {
+				"href": "order/c02_order_xiangqing.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"plugs/moment/moment.min.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"js/common.js",
+					"js/mui.previewimage.js",
+					"js/mui.zoom.js",
+					"js/json_time.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/qs/qs.immersed.js",
+					"images/u2437.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"images/sj.png",
+					"images/u2404.png"
+				],
+				"refer": [
+					"order/wait-payment.html",
+					"order/map.html",
+					"order/single_back.html",
+					"familydoctor/im-chat.html",
+					"order/pingjia.html"
+				],
+				"priority": 4
+			},
+			"subpages/tab-webview-subpage-talk.html": {
+				"href": "subpages/tab-webview-subpage-talk.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.min.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"template/myaccount/myaccount_list.tl",
+					"template/order/online_answer_order_doctor.tl",
+					"template/order/order_list_huishi_huli.tl",
+					"template/myaccount/myaccount_cost.tl",
+					"template/order/order_list_xiangqing.tl",
+					"template/doctor/doc_message.tl",
+					"template/familydoctor/doctor_reminding_history.tl",
+					"template/order/online_answer_order_list_xiangqing.tl",
+					"template/text/fuyao_query.tl",
+					"template/order/online_answer_order_list_img.tl",
+					"template/familydoctor/diagnosis_behavior_list.tl",
+					"template/order/order_list_waitpay.tl",
+					"template/order/order_illness.tl",
+					"template/text/lunbo_image.tl",
+					"template/notification/common.tl",
+					"images/wode/txmrt.png",
+					"template/familydoctor/fdt_member_list_ul.tl",
+					"template/familydoctor/fdt_baseinfo_list_ul.tl",
+					"template/doctor/doc_list.tl",
+					"template/text/tuijian_item.tl",
+					"template/order/order_list_xiangqing_orderid.tl",
+					"template/text/huadong_main.tl",
+					"images/xtxx.png",
+					"template/familydoctor/doctor_articles_list.tl",
+					"template/familydoctor/healthness_data_list.tl",
+					"template/order/online_answer_order_list_ordered.tl",
+					"template/order/order_list_all.tl",
+					"images/ddxx.png",
+					"template/text/text_replay.tl",
+					"template/order/order_spares.tl",
+					"template/doctor/doc_shujv.tl",
+					"template/order/order_list_button.tl",
+					"template/text/kefu_question.tl",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"js/sdk/lib/jquery.json2html-master/json2html.js",
+					"js/sdk/lib/jquery.json2html-master/jquery.json2html.js",
+					"images/news/ddxx.png",
+					"images/news/xtxx.png",
+					"images/no_data/1-01.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/qs/qs.common.css"
+				],
+				"refer": [
+					"familydoctor/jiuzhen_notice.html",
+					"familydoctor/message_list.html",
+					"online_answer_order/online_answer_order_xiangqing.html",
+					"set/follow_manage.html",
+					"order/c02_order_xiangqing.html",
+					"geren_message/d07_my_account.html",
+					"familydoctor/im-chat.html",
+					"subpages/tab-webview-subpage-order.html"
+				],
+				"priority": 0
+			},
+			"login/forget_password2.html": {
+				"href": "login/forget_password2.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"images/exit/mm.png"
+				],
+				"priority": 1
+			},
+			"login/forget_password1.html": {
+				"href": "login/forget_password1.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"images/exit/dl.png",
+					"images/exit/yzm.png"
+				],
+				"refer": [
+					"login/forget_password2.html"
+				],
+				"priority": 1
+			},
+			"geren_message/d02_geren_message.html": {
+				"href": "geren_message/d02_geren_message.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.min.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"js/exif.js",
+					"js/mobileBUGFix.mini.js",
+					"js/qs/qs.feedback.js",
+					"js/IScard.js"
+				],
+				"refer": [
+					"main.html"
+				],
+				"priority": 2
+			},
+			"document/e03_insurance_agreement.html": {
+				"href": "document/e03_insurance_agreement.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf"
+				],
+				"priority": 3
+			},
+			"login/reg.html": {
+				"href": "login/reg.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"js/jquery-3.1.1.js",
+					"images/exit/dl.png",
+					"images/exit/yzm.png",
+					"images/exit/yy.png",
+					"images/exit/xz.png",
+					"images/exit/mm.png"
+				],
+				"refer": [
+					"document/e03_insurance_agreement.html",
+					"geren_message/d02_geren_message.html"
+				],
+				"priority": 3
+			},
+			"login/login.html": {
+				"href": "login/login.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"js/mui.min.js",
+					"js/mui.enterfocus.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery.validate.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"js/qs/qs.update.js",
+					"images/exit/dl.png",
+					"images/exit/mm.png"
+				],
+				"refer": [
+					"login/forget_password1.html",
+					"geren_message/d02_geren_message.html",
+					"login/reg.html",
+					"login/login.html"
+				],
+				"priority": 1
+			},
+			"online_answer_order/online_answer_queren_zhifu.html": {
+				"href": "online_answer_order/online_answer_queren_zhifu.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"order/wait-payment.html"
+				],
+				"priority": 2
+			},
+			"online_answer_order/online_answer_place_order.html": {
+				"href": "online_answer_order/online_answer_place_order.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.1.1.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/mui.picker.min.js",
+					"js/base64.js",
+					"js/exif.js",
+					"js/mobileBUGFix.mini.js",
+					"js/feedbackMUI2.js",
+					"plugs/moment/moment.min_old.js",
+					"js/json_time.js",
+					"js/getDate.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"js/qs/qs.feedback.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.min.css",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css"
+				],
+				"refer": [
+					"online_answer_order/online_answer_queren_zhifu.html",
+					"document/image_mask.html"
+				],
+				"priority": 2
+			},
+			"online_answer_order/online_answer_index.html": {
+				"href": "online_answer_order/online_answer_index.html",
+				"resources": [
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"images/online_BG.png",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery.validate.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"images/scjjbg.png",
+					"images/scyxbg.png"
+				],
+				"refer": [
+					"online_answer_order/online_answer_place_order.html",
+					"login/login.html"
+				],
+				"priority": 2
+			},
+			"order/a047_illness_select.html": {
+				"href": "order/a047_illness_select.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"css/assets/scripts/jquery-labelauty.js",
+					"js/constants.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/assets/styles/jquery-labelauty.css",
+					"css/assets/styles/lby-main.css",
+					"css/assets/fonts/opensans-light-webfont.eot",
+					"css/assets/fonts/opensans-light-webfont.woff",
+					"css/assets/fonts/opensans-light-webfont.ttf",
+					"css/assets/fonts/opensans-light-webfont.svg"
+				],
+				"refer": [
+					"order/a04_place_order.html"
+				],
+				"priority": 4
+			},
+			"document/baoxian_document.html": {
+				"href": "document/baoxian_document.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"js/mui.min.js",
+					"js/xiachenshi.js",
+					"js/xiangyingshi.js",
+					"js/qs/qs.immersed.js"
+				],
+				"priority": 5
+			},
+			"order/upload_image.html": {
+				"href": "order/upload_image.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.1.1.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/base64.js",
+					"js/exif.js",
+					"js/mobileBUGFix.mini.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"js/mui.picker.min.js",
+					"js/qs/qs.feedback.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.min.css",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png"
+				],
+				"refer": [
+					"order/a04_place_order.html",
+					"document/image_mask.html"
+				],
+				"priority": 6
+			},
+			"order/a03_queren_zhifu.html": {
+				"href": "order/a03_queren_zhifu.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"order/wait-payment.html",
+					"subpages/tab-webview-subpage-order.html"
+				],
+				"priority": 7
+			},
+			"document/use_document.html": {
+				"href": "document/use_document.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/xiachenshi.js",
+					"js/xiangyingshi.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf"
+				],
+				"priority": 8
+			},
+			"service_object/service_object_add.html": {
+				"href": "service_object/service_object_add.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery-labelauty.js",
+					"js/IScard.js"
+				],
+				"priority": 9
+			},
+			"service_object/service_object_edit.html": {
+				"href": "service_object/service_object_edit.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery-labelauty.js",
+					"js/IScard.js"
+				],
+				"priority": 10
+			},
+			"service_object/a045_service_object_query.html": {
+				"href": "service_object/a045_service_object_query.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/arttmpl.js",
+					"images/no_data/1-01.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"service_object/service_object_add.html",
+					"service_object/service_object_edit.html"
+				],
+				"priority": 9
+			},
+			"order/a04_place_order.html": {
+				"href": "order/a04_place_order.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.1.1.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/mui.picker.min.js",
+					"js/base64.js",
+					"js/exif.js",
+					"js/mobileBUGFix.mini.js",
+					"js/feedbackMUI2.js",
+					"plugs/moment/moment.min_old.js",
+					"js/json_time.js",
+					"js/getDate.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"js/qs/qs.feedback.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.min.css",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"images/baoxian.png"
+				],
+				"refer": [
+					"order/a047_illness_select.html",
+					"document/baoxian_document.html",
+					"order/upload_image.html",
+					"order/a03_queren_zhifu.html",
+					"document/use_document.html",
+					"service_object/a045_service_object_query.html"
+				],
+				"priority": 4
+			},
+			"order/a015_item_xiangqing.html": {
+				"href": "order/a015_item_xiangqing.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"images/cbd.jpg",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/constants.js",
+					"js/arttmpl.js",
+					"js/qs/md5/md5.min.js",
+					"js/qs/qs.feedback.js",
+					"images/jiage.png"
+				],
+				"refer": [
+					"login/login.html",
+					"order/a04_place_order.html",
+					"geren_message/d02_geren_message.html",
+					"geren_message/xqzx/xqzx_auto.html"
+				],
+				"priority": 3
+			},
+			"document/tl_bank_pay.html": {
+				"href": "document/tl_bank_pay.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"js/mui.min.js",
+					"js/jquery-3.1.1.js",
+					"js/xiangyingshi.js",
+					"images/no_data/1-01.png"
+				],
+				"priority": 5
+			},
+			"order/service_item.html": {
+				"href": "order/service_item.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/jquery-labelauty.js",
+					"js/arttmpl.js",
+					"js/qs/md5/md5.min.js",
+					"js/qs/qs.feedback.js",
+					"images/no_data/1-01.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"images/rmff.png",
+					"images/guahao.png"
+				],
+				"refer": [
+					"order/a015_item_xiangqing.html",
+					"document/tl_bank_pay.html"
+				],
+				"priority": 4
+			},
+			"familydoctor/qylc.html": {
+				"href": "familydoctor/qylc.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"images/familydoctor/qylc.png",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/common.js",
+					"js/mui.previewimage.js",
+					"js/mui.zoom.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js"
+				],
+				"priority": 6
+			},
+			"familydoctor/article.html": {
+				"href": "familydoctor/article.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/common.js",
+					"js/mui.previewimage.js",
+					"js/mui.zoom.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js"
+				],
+				"priority": 7
+			},
+			"main_sub/message_xiangqing.html": {
+				"href": "main_sub/message_xiangqing.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"images/zans.png",
+					"images/zan.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf"
+				],
+				"priority": 8
+			},
+			"familydoctor/fdt_member_info.html": {
+				"href": "familydoctor/fdt_member_info.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"images/wode/wrz.png",
+					"images/wode/yrz.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"refer": [
+					"main_sub/message_xiangqing.html"
+				],
+				"priority": 8
+			},
+			"familydoctor/fdt_info.html": {
+				"href": "familydoctor/fdt_info.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"plugs/moment/moment.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"priority": 9
+			},
+			"familydoctor/fdt_detail.html": {
+				"href": "familydoctor/fdt_detail.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery-labelauty.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf",
+					"images/familydoctor/wodebg.png"
+				],
+				"refer": [
+					"familydoctor/fdt_member_info.html",
+					"familydoctor/fdt_info.html",
+					"familydoctor/im-chat.html"
+				],
+				"priority": 8
+			},
+			"familydoctor/articlelist.html": {
+				"href": "familydoctor/articlelist.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery-labelauty.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js"
+				],
+				"refer": [
+					"familydoctor/article.html"
+				],
+				"priority": 10
+			},
+			"familydoctor/service_package_list.html": {
+				"href": "familydoctor/service_package_list.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/qs/qs.immersed.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/mui.imageviewer.css",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"priority": 11
+			},
+			"familydoctor/service_package.html": {
+				"href": "familydoctor/service_package.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"refer": [
+					"familydoctor/service_package_list.html"
+				],
+				"priority": 11
+			},
+			"familydoctor/familydoctor.html": {
+				"href": "familydoctor/familydoctor.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/familydoctor/familydoctor.css",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/common.js",
+					"js/mui.previewimage.js",
+					"js/mui.zoom.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"images/familydoctor/jtyyjs.png",
+					"images/familydoctor/u97.png",
+					"images/familydoctor/jiahui.png"
+				],
+				"refer": [
+					"familydoctor/echarts.html",
+					"familydoctor/qylc.html",
+					"familydoctor/article.html",
+					"familydoctor/fdt_detail.html",
+					"familydoctor/jiuzhen_notice.html",
+					"familydoctor/articlelist.html",
+					"familydoctor/service_package.html",
+					"familydoctor/set_address.html"
+				],
+				"priority": 5
+			},
+			"familydoctor/set_address.html": {
+				"href": "familydoctor/set_address.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.min.js"
+				],
+				"refer": [
+					"familydoctor/familydoctor.html"
+				],
+				"priority": 5
+			},
+			"familydoctor/home_position.html": {
+				"href": "familydoctor/home_position.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.min.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"js/exif.js",
+					"images/familydoctor/jiahui.png"
+				],
+				"refer": [
+					"familydoctor/set_address.html"
+				],
+				"priority": 5
+			},
+			"familydoctor/healthness_record.html": {
+				"href": "familydoctor/healthness_record.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery-labelauty.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf"
+				],
+				"priority": 6
+			},
+			"familydoctor/healthness_xue_add.html": {
+				"href": "familydoctor/healthness_xue_add.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"images/familydoctor/zao.png",
+					"images/familydoctor/zhong.png",
+					"images/familydoctor/wan.png"
+				],
+				"refer": [
+					"familydoctor/healthness_record.html"
+				],
+				"priority": 6
+			},
+			"familydoctor/healthness_tang_add.html": {
+				"href": "familydoctor/healthness_tang_add.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"images/familydoctor/zao.png",
+					"images/familydoctor/zhong.png",
+					"images/familydoctor/wan.png"
+				],
+				"refer": [
+					"familydoctor/healthness_record.html"
+				],
+				"priority": 7
+			},
+			"familydoctor/healthness_xin_add.html": {
+				"href": "familydoctor/healthness_xin_add.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"images/familydoctor/zao.png",
+					"images/familydoctor/zhong.png",
+					"images/familydoctor/wan.png"
+				],
+				"refer": [
+					"familydoctor/healthness_record.html"
+				],
+				"priority": 8
+			},
+			"familydoctor/echarts.html": {
+				"href": "familydoctor/echarts.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.1.1.min.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"libs/echarts-all.js",
+					"plugs/moment/moment.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"js/qs/qs.common.css",
+					"images/familydoctor/xueya-01.png",
+					"images/familydoctor/xietang-01.png",
+					"images/familydoctor/xinlv-01.png"
+				],
+				"refer": [
+					"familydoctor/home_position.html",
+					"familydoctor/healthness_xue_add.html",
+					"familydoctor/healthness_tang_add.html",
+					"familydoctor/healthness_xin_add.html"
+				],
+				"priority": 5
+			},
+			"order/rob_order.html": {
+				"href": "order/rob_order.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/animate/rob_order.css",
+					"images/rob_img/tjffbj.png",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"images/rob_img/sc.png"
+				],
+				"priority": 6
+			},
+			"geren_message/fuyao_notice_add.html": {
+				"href": "geren_message/fuyao_notice_add.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"css/mui.picker.min.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/mui.picker.min.js",
+					"js/mui.poppicker.js",
+					"js/getDate.js",
+					"plugs/moment/moment.min.js"
+				],
+				"priority": 8
+			},
+			"geren_message/fuyao_notice.html": {
+				"href": "geren_message/fuyao_notice.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.1.1.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"plugs/moment/moment.min.js",
+					"js/mui.picker.min.js",
+					"js/mui.poppicker.js",
+					"images/no_data/1-01.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.min.css",
+					"css/mui.poppicker.css"
+				],
+				"refer": [
+					"geren_message/fuyao_notice_add.html"
+				],
+				"priority": 8
+			},
+			"subpages/tab-webview-subpage-home.html": {
+				"href": "subpages/tab-webview-subpage-home.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/scroll.js",
+					"js/constants.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/qs/md5/md5.min.js",
+					"js/qs/qs.feedback.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/app.css",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/scroll_style.css",
+					"css/bootstrap.min.css",
+					"css/lunbo.css",
+					"css/animate/rob_order.css",
+					"images/rob_img/tjffbj.png",
+					"js/jquery-3.1.1.min.js",
+					"css/animate/animate.css",
+					"js/bootstrap.min.js",
+					"images/main_bg.png",
+					"images/rob_img/tjff.png",
+					"images/index_img/smhl.png",
+					"images/index_img/mainxiaoqi.gif",
+					"images/index_img/main_button3.png",
+					"images/index_img/main_button5.png",
+					"images/index_img/main_button7.png",
+					"images/index_img/main_button6.png",
+					"images/index_img/main_button4.png",
+					"template/text/lunbo_image.tl",
+					"template/text/huadong_main.tl",
+					"template/text/youhuijuan.tl"
+				],
+				"refer": [
+					"login/login.html",
+					"online_answer_order/online_answer_index.html",
+					"order/a015_item_xiangqing.html",
+					"order/service_item.html",
+					"familydoctor/echarts.html",
+					"order/rob_order.html",
+					"familydoctor/familydoctor.html",
+					"geren_message/fuyao_notice.html",
+					"geren_message/d07_my_account.html",
+					"order/item-order-all.html",
+					"geren_message/xqzx/xqzx_auto.html",
+					"order/online_service.html",
+					"geren_message/info.html",
+					"familydoctor/z01_hospital_introduce.html",
+					"geren_message/info2.html",
+					"health_file/health_file.html"
+				],
+				"priority": 1
+			},
+			"set/head_img.html": {
+				"href": "set/head_img.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"plugs/cropperjs/cropper.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf",
+					"plugs/cropperjs/cropper.min.css"
+				],
+				"priority": 3
+			},
+			"geren_message/d02_geren_messageTouxiang.html": {
+				"href": "geren_message/d02_geren_messageTouxiang.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.min.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"js/exif.js",
+					"js/mobileBUGFix.mini.js",
+					"images/001.png"
+				],
+				"refer": [
+					"set/head_img.html"
+				],
+				"priority": 3
+			},
+			"geren_message/e03_suggestion.html": {
+				"href": "geren_message/e03_suggestion.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/constants.js"
+				],
+				"priority": 5
+			},
+			"geren_message/hushi_xiangqing.html": {
+				"href": "geren_message/hushi_xiangqing.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/jquery-labelauty.css",
+					"images/wodebg.png",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/jquery-labelauty.js",
+					"js/constants.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js"
+				],
+				"refer": [
+					"familydoctor/im-chat.html",
+					"main_sub/message_xiangqing.html"
+				],
+				"priority": 7
+			},
+			"geren_message/d03_wodeyihu.html": {
+				"href": "geren_message/d03_wodeyihu.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/arttmpl.js",
+					"js/constants.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.js",
+					"images/no_data/1-01.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"geren_message/hushi_xiangqing.html"
+				],
+				"priority": 7
+			},
+			"login/modify_phone2.html": {
+				"href": "login/modify_phone2.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"images/exit/dl.png",
+					"images/exit/yzm.png"
+				],
+				"priority": 8
+			},
+			"login/modify_phone1.html": {
+				"href": "login/modify_phone1.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"images/exit/dl.png",
+					"images/exit/yzm.png"
+				],
+				"refer": [
+					"login/modify_phone2.html"
+				],
+				"priority": 8
+			},
+			"login/modify_password.html": {
+				"href": "login/modify_password.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/app.js",
+					"js/constants.js",
+					"js/mui.picker.js",
+					"js/mui.poppicker.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"images/exit/mm.png"
+				],
+				"priority": 9
+			},
+			"geren_message/setting.html": {
+				"href": "geren_message/setting.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.js",
+					"js/qs/qs.update.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"images/wode/mima.png",
+					"images/wode/sj.png",
+					"images/wode/bb.png"
+				],
+				"refer": [
+					"login/modify_phone1.html",
+					"login/modify_password.html",
+					"geren_message/info.html"
+				],
+				"priority": 8
+			},
+			"geren_message/qskf_xiangqing.html": {
+				"href": "geren_message/qskf_xiangqing.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/mui.picker.css",
+					"css/mui.poppicker.css",
+					"css/feedback.css",
+					"images/iconfont-tianjia.png",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"js/dialogAni/sweetalert2.min.css",
+					"js/dialogAni/example/example.css",
+					"js/dialogAni/example/buttons.css",
+					"images/kf.png",
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/common.js",
+					"js/mui.previewimage.js",
+					"js/mui.zoom.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/dialogAni/es6-promise.auto.min.js",
+					"js/dialogAni/sweetalert2.js",
+					"js/text/kefu.js"
+				],
+				"priority": 10
+			},
+			"geren_message/qskf.html": {
+				"href": "geren_message/qskf.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.min.js",
+					"js/common.js",
+					"js/text/kefu.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.new.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf"
+				],
+				"refer": [
+					"geren_message/qskf_xiangqing.html"
+				],
+				"priority": 10
+			},
+			"subpages/tab-webview-subpage-my.html": {
+				"href": "subpages/tab-webview-subpage-my.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.js",
+					"js/qs/qs.feedback.js",
+					"js/qs/md5/md5.min.js",
+					"images/wode/wrz.png",
+					"images/wode/yrz.png",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"images/qrz.png",
+					"images/wode/wdyh.png",
+					"images/wode/ffdx.png",
+					"images/wode/wdzh.png",
+					"images/wode/yyfk.png",
+					"images/wode/syxx.png",
+					"images/wode/qskf.png",
+					"images/wode/sz.png"
+				],
+				"refer": [
+					"geren_message/d02_geren_messageTouxiang.html",
+					"geren_message/d02_geren_message.html",
+					"geren_message/e03_suggestion.html",
+					"document/e03_insurance_agreement.html",
+					"geren_message/d03_wodeyihu.html",
+					"geren_message/setting.html",
+					"geren_message/d07_my_account.html",
+					"geren_message/qskf.html",
+					"service_object/a045_service_object_query.html",
+					"subpages/tab-webview-subpage-order.html",
+					"health_file/health_list.html"
+				],
+				"priority": 3
+			},
+			"subpages/tab-webview-subpage-order.html": {
+				"href": "subpages/tab-webview-subpage-order.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.js",
+					"js/constants.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/arttmpl.js",
+					"js/json_time.js",
+					"plugs/moment/moment.min.js",
+					"js/art/template-web.js",
+					"js/qs/qs.art.extend.js",
+					"js/qs/qs.template.js",
+					"js/iscroll/iscroll-probe.js",
+					"js/qs/qs.iscroll.new.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/qs/qs.common.new.css",
+					"images/no_data/1-01.png",
+					"js/sdk/lib/jquery.json2html-master/json2html.js",
+					"css/hover.css",
+					"js/sdk/lib/jquery.json2html-master/jquery.json2html.js"
+				],
+				"refer": [
+					"order/c02_order_xiangqing.html",
+					"online_answer_order/online_answer_order_xiangqing.html"
+				],
+				"priority": 4
+			},
+			"subpages/tab-webview-subpage-service-sub.html": {
+				"href": "subpages/tab-webview-subpage-service-sub.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.js",
+					"js/mui.pullToRefresh.material.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.js",
+					"js/arttmpl.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"js/qs/qs.feedback.js",
+					"js/qs/md5/md5.min.js",
+					"images/no_data/1-01.png",
+					"images/no_data/1-02.png"
+				],
+				"refer": [
+					"main_sub/message_xiangqing.html"
+				],
+				"priority": 6
+			},
+			"subpages/tab-webview-subpage-service.html": {
+				"href": "subpages/tab-webview-subpage-service.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"js/mui.pullToRefresh.js",
+					"js/mui.pullToRefresh.material.js",
+					"js/xiangyingshi.js",
+					"js/constants.js",
+					"js/jquery-3.1.1.js",
+					"js/arttmpl.js",
+					"plugs/moment/moment.min.js",
+					"js/json_time.js",
+					"subpages/tab-webview-subpage-service-sub.html"
+				],
+				"refer": [],
+				"priority": 6
+			},
+			"guide.html": {
+				"href": "guide.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js",
+					"images/welcome_page/flash1.jpg",
+					"images/welcome_page/flash2.jpg",
+					"images/welcome_page/flash3.jpg",
+					"images/welcome_page/flash4.jpg",
+					"images/welcome_page/flash5.jpg"
+				],
+				"priority": 9,
+				"refer": [
+					"geren_message/d07_my_account.html",
+					"main.html"
+				]
+			},
+			"main.html": {
+				"href": "main.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/icons-extra.css",
+					"fonts/mui-icons-extra.ttf",
+					"css/iconfont.css",
+					"css/iconfont.eot",
+					"css/iconfont.ttf",
+					"css/main.css",
+					"fonts/iconfont.ttf",
+					"js/mui.min.js",
+					"js/app.js",
+					"js/xiangyingshi.js",
+					"js/jquery-3.1.1.js",
+					"js/constants.js",
+					"js/qs/qs.update.js",
+					"js/sdk/lib/md5/spark-md5.js",
+					"js/sdk/lib/md5/md5.min.js",
+					"js/sdk/lib/base64/base64.js",
+					"js/sdk/webim.js",
+					"js/sdk/webim/index_receive_new_msg.js",
+					"js/sdk/webim/login.js",
+					"subpages/tab-webview-subpage-home.html",
+					"css/animate/pr_animate.css",
+					"js/sdk/webim/common/login.js",
+					"js/comfirmConnect.js",
+					"js/sdk/webim/common/webim.js",
+					"js/sdk/webim/private/index_receive_new_msg.js"
+				],
+				"refer": [
+					"subpages/tab-webview-subpage-talk.html",
+					"online_answer_order/online_answer_order_xiangqing.html",
+					"subpages/tab-webview-subpage-my.html",
+					"subpages/tab-webview-subpage-order.html",
+					"order/c02_order_xiangqing.html",
+					"subpages/tab-webview-subpage-service.html",
+					"login/login.html",
+					"geren_message/d02_geren_message.html",
+					"guide.html",
+					"subpages/tab-webview-subpage-service-withVue.html"
+				],
+				"priority": 0
+			},
+			"order/item-order-all.html": {
+				"resources": [],
+				"refer": [
+					"order/a015_item_xiangqing.html"
+				],
+				"priority": 0
+			},
+			"order/online_service.html": {
+				"resources": [],
+				"refer": [
+					"online_answer_order/online_answer_index.html",
+					"document/tl_bank_pay.html",
+					"login/login.html",
+					"order/bodyCheck_report_withVue.html"
+				],
+				"priority": 0
+			},
+			"geren_message/xqzx/xqzx_auto.html": {
+				"resources": [],
+				"refer": [
+					"familydoctor/im-chat.html"
+				],
+				"priority": 0
+			},
+			"subpages/tab-webview-subpage-service-withVue.html": {
+				"resources": [],
+				"refer": [
+					"main_sub/message_xiangqing_withVue.html",
+					"subpages/tab-webview-subpage-service-sub-withVue.html"
+				],
+				"priority": 0
+			},
+			"order/bodyCheck_report_withVue.html": {
+				"resources": [],
+				"refer": [
+					"order/bodyCheck_xiangqing_withVue.html"
+				],
+				"priority": 0
+			},
+			"health_file/health_list.html": {
+				"resources": [],
+				"refer": [
+					"health_file/health_detail.html",
+					"health_file/health_object_add.html"
+				],
+				"priority": 0
+			},
+			"health_file/health_detail.html": {
+				"resources": [],
+				"refer": [
+					"health_file/health_data/health_tang.html",
+					"health_file/health_data/blood_pressure_last.html",
+					"health_file/medical_history.html",
+					"health_file/allergy_history.html"
+				],
+				"priority": 0
+			},
+			"health_file/health_data/blood_pressure_last.html": {
+				"resources": [],
+				"refer": [
+					"health_file/health_data/blood_pressure_save.html"
+				],
+				"priority": 0
+			},
+			"familydoctor/z01_doctor_list.html": {
+				"resources": [],
+				"refer": [
+					"familydoctor/im-chat.html"
+				],
+				"priority": 0
+			},
+			"familydoctor/z01_hospital_introduce.html": {
+				"resources": [],
+				"refer": [
+					"familydoctor/z01_doctor_list.html"
+				],
+				"priority": 0
+			},
+			"subpages/tab-webview-subpage-service-sub-withVue.html": {
+				"resources": [],
+				"refer": [
+					"main_sub/message_xiangqing_withVue.html"
+				],
+				"priority": 0
+			},
+			"health_file/health_file.html": {
+				"resources": [],
+				"refer": [
+					"health_file/health_detail.html",
+					"health_file/health_test.html",
+					"order/bodyCheck_report_withVue.html"
+				],
+				"priority": 0
+			},
+			"health_file/health_test.html": {
+				"resources": [],
+				"refer": [
+					"health_file/health_data/health_tang.html"
+				],
+				"priority": 0
+			},
+			"health_file/health_data/health_tang.html": {
+				"resources": [],
+				"refer": [
+					"health_file/health_data/medicine_tang.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"images/kefu_03.png",
+				"images/index_img/main_button2.png",
+				"images/kefu_04.png",
+				"images/011.jpg",
+				"js/sdk/lib/lodash.min.js",
+				"order/rob_order_iframe.html",
+				"images/input-unchecked.png",
+				"order/a047_illness_select_old.html",
+				"images/main_img/u17_08.gif",
+				"images/main_img/u17_11.gif",
+				"geren_message/chongzhi.html",
+				"order/beipin_mingxi.html",
+				"js/mui.view.js",
+				"README.md",
+				"js/sdk/lib/audiojs/player-graphics.gif",
+				"js/test/immersed.js",
+				"js/art/compile/error.js",
+				"images/rob_img/duihao.png",
+				"images/007.jpg",
+				"js/art/index.js",
+				"images/rob_img/item2.png",
+				"images/input-checked.png",
+				"document/about_us_document.html",
+				"js/feedback.js",
+				"js/sdk/lib/audiojs/audio.min_my.js",
+				"images/txmrt.png",
+				"js/chatMsg.js",
+				"js/sdk/webim_wx.js",
+				"images/weixin.png",
+				"images/xiao7.png",
+				"js/art/compile/tpl-tokenizer.js",
+				"images/main_img/u17_28.gif",
+				"images/002.png",
+				"css/common.css",
+				"images/sinaweibo.png",
+				"js/art/compile/adapter/rule.art.js",
+				"js/mui.indexedlist.js",
+				"css/assets/styles/images/input-unchecked_.png",
+				"images/rob_img/item4.png",
+				"images/index_img/main_button1.png",
+				"main_sub/call-center.html",
+				"js/jquery.validate.min.js",
+				"template/order/order_list_waitpingjia.tl",
+				"images/sc2.png",
+				"css/mui.indexedlist.css",
+				"images/no_data/1-03.png",
+				"js/strophe-1.2.8.min.js",
+				"images/jiantou2.png",
+				"js/sdk/lib/bootstrap/bootstrap-collapse.js",
+				"images/kefu_02.png",
+				"images/main_img/u17_21.gif",
+				"images/u5975.png",
+				"js/dialogAni/example/example.scss",
+				"js/sdk/lib/jquery/jquery-ui.js",
+				"js/sdk/lib/bootstrap/bootstrap.js",
+				"images/rob_img/item3.png",
+				"images/kefu_04dj.png",
+				"images/no_data/1-09.png",
+				"geren_message/report_shenqing.html",
+				"css/iconfont.woff",
+				"login/set_password.html",
+				"images/px.png",
+				"css/assets/images/synch-unchecked.png",
+				"main_sub/indexed-list.html",
+				"images/003.png",
+				"images/no_data/1-05.png",
+				"js/art/compile/compiler.js",
+				"js/art/compile/adapter/html-minifier.js",
+				"document/place_order_agreement.html",
+				"js/art/render.js",
+				"js/art/compile/adapter/loader.js",
+				"js/immersed.js",
+				"geren_message/hospital_hyd.html",
+				"css/assets/images/disabled-checked.png",
+				"images/no_data/1-08.png",
+				"geren_message/double_check.html",
+				"images/user-photo.png",
+				"js/feedbackMUI.js",
+				"images/kefu_01.png",
+				"images/wode/cz.png",
+				"images/main_img/u17_19.gif",
+				"images/006.jpg",
+				"subpages/tab-webview-subpage-service-sub-new.html",
+				"images/page.png",
+				"images/familydoctor/fdt_patient_img.png",
+				"wav/order.wav",
+				"images/exit/tjzp.png",
+				"js/iscroll/iscroll.js",
+				"js/dialogAni/sweetalert2.min.js",
+				"images/no_data/1-07.png",
+				"js/sdk/lib/audiojs/audio.min.js",
+				"images/banner3.png",
+				"images/009.jpg",
+				"js/sdk/lib/base64/base64.min.js",
+				"css/assets/images/input-unchecked.png",
+				"images/u5974.png",
+				"document/zhenliaoxingwei_document.html",
+				"css/qs.common.css",
+				"images/rob_img/tjffbj_old.png",
+				"js/art/compile/adapter/include.js",
+				"js/art/defaults.js",
+				"js/art/runtime.js",
+				"images/008.jpg",
+				"js/art/compile/adapter/extend.js",
+				"js/art/precompile.js",
+				"js/iscroll/iscroll-infinite.js",
+				"images/010.jpg",
+				"images/main_img/u17_05.gif",
+				"js/qs/qs.notice.js",
+				"login/set_number.html",
+				"js/template.js",
+				"js/city.data.js",
+				"order/lvse_tongdao.html",
+				"js/sdk/sdk.zip",
+				"document/user_agreement.html",
+				"js/city.data-3.js",
+				"css/assets/styles/images/input-checked_.png",
+				"images/kefu_01dj.png",
+				"images/banner2.png",
+				"images/banner4.png",
+				"familydoctor/im-chat_test.html",
+				"template/order/order_test.tl",
+				"template/order/order_list_waitservice.tl",
+				"images/main_img/u17_20.gif",
+				"images/muwu.jpg",
+				"js/qs/qs.img.lazyload.js",
+				"images/no_data/1-06.png",
+				"geren_message/add_yihu.html",
+				"images/kefu_02dj.png",
+				"geren_message/wdyy.html",
+				"images/no_data/1-04.png",
+				"images/kefu_03dj.png",
+				"js/art/compile/adapter/rule.native.js",
+				"js/art/compile/adapter/onerror.js",
+				"geren_message/wode_healthness.html",
+				"css/assets/images/favicon.png",
+				"images/rob_img/hyh.png",
+				"css/assets/images/terms-unchecked.png",
+				"js/art/extension.js",
+				"css/assets/images/input-checked.png",
+				"document/yuyue_xuzhi.html",
+				"js/mui.locker.js",
+				"images/main_img/u17_09.gif",
+				"images/shuijiao.jpg",
+				"js/sdk/lib/bootstrap/bootstrap-table.js",
+				"images/rob_img/item5.png",
+				"geren_message/yycg.html",
+				"images/hs2.png",
+				"images/wode/zhanghu.png",
+				"images/wode/kefu.png",
+				"js/sdk/webim_wx.min.js",
+				"images/wode/djq.png",
+				"css/assets/images/terms-checked.png",
+				"css/assets/images/synch-checked.png",
+				"images/wz.png",
+				"images/icon_date.png",
+				"js/constants.temp.js",
+				"order/a044_select_taocan.html",
+				"template/order/order_illness_new.tl",
+				"js/test/common.js",
+				"js/sdk/webim.min.js",
+				"images/exit/zuobiao.png",
+				"images/wode/ygq.png",
+				"css/assets/images/input-disabled.png",
+				"js/art/compile/defaults.js",
+				"images/wode/tx.png",
+				"css/feedback-page.css",
+				"js/art/compile/runtime.js",
+				"js/sdk/lib/xss.js",
+				"js/sdk/webim_no_emotion.js",
+				"js/sdk/lib/audiojs/audiojs.swf",
+				"images/wode/wdyy.png",
+				"images/main_img/u17_03.gif",
+				"images/yhk-01.png",
+				"images/banner5.png",
+				"images/main_img/u17_18.gif",
+				"images/rob_img/item1.png",
+				"geren_message/barcode_scan.html",
+				"js/sdk/json2.js",
+				"images/cg-01.png",
+				"js/feedback-page.js",
+				"js/sdk/lib/jquery/jquery.js",
+				"js/art/compile/index.js",
+				"css/assets/images/logo.png",
+				"js/iscroll/iscroll-zoom.js",
+				"images/guide.png",
+				"images/rrrrrr.png",
+				"js/iscroll/iscroll-lite.js",
+				"js/art/compile/adapter/caches.js",
+				"images/yuantiao.jpg",
+				"js/art/compile/es-tokenizer.js",
+				"images/familydoctor/u93.png",
+				"images/main_img/u17_22.gif",
+				"js/art/compile/adapter/resolve-filename.js",
+				"js/sdk/webim_no_emotion.min.js"
+			]
+		}
+	}
+}

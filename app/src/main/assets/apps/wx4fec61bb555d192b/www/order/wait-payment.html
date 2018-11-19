@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>待支付</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.mui-input-group {
+				background-color: #EEEEEE;
+			}
+			
+			.wait-payment {
+				height: 215px;
+				background: white;
+				text-align: center;
+				padding-top: 60px;
+			}
+			
+			.wait-payment div {
+				font-size: 0.5rem;
+				color: #ff9c00;
+				margin-top: 15px;
+			}
+			
+			form {
+				font-size: 0.3rem;
+				margin-top: 4px
+			}
+			
+			.mui-radio input[type=radio]:checked:before {
+				font-size: 20px;
+				color: #FFB032;
+			}
+			
+			.mui-radio input[type=radio]:checked:before {
+				content: '\e442';
+			}
+			
+			.mui-checkbox input[type=checkbox]:before,
+			.mui-radio input[type=radio]:before {
+				font-size: 20px;
+			}
+			
+			.mui-radio input[type=radio] {
+				top: 18px;
+				width: 20px;
+			}
+			
+			.wait-payment img {
+				width: 100px;
+			}
+			
+			.mui-radio img {
+				width: 40px;
+				height: 40px;
+				margin-bottom: 5px;
+				margin-right: 10px
+			}
+			
+			.mui-input-group .mui-input-row {
+				height: 50px;
+				margin-top: 2px;
+			}
+			
+			.mui-checkbox label,
+			.mui-radio label {
+				line-height: 50px;
+			}
+			
+			.mui-input-row label {
+				padding: 0 15px;
+				font-size: 15px;
+			}
+			/*支付成功*/
+			
+			.wait-payment .payment-success {
+				font-size: 0.3rem !important;
+				color: #a4a4a4 !important;
+			}
+			
+			.wait-payment .payment-success span {
+				color: #de6060 !important;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				position: absolute;
+				left: 0px;
+			}
+			
+			.zfje {
+				color: #E4933C;
+				width: 75%;
+				float: left;
+			}
+			
+			.qian {
+				color: #E4933C;
+				font-size: 18px;
+				width: 25%;
+				float: left;
+				padding: 15px 0px;
+			}
+			
+			.mui-input-group .mui-input-row1 {
+				height: 50px;
+				margin-top: 2px;
+				height: 65px;
+			}
+			
+			li {
+				list-style-type: none;
+			}
+			
+			.m-rem50 {
+				padding-top: 10px;
+				height: 60px !important;
+			}
+			
+			.mui-radio label {
+				display: inline-flex;
+			}
+			
+			.zi {
+				margin-top: -5px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 10px;
+				padding-bottom: 5px;
+			}
+			
+			.bg-wh {
+				background: #FFFFFF;
+			}
+			
+			.paddinganniu {
+				padding: 10px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
+			.mui-btn-block {
+				margin-bottom: 0;
+				margin-top: 60px;
+			}
+			
+			.mui-input-group:after {
+				background-color: transparent;
+			}
+		</style>
+	</head>
+
+	<body class="bg-whf6">
+
+		<header class="mui-bar mui-bar-transparent mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">付款</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-input-group ">
+				<div class="mui-input-row mui-radio bg-wh">
+					<div>
+						<ul>
+							<li class="zfje">
+								<label id="card">支付金额</label>
+							</li>
+							<li class="qian">￥<span id="qian">430.00</span></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="mui-input-group bg-wh">
+					<div class="mui-input-row mui-radio bg-wh">
+						<label id="card">支付方式</label>
+					</div>
+					<div class="mui-input-row mui-radio bg-wh m-rem50">
+						<label id="wechat"><img src="../images/wx-01.png" /><span class="zi">微信支付</span></label>
+						<input name="style" type="radio" value="wxpay">
+					</div>
+					<div class="mui-input-row mui-radio bg-wh m-rem50">
+						<label><img src="../images/zfb-01.png" /><span class="zi">支付宝支付</span></label>
+						<input name="style" type="radio" value="alipay">
+					</div>
+					<div class="mui-input-row mui-radio bg-wh m-rem50 applepay" style="display: none;">
+						<label><img src="../images/zfb-01.png" /><span class="zi">苹果应用内支付</span></label>
+						<input name="style" type="radio" value="appleiap">
+					</div>
+					<!--<div class="mui-input-row mui-radio bg-wh m-rem50">
+						<label id="yue"><img src="../images/yhk-01.png" /><span class="zi">医保卡支付</span></label>
+						<input name="style" type="radio" value="pay_yibaoka">
+					</div>-->
+				</div>
+				<div class="mui-content-padded">
+					<button id='queren' class="mui-btn mui-btn-block mui-btn-warning" type="submit">确认支付</button>
+				</div>
+			</div>
+			<script type="text/javascript" src="../js/mui.min.js"></script>
+			<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+			<script type="text/javascript" src="../js/xiachenshi.js"></script>
+			<script type="text/javascript" src="../js/constants.js"></script>
+			<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+			<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+			<script type="text/javascript" src="../js/qs/qs.immersed.js" ></script>
+	</body>
+	<script>
+		var pays = {};
+		var order_id_page, money_heji;
+		var status_uppage;
+		mui.plusReady(function() {
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+//			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+//				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+//				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+//				document.querySelector("header").style.height = topoffset;
+//				document.querySelector("header").style.paddingTop = "20px";
+//				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+//			}
+			window.addEventListener('order_id', function(event) {
+				console.log(event.detail.ORDER_ID);
+				order_id_page = event.detail.ORDER_ID
+			});
+
+			var self = plus.webview.currentWebview();
+			order_id_page = self.ORDER_ID;
+			money_heji = self.MONEY_HEJI;
+			status_uppage = self.STATUS;
+
+			$("#qian").html(money_heji);
+			/*-----------------------合计带元单位，使用时候截取-----------------------------*/
+			function gotoPay(id) {
+				var channel;
+				plus.payment.getChannels(function(channels) {
+					for(var i in channels) {
+						channel = channels[i];
+						pays[channel.id] = channel;
+					}
+					if(id == "wxpay") {
+						WXpay("wxpay");
+					}
+					if(id == "alipay") {
+						WXpay("alipay");
+					}
+
+				}, function(e) {
+					console.log("获取支付通道失败：" + e.message);
+				});
+			}
+
+			var w = null;
+			var url = '';
+			var PAYSERVER = serverAddress + '/api/patient/wechatpay';
+			var PAYSERVER_ZHIFUBAO = serverAddress + '/api/patient/alipay';
+			var zhifuMessage = {};
+			var amount = ''; //订单钱数
+
+			function processBack(ups) {
+				var orderView = plus.webview.getWebviewById("subpages/tab-webview-subpage-order.html")
+				if(orderView) {
+					plus.webview.getWebviewById("c02_order_xiangqing.html").close(true)
+;					orderView.reload(true)
+				} else {
+					mui.openWindow({
+						id: 'subpages/tab-webview-subpage-order.html',
+						url: '../subpages/tab-webview-subpage-order.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: false //自动显示等待框，默认为true
+						},
+						extras: {
+							TITLE: '订单',
+							UPSTATUS: ups
+						}
+					});
+				}
+			}
+
+			function WXpay(id) {
+				//				if(w) {
+				//					return;
+				//				} //检查是否请求订单中
+				console.log('----- 请求支付 -----');
+				var appid = plus.runtime.appid;
+				if(navigator.userAgent.indexOf('StreamApp') >= 0) {
+					appid = 'Stream';
+				}
+				w = plus.nativeUI.showWaiting();
+				if(id == "wxpay") {
+					//微信为分单位
+					amount = 1;
+					url = PAYSERVER;
+					zhifuMessage = {
+						id: order_id_page,
+						total_fee: amount,
+						spbill_create_ip: returnCitySN.cip
+					}
+					var success = function(data) {
+						var order = {
+							"appid": data.result.appid,
+							"noncestr": data.result.nonce_str,
+							"package": data.result.package,
+							"partnerid": data.result.mch_id,
+							"prepayid": data.result.prepay_id,
+							"timestamp": parseInt(data.result.time_stamp),
+							"sign": data.result.sign
+						}
+						var orderstr = JSON.stringify(order);
+						plus.payment.request(pays[id], orderstr, function(result) {
+							plus.nativeUI.alert('您的订单发布成功，请耐心等待医护人员接单', function() {
+								var i = plus.webview.getLaunchWebview();
+								if(i) {
+									//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+									localStorage.setItem("upitem", 2);
+									processBack(2)
+									mui.fire(i, 'refresh');
+								}
+								plus.webview.currentWebview().opener().close(true);
+								var quxiao_current = plus.webview.currentWebview().close(true);
+								mui.back();
+							}, '微信支付成功');
+						}, function(e) {
+							console.log('----- 支付失败 -----');
+							//alert('[' + e.code + ']：' + e.message);
+							//plus.nativeUI.alert('您已经取消支付订单');
+							if(e.code == "-8") {
+								plus.nativeUI.alert('请您确保手机安装微信客户端');
+							}
+							if(e.code == "9") {
+								plus.nativeUI.alert('请您在APP打包状态下选择微信支付');
+							}
+							//plus.webview.currentWebview().opener().close(true);
+
+							var i = plus.webview.getLaunchWebview();
+							if(i) {
+								//i.evalJS("setItemActive(2,1)");
+								//mui.fire(i, 'refresh');
+								plus.webview.getWebviewById("wait-payment.html").close(true);
+								localStorage.setItem("upitem", 1);
+								processBack(2)
+							}
+
+							mui.back();
+						});
+					};
+					//console.log("支付请求路径：" + url);
+					commonHttpUtils(url, "post", zhifuMessage, success, error, true);
+				} else if(id == "alipay") {
+					//支付宝钱数单位为元
+					amount = 0.01;
+					url = PAYSERVER_ZHIFUBAO;
+					zhifuMessage = {
+						id: order_id_page,
+						total_fee: amount
+					}
+					var success = function(data) {
+						var orderstr = JSON.stringify(data);
+						console.log(data.result);
+						plus.payment.request(pays[id], data.result, function(result) {
+							plus.nativeUI.alert('您的订单发布成功，请耐心等待医护人员接单', function() {
+								//status_uppage=1;
+								var i = plus.webview.getLaunchWebview();
+								if(i) {
+									//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+									localStorage.setItem("upitem", 2);
+									processBack(2)
+									mui.fire(i, 'refresh');
+								}
+								plus.webview.currentWebview().opener().close(true);
+								var quxiao_current = plus.webview.currentWebview().close(true);
+								mui.back();
+							}, '支付宝支付成功');
+						}, function(e) {
+							console.log('----- 支付失败 -----');
+							//plus.nativeUI.alert('[' + e.code + ']：' + e.message);
+							plus.nativeUI.alert('您已经取消支付订单');
+
+							var i = plus.webview.getLaunchWebview();
+							if(i) {
+								plus.webview.getWebviewById("wait-payment.html").close(true);
+								localStorage.setItem("upitem", 1);
+								processBack(2)
+							}
+						});
+					};
+					console.log("支付请求路径：" + url);
+					commonHttpUtils(url, "post", zhifuMessage, success, error, true);
+				}
+
+			}
+			document.getElementById("queren").addEventListener('tap', function() {
+				handleConfirm();
+			});
+
+			function handleConfirm() {
+				var payChannel = $("input[name='style']:checked").val();
+				if(!payChannel) {
+					mui.toast("请选择支付方式");
+					return false;
+				}
+				gotoPay(payChannel);
+			}
+			// 检测是否安装支付服务
+			function checkServices(pc) {
+				if(!pc.serviceReady) {
+					var txt = null;
+					switch(pc.id) {
+						case 'alipay':
+							txt = '检测到系统未安装“支付宝快捷支付服务”，无法完成支付操作，是否立即安装？';
+							break;
+						default:
+							txt = '系统未安装“' + pc.description + '”服务，无法完成支付，是否立即安装？';
+							break;
+					}
+					plus.nativeUI.confirm(txt, function(e) {
+						if(e.index == 0) {
+							pc.installService();
+						}
+					}, pc.description);
+				}
+			}
+		});
+	</script>
+
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>选择家庭住址</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<style>
+			.mui-content {
+				margin-top: 0.08rem;
+				font-size: 0.2916rem;
+			}
+			
+			#zhaoxiang {
+				height: 2rem;
+			}
+			
+			#zhaoxiang.mui-table-view-cell {
+				padding-top: 0.3rem;
+				height: 130px;
+			}
+			
+			#zhaoxiang a span:after {
+				top: 40%;
+			}
+			
+			#head_image {
+				width: 90px;
+				height: 90px;
+				border-radius: 50px;
+				margin-top: 10px;
+			}
+			
+			.head {
+				margin-top: -0.6rem;
+				margin-right: 15px;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-bottom: 0.08rem;
+			}
+			
+			#libiao li {
+				height: 1.0rem;
+				padding-top: 0.25rem;
+			}
+			
+			#libiao li span {
+				margin-right: 20px;
+				font-size: 14px;
+			}
+			
+			.qianming {
+				width: 50%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: right;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 25px;
+				right: 5px;
+			}
+			
+			.mui-table-view-cell a {
+				color: #424242;
+			}
+			
+			.mui-table-view-cell span {
+				color: #999999;
+			}
+			
+			#forward {
+				font-size: 0.3124rem;
+				font-weight: 400;
+			}
+			
+			#male {
+				color: #00c0ff;
+				height: 1.1rem;
+			}
+			
+			#female {
+				color: #ff0072;
+				height: 1.1rem;
+			}
+			
+			#male div,
+			#female div {
+				background: url(../../../image/tubiao2.png) no-repeat;
+			}
+			
+			.redword {
+				color: #FF3300 !important;
+			}
+			
+			.shengfen_upload {
+				max-width: 100%;
+				background: #FFFFFF;
+				height: 200px;
+				padding-top: 70px;
+			}
+			
+			.mui-content-padded a {
+				margin: 3px;
+				width: 50px;
+				height: 50px;
+				display: block;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				margin: 0 auto;
+			}
+			
+			.mui-content-padded a .mui-icon {
+				margin-top: 12px;
+				color: #000000;
+				margin-top: -7px;
+				margin-left: -6px;
+			}
+			
+			.mui-icon {
+				font-size: 60px;
+			}
+			
+			.upload_word {
+				margin: 10px auto;
+				display: block;
+				text-align: center;
+			}
+			
+			.shenfen_card,
+			.sign_name {
+				width: 70% !important;
+				height: 20px !important;
+				font-size: 14px;
+			}
+			
+			.error_shenfen_card {
+				border: 1px dotted rgba(0, 0, 0, 0) !important;
+			}
+			
+			.right_shenfen_card {
+				border: 1px solid rgba(0, 0, 0, 0) !important;
+			}
+			
+			input[type="number"] {
+				border: 1px solid rgba(0, 0, 0, 0) !important;
+			}
+			
+			.mui-table-view .mui-table-view-cell {
+				margin-top: 12px;
+			}
+			
+			.mui-table-view .one {
+				margin-top: 7px;
+			}
+			
+			.mui-table-view-cell img {
+				margin-right: 16px;
+				margin-left: 10px;
+			}
+			
+			.mui-table-view input {
+				width: 0.01rem !important;
+			}
+			
+			.mui-checkbox input[type=checkbox]:before,
+			.mui-radio input[type=radio]:before {
+				font-family: Muiicons;
+				font-size: 14px;
+				font-weight: 400;
+				text-decoration: none;
+				color: #aaa;
+				border-radius: 0;
+				background: 0 0;
+				-webkit-font-smoothing: antialiased;
+				margin-left: 10px!important;
+			}
+			
+			.mui-input-row label {
+				padding: 0;
+				width: 85%;
+			}
+			
+			.mui-content .mui-table-view .mui-table-view-cell .labelL .picture {
+				float: left;
+				width: 0.7rem !important;
+				margin-left: 0%;
+			}
+			
+			.mui-content .mui-table-view .mui-table-view-cell .labelL .artle {
+				float: left;
+				margin-left: 10px;
+				margin-top: 6px;
+				padding-left: 0;
+				width: 80%;
+			}
+			
+			.view-cell img {
+				margin-right: 12px !important;
+				margin-left: 16px !important;
+				text-align: center;
+				width: 0.4rem !important;
+			}
+			
+			.mui-table-view-cell img {
+				margin-right: 10px!important;
+				margin-left: 16px!important;
+			}
+			
+			img,
+			button {
+				max-width: 60%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选择家庭住址</h1>
+		</header>
+		<div class="mui-content" id="content">
+			<ul class="mui-table-view" id="homeAddUl">
+
+				<li class="mui-table-view-cell ">
+					<label class="labelL">
+							<div class="picture left"><img src="../images/familydoctor/jiahui.png" /></div>
+							<div class="artle left" id="homeAdd">设置家的位置</div>
+						</label>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="addTip" style="position: absolute;bottom: 70px;">
+				<li class="mui-table-view-cell">
+					<div style="text-align: center;color: orange;font-size: 18px;">温馨提示</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<p style="font-weight: 900;padding-bottom: 50px;" id="tip_info">
+						1、目前您尚未加入任何家庭医生团队。<br>
+						2、在本页面设置完您的家庭地址后请耐心等待。<br>
+						3、系统会按您指定的地址就近为您分配家庭医生团队。<br>
+					</p>
+				</li>
+			</ul>
+
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../plugs/qs/qs.immersed.js"></script>
+		<script src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/mui.picker.js"></script>
+		<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+		<script type="text/javascript" src="../js/exif.js"></script>
+
+	</body>
+	<script language="javascript">
+		var patient;
+
+		function setHomeAddress() {
+			var address = localStorage.selectedAddress;
+			console.log(address);
+			if(address == '') return;
+			//console.log(localStorage.selectedAddressGPS)
+			var gps = JSON.parse(localStorage.selectedAddressGPS);
+			console.log(JSON.stringify(gps));
+			//更新界面显示文字。
+			$("#homeAdd").text(address);
+			//调用后端代码，存储选中的地址。
+			var id = patient._id;
+			console.log(id)
+			var url = serverAddress + "/api/patient/fdthomeaddressandgps/" + id;
+			var data = {
+				fdthomegps: gps,
+				fdthomeaddress: address.trim()
+			};
+			commonHttpUtils(url, 'PUT', data, function(resData) {
+				if(resData.result == "success") {
+					patient = JSON.parse(localStorage.getItem("currentPatient"));
+					patient['fdthomeaddress'] = address.trim();
+					patient['fdthomegps'] = gps;
+					//update user in localStorage.
+					localStorage.setItem('currentPatient', JSON.stringify(patient));
+				}
+			}, function() {
+				mui.toast('存储服务地址时遇到网络超时，请稍后再试！');
+			}, true);
+		}
+
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			//setPagePos();
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			patient = JSON.parse(localStorage.getItem("currentPatient"));
+			console.log(JSON.stringify(patient));
+			if(patient) {				
+				$("#homeAdd").text(patient.fdthomeaddress ? patient.fdthomeaddress : "长春");
+				
+			}
+			
+			if(patient.fdthomeaddress) {
+				var txt = "您已选择过家庭地址,请耐心等待系统分配家庭医生团队即可。<br>如果想要重新设置家庭住址可忽略本提示继续操作。";
+				$("#tip_info").html(txt);
+			}else{
+				var txt = "1、目前您尚未加入任何家庭医生团队。<br>2、在本页面设置完您的家庭地址后请耐心等待。<br> 	3、系统会按您指定的地址就近为您分配家庭医生团队。<br>";
+				$("#tip_info").html(txt);
+			}
+
+			$("#homeAddUl").on("tap", function() {
+				var lastSelectedAddress = $(this).text().trim();
+				//console.log(lastSelectedAddress.trim());
+				var webview = mui.openWindow({
+					url: 'set_address.html',
+					id: 'set_address',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						title: '选择家庭住址',
+						cb: 'setHomeAddress',
+						startAt: lastSelectedAddress
+					}
+				});
+			});
+
+			/*var user = JSON.parse(localStorage.getItem('USER'));
+			var ele = document.getElementById('allgps')
+
+			if(user.allgps && user.allgps == "1") {
+				ele.setAttribute('checked', 'checked');
+			} else {
+				ele.removeAttribute('checked');
+			}*/
+
+			/*mui('.mui-table-view-cell').on('change', 'input', function() {
+				console.log(this.checked)
+				var value = this.checked ? "1" : "0";
+				//console.log(value)
+				var sussess = function(data) {
+					if(data.result == "success") {
+						user.allgps = value;
+						localStorage.setItem('USER', JSON.stringify(user));
+						mui.toast('状态更新成功！');
+					} else {
+						mui.toast('存储失败，请稍后再试！');
+					}
+				}
+				commonHttpUtils(alladdressandgpsUrl + user._id, "put", {
+					allgps: value
+				}, sussess, error);
+			});*/
+		});
+	</script>
+
+</html>

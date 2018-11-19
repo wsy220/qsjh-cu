@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<title>服务分类列表</title>
+		<style>
+			.mui-grid-view.mui-grid-9 {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-icon img {
+				max-width: 50%;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 10px 10px;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 14px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: #EEEEEE;
+			}
+			
+			.LIimage img {
+				width: 0.5rem;
+				margin-right: 10px;
+				vertical-align: bottom;
+			}
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+				line-height: 1.2;
+			}
+			.title{
+				line-height: 1.2;padding-top: 2px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title"></h1>
+		</header>
+
+		<div class="mui-content">
+			<ul class="mui-table-view" id="up_xianshi" style="display: block;">
+				<li class="mui-table-view-cell"><span class="LIimage"><img src="../images/rmff.png"></span><span id="up_name">热门服务</span></li>
+			</ul>
+			<ul class="mui-table-view mui-grid-view mui-grid-9" id="up_jingtai" style="display: block;">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="#">
+						<span class="mui-icon"><img src="../images/guahao.png"></span>
+						<div class="mui-media-body">预约挂号</div>
+					</a>
+				</li>
+				
+				
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="#">
+						<span class="mui-icon"><img src="../images/guahao.png"></span>
+						<div class="mui-media-body">预约挂号</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="#">
+						<span class="mui-icon"><img src="../images/guahao.png"></span>
+						<div class="mui-media-body">预约挂号</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="#">
+						<span class="mui-icon"><img src="../images/guahao.png"></span>
+						<div class="mui-media-body">预约挂号</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="#">
+						<span class="mui-icon"><img src="../images/guahao.png"></span>
+						<div class="mui-media-body">预约挂号</div>
+					</a>
+				</li>
+			</ul>
+			<div class="item2_2">
+				<script type="text/template" id="radio-tigan1">
+					<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<% for(var i in record){ var item=record[i];%>
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+							<a href="#">
+								<span class="mui-icon"><img class="qs-img-lazyload" src=<%=serviceAddress+"/"+item.icon%> data-lazyload=<%=serviceAddress+"/"+item.icon%>></span>
+								<div class="mui-media-body title">
+									<%=item.name%>
+								</div>
+								<input type="hidden" value="<%=item._id%>" id="idhidden" />
+							</a>
+						</li>
+						<%}%>
+					</ul>
+				</script>
+			</div>
+			<div class="item1_1 m-rem2">
+				<script type="text/template" id="radio-tigan1">
+					<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<% for(var i in record){ var item=record[i];% >
+						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+							<a href="#">
+								<span class="mui-icon"><img class="qs-img-lazyload" src=<%=serviceAddress+"/"+item.icon%> data-lazyload=<%=serviceAddress+"/"+item.icon%>></span>
+								<div class="mui-media-body title" >
+									<%=item.name%>
+								</div>
+								<input type="hidden" value="<%=item._id%>" id="idhidden" />
+							</a>
+						</li>
+						<%}%>
+					</ul>
+				</script>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+
+	<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+
+	<script>
+		var item_name = '';
+		var record_1 = [];
+		var record_2 = [];
+		if(mui.os.ios || mui.os.ipad || mui.os.iphone) {
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
+					mui.toast("确认手机是否连接网络！");
+					$(".mui-content").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+					return false;
+				}
+
+				window.addEventListener('sevice_item_message', function(e) {
+					$(".mui-title").html(e.detail.item_name);
+					item_name = e.detail.item_name;
+
+					if(item_name == "综合服务") {
+						$("#up_xianshi").css("display", "none");
+						$("#up_jingtai").css("display", "block");
+						var url = serverAddress + "/api/item/appitemlist/Comprehensive/all";
+						var div = document.querySelector(".item1_1");
+						var success = function(data) {
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							if(data.length == 0) {
+								document.querySelector(".item1_1").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+								plus.nativeUI.closeWaiting();
+							} else {
+								record_1 = data;
+								var str = template('radio-tigan1', {
+									"record": record_1,
+									"serviceAddress": serverAddress
+								});
+								document.querySelector(".item1_1").innerHTML = str;
+							}
+						};
+						commonHttpUtils(url, "get", {}, success, error, true);
+					} else {
+						var url1 = "",
+							url2 = "";
+						if(item_name == "上门护理") {
+							url1 = serverAddress + "/api/item/appitemlist/Nursing" + "/all";
+							url2 = serverAddress + "/api/item/appitemlist/Nursing" + "/hot";
+						} else if(item_name == "上门康复") {
+							url1 = serverAddress + "/api/item/appitemlist/Recovered" + "/all";
+							url2 = serverAddress + "/api/item/appitemlist/Recovered" + "/hot";
+						}
+
+						$("#up_name").html("热门服务");
+						$("#up_xianshi").css("display", "block");
+						$("#up_jingtai").css("display", "none");
+
+						var success1 = function(data) {
+							//console.log(JSON.stringify(data));
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							if(data.length == 0) {
+								document.querySelector(".item1_1").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+								plus.nativeUI.closeWaiting();
+							}
+							record_1 = data;
+							var str = template('radio-tigan1', {
+								"record": record_1,
+								"serviceAddress": serverAddress
+							});
+							document.querySelector(".item1_1").innerHTML = str;
+						};
+						commonHttpUtils(url1, "get", {}, success1, error, true);
+
+						var success2 = function(data) {
+							if(data.length == 0) {
+								//document.querySelector(".item2_2").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+								//document.querySelector(".item2_2").innerHTML = '222';
+								plus.nativeUI.closeWaiting();
+							} else {
+								record_1 = data;
+								var str = template('radio-tigan1', {
+									"record": record_1,
+									"serviceAddress": serverAddress
+								});
+								document.querySelector(".item2_2").innerHTML = str;
+							}
+						};
+						commonHttpUtils(url2, "get", {}, success2, error, true);
+					}
+
+				});
+			});
+		} else {
+			window.addEventListener('sevice_item_message', function(e) {
+				$(".mui-title").html(e.detail.item_name);
+				item_name = e.detail.item_name;
+			});
+			mui.plusReady(function() {
+				
+				
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
+					mui.toast("确认手机是否连接网络！");
+					$(".mui-content").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+					return false;
+				}
+
+
+				if(item_name == "综合服务") {
+					$("#up_xianshi").css("display", "none");
+					$("#up_jingtai").css("display", "block");
+					var url = serverAddress + "/api/item/appitemlist/Comprehensive/all";
+					var success = function(data) {
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						if(data.length == 0) {
+							document.querySelector(".item1_1").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							plus.nativeUI.closeWaiting();
+						} else {
+							record_1 = data;
+							var str = template('radio-tigan1', {
+								"record": record_1,
+								"serviceAddress": serverAddress
+							});
+							document.querySelector(".item1_1").innerHTML = str;
+						}
+					};
+					commonHttpUtils(url, "get", {}, success, error, true);
+				} else {
+					var url1 = "",
+						url2 = "";
+					if(item_name == "上门护理") {
+						url1 = serverAddress + "/api/item/appitemlist/Nursing" + "/all";
+						url2 = serverAddress + "/api/item/appitemlist/Nursing" + "/hot";
+					} else if(item_name == "上门康复") {
+						url1 = serverAddress + "/api/item/appitemlist/Recovered" + "/all";
+						url2 = serverAddress + "/api/item/appitemlist/Recovered" + "/hot";
+					}
+
+					$("#up_name").html("热门服务");
+					$("#up_xianshi").css("display", "block");
+					$("#up_jingtai").css("display", "none");
+
+					var success1 = function(data) {
+						console.log(JSON.stringify(data));
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						if(data.length == 0) {
+							document.querySelector(".item1_1").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							plus.nativeUI.closeWaiting();
+						}
+						record_1 = data;
+						var str = template('radio-tigan1', {
+							"record": record_1,
+							"serviceAddress": serverAddress
+						});
+						document.querySelector(".item1_1").innerHTML = str;
+					};
+					commonHttpUtils(url1, "get", {}, success1, error, true);
+
+					var success2 = function(data) {
+						if(data.length == 0) {
+							//document.querySelector(".item2_2").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							//document.querySelector(".item2_2").innerHTML = '222';
+							plus.nativeUI.closeWaiting();
+						} else {
+							record_1 = data;
+							var str = template('radio-tigan1', {
+								"record": record_1,
+								"serviceAddress": serverAddress
+							});
+							document.querySelector(".item2_2").innerHTML = str;
+						}
+					};
+					commonHttpUtils(url2, "get", {}, success2, error, true);
+				}
+			});
+		}
+
+		/*
+		 * 上一页获取服务项目大类名称
+		 */
+
+		mui("#up_jingtai").on("tap", "a", function(e) {
+			mui.openWindow({
+				id: 'tl_bank_pay.html',
+				url: '../document/tl_bank_pay.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: false //自动显示等待框，默认为true
+				}
+			});
+		})
+		mui(".item1_1").on("tap", "a", function(e) {
+			var item_name_xiangqing = $(this).children().eq(1).html();
+			var item_name_id = $(this).children().eq(2).val();
+			if(item_name == "综合服务") {
+				//var w = plus.webview.create('http://ccguahao.cn');
+				//w.show(); // 显示窗口
+				//plus.runtime.openURL("http://ccguahao.cn/", {}, "");
+
+				mui.openWindow({
+					id: 'a015_item_xiangqing.html',
+					url: '../order/a015_item_xiangqing.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					extras: {
+						biaoshi: "zhengchang" //在下单时做个标识，如果是"zhengchang"就是正常下单，"yihu"就是选择医护下单
+					}
+				});
+				var sevice_item_xiangqing = plus.webview.getWebviewById('a015_item_xiangqing.html');
+				sevice_item_xiangqing.addEventListener('loaded', function() {
+					mui.fire(sevice_item_xiangqing, "sevice_item_xiangqing", {
+						ITEM_NAME: item_name_xiangqing,
+						ITEM_NAME_ID: item_name_id
+					});
+				});
+
+			} else if(item_name == "上门护理" || item_name == "上门康复") {
+				mui.openWindow({
+					id: 'a015_item_xiangqing.html',
+					url: '../order/a015_item_xiangqing.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					extras: {
+						biaoshi: "zhengchang" //在下单时做个标识，如果是"zhengchang"就是正常下单，"yihu"就是选择医护下单
+					}
+				});
+				var sevice_item_xiangqing = plus.webview.getWebviewById('a015_item_xiangqing.html');
+				sevice_item_xiangqing.addEventListener('loaded', function() {
+					mui.fire(sevice_item_xiangqing, "sevice_item_xiangqing", {
+						ITEM_NAME: item_name_xiangqing,
+						ITEM_NAME_ID: item_name_id
+					});
+				});
+			}
+		});
+		mui(".item2_2").on("tap", "a", function(e) {
+			var item_name_xiangqing = $(this).children().eq(1).html();
+			var item_name_id = $(this).children().eq(2).val();
+			mui.openWindow({
+				id: 'a015_item_xiangqing.html',
+				url: '../order/a015_item_xiangqing.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: false //自动显示等待框，默认为true
+				},
+				extras: {
+					biaoshi: "zhengchang" //在下单时做个标识，如果是"zhengchang"就是正常下单，"yihu"就是选择医护下单
+				}
+			});
+			var sevice_item_xiangqing = plus.webview.getWebviewById('a015_item_xiangqing.html');
+			sevice_item_xiangqing.addEventListener('loaded', function() {
+				mui.fire(sevice_item_xiangqing, "sevice_item_xiangqing", {
+					ITEM_NAME: item_name_xiangqing,
+					ITEM_NAME_ID: item_name_id
+				});
+			});
+		});
+
+		mui("#up_jingtai").on("tap", "a", function(e) {
+			//			var w = plus.webview.create('http://ccguahao.cn');
+			//			w.show(); // 显示窗口
+			//plus.runtime.openURL("http://ccguahao.cn/", {}, "");
+			mui.openWindow({
+				id: 'tl_bank_pay.html',
+				url: '../document/tl_bank_pay.html',
+				show: {
+					autoShow: true, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		})
+	</script>
+
+</html>

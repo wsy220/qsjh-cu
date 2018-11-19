@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>收费包服务</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.jvse {
+				color: #ff9e0d;
+				padding-top: 90px;
+			}
+			
+			.mui-col-xs-5 {
+				text-align: right;
+				width: 47%;
+			}
+			
+			.ziti {
+				font-size: 15px;
+				color: #454545;
+				font-weight: bold;
+			}
+			
+			.ziti2 {
+				font-size: 18px;
+				color: #E4933C;
+			}
+			
+			.zitijg {
+				font-size: 15px;
+				color: #454545;
+			}
+			
+			.neirong {
+				font-size: 15px;
+				color: #333333;
+				padding-top: 10px;
+				line-height: 22px;
+			}
+			
+			.neirong1 {
+				font-size: 15px;
+				color: #333333;
+				padding-top: 10px;
+				line-height: 14px;
+			}
+			
+			p {
+				font-size: 14px;
+				margin-top: 0;
+				margin-bottom: 10px;
+				color: #333333;
+			}
+			
+			.mui-btn-warning1 {
+				background: #bcbcbc;
+				border-radius: 10px;
+				width: 100%;
+				height: 0.9rem;
+				font-size: 15px;
+				color: #ffffff;
+				height: 42px;
+			}
+			
+			.mui-btn-warning {
+				background: #43CED3;
+				border-radius: 10px;
+				width: 100%;
+				height: 0.9rem;
+				font-size: 15px;
+				height: 42px;
+				border: 1px solid #43CED3
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				margin: 0;
+				padding: 15px 2px;
+				vertical-align: top;
+			}
+			
+			.mui-table1 {
+				width: 100%;
+				float: left;
+			}
+			
+			.jiage {
+				width: 30%;
+				float: right;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				margin-top: 3px;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 9px;
+				color: #40CDD2;
+				border-radius: 8px;
+				background-color: #fff;
+				width: 120px;
+				border: 1px solid #40CDD2;
+				text-align: center;
+			}
+			
+			.mui-col-xs-7 {
+				width: 53%;
+			}
+			
+			.mui-btn-block {
+				padding: 0px 0;
+			}
+			
+			.tR {
+				text-align: right;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				margin: 0;
+				padding: 0;
+				background-color: #efeff4;
+			}
+			
+			.no_xian:after {
+				height: 0;
+			}
+			
+			.ziti1 {
+				font-size: 15px;
+				color: #E4933C;
+			}
+			
+			.title {
+				color: #4D4D4D;
+				font-size: 18px;
+				font-weight: bold;
+			}
+			
+			.mui-table-view-cell p {
+				margin-bottom: 10px;
+			}
+			
+			.bg-wh {
+				/*padding-top: 10px;*/
+			}
+			
+			.qian {
+				color: #F18526;
+				font-size: 25px;
+			}
+			
+			.qian_title .mui-table p {
+				color: #F18526;
+			}
+			
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			.mui-table-view:before {
+				height: 0;
+			}
+			
+			.content-title:before {
+				content: "";
+				width: 5px;
+				height: 30px;
+				position: absolute;
+				top: 7px;
+				left: 0;
+				background: #3DCAD0;
+			}
+			
+			.ziti:after {
+				position: absolute;
+				right: -15px;
+				left: 70px;
+				height: 1px !important;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+				top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">收费包服务</h1>
+			<button id="loginBtn" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">购买记录</button>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL ">
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-7">
+							<p class="title" id="pakname">上呼吸道感染、肺炎、咳喘等疾病</p>
+							<span class="mui-badge mui-badge-danger" id="crowd">幼儿人群</span>
+							<!--<span class="mui-badge mui-badge-danger" id="shiyong">65岁以上人群试用</span>-->
+							<div class="mui-input-row mui-radio bg-wh">
+								<ul class="qian_title">
+									<li>
+										<div class="mui-table">
+											<div class="mui-table-cell mui-row">
+												<p class="mui-col-xs-6 qian"><br>￥<span id="qian">430.00</span>元</p>
+												<p class="mui-pull-right mui-col-xs-6 tR" id="money_service">上次日期<br> <span id="date">2017/05/05</span>
+												</p>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed content-title">
+								<li class="mui-table-view-cell">
+									<div class="mui-table1">
+										<div class="mui-table-cell mui-col-xs-10">
+											<p class="ziti">服务对象</p>
+											<div id="service_object">
+
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL ">
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-7">
+							<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed content-title">
+								<li class="mui-table-view-cell">
+									<div class="mui-table1">
+										<div class="mui-table-cell mui-col-xs-10">
+											<p class="ziti">服务介绍</p>
+											<div id="service_introduce">
+
+											</div>
+											<!--<p>一年之内可以多次重复购买，但是只可以本人使用，尚不接受多人使用等信息</p>-->
+										</div>
+									</div>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="mui-content-padded">
+				<a href="#">
+					<button id='queding' class="mui-btn-block mui-btn-warning">立即预约</button>
+				</a>
+			</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script>
+		var JSONMESSAGENEW = {};
+		var biaoshi = "",
+			pkgid = "",
+			money = "",
+			pkgname = "";
+		mui.plusReady(function() {
+			var self = plus.webview.currentWebview();
+			JSOMMESSAGEARRAY = self.ARRYMessage;
+			//console.log(JSON.parse(JSOMMESSAGEARRAY));
+			console.log(JSOMMESSAGEARRAY);
+			JSOMMESSAGEARRAY = JSON.parse(JSOMMESSAGEARRAY);
+			//			alert(JSOMMESSAGEARRAY);
+			biaoshi = self.biaoshi;
+			pkgid = JSOMMESSAGEARRAY._id;
+			money = formatJENO2(JSOMMESSAGEARRAY.price);
+			pkgname = JSOMMESSAGEARRAY.title;
+			console.log(biaoshi);
+			//
+			$("#pakname").html(JSOMMESSAGEARRAY.title);
+			$("#crowd").html(JSOMMESSAGEARRAY.targetPatient);
+			$("#qian").html(formatJENO2(JSOMMESSAGEARRAY.price));
+			$("#service_object").html(JSOMMESSAGEARRAY.content);
+			$("#date").html(moment(JSOMMESSAGEARRAY.createdOn).format("YYYY-MM-DD"));
+			//$("#service_introduce").html(JSOMMESSAGEARRAY.pkg.introduction);
+			if(biaoshi == "wgm") {
+				$("#money_service").hide();
+			} else if(biaoshi = "ygm") {
+				$("#money_service").show();
+				$(".mui-content-padded").hide();
+			}
+
+			//			// 加载完毕后关闭等待框，并展示页面
+			//var currentView = plus.webview.currentWebview();
+			self.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			$("#queding").click(function(e) {
+				mui.openWindow({
+					url: 'z01_signingDocument_gx.html',
+					id: 'z01_signingDocument_gx.html',
+					extras: {
+						biaoshi: "gxpkg",
+						pkgid: pkgid,
+						money: money
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+			})
+
+			$("#loginBtn").click(function(e) {
+				mui.openWindow({
+					url: 'purchase_record_withVue.html',
+					id: 'purchase_record_withVue.html',
+					extras: {
+						biaoshi: "gxpkg",
+						pkgid: pkgid,
+						pkgname: pkgname
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+			})
+		}); 
+//		{
+//			"_id": "5b99cce1161ded3c90fb2221",
+//			"status": "2",
+//			"paymentstatus": "1",
+//			"unit": "0",
+//			"createdOn": "2018-09-13T02:35:13.546Z",
+//			"user": "5b6ac0ac405696036882aaf9",
+//			"hospital": "5b67ea4d3b7ada025cc1f21b",
+//			"fdt": "5b67ed973b7ada025cc1f244",
+//			"orderNum": "20180913103513742700",
+//			"pkgName": "烧烫伤护理",
+//			"price": 120,
+//			"crowd": "烧烫伤患者",
+//			"introduction": "簡介",
+//			"content": "<p>1、啊第三个发送到gas的</p>\n\n<p>2、阿萨德噶三等功经过发动机【【【】】】</p>\n\n<p>3、第三方哈，免费保管，和</p>\n\n<p>4、他的依靠儿童与凯尔特</p>\n\n<p>5、sadgkasjdglkjal</p>\n",
+//			"paymentchannel": "ali",
+//			"ptPercent": 10,
+//			"__v": 1,
+//			"opinion": "",
+//			"_rid": 1
+//		}
+	</script>
+
+</html>

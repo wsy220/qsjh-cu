@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>退款</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<link rel="stylesheet" href="../fonts/iconfont.css" />
+		<link rel="stylesheet" href="../css/mui.imageviewer.css" />
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<style>
+			.mui-btn {
+				width: 90%;
+				margin-top: 1.5%;
+				padding: 9px 0;
+				font-size: 12px;
+				border-color: #E4E4E4;
+			}
+			
+			.mui-table {
+				text-align: center;
+				background: #FFFFFF;
+				padding: 3% 0;
+			}
+			
+			.red-text {
+				color: red;
+				text-align: left;
+				padding: 0 5%;
+			}
+			
+			.half-btn {
+				width: 44%;
+				margin-top: 5%;
+				color: #FFFFFF;
+			}
+			
+			.orderback {
+				margin-right: 2%;
+				background: #bdbdbd;
+			}
+			
+			.wait-thing {
+				background: #40ccd2;
+				border-color: #40ccd2;
+			}
+			
+			p {
+				font-size: 12px;
+				margin-bottom: 5px;
+			}
+			
+			.button_reason:enabled:active {
+				background-color: #ffe7c3;
+			}
+			
+			.selected {
+				background: #ffe7c3;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ptitle">订单详情</h1>
+		</header>
+		<div class="mui-content " id="content">
+			<div class="mui-table">
+				<p class="red-text" id="tuikuan_id">亲爱的用户，根据退单规则，您此时取消订单将扣除10%的订单金额给医护人员。您确定要取消订单吗？</p>
+				<button class="mui-btn button_reason">信息填写错误重新发单</button>
+				<button class="mui-btn button_reason">我不需要了</button>
+				<button class="mui-btn button_reason">其他</button>
+				<button class="mui-btn half-btn orderback" id="orderback">退单</button>
+				<button class="mui-btn half-btn wait-thing" id="wait-thing">我再想想</button>
+			</div>
+			<div style="padding:2% 5%;">
+				<p style="font-weight: bold;">退款规则?</p>
+				<p>(1) 从您发布的订单被医护接单开始计算，30分钟内您可以无责退单。</p>
+				<p>(2) 从您发布的订单被医护接单开始计算，30分钟后退单，如医护人员未出发（以医护是否点击我已出发按钮为准），将收取您订单金额10%的信息服务费；如医护人员已出发（在医护点击我已出发且未点击开始服务按钮），将收取订单金额30%的信息服务费。剩余退款均在3个工作日内原路返还。</p>
+				<p>(3) 当医护人员点击开始服务按钮之后，您无法退单。</p>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/sharemethods.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/mui.zoom.js"></script>
+	<script type="text/javascript" src="../js/mui.previewimage.js"></script>
+	<script type="text/javascript" src="../js/mui.picker.js"></script>
+	<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+
+	<script>
+		mui.init({
+			swipeBack: true, //启用右滑关闭功能
+			beforeback: function() {
+				
+			}
+		});
+		mui('.mui-scroll-wrapper').scroll({
+			indicators: true //是否显示滚动条
+		});
+
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			var tuikuan_reason = '';
+			var order_id = currentView.ORDER_ID;
+			var tuikuan_role = "bo"+currentView.TUIKUAN_ROLE;
+
+			var tuikuan_role_content =[
+				{
+					value: 'bo0',
+					text: '亲爱的用户,医护人员即将上门为您服务，是否取消订单.'
+				},
+				{
+					value: 'bo1',
+					text: '亲爱的用户,医护人员已经准备出发，取消将扣除订单金额的10%.'
+				},
+				{
+					value: 'bo2',
+					text: '亲爱的用户,医护人员已经出发，取消将扣除订单金额的30%。'
+				}
+			];
+			
+			//console.log(tuikuan_role_content[currentView.TUIKUAN_ROLE].text);
+			$("#tuikuan_id").html(tuikuan_role_content[currentView.TUIKUAN_ROLE].text);
+			
+			//console.log(order_id);
+			//console.log(tuikuan_role);
+			//获取点击退款原因按钮
+
+			$('.button_reason').click(function() {
+				$(this).toggleClass('selected');
+				$(this).siblings().removeClass("selected");
+				console.log($(this).text());
+				tuikuan_reason = $(this).text();
+			});
+
+			$("#orderback").click(function(e) {
+				if(tuikuan_reason == "") {
+					mui.toast("请选择退款原因");
+					return false;
+				}
+				var url = serverAddress + "/api/patient/refund";
+				var success = function(data) {
+					console.log("退款" + JSON.stringify(data));
+					if(data.result == "error") {
+						if(data.msg == "STATUS_ERR") {
+							mui.toast("医护已经开始服务，不可以退款");
+							return false;
+						}
+					}
+					if(data.result == "success") {
+						mui.toast("您的退款申请已经提交，请耐心等待");
+						plus.webview.currentWebview().opener().close(true);
+						plus.webview.currentWebview().close(true);
+						mui.openWindow({
+							id: 'd07_my_account.html',
+							url: '../geren_message/d07_my_account.html',
+							show: {
+								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+							},
+							waiting: {
+								autoShow: true //自动显示等待框，默认为true
+							}
+						});
+					}
+
+				};
+				commonHttpUtils(url, "post", {
+					orderId: order_id,
+					reason: tuikuan_reason
+				}, success, error, true);
+			});
+			$("#wait-thing").click(function(e){
+				mui.back();
+			});
+		});
+	</script>
+</html>

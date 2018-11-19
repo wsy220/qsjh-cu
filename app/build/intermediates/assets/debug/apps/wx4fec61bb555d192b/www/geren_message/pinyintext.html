@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>拼音排序</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="../css/main.css" />
+	</head>
+
+	<body>
+		<script type="text/javascript" src="../js/pinyin.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js" ></script>
+		<script>
+			var arr = ['张', '长', '王', '赵'];
+			var result = arr.sort(compare);
+			var arrzimu = [];
+			var arrzimuJSON = {};
+
+			for(var i = 0; i < result.length; i++) {
+
+				console.log(Pinyin._getFullChar(result[i]));
+
+				var zimunext
+				console.log("sss " + result[i]);
+				console.log(Pinyin.getCamelChars(result[i]));
+
+				console.log("sss222 " + result[i + 1]);
+				if(result[i + 1]) {
+					console.log(Pinyin.getCamelChars(result[i + 1]));
+				}
+				var zimu = Pinyin.getCamelChars(result[i]);
+				if(result[i + 1]) {
+					zimunext = Pinyin.getCamelChars(result[i + 1]);
+					if(zimu == zimunext) {
+						arrzimuJSON[0] = result[i];
+						arrzimuJSON[1] = result[i + 1]
+						arrzimu.push(arrzimuJSON);
+						console.log(JSON.stringify(arrzimuJSON));
+						
+					}
+
+				}
+				//
+			}
+
+			console.log(JSON.stringify(arrzimu));
+			document.write(arr.sort(compare));
+
+
+
+
+			console.log(JSON.stringify(pySegSort(arr)));
+			function compare(val1, val2) {
+				// 转换为拼音
+				val1 = Pinyin.getFullChars(val1).toLowerCase();
+				val2 = Pinyin.getFullChars(val2).toLowerCase();
+
+				// 获取较长的拼音的长度
+				var length = val1.length > val2.length ? val1.length : val2.length;
+
+				// 依次比较字母的unicode码，相等时返回0，小于时返回-1，大于时返回1
+				for(var i = 0; i < length; i++) {
+					var differ = val1.charCodeAt(i) - val2.charCodeAt(i);
+					if(differ == 0) {
+						continue;
+					} else {
+						if(val1.charAt(i) == '_') {
+							return -1;
+						}
+						return differ;
+					}
+				}
+				if(i == length) {
+					return val1.length - val2.length;
+				}
+			}
+
+			function pySegSort(arr, empty) {
+				if(!String.prototype.localeCompare)
+					return null;
+
+				var letters = "*abcdefghjklmnopqrstwxyz".split('');
+				var zh = "阿八嚓哒妸发旮哈讥咔垃痳拏噢妑七呥扨它穵夕丫帀".split('');
+
+				var segs = [];
+				var curr;
+				$.each(letters, function(i) {
+					curr = {
+						letter: this,
+						data: []
+					};
+					$.each(arr, function() {
+						if((!zh[i - 1] || zh[i - 1].localeCompare(this, "zh") <= 0) && this.localeCompare(zh[i], "zh") == -1) {
+							curr.data.push(this);
+						}
+					});
+					if(empty || curr.data.length) {
+						segs.push(curr);
+						curr.data.sort(function(a, b) {
+							return a.localeCompare(b, "zh");
+						});
+					}
+				});
+				return segs;
+			}
+		</script>
+	</body>
+
+</html>

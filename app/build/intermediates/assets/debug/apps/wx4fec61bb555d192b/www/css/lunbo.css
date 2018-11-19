@@ -1,0 +1,85 @@
+.huadong {
+	width: 100%;
+	height: 1.5rem;
+	position: relative;
+	bottom: 3px;
+	background-color: rgba(255, 241, 185, .65);
+}
+
+.huadong .huabox {
+	margin: 0 auto;
+	width: 80%;
+	line-height: 4rem;
+}
+
+.huadong .hdimg {
+	float: left;
+	line-height: 3.5rem;
+}
+
+.huadong .gg_more {
+	float: left;
+}
+
+.huadong .gg_more a {
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.huadong .notice_active {
+	width: 100%;
+	height: 1.5rem;
+	padding: 0;
+	overflow: hidden;
+	position: relative;
+}
+
+.huadong .notice_active li {
+	list-style-type: none;
+	line-height: 0.4rem;
+	overflow: hidden;
+}
+
+
+/*.huadong .notice_active li.notice_active_ch {}*/
+
+.huadong .notice_active li.notice_active_ch span {
+	color: #d68a47;
+	font-size: 12px;
+	display: block;
+	overflow: hidden;
+	width: 80%;
+	float: left;
+	overflow: hidden;
+}
+
+.huadong .gg_more .news_ck {
+	float: left;
+	margin: 0 1rem 0 1rem;
+	color: #888;
+	width: 5rem;
+	height: 2rem;
+	line-height: 2rem;
+	display: block;
+	border: 1px solid #656972;
+	text-align: center;
+	border-radius: 0.7rem;
+	font-size: 12px;
+	margin-top: 1rem;
+}
+
+.huadong .gg_more .news_more {}
+
+.huadong .notice_active li.notice_active_ch em {
+	text-align: right;
+	float: right;
+	color: #d68a47;
+	font-size: 12px;
+	font-style: normal;
+}
+
+.guanbi_ul {
+	margin-top: 0.25rem;
+	float: right;
+	margin-right: 10px;
+}

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>团队医生介绍</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/vue/vue.min.js"></script>
+		<style>
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				min-height: 150px;
+			}
+			
+			.mui-segmented-control .mui-control-item.mui-active {
+				background: #FFFFFF;
+			}
+			
+			.mui-segmented-control {
+				border: 0;
+			}
+			
+			.dc-right {
+				background-color: #33c3cb;
+				padding: 3% 14% 3% 11%;
+				border-top-left-radius: 13px;
+				border-bottom-left-radius: 13px;
+				color: #FFFFFF !important;
+				text-align: right;
+				font-size: 12px !important;
+				position: absolute;
+				right: -0.3rem;
+			}
+			
+			.back-color {
+				height: 2.7rem;
+				background: -webkit-linear-gradient(left, #45d0d5, #33c3cb);
+				background: -o-linear-gradient(right, #45d0d5, #33c3cb);
+				background: -moz-linear-gradient(right, #45d0d5, #33c3cb);
+				background: linear-gradient(to right, #45d0d5, #33c3cb);
+			}
+			
+			.tip-other {
+				text-align: center;
+				width: 100%;
+				color: #40CED3;
+				padding-top: 5%;
+				font-size: 15px;
+			}
+			
+			.teamName {
+				font-size: 15px;
+				padding-bottom: 4%;
+				padding-top: 2%;
+			}
+			
+			.type-dc {
+				color: #FFFFFF;
+				background-color: #43CED3;
+				padding: 1% 3%;
+				border-radius: 15px;
+				font-size: 12px;
+				margin-left: 5%;
+			}
+			
+			#more {
+				color: #3CCDD2;
+				font-size: 13px;
+				text-align: right;
+				padding-top: 0.19rem;
+			}
+			
+			.show-pic {
+				height: 0.8rem;
+				width: 0.8rem;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="hid_name"></h1>
+
+		</header>
+		<div class="mui-content">
+			<div id="upposition">
+				<div style="min-height: 200px;background-color: #FFFFFF;text-align: center;">
+					<img :src="cover" data-preview-src="" data-preview-group="1" style="width: 100%;max-height: 5rem">
+				</div>
+
+				<div style="padding: 10px 0px; padding-top: 0px !important;">
+					<!--<div id="segmentedControl" class="mui-segmented-control">
+						<a class="mui-control-item mui-active" style="color: #000000; text-align: center;">{{title}}</a>
+					</div>-->
+					<div class="mui-slider-group" style="margin: 5px 0;">
+						<ul class="mui-table-view tableUL">
+							<ul class="" id="tableUL">
+								<li class="mui-table-view-cell dcDetail" data-id="{{value._id}}" style="padding: 0% 4% 2%;">
+									<a class="" id="">
+										<div class="mui-slider-handle mui-row">
+											<div class="mui-col-xs-9 mui-row" id="show_img">
+												<!--<div class="mui-col-xs-2">
+													<img class="show-pic" src="../images/familydoctor/lyy.png">
+												</div>-->
+
+											</div>
+											<div class="mui-col-xs-3" id="more" style="display: inline-flex;">
+												<div>更多医生</div>
+												<div style="padding-top: 1.5px;padding-left: 5px;">
+													<i><img style="width: 13px;height: 13px;" src="../images/familydoctor/icon_community_doctor.png" /></i>
+												</div>
+
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</ul>
+					</div>
+					<div style="background-color: #FFFFFF;">
+						<div id="segmentedControl" class="mui-segmented-control">
+							<a class="mui-control-item mui-active" style="color: #000000; text-align: center;">{{title}}</a>
+						</div>
+						<p class="mui-table-view-cell" v-html="content">
+						</p>
+
+					</div>
+
+				</div>
+				<!--<div>
+					<div id="item1" class="mui-control-content mui-active">
+						<div id="scroll" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell" v-html="content">
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>-->
+			</div>
+			<!--<div class="mui-slider-group" style="">
+				<ul class="mui-table-view tableUL">
+					<div class="tip-other" style="">
+						<div style="display: inline-flex;">
+							<i><img src="../images/familydoctor/icon_left_ornament.png" style="width: 18px;height: 18px;" /></i> 团队医生
+							<i><img src="../images/familydoctor/icon_right_side_ornament.png" style="width: 18px;height: 18px;" /></i>
+							<div style="color: #4D4D4D;position: absolute; right: 10px;font-size: 12px;" id="more">更多>></div>
+						</div>
+
+					</div>
+					<ul class="" id="tableUL">
+						<li class="mui-table-view-cell dcDetail" data-id="{{value._id}}" style="padding: 4%;">
+								<a class="" id="">
+									<div class="mui-slider-handle mui-row">
+										<div class="mui-col-xs-2">
+											<img class="" src="../images/003.png" style="border-radius: 50%;">
+										</div>
+										<div class="mui-col-xs-10" style="padding:0 5%;">
+											<div class="teamName">
+												<span>任丽丽</span>
+												<span class="type-dc">护士长</span>
+											</div>
+											<h6 class='mui-ellipsis-2'>擅长：静脉输液静脉输液静脉输液静脉输液</h6>
+										</div>
+									</div>
+								</a>
+							</li>
+					</ul>
+				</ul>
+			</div>-->
+
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+
+		function getDefaultData() {
+			return {
+				title: '',
+				content: '',
+				cover: ''
+			}
+		}
+		var vm = new Vue({
+			el: '#upposition',
+			data: getDefaultData(),
+			methods: {}
+		});
+
+		mui.plusReady(function() {
+			mui('#scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var self = plus.webview.currentWebview();
+			//			var hid = self.hid;
+			//			var fdtid = self.fdtid;
+			var hid, fdtid;
+			var id = localStorage.getItem("TOKENID");
+			var url = serverAddress + "/api/patient/getmyinfo/" + id;
+			var sussess = function(data) {
+				console.log("ddddddeeeee_index" + JSON.stringify(data));
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				if(data.result == "success") {
+					fdtid = data.data.fdt;
+					hid = data.data.signHid;
+					console.log("hid------------》" + hid);
+					console.log("fdtid---->" + fdtid);
+					var url1 = serverAddress + "/api/appfamilydoctorteam/getHospitalById/" + hid;
+					var success1 = function(data) {
+						console.log("医院简介------------》 " + JSON.stringify(data));
+						vm.cover = formatHttpString(data.hosImg);
+						vm.title = data.name;
+						vm.content = data.introduction;
+						console.log(vm.title);
+						$("#hid_name").html(data.name);
+
+					};
+					commonHttpUtils(url1, "get", {}, success1, error, true);
+					var url2 = serverAddress + "/api/appfamilydoctorteam/getDoctorListByHospital";
+					var success2 = function(data) {
+						console.log("医院具体医生列表------------》  " + JSON.stringify(data));
+						var _newArray = [];
+
+						if(data.result == "success") {
+							if(data.obj.length != 0) {
+
+								for(var i = 0; i < data.obj.length; i++) {
+									var _newJSON = {}
+									_newJSON["doctor"] = data.obj[i];
+									_newArray.push(_newJSON);
+									//									var image = data.obj[i].userfaceimage
+									//									var html = '<div class="mui-col-xs-2"><img class="show-pic" src=' + formatHttpString(image) + 
+									//									' id="head-img" data-id="'+data.obj[i]._id+'" ></div>';
+									//									$("#show_img").append(html);
+
+								}
+
+								console.log("医生排序-----》" + JSON.stringify(_newArray));
+								for(var i = 0; i < 3; i++) {
+									var image = _newArray[i].doctor.userfaceimage;
+									image = formatHttpString(image);
+									console.log(image);
+									var html = '<div class="mui-col-xs-2"><img class="show-pic" src=' + image +
+										' id="head-img" data-id="' + _newArray[i].doctor._id + '" data-main="' + _newArray[i].doctor + '"></div>';
+									$("#show_img").append(html);
+								}
+
+								//								$("#tableUL").processTL(templateRegister.unsign_doctor_list, {
+								//									sub: _newArray,
+								//								}, "append", function() {});
+
+							} else {
+								document.querySelector("#tableUL").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							}
+						} else {
+							mui.toast(data.msg);
+						}
+
+					};
+					commonHttpUtils(url2, "post", {
+						hospital: hid
+					}, success2, error, true);
+				}
+			};
+
+			commonHttpUtils(url, "get", {}, sussess, error, true);
+
+			//			//打开医生详情
+			//			mui(".mui-content").on("tap", "#head-img", function(e) {
+			//				var detailid = $(this).attr("data-id");
+			//				var detailMain = $(this).attr("data-main");
+			//				console.log(detailMain);
+			//				mui.openWindow({
+			//					url: 'z01_doctor_detail.html',
+			//					id: 'z01_doctor_detail',
+			//					extras: {
+			//						dataId: detailid,
+			//						dataJSON: detailMain,
+			//					},
+			//					show: {
+			//						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+			//						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+			//					},
+			//					waiting: {
+			//						autoShow: true //自动显示等待框，默认为true
+			//					}
+			//				});
+			//
+			//			});
+			//签约
+			mui(".mui-content").on("tap", "#signing", function(e) {
+				var teamid = $(this).attr("data-id");
+				mui.openWindow({
+					url: 'z01_signingDocument.html',
+					id: 'z01_signingDocument',
+					extras: {
+						ID: teamid
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			})
+
+			$(".dcDetail").click(function(e) {
+				mui.openWindow({
+					url: 'z01_doctor_list.html',
+					id: 'z01_doctor_list.html',
+					extras: {
+						ID: hid
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+			})
+
+			function formatHttpString(str) {
+				if(str == "") {
+					str = "../images/wode/txmrt.png";
+					return str;
+				}
+				if(str.indexOf("client") < 0) {
+					str = serverAddress + str;
+					return str;
+				}
+				if(str != null && str != '' && (str.indexOf("client\\") == 0)) {
+					return serverAddress + '/' + str.replace('client', '').replace(/\\/g, "\\");
+
+				}
+				if(str != null && str != '' && (str.indexOf("client/") == 0)) {
+					return serverAddress + '/' + str.replace('client', '').replace(/\\/g, "/");
+				}
+
+//				if(str != null && str != '') {
+//					return serverAddress + str.replace(/\\/g, "/")
+//				}
+//				if(str.indexOf("client") < 0) {
+//					str = serverAddress + str;
+//					return str;
+//				}
+//				if(str != null && str != '' && (str.indexOf("client\\") == 0)) {
+//					return serverAddress + '/' + str.replace('client', '').replace(/\\/g, "\\");
+//
+//				}
+//				if(str != null && str != '' && (str.indexOf("client/") == 0)) {
+//					return serverAddress + '/' + str.replace('client', '').replace(/\\/g, "/");
+//				}
+			}
+		});
+
+		//		{
+		//			"result": "success",
+		//			"obj": [{
+		//				"userfaceimageTemp": {
+		//					"approve": "0"
+		//				},
+		//				"source": "reg",
+		//				"nickname": "额额",
+		//				"clause": "1",
+		//				"userfaceimage": "\\assets\\images\\txmrt.png",
+		//				"weixinFlag": false,
+		//				"password": "5f8591a3d4fe06393cad53edff27ba05",
+		//				"os": "Android",
+		//				"jiahuno": "11227",
+		//				"lovevalue": 100,
+		//				"sendMsgCount": -1,
+		//				"balance": 0,
+		//				"patientno": 0,
+		//				"project": [],
+		//				"imgzz": null,
+		//				"idapprove": "2",
+		//				"realnameapprove": "1",
+		//				"zgapprove": "1",
+		//				"sdkStatus": "1",
+		//				"auth": "0",
+		//				"sex": "1",
+		//				"servicestatus": "1",
+		//				"fdtcreater": "0",
+		//				"status": "1",
+		//				"dtype": "doctor",
+		//				"createdOn": "2018-08-18T01:39:24.803Z",
+		//				"updatedOn": "2018-08-18T01:41:57.006Z",
+		//				"_id": "5b7778cc08907e3d74dc6181",
+		//				"phone": "13643210001",
+		//				"clientid": "null",
+		//				"uuid": "A1000051233FA5,868615025759032",
+		//				"__v": 0,
+		//				"IMToken": "1ac41d020390f2ff4242d2132846d429",
+		//				"accid": "5b7778cc08907e3d74dc6181",
+		//				"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNzc3OGNjMDg5MDdlM2Q3NGRjNjE4MSIsInV1aWQiOiJBMTAwMDA1MTIzM0ZBNSw4Njg2MTUwMjU3NTkwMzIiLCJvcyI6IkFuZHJvaWQiLCJpYXQiOjE1MzQ1NTYzNjUsImV4cCI6MTUzNTE2MTE2NX0.7RoGvBy0uyxWwpLqV0eY7rUCPNH663Ep2STmpds1EGM",
+		//				"classType": "L",
+		//				"hid": {
+		//					"_id": "5b6e4b72ae36b06dc82c303a",
+		//					"name": "吉林省长春市小天使社区医院"
+		//				},
+		//				"idbackavatar": "client/assets/uploads/single-file-1534556443068.jpg",
+		//				"idfaceavatar": "client/assets/uploads/single-file-1534556435175.jpg",
+		//				"idnumber": "220802199209027107",
+		//				"level": "y2",
+		//				"name": "小燕子",
+		//				"zgno": "123456789987654",
+		//				"zgnoimg": "client/assets/uploads/single-file-1534556455785.png"
+		//			}, {
+		//				"userfaceimageTemp": {
+		//					"approve": "0"
+		//				},
+		//				"source": "reg",
+		//				"nickname": "李白医生",
+		//				"clause": "1",
+		//				"userfaceimage": "\\assets\\images\\txmrt.png",
+		//				"weixinFlag": false,
+		//				"password": "5f8591a3d4fe06393cad53edff27ba05",
+		//				"os": "Android",
+		//				"jiahuno": "11203",
+		//				"lovevalue": 100,
+		//				"sendMsgCount": -1,
+		//				"balance": 0,
+		//				"patientno": 0,
+		//				"project": [],
+		//				"imgzz": null,
+		//				"idapprove": "2",
+		//				"realnameapprove": "1",
+		//				"zgapprove": "1",
+		//				"sdkStatus": "1",
+		//				"auth": "0",
+		//				"sex": "0",
+		//				"servicestatus": "1",
+		//				"fdtcreater": "0",
+		//				"status": "1",
+		//				"dtype": "doctor",
+		//				"createdOn": "2018-08-11T02:45:11.652Z",
+		//				"updatedOn": "2018-08-14T07:58:21.816Z",
+		//				"_id": "5b6e4db7ae36b06dc82c305d",
+		//				"phone": "18888880002",
+		//				"clientid": "null",
+		//				"uuid": "866090034120752,866090034166821",
+		//				"__v": 0,
+		//				"IMToken": "eeaef7e8bddd79f418df89fec7dc41c8",
+		//				"accid": "5b6e4db7ae36b06dc82c305d",
+		//				"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNmU0ZGI3YWUzNmIwNmRjODJjMzA1ZCIsInV1aWQiOiI4NjYwOTAwMzQxMjA3NTIsODY2MDkwMDM0MTY2ODIxIiwib3MiOiJBbmRyb2lkIiwiaWF0IjoxNTM0NDg5ODIzLCJleHAiOjE1MzUwOTQ2MjN9.s4mKAmoQ33xGkg7RZtJY4jmLyk6P4xhejvK2SZQ3Y6U",
+		//				"classType": "L",
+		//				"hid": {
+		//					"_id": "5b6e4b72ae36b06dc82c303a",
+		//					"name": "吉林省长春市小天使社区医院"
+		//				},
+		//				"idbackavatar": "client/assets/uploads/single-file-1533955603711.png",
+		//				"idfaceavatar": "client/assets/uploads/single-file-1533955593262.png",
+		//				"idnumber": "150900198607248554",
+		//				"level": "y1",
+		//				"name": "李白",
+		//				"zgno": "9876543211234567",
+		//				"zgnoimg": "client/assets/uploads/single-file-1533955620997.png",
+		//				"homeaddress": "长春市宽城区长春北湖湿地公园",
+		//				"homegps": {
+		//					"coordinates": [125.370107, 43.980179],
+		//					"type": "Point"
+		//				},
+		//				"workaddress": "长春市宽城区长春北湖湿地公园",
+		//				"workgps": {
+		//					"coordinates": [125.370107, 43.980179],
+		//					"type": "Point"
+		//				}
+		//			}]
+		//		}
+
+		//		{
+		//			"result": "success",
+		//			"code": "000000",
+		//			"msg": "操作成功",
+		//			"obj": {
+		//				"data": {
+		//					"province": {
+		//						"code": "220000",
+		//						"region": "吉林省"
+		//					},
+		//					"city": {
+		//						"code": "220100",
+		//						"region": "长春市"
+		//					},
+		//					"area": {
+		//						"code": "220105",
+		//						"region": "二道区"
+		//					},
+		//					"logo": "/assets/uploads/single-file-1533955817980.jpg",
+		//					"status": "1",
+		//					"doctorList": [{
+		//						"doctor": {
+		//							"userfaceimage": "\\assets\\images\\txmrt.png",
+		//							"sex": "1",
+		//							"_id": "5b6e4aaaae36b06dc82c3035",
+		//							"phone": "18888880001",
+		//							"hid": {
+		//								"_id": "5b6e4b72ae36b06dc82c303a",
+		//								"name": "吉林省长春市小天使社区医院"
+		//							},
+		//							"level": "h1",
+		//							"name": "甄姬",
+		//							"introduction": "很厉害的医生"
+		//						},
+		//						"memberType": "ZLZZ"
+		//					}, {
+		//						"doctor": {
+		//							"userfaceimage": "\\assets\\images\\txmrt.png",
+		//							"sex": "0",
+		//							"_id": "5b6e4db7ae36b06dc82c305d",
+		//							"phone": "18888880002",
+		//							"hid": {
+		//								"_id": "5b6e4b72ae36b06dc82c303a",
+		//								"name": "吉林省长春市小天使社区医院"
+		//							},
+		//							"level": "y1",
+		//							"name": "李白"
+		//						},
+		//						"memberType": "LCYS"
+		//					}, {
+		//						"doctor": {
+		//							"userfaceimage": "\\assets\\images\\txmrt.png",
+		//							"sex": "1",
+		//							"_id": "5b7778cc08907e3d74dc6181",
+		//							"phone": "13643210001",
+		//							"hid": {
+		//								"_id": "5b6e4b72ae36b06dc82c303a",
+		//								"name": "吉林省长春市小天使社区医院"
+		//							},
+		//							"level": "y2",
+		//							"name": "小燕子"
+		//						},
+		//						"memberType": "GWYS"
+		//					}],
+		//					"createdOn": "2018-08-11T02:51:26.050Z",
+		//					"_id": "5b6e4f2eae36b06dc82c306a",
+		//					"name": "小天使团队",
+		//					"teamLeader": {
+		//						"userfaceimage": "\\assets\\images\\txmrt.png",
+		//						"sex": "1",
+		//						"_id": "5b6e4aaaae36b06dc82c3035",
+		//						"phone": "18888880001",
+		//						"hid": {
+		//							"_id": "5b6e4b72ae36b06dc82c303a",
+		//							"name": "吉林省长春市小天使社区医院"
+		//						},
+		//						"level": "h1",
+		//						"name": "甄姬",
+		//						"introduction": "很厉害的医生"
+		//					},
+		//					"summary": "小天使团队",
+		//					"phone": "18888888888",
+		//					"hospital": {
+		//						"_id": "5b6e4b72ae36b06dc82c303a",
+		//						"name": "吉林省长春市小天使社区医院",
+		//						"cachetImg": "/assets/uploads/single-file-1533954787997.jpg"
+		//					},
+		//					"__v": 0,
+		//					"communityPatientQuantity": "1000",
+		//					"offlinePatientQuantity": "500"
+		//				},
+		//				"quantity": {
+		//					"signQuantity": 10,
+		//					"unSignQuantity": 0,
+		//					"allQuantity": 10,
+		//					"signRate": 1
+		//				}
+		//			},
+		//			"sub": {
+		//				"ZLZZ": "诊疗组长",
+		//				"LCYS": "临床医生",
+		//				"GWYS": "公卫医生",
+		//				"HS": "护士"
+		//			}
+		//		}
+	</script>
+
+</html>

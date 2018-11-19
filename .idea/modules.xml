@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/avchatkit/avchatkit.iml" filepath="$PROJECT_DIR$/avchatkit/avchatkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/faceunity/faceunity.iml" filepath="$PROJECT_DIR$/faceunity/faceunity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qsjh-cu.iml" filepath="$PROJECT_DIR$/qsjh-cu.iml" />
+    </modules>
+  </component>
+</project>

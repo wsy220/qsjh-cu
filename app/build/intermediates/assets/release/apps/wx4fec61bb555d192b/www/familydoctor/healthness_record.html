@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>历史记录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+
+		<style>
+			
+			.ziti {
+				font-size: 15px;
+				color: #333333;
+				font-weight: bold;
+				line-height: 29px;
+			}
+			.neirong {
+				font-size: 15px;
+				color: #8f8f94;
+				padding-top: 10px;
+				line-height: 24px;
+			}
+			
+			.neirong1 {
+				font-size: 15px;
+				color: #333333;
+				padding-top: 10px;
+				line-height: 14px;
+			}
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			.mui-table-view:before,.mui-table-view:after{
+				height: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ptitle">历史记录</h1>
+			<!--<span style="float: right;"><button type="button" class="mui-btn" id="btn_fdt_add_member">添加成员</button></span>-->
+		</header>
+		<div class="mui-content" id="content">
+			<div id="signedDataDiv" class="memberListUl">
+				<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="datalist">
+					<!--<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								<p class="ziti">2017年11月10日</p>
+								<p class="neirong1">早上：<span id="object_name"></span></p>
+								<p class="neirong1">血糖餐前：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">血糖餐后2小时：<span id="object_address">7.5mmol/L</span></p>
+								<p class="neirong1">中午：<span id="object_name"></span></p>
+								<p class="neirong1">血糖餐前：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">血糖餐后2小时：<span id="object_address">7.5mmol/L</span></p>
+								<p class="neirong1">晚上：<span id="object_name"></span></p>
+								<p class="neirong1">血糖餐前：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">血糖餐后2小时：<span id="object_address">7.5mmol/L</span></p>
+								<p class="neirong1">血糖睡前：<span id="object_time">6.1mmol/L</span></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								<p class="ziti">2017年11月10日</p>
+								<p class="neirong1">早上：<span id="object_name"></span></p>
+								<p class="neirong1">血压高压：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">血压低压：<span id="object_address">7.5mmol/L</span></p>
+								<p class="neirong1">中午：<span id="object_name"></span></p>
+								<p class="neirong1">血压高压：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">血压低压：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">晚上：<span id="object_name"></span></p>
+								<p class="neirong1">血压高压：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">血压低压：<span id="object_address">7.5mmol/L</span></p>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								<p class="ziti">2017年11月10日</p>
+								<p class="neirong1">早上：<span id="object_name"></span></p>
+								<p class="neirong1">心率：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">中午：<span id="object_name"></span></p>
+								<p class="neirong1">心率：<span id="object_tel">5.6mmol/L</span></p>
+								<p class="neirong1">晚上：<span id="object_name"></span></p>
+								<p class="neirong1">心率：<span id="object_tel">5.6mmol/L</span></p>
+							</div>
+						</div>
+					</li>-->
+					
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../plugs/qs/qs.immersed.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script>
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				//返回true，继续页面关闭逻辑  
+				mui.back;
+				return true;
+			}
+		});
+
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var dataType = currentView.dataType;
+			initData(dataType);
+		});
+		
+		var initData = function(dataType){
+			var fdt = localStorage.getItem("currentFDT");
+			var userId=localStorage.getItem("TOKENID");
+			var url = serverAddress + "/api/appfamilydoctorteam/getHealthDataList";
+			var filterMap={
+				patient:userId,
+				dataType:dataType
+			};
+			console.log("查询患者【"+filterMap.patient+"】类型为【"+filterMap.dataType+"】的健康数据历史纪录")
+			var success = function(data) {
+				console.log(JSON.stringify(data));
+				if(data&&data.obj.length==0){
+					$("#datalist").css("background","#EEEEEE");
+					$("#datalist").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+				}else{
+					if(data.result == "success") {
+						console.log("患者【"+filterMap.patient+"】类型为【"+filterMap.dataType+"】健康数据历史纪录："+JSON.stringify(data.obj));
+						$("#datalist").css("background","#FFFFFF");
+						$("#datalist").html("");
+						$("#datalist").processTL(templateRegister.healthness, {
+							sub: data.obj
+						}, 'append', function() {
+			
+						})
+						
+					}
+				}
+			}
+			commonHttpUtils(url, "post", filterMap, success, error, true);
+		}
+	</script>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>健康数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			
+			.mui-table-view .mui-media-object {
+				height: auto;
+			}
+			
+			.mui-table-view img {
+				width: 0.65rem;
+				/*height: 0.65rem;*/
+			}
+			
+			.mui-media-body {
+				font-size: 14px;
+				color: #333333;
+				padding: 2%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">健康档案</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="health_information">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/healthdata/icon_health_information.png"></div>
+						<div class="mui-media-body">健康信息</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="health_test">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/healthdata/icon_health_monitoring.png"></div>
+						<div class="mui-media-body">健康监测</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="report_result">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/healthdata/icon_ceport_results.png"></div>
+						<div class="mui-media-body">检查报告结果查看</div>
+					</a>
+				</li>
+				<!--<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="health_reminder">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/healthdata/icon_health_reminder.png"></div>
+						<div class="mui-media-body">健康提醒</div>
+					</a>
+				</li>-->
+				<!--<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="line_meter">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/healthdata/icon_lntelligence.png"></div>
+						<div class="mui-media-body">智能设备</div>
+					</a>
+				</li>-->
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		//		mui.init({
+		//			swipeBack: true //启用右滑关闭功能
+		//		});
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+
+		mui.plusReady(function() {
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			var userId = localStorage.getItem("TOKENID");
+
+			//打开健康信息
+			mui(".mui-content").on("tap", "#health_information", function(e) {
+				mui.openWindow({
+					url: 'health_file_detail.html',
+					id: 'health_file_detail',
+					styles: returnstyleTitle("health_file_detail", "健康信息"),
+					extras: {
+						ID: userId
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			});
+			//打开健康监测
+			mui(".mui-content").on("tap", "#health_test", function(e) {
+				mui.openWindow({
+					url: 'health_test.html',
+					id: 'health_test',
+					extras: {
+						ID: userId
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			});
+			//检查报告结果查看
+			mui(".mui-content").on("tap", "#report_result", function(e) {
+				mui.openWindow({
+					url: '../order/bodyCheck_report_withVue.html',
+					id: 'bodyCheck_report_withVue.html',
+					extras: {
+						ID: userId
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+//mui.openWindow({
+//			url: "bodyCheck_report_withVue.html",
+//			id: "bodyCheck_report_withVue.html",
+//			styles: {
+//				//titleNView: titleNView
+//			}
+//		});
+			});
+			//健康提醒
+			mui(".mui-content").on("tap", "#health_reminder", function(e) {
+				mui.openWindow({
+					url: '',
+					id: '',
+					extras: {
+						ID: userId
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			});
+			//连接华益血糖仪
+//			mui(".mui-content").on("tap", "#line_meter", function(e) {
+//				mui.openWindow({
+//					url: 'huayi_suger_line.html',
+//					id: 'huayi_suger_line',
+//					extras: {
+//						ID: userId
+//					},
+//					show: {
+//						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+//						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+//					},
+//					waiting: {
+//						autoShow: true //自动显示等待框，默认为true
+//					}
+//				});
+//
+//			});
+
+		});
+	</script>
+
+</html>

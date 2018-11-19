@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>报告解读</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			html,
+			body,
+			.mui-content {
+				background-color: #FFFFFF;
+			}
+			
+			/*.mui-content img {
+				width: 1.5rem;
+				margin-top: 0.5rem;
+				margin-left: 60px;
+			}*/
+			
+			.hm-description {
+				margin: 15px;
+			}
+			
+			.hm-description>li {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			
+			.mui-title,
+			a {
+				color: #FFFFFF;
+			}
+			
+			.img-circle {
+				background: url(../images/online_BG.png);
+				background-size: 100%;
+				background-position: top center;
+				height: 3.06rem;
+				background-repeat: no-repeat;
+				padding-top: 10px;
+			}
+			.img_width{
+				margin: 0 auto;
+				max-width: 80%;
+				padding-top: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header id="header" class="mui-bar mui-bar-transparent">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">报告解读</h1>
+		</header>
+
+		<div class="mui-content">
+			<!--静态图片-->
+			<div class="img-circle">
+					<div class="img_width" id="scjj"><img src="../images/jyjdxs.png"></div>
+					<div class="img_width" id="scyx"><img src="../images/yxjdxs.png"></div>
+
+			</div>
+			<!--<img src="../images/online_BG.png" id="img1">-->
+			<h4 style="margin: 30px 15px 20px; color: #2b2b2b;">用户须知：</h4>
+			<hr style="margin-left: 15px; margin-right: 15px; color: #e4e4e4;">
+
+			<p style="margin: 30px 15px 20px; color:#888888">1.本服务为有偿服务，平台将把您的需求发送至医疗机构辅助科室/临床科室医生手机端，由其为您解答
+			</p>
+			<p style="margin: 5px 15px 15px 15px; color:#888888">
+				2.辅助科室是指：医疗机构的实验室、影像科等；临床科室是指：内科、外科、儿科、妇科等。
+			</p>
+			<p style="margin: 5px 15px 15px 15px; color:#888888">
+				3.医生对您提供的检验报告做出的解读结果，仅代表检验报告表面数据的客观分析结果，并不代表医生的任何个人意见。
+			</p>
+			<p style="margin: 5px 15px 15px 15px; color:#888888">
+				4.本平台不支持在线诊断和用药指导服务。如您对解读报告的结果有任何疑问，请到正规医疗机构就诊咨询。
+			</p>
+			<!--<ul class="hm-description">
+				<li>顶部最好有图片或轮播组件</li>
+				<li>导航栏字体颜色和图片颜色协调</li>
+			</ul>
+			<h5 class="mui-content-padded">图片类型</h5>
+			<form class="mui-input-group" style="margin-bottom: 300px;">
+				<div class="mui-input-row mui-radio">
+					<label>静态图片</label>
+					<input name="style" type="radio" checked value="static">
+				</div>
+				<div class="mui-input-row mui-radio">
+					<label>轮播图</label>
+					<input name="style" type="radio" value="slider">
+				</div>
+			</form>-->
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.validate.js"></script>
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/json_time.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-transparent~.mui-content").style.paddingTop = topoffset;
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				var url = serverAddress + "/api/medicalreport/app/list";
+				var sussess = function(dataouter) {
+					console.log("获取ID" + JSON.stringify(dataouter));
+					$(".img-circle").find("#scjj").click(function(e) {
+						$(this).children().attr("src","../images/jyjddj.png");
+						if(localStorage.getItem("TOKENID") == null) {
+							mui.openWindow({
+								url: "../login/login.html",
+								id:"login/login.html"
+							});
+							return false;
+						}
+
+						var id = localStorage.getItem("TOKENID");
+						var head_photo = localStorage.getItem('HEAD_PHOTO');
+						var gerenname = localStorage.getItem("GEREN_NAME");
+						var hospital = localStorage.getItem("hospital");
+						var isshiminghoutai = " ";
+						var success = function(data) {
+							if(data.result == "success") {
+								//是否实名认证
+								isshiminghoutai = data.data.idapprove;
+								//后台审核实名认证成功与否
+								if(isshiminghoutai == "2") {
+									mui.openWindow({
+										id: 'online_answer_place_order.html',
+										url: 'online_answer_place_order.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: false //自动显示等待框，默认为true
+										},
+										extras: {
+											ONLINE_ID: dataouter.data[0]._id,
+											ONLINE_JIE: dataouter.data[0].price / 100
+										}
+									});
+								} else if(isshiminghoutai == "1") {
+									mui.toast("等待后台审核通过后再进行下单！");
+									return false;
+								} else {
+									mui.toast("请耐心等待后台实名认证审核通过后再进行下单操作");
+									mui.openWindow({
+										url: "../geren_message/d02_geren_message.html",
+										id: "d02_geren_message.html"
+									});
+									return false;
+								}
+							}
+						};
+						var url = serverAddress + "/api/patient/getmyinfo/" + id;
+						commonHttpUtils(url, "get", {}, success, error, true);
+
+					});
+					$(".img-circle").find("#scyx").click(function(e) {
+						$(this).children().attr("src","../images/yxjddj.png");
+						if(localStorage.getItem("TOKENID") == null) {
+							mui.openWindow({
+								url: "../login/login.html",
+								id:"login/login.html"
+							});
+							return false;
+						}
+
+						var id = localStorage.getItem("TOKENID");
+						var head_photo = localStorage.getItem('HEAD_PHOTO');
+						var gerenname = localStorage.getItem("GEREN_NAME");
+						var hospital = localStorage.getItem("hospital");
+						var isshiminghoutai = " ";
+						var success = function(data) {
+							if(data.result == "success") {
+								//是否实名认证
+								isshiminghoutai = data.data.idapprove;
+								//后台审核实名认证成功与否
+								if(isshiminghoutai == "2") {
+									mui.openWindow({
+										id: 'online_answer_place_order.html',
+										url: 'online_answer_place_order.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: false //自动显示等待框，默认为true
+										},
+										extras: {
+											ONLINE_ID: dataouter.data[1]._id,
+											ONLINE_JIE: dataouter.data[1].price / 100
+										}
+									});
+								} else if(isshiminghoutai == "1") {
+									mui.toast("等待后台审核通过后再进行下单！");
+									return false;
+								} else {
+									mui.toast("请耐心等待后台实名认证审核通过后再进行下单操作");
+									mui.openWindow({
+										url: "../geren_message/d02_geren_message.html",
+										id: "d02_geren_message.html"
+									});
+									return false;
+								}
+							}
+						};
+						var url = serverAddress + "/api/patient/getmyinfo/" + id;
+						commonHttpUtils(url, "get", {}, success, error, true);
+
+					});
+				};
+				commonHttpUtils(url, "get", {}, sussess, error, true);
+
+			})
+			function resetimg(){
+				$("#scjj>img").attr("src","../images/jyjdxs.png");
+				$("#scyx>img").attr("src","../images/yxjdxs.png");
+			}
+		</script>
+
+	</body>
+
+</html>

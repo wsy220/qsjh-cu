@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>华益血糖仪</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			
+			.mui-table-view .mui-media-object {
+				height: auto;
+			}
+			
+			.mui-table-view img {
+				width: 0.65rem;
+				/*height: 0.65rem;*/
+			}
+			
+			.mui-media-body {
+				font-size: 14px;
+				color: #333333;
+				padding: 2%;
+			}
+			
+			.suger-num {
+				text-align: center;
+			}
+			
+			.sugerNum {
+				font-size: 30px;
+				padding: 20% 0 13%;
+			}
+			
+			.font-16 {
+				font-size: 15px;
+			}
+			
+			.time {
+				padding: 2% 5%;
+				border-left: 1px dotted #CDCDCD;
+			}
+			
+			.padding-5 {
+				padding-bottom: 4%;
+			}
+			
+			.timeNum {
+				font-size: 13px;
+				color: #999999;
+				padding-left: 2%;
+			}
+			.wutu {
+				margin: 0;
+				height: auto;
+				text-align: center;
+				padding-top: 1rem;
+				padding-bottom: 6rem;
+				background: transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">华益血糖仪</h1>
+		</header>
+		<div class="mui-content">
+			<div id="surgeryHistory">
+				<!--<div class="" style="margin: 2%;background-color: #FFFFFF;">
+					<div class="mui-row">
+						<div class="suger-num mui-col-xs-4">
+							<div class="sugerNum">6.2</div>
+							<div class="font-16" style="padding-bottom: 8%;">血糖值</div>
+						</div>
+						<div class="time mui-col-xs-8">
+							<h6 class="device_num padding-5">E80018E01000215</h6>
+							<div class="font-16 padding-5">早餐前</div>
+							<div class="" style="display: inline-flex;width: 100%;">
+								<div style="margin-top: 1px;">
+									<img src="../images/healthdata/icon_clock_one.png" style="width: 14px;height: 14px;" />
+								</div>
+								<div class="timeNum">2014/12/05 08:47:17</div>
+							</div>
+						</div>
+					</div>
+				</div>-->
+			</div>
+
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		//		mui.init({
+		//			swipeBack: true //启用右滑关闭功能
+		//		});
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+
+		mui.plusReady(function() {
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var self = plus.webview.currentWebview();
+			var deviceId = self.deviceId;
+
+			var url = "http://www.iglupad.com:8088/api/Glucose/QueryGlucoseData"
+			mui.ajax(url, {
+				data: {
+					"KEY": "E9DF6D12816E4D0F80FB6E46D51BA18E",
+					"DeviceID": deviceId
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'POST', //HTTP请求类型
+				timeout: 180000, //超时时间设置为30秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				success: function(data) {
+					console.log("华益血糖设备编号------------》" + deviceId);
+					console.log("华益血糖返回数据------------》" + JSON.stringify(data));
+					if(data.ERROR) {
+						mui.toast("设备编号不存在，请确定输入设备编号正确")
+					} else if(data.length == 0) {
+						$("#surgeryHistory").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 50%;"></div>');
+
+					} else {
+						$("#surgeryHistory").processTL(templateRegister.huayi_device, {
+							sub: data,
+						}, "append", function() {
+							$(".device_num").html(deviceId);
+						});
+					}
+
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					mui.toast('保存网络超时，请稍后再试！');
+					plus.nativeUI.closeWaiting();
+				}
+			});
+
+		});
+	</script>
+
+</html>

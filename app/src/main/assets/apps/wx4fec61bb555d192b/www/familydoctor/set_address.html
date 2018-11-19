@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>设置地址</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+
+		<style>
+			
+			body,
+			html {
+				background-color: #ffffff;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
+			
+			/*.mui-bar-nav~.mui-content {
+				height: 100%;
+				overflow-y: auto;
+			}*/
+			#l-map {
+				min-height: 700px;
+				width: 100%;
+			}
+			
+			#zhaoxiang {
+				height: 2rem;
+			}
+			
+			#zhaoxiang.mui-table-view-cell {
+				padding-top: 0.3rem;
+				height: 130px;
+			}
+			
+			#zhaoxiang a span:after {
+				top: 40%;
+			}
+			
+			#head_image {
+				width: 90px;
+				height: 90px;
+				border-radius: 50px;
+				margin-top: 10px;
+			}
+			
+			.head {
+				margin-top: -0.6rem;
+				margin-right: 15px;
+			}
+			
+			#libiao li {
+				height: 1.0rem;
+				padding-top: 0.25rem;
+			}
+			
+			#libiao li span {
+				margin-right: 20px;
+				font-size: 14px;
+			}
+			
+			.qianming {
+				width: 50%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: right;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 25px;
+				right: 5px;
+			}
+			
+			.mui-table-view-cell a {
+				color: #424242;
+			}
+			
+			.mui-table-view-cell span {
+				color: #999999;
+			}
+			
+			#forward {
+				font-size: 0.3124rem;
+				font-weight: 400;
+			}
+			
+			#male {
+				color: #00c0ff;
+				height: 1.1rem;
+			}
+			
+			#female {
+				color: #ff0072;
+				height: 1.1rem;
+			}
+			
+			#male div,
+			#female div {
+				background: url(../image/tubiao2.png) no-repeat;
+			}
+			
+			.redword {
+				color: #FF3300 !important;
+			}
+			
+			.shengfen_upload {
+				max-width: 100%;
+				background: #FFFFFF;
+				height: 200px;
+				padding-top: 70px;
+			}
+			
+			.mui-content-padded a {
+				margin: 3px;
+				width: 50px;
+				height: 50px;
+				display: block;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				margin: 0 auto;
+			}
+			
+			.mui-content-padded a .mui-icon {
+				margin-top: 12px;
+				color: #000000;
+				margin-top: -7px;
+				margin-left: -6px;
+			}
+			
+			.mui-icon {
+				font-size: 60px;
+			}
+			
+			.upload_word {
+				margin: 10px auto;
+				display: block;
+				text-align: center;
+			}
+			
+			.shenfen_card,
+			.sign_name {
+				width: 70% !important;
+				height: 20px !important;
+				font-size: 14px;
+			}
+			
+			.error_shenfen_card {
+				border: 1px dotted rgba(0, 0, 0, 0) !important;
+			}
+			
+			.right_shenfen_card {
+				border: 1px solid rgba(0, 0, 0, 0) !important;
+			}
+			
+			input[type="number"] {
+				border: 1px solid rgba(0, 0, 0, 0) !important;
+			}
+			
+			.mui-table-view .mui-table-view-cell {
+				/*margin-top:1.4rem;*/
+			}
+			
+			.mui-table-view .one {
+				margin-top: 0px;
+			}
+			
+			.mui-table-view .mui-table-view-cell .labelL .artle b {
+				font-style: normal !important;
+				color: #FF6600
+			}
+			
+			#libiao li {
+				height: 1.2rem;
+				padding-top: 0.25rem;
+			}
+			
+			#container {
+				width: 600px;
+				height: 400px
+			}
+			
+			.label {
+				margin-left: 20px;
+				font-weight: bold;
+				font-size: 14px
+			}
+			
+			.mapchangchun {
+				#position: fixed;
+				#top: 60px;
+				#left: 20px;
+				font-size: 16px;
+				line-height: 34px;
+				#position: absolute;
+				z-index: 1;
+				width: 100%;
+				text-align: center;
+				color: #999;
+				border: 0;
+				border-radius: 6px;
+				background: 0 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ptitle"></h1>
+		</header>
+
+		<div class="mui-content mapchangchun" id="content">
+			<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+			<div class="mui-row" style="padding-left: 10px; padding-right: 0px; padding-top: 10px;background-color: #fff;">
+				<div class="mui-col-sm-9 mui-col-xs-9">
+					<input type="text" class="searchinput" id="address_filter" name="address_filter" placeholder="请输入地址名称" />
+				</div>
+				<div class="mui-col-sm-3 mui-col-xs-3">
+					<div id="qrBtn" class="mui-btn mui-btn-primary" style="padding: 8px 14px; margin-top: 1px;">确 认</div>
+				</div>
+			</div>
+			<div id="l-map"></div>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../plugs/qs/qs.immersed.js"></script>
+		<script src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/sharemethods.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Kw7ohrBpxoZxhVOHzWbIy1vDojNXujG5"></script>
+
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+				var self = plus.webview.currentWebview();
+				var cb = self.cb;
+				//console.log(self.title);
+				$("#ptitle").text(self.title);
+				//console.log(self.startAt);
+				//$("#address_filter").val(self.startAt);
+				$("#address_filter").attr("placeholder",self.startAt);
+				//console.log($("#address_filter").val())
+				localStorage.selectedAddress = '';
+				//console.log(localStorage.selectedAddress);
+				localStorage.selectedAddressGPS = '';
+				
+				//setPagePos();
+				mui.init({
+					swipeBack: true, //启用右滑关闭功能
+					beforeback: function() {
+						//获得父页面
+						var parentView = plus.webview.getWebviewById("familydoctor.html");
+						if(parentView) {
+							//调用父页面方法，设置地址
+							parentView.evalJS(cb + "()");
+						}
+						return true;
+					}
+				});
+
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				function G(id) {
+					return document.getElementById(id);
+				}
+
+				var map = new BMap.Map("l-map");
+				map.centerAndZoom("长春", 12); // 初始化地图,设置城市和地图级别。
+
+				//建立一个自动完成的对象
+				var ac = new BMap.Autocomplete({
+					"input": "address_filter",
+					"location": map
+				});
+
+				//				var selectedAddress;
+				//				ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+				//					var _value = e.item.value;
+				//					selectedAddress = _value.province + _value.city + _value.district + _value.street + _value.business;
+				//					//localStorage.selectedAddress = selectedAddress;
+				//					G("address_filter").value = selectedAddress;
+				//					//localStorage.myvalue = selectedAddress;
+				//					//通过本地存储回传选中地址到父页面
+				//					localStorage.selectedAddress = selectedAddress;
+				//					//console.log(selectedAddress);
+				//					//通过地址来查询其GPS坐标
+				//					var bls = new BMap.LocalSearch(map, { //智能搜索
+				//						onSearchComplete: function() {
+				//							var matchedPos = bls.getResults().getPoi(0);
+				//							if(matchedPos) {
+				//								var p = matchedPos.point; //获取第一个智能搜索的结果
+				//								var selectedAddressGPS = {
+				//									lat: p.lat,
+				//									lng: p.lng
+				//								};
+				//								localStorage.selectedAddressGPS = JSON.stringify(selectedAddressGPS);
+				//								mui.back();
+				//							} else {
+				//								mui.toast('未定位到GPS坐标', {
+				//									duration: 'long',
+				//									type: 'div'
+				//								})
+				//							}
+				//						}
+				//					});
+				//					bls.search(selectedAddress);
+				//				});
+
+				var selectedAddress;
+				var selectedAddressGPS
+				var bls = new BMap.LocalSearch(map, { //智能搜索
+					onSearchComplete: function() {
+						var matchedPos = bls.getResults().getPoi(0);
+						if(matchedPos) {
+							var p = matchedPos.point; //获取第一个智能搜索的结果
+							var addressGPS = {
+								lat: p.lat,
+								lng: p.lng
+							};
+							selectedAddressGPS = JSON.stringify(addressGPS);
+						} else {
+							mui.toast('未定位到GPS坐标', {
+								duration: 'long',
+								type: 'div'
+							})
+						}
+					}
+				});
+				
+				if(self.startAt){
+					selectedAddress = self.startAt
+					bls.search(selectedAddress);
+					setPlace();
+				}
+				ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+					var _value = e.item.value;
+					selectedAddress = _value.province + _value.city + _value.district + _value.street + _value.business;
+					G("searchResultPanel").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />selectedAddress = " + selectedAddress;
+
+					bls.search(selectedAddress);
+					setPlace();
+				});
+
+				$("#qrBtn").click(function(e) {
+					if(!selectedAddress || !selectedAddressGPS) {
+						mui.toast("请选择地址")
+					} else {
+						localStorage.selectedAddress = selectedAddress;
+						localStorage.selectedAddressGPS = selectedAddressGPS
+						mui.back()
+					}
+				});
+
+				function setPlace() {
+					map.clearOverlays(); //清除地图上所有覆盖物
+					function myFun() {
+						var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+						map.centerAndZoom(pp, 18);
+						map.addOverlay(new BMap.Marker(pp)); //添加标注
+					}
+					var local = new BMap.LocalSearch(map, { //智能搜索
+						onSearchComplete: myFun
+					});
+					local.search(selectedAddress);
+				}
+			});
+		</script>
+	</body>
+
+</html>

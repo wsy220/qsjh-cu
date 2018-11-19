@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>注册</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/validate.css" />
+		<style>
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+				height: 0.9rem;
+				font-size: 14px;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			#reg {
+				padding: 10px;
+				border-radius: 20px;
+				width: 100%;
+				margin: 0 auto;
+				height: 0.9rem;
+				line-height: 1;
+			}
+			
+			#reg span {
+				font-size: 0.3rem;
+			}
+			
+			.mui-input-group {
+				background: none;
+			}
+			
+			.mui-input-group:before,
+			.mui-input-group:after {
+				height: 0;
+			}
+			
+			.mui-input-group input {
+				background-color: #FFFFFF !important;
+				width: 95% !important;
+				border-radius: 25px !important;
+				margin: 10px 0 10px 0 !important;
+				padding-left: 55px !important;
+				float: inherit !important;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				height: 0;
+			}
+			
+			.mui-input-group .mui-input-row {
+				text-align: center;
+			}
+			
+			.mui-input-group .mui-input-row {
+				height: inherit;
+			}
+			
+			p {
+				font-size: 14px;
+				margin-top: 20px;
+				margin-bottom: 10px;
+				color: #8f8f94;
+			}
+			
+			p a {
+				color: #000000;
+				padding: 0 20px;
+			}
+			
+			.mui-content {
+				background: none;
+			}
+			
+			#showUserPicker {
+				float: inherit;
+				width: 87%;
+				padding: 10px 15px;
+				background-color: #FFF !important;
+			}
+			
+			#yanzhengBtn {
+				position: absolute;
+				top: 0.35rem;
+				right: 0.35rem;
+				background: #ffcc99;
+				border: 0;
+				border-radius: 20px;
+			}
+			
+			.mui-input-group .labelL {
+				position: absolute;
+				top: 5px;
+				left: -5px;
+				z-index: 99;
+			}
+			
+			.mui-input-group .labelL img {
+				width: 0.69rem;
+				vertical-align: -webkit-baseline-middle;
+			}
+			
+			.mui-input-group .labelR {
+				position: absolute;
+				top: 10px;
+				right: 0px;
+				z-index: 99;
+			}
+			
+			.mui-input-group .labelR img {
+				width: 0.3rem;
+				vertical-align: -webkit-baseline-middle;
+			}
+			
+			html,
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.mui-btn-primary:enabled:active {
+				background-color: #3ccad0;
+			}
+			
+			.mui-input-row .mui-input-clear~.mui-icon-clear,
+			.mui-input-row .mui-input-password~.mui-icon-eye,
+			.mui-input-row .mui-input-speech~.mui-icon-speech {
+				top: 22px !important;
+				right: 10px !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">注册</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group" id='reg-form'>
+				<div class="mui-input-row">
+					<label class="labelL"><img src="../images/exit/dl.png" /></label>
+					<input id='account' name='account' type="text" class="mui-input mui-input-clear" placeholder="请输入您的手机号码" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')">
+				</div>
+				<div class="mui-input-row">
+					<label class="labelL"><img src="../images/exit/yzm.png" /></label>
+					<input id='password' name='password' type="number" class="mui-input password" placeholder="请输入验证码"><button type="button" class="verification size12" id="yanzhengBtn">获取验证码</button></input>
+				</div>
+				<div class="mui-input-row">
+					<label class="mui-pull-right labelL"><img src="../images/exit/mm.png" /></label>
+					<input id='setpassword' name='setpassword' type="password" class="mui-input password" placeholder="设置密码"></input>
+				</div>
+				<div class="mui-input-row">
+					<label class="mui-pull-right labelL"><img src="../images/exit/mm.png" /></label>
+					<input id='doublepassword' name='doublepassword' type="password" class="mui-input password" placeholder="重复密码"></input>
+				</div>
+			</form>
+			<div class="mui-content-padded  zhiqing">
+				<p>
+					<input id="register_user" name="style" type="checkbox" value="slider" class="chk_1">
+					<label for="register_user"></label>
+					<span class="size12">已阅读并同意<span id="user_document">《用户协议书》</span></span>
+				</p>
+				<p><span class="size12">设置密码（6~16位，任意数字、字母组合）</span></p>
+			</div>
+			<div class="mui-content-padded">
+				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary"><span>注册</span></button>
+			</div>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script src="../js/mui.picker.js"></script>
+		<script src="../js/mui.poppicker.js"></script>
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/json_time.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../js/jquery.validate.js"></script>
+		<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+		<script>
+			var hospital = '';
+			var hospitalText = '';
+			$().ready(function() {
+				$("#reg-form").validate({
+					//						debug: true,
+					rules: {
+						setpassword: {
+							maxlength: 16,
+							minlength: 6,
+							chinese: true
+						},
+						doublepassword: {
+							maxlength: 16,
+							minlength: 6,
+							chinese: true
+						},
+					},
+					messages: {
+						setpassword: {
+							required: "请输入密码",
+							setpassword: "请输入正确的密码格式"
+						}
+					},
+
+					errorElement: 'div',
+					errorPlacement: function(error, element) {
+						error.addClass('tooltip tooltip-inner arrow-left');
+						$("#reg").attr("disabled", "disabled");
+						//												if(element.is(":radio")) {
+						//													error.appendTo(element.parent().next().next());
+						//												} else if(element.is(":checkbox")) {
+						//													error.appendTo(element.next());
+						//												} else {
+						//													element.insertAfter(error);
+						//												}
+						//												var pos = $.extend({}, element.offset(), {
+						//														width: element.outerWidth(),
+						//														height: element.outerHeight()
+						//													}),
+						//													actualWidth = error.outerWidth(),
+						//													actualHeight = error.outerHeight();
+						//												if((pos.top - actualHeight) < 0) {
+						//													actualHeight = 0;
+						//													pos.width += 10;
+						//												} //如果输入框距离顶端为0情况把提示放右边  
+						//												if(element.parents(".blockPage").attr("class") == "blockUI blockMsg blockPage") { //如果是弹出框的，那么设置如下  
+						//													error.css({
+						//														display: 'block',
+						//														opacity: '0.6',
+						//														left: 300,
+						//														top: pos.top - $(document).scrollTop() - actualHeight - 100,
+						//														"border-left": '0px'
+						//													});
+						//												} else if(element.is(":radio")) { //类型为radio的显示如下  
+						//													error.css({
+						//														display: 'block',
+						//														opacity: '0.6',
+						//														top: pos.top - actualHeight,
+						//														left: pos.left + pos.width / 2
+						//													});
+						//												} else { //其他均为以下显示  
+						//													error.css({
+						//														display: 'block',
+						//														opacity: '0.6',
+						//														top: pos.top - actualHeight,
+						//														left: pos.left + pos.width - 10
+						//													});
+						//												}
+					},
+					success: function(label) {
+						$("#reg").removeAttr("disabled");
+					}
+					/* 重写错误显示消息方法,以alert方式弹出错误消息 */
+					//						showErrors: function(errorMap, errorList) {
+					//							var msg = "";
+					//							$.each(errorList, function(i, v) {
+					//								msg += (v.message + "\r\n");
+					//							});
+					//							if(msg != "") alert(msg);
+					//						},
+
+				});
+				jQuery.validator.addMethod("chinese", function(value, element) {
+					//					var chinese = /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)[0-9A-Za-z`~!@#$%^&*()_+<>?:"{},.\/;'[\]]{6,16}$/;
+					var chinese = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z_-]{6,16}$/;
+					return this.optional(element) || (chinese.test(value));
+				}, "请输入正确的密码格式");
+			});
+			mui.plusReady(function() {
+				
+
+				plus.webview.currentWebview().setStyle({
+					softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+				});
+				var currentView = plus.webview.currentWebview();
+				var weixinInfo = currentView.weixinInfo;
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				//知情同意书勾选
+				//				$('#register_user').click(function(e) {
+				//					if($('#register_user').is(':checked')) {
+				//						$("#reg").removeClass("mui-disabled");
+				//					} else {
+				//						$("#reg").addClass("mui-disabled");
+				//					}
+				//				})
+				//倒计时
+				var past_time = 0,
+					begin_time = localStorage.getItem("begin_time"),
+					daojishi_current = localStorage.getItem("miao");
+				var daojishi2 = 60;
+				if(daojishi_current != null && begin_time != null) {
+					//获取存在本地的退出时间
+					daojishi_current = localStorage.getItem("miao");
+					//获取最开始时间
+					begin_time = localStorage.getItem("begin_time");
+					past_time = date_Time_minus(begin_time, daojishi_current).split(":")[0] * 60 + parseInt(date_Time_minus(begin_time, daojishi_current).split(":")[1]);
+					daojishi2 = 60 - past_time;
+					var daojishi_interval = setInterval(function() {
+						if(daojishi2 > 0) {
+							document.querySelector('#yanzhengBtn').innerHTML = daojishi2 + "秒";
+							document.querySelector('#yanzhengBtn').setAttribute("class", "verification size12 mui-disabled");
+							daojishi2--;
+							localStorage.setItem("miao", date_All_format());
+						} else {
+							document.querySelector('#yanzhengBtn').innerHTML = "获取验证码";
+							document.querySelector('#yanzhengBtn').setAttribute("class", "verification size12");
+							document.querySelector("#reg").setAttribute("class", "mui-btn mui-btn-block mui-btn-primary");
+							clearInterval(daojishi_interval);
+							localStorage.clear();
+							daojishi2 = 60;
+							past_time = 0;
+						}
+					}, 1000);
+				}
+				//发送请求按钮的点击事件
+				document.getElementById("yanzhengBtn").addEventListener('tap', function() {
+
+					// 关闭软键盘
+					document.activeElement.blur();
+					var phone = document.getElementById("account").value;
+					var phone_validate = /1[3|5|7|8|9|]\d{9}/; //验证手机号码是否正确
+
+					time_current = date_All_format();
+					localStorage.setItem("begin_time", date_All_format());
+					if(phone == "") {
+						mui.toast('请填写手机号')
+						return false;
+					}
+					if(phone.length != 11) {
+						mui.toast('手机号码位数不正确');
+						return false;
+					}
+					if(!phone_validate.test(phone)) {
+						mui.toast('手机号码错误');
+						return false;
+					}
+
+					document.querySelector('#yanzhengBtn').setAttribute("class", "verification size12 mui-disabled");
+
+					var url = serverAddress + "/api/patient/appsendRegVerCode";
+					mui.ajax(url, {
+						data: {
+							pn: accountBox.value,
+							uid: plus.push.getClientInfo().clientid
+						},
+						dataType: 'json', //服务器返回json格式数据
+						type: 'get', //HTTP请求类型
+						timeout: 180000, //超时时间设置为30秒；
+						headers: {
+							/*'Content-Type': 'application/json'*/
+						},
+						success: function(data) {
+							console.log(JSON.stringify(data));
+
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							if(data.result == "sendfailed") {
+								mui.toast("验证码发送失败");
+								document.querySelector('#yanzhengBtn').setAttribute("class", "verification size12");
+								return false;
+							}
+							if(data.msg == "already-existent") {
+								mui.toast("该用户已经存在");
+								return false;
+							}
+							if(data.result == "success") {
+								localStorage.setItem('TOKEN', accountBox.value);
+								var daojishi_interval = setInterval(function() {
+									if(daojishi2 > 0) {
+										document.querySelector('#yanzhengBtn').innerHTML = daojishi2 + "秒";
+										document.querySelector('#yanzhengBtn').setAttribute("class", "verification size12 mui-disabled");
+										daojishi2--;
+										localStorage.setItem("miao", date_All_format());
+
+									} else {
+										document.querySelector('#yanzhengBtn').innerHTML = "获取验证码";
+										document.querySelector('#yanzhengBtn').setAttribute("class", "verification size12");
+										document.querySelector("#reg").setAttribute("class", "mui-btn mui-btn-block mui-btn-primary");
+										localStorage.clear();
+										clearInterval(daojishi_interval);
+										past_time = 0;
+										daojishi2 = 60;
+									}
+								}, 1000);
+							}
+							//mui.toast("发送成功");
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理；
+							mui.toast('验证码网络超时，请稍后再试！');
+							plus.nativeUI.closeWaiting();
+						}
+					});
+				});
+
+				//获取医院列表
+
+				//				var url = serverAddress + "/api/patient/gethosnames";
+				//				var success = function(data) {
+				//					console.log("获取医生ID"+JSON.stringify(data));
+				//					userPicker.setData(data);
+				//				};
+				//commonHttpUtils(url, "get", {}, success, error, true);
+
+				var showUserPicker = document.getElementById("showUserPicker");
+				//var showUserPickerButton = document.getElementById('showUserPicker_img');
+				var userResult = document.getElementById('userResult');
+				//				showUserPickerButton.addEventListener("tap", function(event) {
+				//					var userPicker = new mui.PopPicker();
+				//					userPicker.setData([{
+				//						value: '现场活动',
+				//						text: '现场活动'
+				//					}, {
+				//						value: '网络获取',
+				//						text: '网络获取'
+				//					}, {
+				//						value: '朋友介绍',
+				//						text: '朋友介绍'
+				//					}]);
+				//					userPicker.show(function(items) {
+				//						showUserPicker.value = items[0].text;
+				//						hospitalText = items[0].text;
+				//						hospital = items[0].value;
+				//						//返回 false 可以阻止选择框的关闭
+				//						//return false;
+				//						userPicker.dispose();
+				//					});
+				//
+				//				}, false);
+				//-----------------------------------------
+
+				var settings = app.getSettings();
+				var regButton = document.getElementById('reg');
+				var accountBox = document.getElementById('account');
+				var passwordBox = document.getElementById('password');
+				var userID = "";
+				regButton.addEventListener('click', function(event) {
+
+					//$("#reg").addClass("mui-disabled");
+					document.activeElement.blur();
+					var phone = document.getElementById("account").value.trim();
+					var password = document.getElementById("password").value;
+					var setpassword = document.getElementById("setpassword").value;
+					var doublepassword = document.getElementById("doublepassword").value;
+					if(!$('#register_user').is(':checked')) {
+						mui.toast("请勾选用户协议书");
+						return false;
+					}
+
+					var phone_validate = /1[3|5|7|8|9|]\d{9}/; //验证手机号码是否正确
+					if(phone == "") {
+						mui.toast('请填写手机号');
+						plus.nativeUI.closeWaiting();
+						return false;
+					}
+					if(phone.length != 11) {
+						mui.toast('手机号码位数不正确');
+						return false;
+					}
+					if(!phone_validate.test(phone)) {
+						mui.toast('手机号码错误');
+						return false;
+					}
+					if(password == "") {
+						mui.toast('请填写验证码');
+						plus.nativeUI.closeWaiting();
+						return false;
+					}
+					//					if(hospital == "") {
+					//						mui.toast("请选择医院");
+					//						return false;
+					//					}
+					if(setpassword == "" || doublepassword == "") {
+						mui.toast("请填写密码");
+						return false;
+					} else if(setpassword != doublepassword) {
+						mui.toast("两次密码填写不一致");
+						return false;
+					}
+					var regInfo = {
+						account: accountBox.value,
+						Validation_password: passwordBox.value,
+						CLIENTID: plus.push.getClientInfo().clientid,
+						password: setpassword,
+						EXTENSIONFROM: hospital,
+						weixinInfo: weixinInfo
+					};
+					//console.log(JSON.stringify(regInfo));
+					//plus.webview.getLaunchWebview().show("pop-in", 200, function() {
+					//	plus.webview.currentWebview().close("none");
+					//});
+					//若启动页不是登录页，则需通过如下方式打开登录页
+
+					var url = serverAddress + "/api/patient/appregister";
+					mui.ajax(url, {
+						data: regInfo,
+						dataType: 'json', //服务器返回json格式数据
+						type: 'post', //HTTP请求类型
+						timeout: 180000, //超时时间设置为30秒；
+						async: false,
+						beforeSend: function() {
+							plus.nativeUI.showWaiting();
+						},
+						complete: function() {
+							plus.nativeUI.closeWaiting();
+						},
+						success: function(data) {
+							userID = data.id;
+							console.log("1" + JSON.stringify(data));
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							if(data.result == "success") {
+
+								//云通讯sdk的
+								var sdkurl = serverAddress + "/api/sdk/regAndGetsign";
+								var sdkdata = {
+									userID: data.id,
+									userName: data.id,
+									type: "patient"
+								};
+								var sdksussess = function(data) {
+									console.log("109090data==>" + JSON.stringify(data));
+									localStorage.setItem("adminID", data.adminID);
+									localStorage.setItem("adminSig", data.adminSig);
+									localStorage.setItem("userID", data.userID);
+									localStorage.setItem("userSig", data.userSig);
+								}
+								commonHttpUtils(sdkurl, "post", sdkdata, sdksussess, error, false);
+
+								localStorage.setItem('TOKENID', data.id);
+								localStorage.setItem("hospital", hospitalText);
+								localStorage.setItem("num", '1');
+								var loginInfo = {
+									PHONE: accountBox.value,
+									CODE: setpassword,
+									IMEI_PHONE: plus.device.uuid,
+									CLIENT_ID: plus.push.getClientInfo().clientid,
+									os: plus.os.name
+								};
+								var successLogin = function(data) {
+									//alert(JSON.stringify(data));
+									if(data.result == "success") {
+										localStorage.setItem('TOKEN', accountBox.value);
+										localStorage.setItem('TOKENMD5', data.access_token);
+										localStorage.setItem("TOKENID", data.id);
+										var userid = data.id;
+										getSignAndGotoIndex(userid);
+										var i = plus.webview.getWebviewById("login/login.html");
+										if(i) {
+											i.close("none");
+										}
+										var j = plus.webview.getWebviewById("weixinbindphone.html");
+
+										if(j) {
+											j.close("none");
+										}
+										var index = plus.webview.getLaunchWebview();
+										index.reload(true);
+										//获取是否实名认证，如果没有实名认证进入实名认证页面
+										//判断第几次登录
+										//										if(localStorage.getItem("num") == "1") {
+										//											mui.toast("您没有实名认证！");
+										//											mui.openWindow({
+										//												url: "../geren_message/d02_geren_message.html",
+										//												id: "d02_geren_message.html"
+										//											});
+										//											localStorage.removeItem("num");
+										//											return false;
+										//										}
+
+										//										if(index) {
+										//											index.reload(true);
+										//										}
+										//
+										//										if(plus.webview.getWebviewById("login/login.html")) {
+										//											plus.webview.getWebviewById("login.html").close("none");
+										//										}
+										//										if(plus.webview.getWebviewById("reg.html")) {
+										//											plus.webview.getWebviewById("reg.html").close("none");
+										//										}
+										plus.webview.currentWebview().close("none");
+
+									}
+								};
+								var url = serverAddress + "/api/patient/applogin";
+								commonHttpUtils(url, "post", loginInfo, successLogin, error, false);
+							}
+							if(data.result == "verCodeKey is wrong") {
+								mui.toast("验证码错误");
+								plus.nativeUI.closeWaiting();
+								return false;
+							}
+							if(data.result == "exist") {
+								mui.toast("手机号已经注册过,请登录");
+								mui.back();
+							}
+						},
+						error: function(xhr, type, errorThrown) {
+							//异常处理；
+							mui.toast('注册网络超时，请稍后再试！');
+							plus.nativeUI.closeWaiting();
+						}
+					});
+				});
+
+				function getSignAndGotoIndex(userid) {
+					var sdkurl = serverAddress + "/api/sdk/getsign";
+					//					alert(sdkurl)
+					var sdkdata = {
+						userID: userid
+					};
+					//					alert(JSON.stringify(sdkdata));
+					var sdksussess = function(data) {
+//						alert(JSON.stringify(data));
+						localStorage.setItem("lauchFlag", "1");
+						localStorage.setItem("adminID", data.adminID);
+						localStorage.setItem("adminSig", data.adminSig);
+						localStorage.setItem("userID", data.userID);
+						localStorage.setItem("userSig", data.userSig);
+						//						if(localStorage.getItem("num") == "1") {
+						//							mui.toast("您没有实名认证！");
+						//							mui.openWindow({
+						//								url: "../geren_message/d02_geren_message.html",
+						//								id: "d02_geren_message.html"
+						//							});
+						//							localStorage.removeItem("num");
+						//							return false;
+						//						}
+						//YXLogin
+						var account = userid;
+						var yxtoken = data.IMToken;
+						console.log("yxtoken=>" + yxtoken);
+						console.log("account=>" + account);
+						plus.qsPlugin.yxLogin(account, yxtoken, "", "",
+							function(result) {},
+							function(result) {});
+
+						//****进入首页****
+
+						var i = plus.webview.getWebviewById("login/login.html");
+						if(i) {
+							i.close("none");
+						}
+						var j = plus.webview.getWebviewById("weixinbindphone.html");
+
+						if(j) {
+							j.close("none");
+						}
+
+						var index = plus.webview.getLaunchWebview();
+						index.reload(true);
+						plus.webview.currentWebview().close("none");
+					}
+					commonHttpUtils(sdkurl, "post", sdkdata, sdksussess, error, false);
+				}
+
+				document.getElementById("user_document").addEventListener("tap", function(e) {
+					mui.openWindow({
+						url: '../document/e03_insurance_agreement.html',
+						id: 'e03_insurance_agreement.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

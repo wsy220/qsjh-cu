@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/main.css" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<link rel="stylesheet" href="../../css/jquery-labelauty.css" />
+		<title>血压</title>
+		<style>
+		input,
+			textarea {
+				font-size: 0.3rem;
+			}
+			
+			.mui-content {
+				/*margin-top: 0.08rem;*/
+				font-size: 0.2916rem;
+				background-color: #FFFFFF;
+			}
+			
+			.head {
+				margin-top: -0.6rem;
+				margin-right: 15px;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-bottom: 0.08rem;
+			}
+			
+			#libiao li {
+				height: 1.0rem;
+				padding-top: 0.25rem;
+			}
+			
+			#libiao li span {
+				font-size: 14px;
+			}
+			
+			#libiao2 li,
+			#libiao3 li {
+				padding-top: 0.25rem;
+			}
+			
+			font-size: 14px;
+		}
+		.mui-table-view-cell:after {
+			left: 0;
+		}
+		.mui-navigate-right:after {
+			font-size: 25px;
+			right: 5px;
+		}
+		.mui-table-view-cell a {
+			color: #424242;
+			font-size: 15px;
+		}
+		.mui-table-view-cell span {
+			color: #999999;
+		}
+		.mui-content-padded a {
+			margin: 3px;
+			width: 50px;
+			height: 50px;
+			display: block;
+			text-align: center;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 25px;
+			background-clip: padding-box;
+			margin: 0 auto;
+		}
+		.mui-content-padded a .mui-icon {
+			margin-top: 12px;
+			color: #000000;
+			margin-top: -7px;
+			margin-left: -6px;
+		}
+		.mui-icon {
+			font-size: 60px;
+		}
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+			/*overflow: hidden;*/
+			/*-webkit-touch-callout: none;*/
+			/*-webkit-user-select: none;*/
+		}
+		.mui-content {
+			height: 100%;
+			overflow: auto;
+		}
+		#showUserPicker {
+			float: inherit;
+			width: 87%;
+			padding: 10px 15px;
+			background-color: #FFF !important;
+			color: #424242;
+		}
+		input[type=color],
+		input[type=date],
+		input[type=datetime-local],
+		input[type=datetime],
+		input[type=email],
+		input[type=month],
+		input[type=number],
+		input[type=password],
+		input[type=search],
+		input[type=tel],
+		input[type=text],
+		input[type=time],
+		input[type=url],
+		input[type=week],
+		select {
+			line-height: 21px;
+			width: 100%;
+			height: 40px;
+			margin-bottom: 4px;
+			padding: 10px 15px 10px;
+			-webkit-user-select: text;
+			border: none;
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+		}
+		.content {
+			background-color: #ffffff;
+		}
+		.mui-btn-color {
+			background: #FCB565;
+			border: none;
+			border-radius: 7px;
+			color: #FFFFFF;
+			height: 0.9rem;
+			font-size: 14px;
+			width: 95%;
+		}
+		.mui-table-view-cell.mui-active {
+			background-color: #FFFFFF;
+		}
+		textarea {
+			line-height: 20px;
+		}
+		.text-center {
+			text-align: center;
+		}
+		.round {
+			border-radius: 50%;
+			border: 1px solid #CDCDCD;
+			padding: 10% 0;
+			margin: auto;
+			width: 58%;
+		}
+		.mui-col-xs-4 {
+			padding: 2% 0;
+			color: #666;
+			font-size: 12px;
+		}
+		.mui-progressbar {
+			height: 5px;
+		}
+		.mui-progressbar span {
+			background-color: rgb(36, 128, 21)
+		}
+		#triangle {
+			width: 0;
+			height: 0;
+			/*margin: 0 auto;*/
+			/*margin-left: 20%;*/
+			z-index: 199;
+			border-top: 10px solid #666;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+		}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">血压</h1>
+			<button id="history" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				历史记录</button>
+		</header>
+		<div class="mui-content" id="content">
+			<div class="" id="">
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell" style="text-align: center;">
+						<a id="" style="font-size: 14px;">最后测量日期：
+							<span id="last_time">----/--/--/ --:--:--</span>
+
+						</a>
+						<div class="mui-input-row" style="margin:10px 5px 0;">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view" id="ishave">
+					<div class="mui-row text-center">
+						<div class="mui-col-xs-4">
+							<div class="round">
+								高压
+								<div><span id="higePressure">120</span>mmHg</div>
+							</div>
+						</div>
+						<div class="mui-col-xs-4">
+							<div class="round">
+								低压
+								<div><span id="lowPressure">120</span>mmHg</div>
+							</div>
+						</div>
+						<div class="mui-col-xs-4">
+							<div class="round">
+								心率
+								<div><span id="heart">120</span>BPM</div>
+							</div>
+						</div>
+						<div class="mui-col-xs-12" style="padding: 5% 5% 5%;">
+							<div>
+								<div id="triangle"></div>
+							</div>
+							<div id="" class="">
+								<img src="../../images/icon_gradual_change.png" />
+							</div>
+							<div class="mui-row">
+								<div class="mui-col-xs-4">
+									<div class="" style="text-align: left;">
+										低血压
+									</div>
+								</div>
+								<div class="mui-col-xs-4">
+									<div class="">
+										正常
+									</div>
+								</div>
+								<div class="mui-col-xs-4">
+									<div class="" style="text-align: right;">
+										高血压
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ul>
+
+			</div>
+			<div class="mui-content-padded " style="position:fixed; bottom:0;width: 100%;">
+				<button id="save" class=" mui-btn mui-btn-color">手动录入</button>
+			</div>
+
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-labelauty.js"></script>
+		<script type="text/javascript" src="../../js/IScard.js"></script>
+		<script type="text/javascript" src="../../js/qs/qs.immersed.js"></script>
+		<script type="text/javascript" src="../../plugs/moment/moment.min.js"></script>
+		<script>
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					return true;
+				},
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui('#scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+
+			mui.plusReady(function() {
+				if(mui.os.ios || mui.os.ipad || mui.os.iphone) {
+					plus.webview.currentWebview().setStyle({
+						softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+					});
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				var self = plus.webview.currentWebview();
+				var id = self.ID;
+				console.log("id------------》" + id);
+				var data = {
+					dataType: "bloodpressure",
+					serviceObject: id
+				}
+
+				var url = serverAddress + "/api/appfamilydoctorteam/getHealthDataNewLatestData";
+				var success = function(data) {
+					console.log("获取最后一次血压-------------》" + JSON.stringify(data));
+					if(!data.obj[0]) {
+						$("#ishave").hide();
+					} else {
+						var pressure=data.obj[0];
+						var datetime = moment(pressure.createdOn).format('YYYY-MM-DD HH:mm');
+						$("#last_time").html(datetime);
+						$("#ishave").show();
+						var hige=pressure.data.oncedata.d1;
+						var low=pressure.data.oncedata.d2;
+						var heart=pressure.data.oncedata.d3;
+						$("#higePressure").html(hige);
+						$("#lowPressure").html(low);
+						$("#heart").html(heart);
+						if (hige <=90 || low<=60) {
+							$("#triangle").css("margin-left","20%")
+						}else if (hige >=120 || low>=90) {
+							$("#triangle").css("margin-left","70%")
+						}else{
+							$("#triangle").css("margin-left","47%")
+						}
+
+					}
+				};
+				commonHttpUtils(url, "post", data, success, error, true);
+
+				mui(".mui-content").on("tap", "#save", function(e) {
+					mui.openWindow({
+						url: 'blood_pressure_save.html',
+						id: 'blood_pressure_save',
+						extras: {
+							ID: id
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+
+				});
+				$("#history").click(function(e) {
+					mui.openWindow({
+						url: 'blood_pressure_history.html',
+						id: 'blood_pressure_history',
+						extras: {
+							ID: id
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+
+				})
+			});
+		</script>
+	</body>
+
+</html>

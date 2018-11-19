@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>护士详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<style>
+			#gerenzhongxin {
+				background: url(../images/wodebg.png) no-repeat;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				height: 5.5rem;
+			}
+			
+			#head-img {
+				max-width: 1.8rem;
+				height: 1.8rem;
+				margin-top: 0.6rem;
+				border-radius: 50%;
+				margin-left: 0.8rem;
+				border: 3px solid #c9e3f3;
+			}
+			
+			#gerenzhongxin .upimg {
+				font-size: 0.3751rem;
+				padding-top: 0.55rem;
+			}
+			
+			#gerenzhongxin .mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			.fenshu {
+				font-size: 0.2916rem;
+				color: #FFFFFF;
+				line-height: 1.5;
+				vertical-align: top;
+			}
+			
+			.danshu .mui-media-body {
+				text-align: center;
+			}
+			
+			.danshu {
+				position: absolute;
+				bottom: 0.1rem;
+				width: 100%;
+			}
+			
+			.danshu a span {
+				font-size: 0.22rem;
+			}
+			
+			.danshu_span {
+				color: #000 !important;
+				font-size: 0.32rem !important;
+			}
+			
+			.danshu .mui-table-view {
+				background: none;
+			}
+			
+			.xingxing img {
+				width: 0.3rem;
+			}
+			
+			.vip-driver {
+				position: relative;
+				margin-top: 5px;
+				color: #484848;
+				height: 20px;
+			}
+			
+			.driver-dengji {
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-size: 0.2292rem;
+			}
+			
+			.danshu_img {
+				width: 0.35rem;
+				vertical-align: middle;
+			}
+			
+			#geren_name {
+				font-size: 0.28rem;
+				color: #484848;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 0.5rem;
+				color: #E0E0E0;
+				right: 0;
+			}
+			
+			#table-viewX {
+				font-size: 0.2916rem;
+				margin-bottom: 0.08rem;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active {
+				background-color: transparent;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			@media screen and (min-width: 320px) and (max-width:375px) {
+				.geren_shanchang {
+					padding: 5px 25px;
+				}
+			}
+			
+			@media screen and (min-width: 375px) and (max-width:414px) {}
+			
+			@media screen and (min-width: 414px) and (max-width:576px) {}
+			
+			@media screen and (min-width: 576px) and (max-width:720px) {}
+			
+			.mui-badge-baihui {
+				background-color: #e3f1fa;
+				border-radius: 5px;
+				border: 1px solid #96c4de;
+				padding-left: 5px;
+				padding-right: 5px;
+				color: #afaeae;
+			}
+			
+			.mui-badge-dabaihui {
+				background-color: #dbeefa;
+				border-radius: 5px;
+				border: 0;
+				padding: 10px;
+				padding-right: 0.62rem;
+				padding-left: 0.62rem;
+			}
+			
+			.icon-ly1:before,
+			.icon-dh:before {
+				margin-right: 5px;
+			}
+			
+			#geren_shanchang .mui-media-body {
+				text-align: center;
+			}
+			
+			.mui-table-view-chevron .mui-table-view-cell {
+				padding-right: 40px;
+			}
+			
+			.aixin {
+				color: #da4937;
+			}
+			
+			.haopin {
+				color: #0693ff;
+			}
+			
+			.fuwu {
+				color: #e59c00;
+			}
+			
+			.fensi {
+				color: #e66831;
+			}
+			
+			.iconfont {
+				font-size: 0.25rem !important;
+			}
+			
+			.icon-pingxing:before,
+			.hongzi {
+				color: #ff3300;
+				font-size: 15px;
+			}
+			
+			.dowebok li {
+				margin-top: 10px;
+				margin-right: 15px;
+				background-color: #ffffff;
+				border-radius: 10px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				text-align: -webkit-center;
+				font-size: 12px;
+			}
+			
+			.libutton ul {
+				list-style-type: none;
+			}
+			
+			.libutton li {
+				display: inline-block;
+				margin: 5px 0;
+			}
+			
+			.libutton input.labelauty+label {
+				font: 15px "Microsoft Yahei";
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background: #fff;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0 !important;
+			}
+			
+			.mui-content-padded {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 42px;
+				max-width: 125px;
+				height: 80px;
+			}
+			
+			.mui-pull-right {
+				font-size: 12px;
+				font-weight: 400;
+				line-height: 1.2;
+				position: relative;
+				display: inline-block;
+				margin-bottom: 0;
+				padding: 4px 6px;
+			}
+			
+			.mui-table-view .mui-media,
+			.mui-table-view .mui-media-body {
+				overflow: hidden;
+				font-size: 15px;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				white-space: normal;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">医护详情</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron" id="gerenzhongxin">
+				<li class="mui-table-view-cell mui-media" id="gerenzhongxin_LI">
+					<!--<a class="" id="geren_message">
+						<img class="mui-media-object mui-pull-left" id="head-img" src="../images/hs2.png">
+						<div class="mui-media-body upimg">
+							<span id="geren_name">丁丽辉护士</span><br>
+							<div class="vip-driver">
+								<span class="mui-badge mui-badge-baihui mui-text-right" id="liuyan_button"><span class="mui-icon iconfont icon-xqliuyan"></span>留言</span>
+								<span class="mui-badge mui-badge-baihui mui-text-right" id="tel_button"><span class="mui-icon iconfont icon-xqdianhua"></span>联系电话</span>
+							</div>
+							<div class="vip-driver">
+								<span class="driver-dengji" id="totalscore_name">科室：呼吸科</span>
+							</div>
+							<div class="vip-driver">
+								<span class="driver-dengji" id="totalscore_name">医院：吉大一院</span>
+							</div>
+						</div>
+					</a>-->
+				</li>
+				<!--<li class="mui-table-view-cell mui-media geren_shanchang">
+					<a class="" id="geren_shanchang">
+						<div class="mui-media-body">
+							<span class="mui-badge mui-badge-dabaihui mui-text-right">擅长：静脉注射、肌肉注射、下胃管</span>
+						</div>
+					</a>
+				</li>-->
+				<li class="mui-grid-view mui-row danshu" id="doc_shujv">
+					<!--<a class="mui-col-xs-6 mui-col-sm-6">
+						<div class="mui-media-body aixin">
+							<span class="mui-icon iconfont icon-aixin"></span>
+							<span>爱心值</span><br>
+							<span class="danshu_span" id="od_number_day">858</span>
+						</div>
+					</a>-->
+					<!--<a class="mui-col-xs-3 mui-col-sm-3">
+						<div class="mui-media-body haopin">
+							<span class="mui-icon iconfont icon-haoping"></span>
+							<span>好评率</span><br>
+							<span class="danshu_span" id="od_number_day">75%</span>
+						</div>
+					</a>-->
+					<!--<a class="mui-col-xs-6 mui-col-sm-6">
+						<div class="mui-media-body fuwu">
+							<span class="mui-icon iconfont icon-fuwu"></span>
+							<span>服务</span><br>
+							<span class="danshu_span" id="od_number_day">869</span>
+						</div>
+					</a>-->
+					<!--<a class="mui-col-xs-3 mui-col-sm-3">
+						<div class="mui-media-body fensi">
+							<span class="mui-icon iconfont icon-fensi"></span>
+							<span>粉丝</span><br>
+							<span class="danshu_span" id="od_number_day">759</span>
+						</div>
+					</a>-->
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<!--<li class="mui-table-view-cell">
+					<a id="drivertask" class="">
+						<div class="mui-media-body">
+							认证状态:已认证
+							<button type="button" class="mui-btn mui-pull-right">
+								点击查看
+							</button>
+						</div>
+
+					</a>
+				</li>-->
+				<!--<li class="mui-table-view-cell">
+					<a>
+						<div class="mui-media-body">
+							用户评价：
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<div class="mui-ellipsis"><span class="hongzi">感恩世界的你</span>
+								<div class="icons mui-inline" style="margin-right:6px;" id="xingxing">
+									<i data-index="1" class="xingxing"><span class="mui-icon iconfont icon-pingxing"></span></i>
+									<i data-index="2" class="xingxing"><span class="mui-icon iconfont icon-pingxing"></span></i>
+								</div>
+
+							</div>
+							<h5>申请人：李四</h5>
+							<p class="mui-h6 mui-ellipsis">Hi，李明明，申请交行信息卡，100元等你拿，李明明，申请交行信息卡，100元等你拿，</p>
+						</div>
+
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<div class="mui-ellipsis"><span class="hongzi">感恩世界的你</span>
+								<div class="icons mui-inline" style="margin-right:6px; color: #ff3300;" id="xingxing">
+									<i data-index="1" class="xingxing"><span class="mui-icon iconfont icon-pingxing"></span></i>
+									<i data-index="2" class="xingxing"><span class="mui-icon iconfont icon-pingxing"></span></i>
+									<i data-index="3" class="xingxing"><span class="mui-icon iconfont icon-pingxing"></span></i>
+								</div>
+							</div>
+							<h5>申请人：李四</h5>
+							<p class="mui-h6 mui-ellipsis">Hi，李明明，申请交行信息卡，100元等你拿，李明明，申请交行信息卡，100元等你拿，</p>
+						</div>
+
+					</div>
+				</li>-->
+				<li class="mui-table-view-cell" id="wenzhang_title">
+					<a>
+						<div class="mui-media-body">
+							发表文章：
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media tableUL" id="wenzhang_text">
+					<!--<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="../images/muwu.jpg">
+						<div class="mui-media-body">
+							木屋
+							<span class="doctor mui-pull-right">李云龙 医生</span>
+							<p class="mui-ellipsis2" style="margin-top: 10px;">冬天围炉取暖.夏天挫冰吃瓜，冬天围炉取暖.夏天挫冰吃瓜，冬天围炉取暖.</p>
+						</div>
+					</a>-->
+				</li>
+				<!--<li class="mui-table-view-cell">
+					<a>
+						<div class="mui-media-body">
+							提供服务：
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell libutton">
+					<ul class="dowebok" id="dowebok">
+						<!--<li><input type="radio" name="radio1" data-labelauty="护理" value="59ed8b5a8253aa1fe0ea3ba3" class="labelauty" id="labelauty" style="display: none;" checked="checked"><label for="labelauty"><span class="labelauty-unchecked">护理</span><span class="labelauty-checked">护理</span></label></li>
+						<li><input type="radio" name="radio1" data-labelauty="1" value="59ed8c3c8253aa1fe0ea3ba4" class="labelauty" id="labelauty"><label for="labelauty"><span class="labelauty-unchecked">1</span><span class="labelauty-checked">1</span></label></li>-->
+				<!--<li><input type="radio" name="radio1" data-labelauty="皮下注射" value="皮下注射" class="labelauty" id="labelauty"><label for="labelauty"><span class="labelauty-unchecked">皮下注射</span><span class="labelauty-checked">皮下注射</span></label></li>
+						<li><input type="radio" name="radio1" data-labelauty="普通换药" value="普通换药" class="labelauty" id="labelauty"><label for="labelauty"><span class="labelauty-unchecked">普通换药</span><span class="labelauty-checked">普通换药</span></label></li>
+						<li><input type="radio" name="radio1" data-labelauty="PICC换药" value="PICC换药" class="labelauty" id="labelauty"><label for="labelauty"><span class="labelauty-unchecked">PICC换药</span><span class="labelauty-checked">PICC换药</span></label></li>
+						<li><input type="radio" name="radio1" data-labelauty="外科拆线" value="外科拆线" class="labelauty" id="labelauty"><label for="labelauty"><span class="labelauty-unchecked">外科拆线</span><span class="labelauty-checked">外科拆线</span></label></li>
+						<li><input type="radio" name="radio1" data-labelauty="压疮护理" value="压疮护理" class="labelauty" id="labelauty"><label for="labelauty"><span class="labelauty-unchecked">压疮护理</span><span class="labelauty-checked">压疮护理</span></label></li>
+					</ul>
+				</li>
+			</ul>-->
+				<!--<div class="mui-content-padded">
+				<button id='queding' class="mui-btn mui-btn-block mui-btn-warning">去预约</button>
+			</div>-->
+		</div>
+
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/art/template-web.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+		<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+		<script>
+			var service_item_id = "",
+				service_item_name = "";
+			service_item_array = [];
+			var yihu_id = '';
+			var selectItem = '';
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				var self = plus.webview.currentWebview();
+				yihu_id = self.YIHU_ID;
+				service_item_array = self.YIHU_MESSAGE;
+				console.log(yihu_id);
+				console.log(JSON.stringify(service_item_array));
+
+				var dcarticleslistUrl = serverAddress + "/api/patient/doctordetails/" //根据医护id获取该医护发表的文章
+				var articlesUrl = dcarticleslistUrl + yihu_id;
+				console.log(articlesUrl);
+				var articles_success = function(data) {
+					console.log("根据医护id获取该医护发表的文章、相关信息" + JSON.stringify(data));
+					if(data.result == "success") {
+						var doc = data.articles;
+						var docmessage = data.details;
+
+						$("#gerenzhongxin_LI").processTL(templateRegister.docMESSAGE, {
+							message_sub: docmessage
+						}, "append", function() {});
+
+						$("#doc_shujv").processTL(templateRegister.docSHUJV, {
+							message_sub: docmessage
+						}, "append", function() {});
+
+						$(".tableUL").processTL(templateRegister.doctorArticlesList, {
+							sub: doc
+						}, "append", function() {
+
+						});
+
+						mui(".mui-content").on("tap", "#liuyan_button", function() {
+							mui.openWindow({
+								url: '../familydoctor/im-chat.html',
+								id: 'im-chat.html',
+								show: {
+									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								},
+								extras: {
+									TO_ACCOUNT: yihu_id,
+								}
+							});
+						});
+						mui(".mui-content").on("tap", "#tel_button", function(e) {
+							plus.device.dial(data.details.phone, false);
+						});
+
+					} else {
+						mui.toast(data.msg);
+					}
+				};
+				commonHttpUtils(articlesUrl, "get", {}, articles_success, error);
+
+				//查看咨询详情
+				mui("#wenzhang_text").on('tap', 'li', function() {
+					//获取id
+					var id = this.getAttribute("data-id");
+					mui.openWindow({
+						id: 'message_xiangqing.html',
+						url: '../main_sub/message_xiangqing.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						},
+						extras: {
+							ARTICLEID: id
+						}
+					});
+				})
+
+			});
+
+			//			$("#queding").click(function(e) {
+			//				mui.confirm("直接预约医护人员，会造成时间的不确定，对您的服务会造成影响，具体时间需要和护士进行下一步沟通！", "预约提示", ["预约", "取消"], function(e) {
+			//					if(e.index == 0) {
+			//						mui.openWindow({
+			//							id: 'a015_item_xiangqing.html',
+			//							url: '../order/a015_item_xiangqing.html',
+			//							show: {
+			//								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+			//								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+			//							},
+			//							waiting: {
+			//								autoShow: false //自动显示等待框，默认为true
+			//							},
+			//							extras: {
+			//								biaoshi: "yihu",
+			//								yihuid: yihu_id
+			//							}
+			//						});
+			//						var sevice_item_xiangqing = plus.webview.getWebviewById('a015_item_xiangqing.html');
+			//						sevice_item_xiangqing.addEventListener('loaded', function() {
+			//							mui.fire(sevice_item_xiangqing, "sevice_item_xiangqing", {
+			//								ITEM_NAME: service_item_name,
+			//								ITEM_NAME_ID: service_item_id
+			//							});
+			//						});
+			//					} else {}
+			//				});
+			//			})
+		</script>
+	</body>
+
+</html>

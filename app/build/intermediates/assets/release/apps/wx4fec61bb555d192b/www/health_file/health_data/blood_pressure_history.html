@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>历史记录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<link rel="stylesheet" href="../../css/main.css" />
+		<link rel="stylesheet" href="../../js/qs/qs.common.css" />
+		<link rel="stylesheet" href="../../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../../css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
+		<style>
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			/* DEMO 3 */
+			
+			.wrapper-dropdown-3 {
+				/* Size and position */
+				position: relative;
+				width: 25%;
+				margin: 0 auto;
+				padding: 10px;
+				/* Styles */
+				background: #fff;
+				border-radius: 7px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
+				cursor: pointer;
+				outline: none;
+				/* Font settings */
+				font-weight: bold;
+				color: #8AA8BD;
+				font-size: 12px;
+			}
+			
+			.wrapper-dropdown-3:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: 15px;
+				top: 50%;
+				margin-top: -3px;
+				border-width: 6px 6px 0 6px;
+				border-style: solid;
+				border-color: #8aa8bd transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown {
+				/* Size & position */
+				position: absolute;
+				top: 140%;
+				left: 0;
+				right: 0;
+				/* Styles */
+				background: white;
+				border-radius: inherit;
+				border: 1px solid rgba(0, 0, 0, 0.17);
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				font-weight: normal;
+				-webkit-transition: all 0.5s ease-in;
+				-moz-transition: all 0.5s ease-in;
+				-ms-transition: all 0.5s ease-in;
+				-o-transition: all 0.5s ease-in;
+				transition: all 0.5s ease-in;
+				list-style: none;
+				/* Hiding */
+				opacity: 0;
+				pointer-events: none;
+				z-index: 1;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 15px;
+				border-width: 0 6px 6px 6px;
+				border-style: solid;
+				border-color: #fff transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:before {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 13px;
+				border-width: 0 8px 8px 8px;
+				border-style: solid;
+				border-color: rgba(0, 0, 0, 0.1) transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li a {
+				display: block;
+				padding: 10px;
+				text-decoration: none;
+				color: #8aa8bd;
+				border-bottom: 1px solid #e6e8ea;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+				-webkit-transition: all 0.3s ease-out;
+				-moz-transition: all 0.3s ease-out;
+				-ms-transition: all 0.3s ease-out;
+				-o-transition: all 0.3s ease-out;
+				transition: all 0.3s ease-out;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li i {
+				float: right;
+				color: inherit;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:first-of-type a {
+				border-radius: 7px 7px 0 0;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:last-of-type a {
+				border: none;
+				border-radius: 0 0 7px 7px;
+			}
+			/* Hover state */
+			
+			.wrapper-dropdown-3 .dropdown li:hover a {
+				background: #f3f8f8;
+			}
+			/* Active state */
+			
+			.wrapper-dropdown-3.active .dropdown {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			/* No CSS3 support */
+			
+			.no-opacity .wrapper-dropdown-3 .dropdown,
+			.no-pointerevents .wrapper-dropdown-3 .dropdown {
+				display: none;
+				opacity: 1;
+				pointer-events: auto;
+			}
+			
+			.no-opacity .wrapper-dropdown-3.active .dropdown,
+			.no-pointerevents .wrapper-dropdown-3.active .dropdown {
+				display: block;
+			}
+			
+			#uptab {
+				width: 100%;
+			}
+			
+			.mui-fullscreen {
+				top: 45px;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 100px;
+			}
+			
+			.mui-control-content {
+				/*height: 500px;*/
+				height: 88vh !important;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				margin-top: 3px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 90px;
+				max-width: 90px;
+				height: 90px;
+			}
+			
+			.mui-media-body ul li {
+				list-style: none;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #D9D9D9;
+			}
+			
+			.mui-table-view .mui-media,
+			.mui-table-view .mui-media-body {
+				overflow: hidden;
+				line-height: 1.5;
+			}
+			
+			.iconfont {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.wutu {
+				margin: 0;
+				height: auto;
+				text-align: center;
+				padding-top: 1rem;
+				padding-bottom: 6rem;
+				background: transparent;
+			}
+			
+			.head-img {
+				max-width: 70px;
+				max-height: 70px;
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				border-radius: 50%;
+				margin-left: 10px;
+			}
+			
+			.round {
+				text-align: center;
+			}
+			
+			.round p {
+				font-size: 13px;
+			}
+			
+			.font-14 {
+				font-size: 14px;
+			}
+			
+			.mui-table-view-cell {
+				padding: 10px 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">历史记录</h1>
+			<button id="select" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				筛选</button>
+		</header>
+		<div class="mui-content" id="content">
+			<div id="cus-wrapper" class="wrapper" style="bottom: 0px;">
+				<div id="scroller" class="scroller" style="margin: 0; padding: 0;padding-bottom: 2px;">
+					<ul id="tableUL" class="mui-table-view">
+						<!--<li class="mui-table-view-cell">
+							<a>
+								<div class="font-14" id="time_day">
+									2018-07-13
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="" style="">
+								<div class="mui-row">
+									<div class="mui-col-xs-2">
+										<div class="round font-14">
+											血压
+											<p id="higePressure">120</p>
+											<p>mmHg</p>
+										</div>
+									</div>
+									<div class="mui-col-xs-3"></div>
+									<div class="mui-col-xs-2">
+										<div class="round font-14">
+											心率
+											<p id="lowPressure">120</p>
+											<p>次/分钟</p>
+										</div>
+									</div>
+									<div class="mui-col-xs-3"></div>
+									<div class="mui-col-xs-2">
+										<div class="round font-14">
+											时间
+											<p id="time_minute">22:00</p>
+										</div>
+									</div>
+								</div>
+							</a>
+						</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="../../js/jquery-labelauty.js"></script>
+	<script type="text/javascript" src="../../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../../js/constants.js"></script>
+
+	<script type="text/javascript" src="../../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../../js/qs/qs.immersed.js"></script>
+	<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
+	<script type="text/javascript" src="../../js/mui.poppicker.js"></script>
+
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+		var id;
+		var wrapper01;
+		var start,end;
+
+		mui.plusReady(function() {
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var self = plus.webview.currentWebview();
+			id = self.ID;
+			console.log("id------------》" + id);
+			getList();
+			//DtPicker选择器
+
+			//			$("#select").click(function(e) {
+			//				var dtpicker = new mui.DtPicker({
+			//					type: "date", //设置日历初始视图模式
+			//					beginDate: new Date(2016, 01, 01), //设置开始日期
+			//					endDate: new Date() //设置现在日期
+			//				});
+			//				dtpicker.show(function(selectItems) {
+			//					console.log(SelectedItem);
+			//					dtpicker.dispose();
+			//				})
+			//			});
+			//			document.getElementById("select").addEventListener('tap', function() {
+			//				var picker = new mui.PopPicker({
+			//					layer: 2
+			//				});
+			//				
+			//				
+			//				var a = ["2018-06-06", "2018-07-16"];
+			//				var b = ["2018-06-06", "2018-07-16"];
+			//				var pdata = [];
+			//				a.forEach(function(v, i) {
+			//					var subData = {
+			//						text: a[i],
+			//						children: b
+			//					}
+			//					pdata.push(subData)
+			//				});
+			//				var myDate = new Date();
+			//				picker.setData(pdata)
+			//				picker.pickers[0].setSelectedIndex(1);
+			//				picker.pickers[1].setSelectedIndex(1);
+			//				picker.show(function(SelectedItem) {
+			//					console.log(JSON.stringify(SelectedItem[0].text + " " + SelectedItem[1]));
+			//				})
+			//			});
+
+			document.getElementById("select").addEventListener('tap', function() {
+				var dDate = new Date();
+				//设置当前日期（设置默认当前日期）
+				var minDate = new Date();
+				//最小时间
+				minDate.setFullYear(2017, 0, 1);
+				var maxDate = new Date();
+				//最大时间
+				var year = maxDate.getFullYear();
+				var month = maxDate.getMonth();
+				var strDate = maxDate.getDate();
+				maxDate.setFullYear(year,month,strDate);
+				plus.nativeUI.pickDate(function(e) {
+					var d = e.date;
+					start=d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+					end=d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+					console.log('您选择的日期是:' +start);
+					wrapper01.page = 1;
+					getPressureHistory(wrapper01);
+				}, function(e) {
+					mui.toast("您没有选择日期");
+				}, {
+					title: '请选择查询日期',
+					date: dDate,
+					minDate: minDate,
+					maxDate: maxDate
+				});
+			});
+
+		});
+
+		//初始化时候的列表和banner
+		function getList() {
+			wrapper01 = $.initIscroll({
+				id: "cus-wrapper",
+				pullUpAction: getPressureHistory,
+				pullDownAction: getPressureHistory,
+				limit: 8
+			});
+			wrapper01.page = 1;
+			getPressureHistory(wrapper01);
+		};
+
+		function appendItem(item) {
+
+			var day = moment(item.createdOn).format('YYYY-MM-DD');
+			var time = moment(item.createdOn).format('HH:mm');
+
+			var daylist = $("#tableUL").find("#" + day);
+
+			var high = item.data.oncedata.d1;
+			var low = item.data.oncedata.d2;
+			var heart = item.data.oncedata.d3;
+
+			var li_item = '<li class="mui-table-view-cell"><a id="" style=""><div class="mui-row">' +
+				'<div class="mui-col-xs-2"><div class="round font-14">' +
+				'血压' + '<p id="higePressure">' + high + '/' + low + '</p><p>mmHg</p></div></div>' +
+				'<div class="mui-col-xs-3"></div><div class="mui-col-xs-2"><div class="round font-14">' +
+				'心率' + '<p id="lowPressure">' + heart + '</p><p>次/分钟</p></div></div>' +
+				'<div class="mui-col-xs-3"></div><div class="mui-col-xs-2"><div class="round font-14">' +
+				'时间' + '<p id="time_minute">' + time + '</p></div></div></div></a></li>';
+
+			if(daylist.length > 0) {
+				$(daylist[0]).append(li_item)
+			} else {
+				var li_day = '<li class="mui-table-view-cell"><a><div class="font-14" id="' + day + '">' + day + '</div></a></li>';
+				$("#tableUL").append(li_day);
+				$("#" + day).append(li_item);
+			}
+		}
+
+		function getPressureHistory(myScroll) {
+			var url = serverAddress + "/api/appfamilydoctorteam/getHealthDataNewList";
+			if(myScroll.page == 1) {
+				$("#tableUL").html('<div class="mui-content-padded wutu"><img src="../../images/no_data/1-01.png" style="width: 50%;"></div>');
+			}
+			var success = function(data) {
+				var high, low, heart, time, day, li_day, li_item;
+				var arr = [];
+				console.log("获取取值结果------------》" + JSON.stringify(data));
+				if(data.result == "success") {
+					if(data.data.length != 0) {
+						if(myScroll.page == 1) {
+							$("#tableUL").html('')
+						}
+						if(data.data.length == myScroll.limit) {
+							myScroll.page = myScroll.page + 1;
+							myScroll.upFlag = true
+						} else {
+							myScroll.upFlag = false
+						}
+
+						var arrayAdd = data.data;
+						console.log("健康数据列表------------》" + JSON.stringify(arrayAdd));
+
+						//						console.log(JSON.stringify(arrayAdd));
+						var dataArr = [];
+						for(var i = 0; i < arrayAdd.length; i++) {
+
+							appendItem(arrayAdd[i])
+
+						};
+
+					} else {
+						myScroll.upFlag = false;
+					}
+				} else {
+					mui.toast(data.msg);
+				}
+			};
+			var arraydata = {
+				page: myScroll.page,
+				limit: 8,
+				serviceObject: id,
+				dataType: "bloodpressure",
+				start:start,
+				end:end,
+			};
+			console.log("上传数组-------------》" + JSON.stringify(arraydata));
+
+			commonHttpUtils(url, "post", arraydata, success, error, true);
+
+		}
+	</script>
+
+</html>

@@ -1,0 +1,104 @@
+.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 150px;
+			}
+			.mui-pull-right {
+				margin-right: 25px;
+			}
+			
+			.mui-btn {
+				border-radius: 0;
+				font-size: 0.3126rem;
+				color: #1d1d1d;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+			}
+			
+			.mui-table-view:before {
+				height: 1px;
+				background-color: #ececec;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active {
+				background-color: transparent;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			.tubiao {
+				width: 10%;
+				float: left;
+			}
+			
+			.wrz {
+				width: 20px;
+				height: 20px;
+				float: left;
+			}
+			
+			.renzheng {
+				padding-top: 10px;
+			}
+			
+			.huangzi {
+				color: #FCB565;
+				font-size: 14px;
+			}
+			
+			.gerenzhongxin {
+				height: 100px;
+			}
+			
+			.icon-bitian:before {
+				content: "\e607";
+				color: red;
+				font-size: 8px;
+			}
+			
+			.icon-bitian.mui-pull-right {
+				margin-right: 10px;
+				margin-top: -3px;
+			}
+				#table-viewX {
+				font-size: 0.2916rem;
+				    height: 48px;
+				/*margin-bottom: 0.08rem;*/
+			}
+			
+			#table-viewX img {
+				width: 0.65rem;
+				height: 0.65rem;
+			}
+			
+			#table-viewX .mui-media-body {
+				margin-top: 0rem;
+				width: 100%;
+				float: right;
+				font-size: 15px;
+				padding-left: 10px;
+			}
+				.mui-table-view-chevron .mui-table-view-cell>a:not(.mui-btn) {
+				margin-right: -145px;
+			}
+			
+			#gerenzhongxin .mui-media-body {
+				font-size: 0.3rem;
+				padding-top: 0.4rem;
+				padding-left: 10px;
+			}
+			
+			.firstUl {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 0.5rem;
+				color: #E0E0E0;
+				right: 0;
+			}

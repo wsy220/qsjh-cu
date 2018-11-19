@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>健康数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<style>
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			
+			.mui-content {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-icon-search {
+				color: #999999;
+			}
+			
+			.mui-input-group {
+				border-radius: 20px;
+				margin: 10px;
+				background-color: #EBEBEB;
+			}
+			
+			.mui-input-group .mui-input-row {
+				display: inline-flex;
+				width: 100%;
+			}
+			
+			.mui-input-group input {
+				padding-top: 1px;
+			}
+			
+			.mui-input-group:before,
+			.mui-input-group:after,
+			.mui-input-group .mui-input-row:after {
+				background-color: #FFFFFF;
+			}
+			
+			.router {
+				font-size: 13px;
+				color: #999999;
+				display: inline-flex;
+				padding-top: 8%;
+			}
+			
+			.hospitalName {
+				font-size: 15px;
+				color: #4D4D4D;
+				padding-top: 5%;
+			}
+			
+			.wutu {
+				height: 87vh;
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			#info {
+				height: 48px !important;
+				font-size: 15px;
+				text-align: center;
+			}
+			
+			.wrapper {
+				position: absolute;
+				z-index: 1;
+				top: 115px !important;
+				bottom: 0px;
+				left: 0;
+				width: 100%;
+				background: #eeeeee;
+				overflow: hidden;
+			}
+			
+			.position-top {
+				position: absolute;
+				left: 33%;
+				top: 8px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">社区列表</h1>
+			<!--<button id="add_health" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				搜索</button>-->
+		</header>
+		<div class="mui-content">
+			<div class="mui-input-group">
+				<div class="mui-input-row">
+					<i class="position-top"><span class="mui-icon mui-icon-search"></span></i>
+					<input id='info' name='info' type="text" class="mui-input-clear" placeholder="搜索医院" value="" oninput="processSearch()"></input>
+				</div>
+			</div>
+			<div class="mui-slider-group">
+				<div id="cus-wrapper" class="wrapper" style="">
+					<div id="scroller" class="scroller" style="margin: 0; padding: 0;padding-bottom: 2px;">
+						<ul id="tableUL" class="mui-table-view">
+							<!--<li class="mui-table-view-cell hospitalDetail" data-id="{{value._id}}" style="padding: 4%;">
+								<a class="" id="">
+									<div class="mui-slider-handle" data-id="{{value._id}}">
+										<img class=" mui-pull-left" src="../images/006.jpg" style="width:2.3rem;height:1.5rem">
+										<div class="mui-media-body " style="padding-left: 5%;">
+											<div class="hospitalName">松原市零件社区临江医院</div>
+											<div class="router">
+												<i><img src="../images/familydoctor/icon_location.png" width="17px"></i>
+												<span>3.6</span>km
+											</div>
+
+										</div>
+									</div>
+								</a>
+							</li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		//		mui.init({
+		//			swipeBack: true //启用右滑关闭功能
+		//		});
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+		var wrapper01;
+		var userid = localStorage.getItem("TOKENID");
+		console.log("用户id-------------》" + userid);
+
+		var issearch = false;
+		var info
+
+		function getPressureHistory(myScroll) {
+			var url = serverAddress + "/api/appfamilydoctorteam/getHospital";
+			if(myScroll.page == 1) {
+				$("#tableUL").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 50%;"></div>');
+			}
+			var success = function(data) {
+				console.log("获取取值结果------------》" + JSON.stringify(data));
+				if(data.result == "success") {
+					if(data.data.length != 0) {
+						if(myScroll.page == 1) {
+							$("#tableUL").html('')
+						}
+						if(data.data.length == myScroll.limit) {
+							myScroll.page = myScroll.page + 1;
+							myScroll.upFlag = true
+						} else {
+							myScroll.upFlag = false
+						};
+						$("#tableUL").processTL(templateRegister.community_hospital, {
+							sub: data.data
+						}, "append", function() {});
+
+					} else {
+						myScroll.upFlag = false;
+					}
+				} else {
+					mui.toast(data.msg);
+				}
+			};
+			var arraydata = {
+				page: myScroll.page,
+				limit: 8,
+				patient : userid
+			};
+			if(issearch) {
+				arraydata.con = info
+			}
+
+			console.log("上传数组-------------》" + JSON.stringify(arraydata));
+
+			commonHttpUtils(url, "post", arraydata, success, error, true);
+
+		};
+
+		function processSearch() {
+			issearch = true;
+			wrapper01.page = 1;
+			info = $("#info").val();
+
+			getPressureHistory(wrapper01);
+		}
+
+		mui.plusReady(function() {
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			if(plus.os.name == "Android"){
+				$(".wrapper").css("cssText", "top:2.35rem !important;")
+//				$(".wrapper").css("top","2.35rem !important")
+			}
+
+			wrapper01 = $.initIscroll({
+				id: "cus-wrapper",
+				pullUpAction: getPressureHistory,
+				pullDownAction: getPressureHistory,
+				limit: 8
+			});
+			wrapper01.page = 1;
+			getPressureHistory(wrapper01);
+
+			$("#info").change(function() {
+				processSearch();
+			});
+
+			//打开具体社区医院
+			mui(".mui-content").on("tap", ".hospitalDetail", function(e) {
+				var detailid = $(this).attr("data-id");
+				mui.openWindow({
+					url: 'z01_familyDoctorTeamList.html',
+					id: 'z01_familyDoctorTeamList',
+					extras: {
+						ID: detailid
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			})
+
+		});
+	</script>
+
+</html>

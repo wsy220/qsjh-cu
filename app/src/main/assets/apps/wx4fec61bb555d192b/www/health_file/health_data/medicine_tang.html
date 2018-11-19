@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>血糖药物</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="../../css/icons-extra.css" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/main.css" />
+		<style>
+			button {
+				font-size: 16px!important;
+			}
+			
+			.mui-table-view-cell button {
+				padding: 2px 2px !important;
+			}
+			
+			.mui-content-padded .mui-btn p {
+				font-size: 0.75em;
+				color: #999999;
+			}
+			
+			.mui-content-padded {
+				margin-left: 15px;
+				margin-right: 15px;
+			}
+			
+			.mui-popup-title {
+				display: none;
+			}
+			
+			.mui-popup-inner:after {
+				height: 0;
+			}
+			
+			.mui-popup-button:after {
+				width: 0;
+			}
+			
+			.mui-popup-input input {
+				border-color;
+				border-radius: 5px;
+				height: 38px;
+			}
+			
+			.mui-popup .mui-input-row {
+				border: 1px solid #ccc;
+				border-radius: 10px;
+				margin: 10px 10px;
+				height: 40px !important;
+			}
+			
+			.mui-input-row label {
+				padding: 10px 0px;
+				width: 25%;
+			}
+			
+			.mui-input-row label~input {
+				float: left;
+				margin: 0;
+				width: 75%;
+			}
+			
+			.mui-popup-button {
+				color: #45C01A;
+			}
+			
+			a:hover,
+			a:focus {
+				color: #FFFFFF;
+				text-decoration: underline;
+			}
+			
+			a {
+				color: #FFFFFF;
+				text-decoration: none;
+			}
+			
+			.mui-table-view-cell:after {
+				height: 0;
+			}
+			
+			#hr {
+				border-bottom: 1px solid #edebeb;
+				margin-right: 15px;
+				margin-left: 15px;
+			}
+			
+			.border-line {
+				padding: 2px 14px;
+			}
+			
+			.button-last {
+				font-size: 12px !important;
+				text-align: center;
+				color: #CCCCCC;
+				white-space: inherit;
+				line-height: 22px;
+				border: 1px solid #d1d1d1;
+				border-radius: 15px;
+				margin-bottom: 10px;
+				margin-right: 5px;
+			}
+			
+			.change-color {
+				border: 1px solid #3DCAD0;
+				color: #41CED3;
+				background: rgba(67, 206, 211, 0.14);
+			}
+			
+			#buttonLi {
+				margin: 0;
+			}
+			
+			textarea {
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">药物添加</h1>
+		</header>
+		<div class="mui-content">
+
+			<ul class="mui-table-view">
+
+				<li class="mui-table-view-cell" style="">
+					<div class="mui-content-padded" style="" id="buttonLi">
+						<!--<button type="button" class="button-last" id="buttonid">
+							<span class="border-line"> 美康达 </span>
+						</button>
+						<button type="button" class="button-last" id="buttonid">
+							<span class="border-line"> 十四个字的药名字十四个字的药十四个字的药名字十四个字的药十四个字的药名字十四个字的药 </span>
+						</button>
+						<button type="button" class="button-last" id="buttonid">
+							<span class="border-line"> 美康达 </span>
+						</button>
+						<button type="button" class="button-last" id="buttonid">
+							<span class="border-line"> 美康达美康达 </span>
+						</button>
+						<button type="button" class="button-last" id="buttonid">
+							<span class="border-line"> 十四个字的药名字十四个字的药 </span>
+						</button>-->
+					</div>
+				</li>
+				<div id="hr"></div>
+				<div class="mui-input-row" style="margin: 10px 15px;">
+					<textarea id="medicinemiaoshu" rows="5" placeholder="请选择您的药物"></textarea>
+				</div>
+
+			</ul>
+			<div class="mui-content-padded">
+				<button id='queren' class="mui-btn mui-btn-block mui-btn-primary">确认</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../../js/qs/qs.immersed.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.js"></script>
+		<script>
+			mui.init({
+				gestureConfig: {
+					tap: true, //默认为true
+					doubletap: true, //默认为false
+					longtap: true, //默认为false
+					swipe: true, //默认为true
+					drag: true, //默认为true
+					hold: false, //默认为false，不监听
+					release: false //默认为false，不监听
+				}
+			});
+			mui.plusReady(function() {
+				var vWeekOfDay = "";
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				//服务对象ID
+				var service_id = currentView.ID;
+				console.log("dddd" + JSON.stringify(currentView.medcine_string));
+
+				$("#medicinemiaoshu").html(currentView.medcine_string.medicine);
+
+				var medicineURL = serverAddress + '/api/appfamilydoctorteam/listBloodMedicine'
+				var success = function(data) {
+					var html = "";
+					console.log("血糖药物" + JSON.stringify(data));
+					for(var i = 0; i < data.data.length; i++) {
+						html += '<button type="button" class="button-last" id="buttonid" data-id="' + data.data[i]._id + '"><span class="border-line">' + data.data[i].mainLabel + '</span></button>'
+					}
+					$("#buttonLi").html(html);
+				};
+				commonHttpUtils(medicineURL, "get", {}, success, error, true);
+
+				mui('#buttonLi').on('tap', 'button', function(e) {
+					var buttonposition = $(this).attr("data-id");
+					$(this).addClass("change-color");
+					$("#medicinemiaoshu").append($(this).text() + ",");
+
+					mui('#buttonLi').on('tap', '.change-color', function(e) {
+						var buttonposition = $(this).attr("data-id");
+						$(this).removeClass("change-color");
+						$("#medicinemiaoshu").html($("#medicinemiaoshu").text().replace($(this).text() + ",", ''));
+					});
+				});
+
+				$("#queren").click(function(e) {
+
+					var medicineTEXT = $("#medicinemiaoshu").text();
+					console.log(medicineTEXT);
+					var medicineVAL = $("#medicinemiaoshu").val();
+					console.log(medicineVAL);
+					var medicineALL = medicineTEXT + medicineVAL;
+					console.log(medicineALL);
+
+					var HealthDataSchema = {
+						serviceObject: service_id,
+						dataType: "bloodsugar",
+						healthDoc: {
+							bloodsugar: {
+								medicine: medicineVAL
+							}
+						}
+					};
+					console.log("存储血糖1" + JSON.stringify(HealthDataSchema))
+					var saveillnessURL = serverAddress + "/api/appfamilydoctorteam/updateMedicineOrDisease";
+					var success = function(data) {
+						console.log("存储血糖succ", JSON.stringify(data));
+						if(data.result == "success") {
+							mui.toast("存储成功");
+							plus.webview.getWebviewById("health_tang.html").reload();
+							mui.back();
+
+						}
+					}
+					if(medicineTEXT.length != 0) {
+						commonHttpUtils(saveillnessURL, "post", HealthDataSchema, success, error, true);
+					} else {
+						mui.toast("请填写药物");
+					}
+				})
+			});
+
+			
+		</script>
+	</body>
+</html>

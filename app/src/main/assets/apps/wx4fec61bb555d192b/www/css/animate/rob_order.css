@@ -1,0 +1,79 @@
+/*.bg{background: black;opacity: 0.50;}*/
+.bo-ri{ display:none;background-image: url(../../images/rob_img/tjffbj.png); background-size: cover; position: absolute;top:2rem; z-index: 9999; background-repeat: no-repeat; width: 6.52rem; height: 6.14rem; left: 0.4rem;}
+.tanchu li{height: 58px;font-size: 0.3rem;}
+.tanchu img{ margin-top: 10px;}
+.tanchu li p{width: 100%; font-size: 0.28rem;}
+.tanchu li .yugu{color: #fe1615;font-size: 0.4rem;    /* font-weight: 600; */}
+.tanchu li .ewai p{color: black;}
+.tanchu li .yugu span{color: #8f8f94;font-size: 0.28rem;}
+.tanchu li .yugu p{color: #8f8f94;font-size: 0.28rem;}
+.mui-table-view .mui-media-object {max-width: 20px;height: 20px;}
+.bottom-order{    
+	padding: 0 40px 65px 40px;
+	margin:auto 0;
+	background: #ecf6ff;
+	border-bottom:1px #a6aaaf solid;
+    margin-left: 0;
+    margin-right: 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    z-index: 999;
+	}
+.top-order{    
+    background: -webkit-linear-gradient(left, #f46d44 , #d94949);
+    background: -o-linear-gradient(right, #f46d44, #d94949);
+    background: -moz-linear-gradient(right, #f46d44, #d94949);
+    background: linear-gradient(to right, #f46d44 , #d94949);
+    padding: 10px;
+    /*border-top-right-radius:15px;
+    border-top-left-radius:15px;*/
+    }
+.top-order-left{background: #f0e44e;width:1.6rem;padding: 5px;border-radius: 25px;font-size: 0.3rem;margin-top: 7px;}
+.top-order-left img{width:0.5rem}
+.top-order-ctn{
+	right: 40px;
+    left: 40px;
+    display: inline-block;
+    overflow: hidden;
+    width: auto;
+    margin: 0;
+    text-overflow: ellipsis;
+}
+.mui-bar-ctn{	
+    height: 44px;
+}
+.mui-bar-ctn .mui-title{right: 40px;
+    left: 40px;
+    display: inline-block;
+    overflow: hidden;
+    width: auto;
+    margin: 0;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    font-weight: 300; 
+    font-size: 0.4rem;
+}
+.mui-bar-ctn .mui-title p{color: white;font-size: 0.28rem;}
+.top-order-right{font-size: 0.7rem;color: white;font-size: 1rem;font-weight: 300; position: absolute;right: 10px;top: -10px;}
+.btn-bg{background: url(../../../image/anniu.png) no-repeat;   }
+.btn-bg-hui{background: url(../../../image/anniudj.png) no-repeat;   }
+.btn-bg-hui p{color: #cc373d !important; line-height:43px;}
+.bottom-order-btn{
+    width: 70px;
+    height: 70px;
+    background-size: cover;   
+     text-align: center;
+    color: #fe1615;
+    margin: 0 auto;  
+    margin-top: -10px;
+    z-index: 9999;
+    position: absolute;
+    left: 0;
+    right: 0;
+    line-height: 0.5rem;
+    font-weight: 600;
+	padding-top: 16px;
+    font-size: 0.5rem;}
+.bottom-order-btn p{color: #fe1615;font-size: 0.4rem;font-weight: 300;}
+.mui-table-view-cell{padding: 10px 15px;}

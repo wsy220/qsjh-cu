@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>设置</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			#head-img {
+				max-width: 70px;
+				height: 70px;
+				margin-top: 0.3rem;
+				border-radius: 50%;
+			}
+			
+			#gerenzhongxin .mui-media-body {
+				font-size: 0.3751rem;
+				padding-top: 0.4rem;
+				padding-left: 10px;
+			}
+			
+			.firstUl {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 0.5rem;
+				color: #E0E0E0;
+				right: 0;
+			}
+			
+			#table-viewX {
+				font-size: 0.2916rem;
+				/*margin-bottom: 0.08rem;*/
+			}
+			
+			#table-viewX img {
+				width: 0.45rem;
+				height: 0.45rem;
+				margin-top: 5px;
+			}
+			
+			#table-viewX .mui-media-body {
+				margin-top: 0.1rem;
+				width: 90%;
+				float: right;
+				font-size: 15px;
+				color: #333333;
+			}
+			
+			.mui-pull-right {
+				margin-right: 25px;
+			}
+			
+			.mui-btn {
+				border-radius: 0;
+				font-size: 0.3126rem;
+				color: #1d1d1d;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+			}
+			
+			.mui-table-view:before {
+				height: 1px;
+				background-color: #ececec;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active {
+				background-color: transparent;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.tubiao {
+				width: 10%;
+				float: left;
+			}
+			
+			.wrz {
+				width: 20px;
+				height: 20px;
+				float: left;
+			}
+			
+			.renzheng {
+				padding-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">设置</h1>
+		</header>
+		<div class="mui-content">
+
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a id="modify_password" class="mui-navigate-right">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/setting/icon_password.png" /></div>
+						<div class="mui-media-body">
+							修改密码：
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a class="" id="modify_phone">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/setting/icon_mobile_phone.png" /></div>
+						<div class="mui-media-body">
+							修改手机号：<span class="mui-pull-right" id="phone"></span>
+						</div>
+					</a>
+
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a id="use_document" class="mui-navigate-right">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/setting/icon_agreement.png" /></div>
+						<div class="mui-media-body">
+							使用协议
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="yijianfankui">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/setting/icon_feedback.png" /></div>
+						<div class="mui-media-body">
+							意见反馈
+						</div>
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a id="Customer_service" class="mui-navigate-right">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/setting/icon_help.png" /></div>
+						<div class="mui-media-body">
+							服务帮助
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a id="check_version">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/setting/icon_to_update.png" /></div>
+						<div class="mui-media-body">
+							检查版本：<span id="appVersion" class="mui-pull-right">0.0.1版本</span>
+						</div>
+					</a>
+
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a id="about_us">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/setting/icon_about.png" /></div>
+						<div class="mui-media-body">
+							关于我们
+						</div>
+					</a>
+
+				</li>
+			</ul>
+			<ul class="mui-table-view" style="margin-top: 25px; margin-bottom: 20px;" id="table-viewX">
+				<li class="mui-table-view-cell" id="quit">
+					<a style="text-align: center;color: #4a4a4a; font-size: 15px;">
+						退出登录
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.update.js"></script>
+	<script>
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				//返回true，继续页面关闭逻辑  
+				mui.back;
+				return true;
+			}
+		});
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			var wgtVer = null;
+
+			// 获取本地应用资源版本号
+			plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+				wgtVer = inf.version;
+				$("#appVersion").text(wgtVer)
+			});
+			$("#check_version").click(function(e) {
+				checkUpdate(wgtVer);
+			});
+			$("#phone").html(localStorage.getItem("TOKEN"));
+		});
+
+		$("#modify_password").click(function(e) {
+			mui.openWindow({
+				id: 'modify_password.html',
+				url: '../login/modify_password.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+		$("#modify_phone").click(function(e) {
+			mui.openWindow({
+				id: 'modify_phone1.html',
+				url: '../login/modify_phone1.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+		document.getElementById("yijianfankui").addEventListener("tap", function() {
+			mui.openWindow({
+				url: '../geren_message/e03_suggestion.html',
+				id: 'e03_suggestion.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+		document.getElementById("use_document").addEventListener("tap", function() {
+			mui.openWindow({
+				url: '../document/e03_insurance_agreement.html',
+				id: 'e03_insurance_agreement.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+		document.getElementById("Customer_service").addEventListener("tap", function() {
+			mui.openWindow({
+				url: '../geren_message/qskf.html',
+				id: 'qskf.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+
+		$("#about_us").click(function(e) {
+
+			var aniShow = mui.os.plus ? "slide-in-right" : "zoom-fade-out";
+			mui.openWindow({
+				url: "info.html",
+				id: "info.html",
+				show: {
+					aniShow: aniShow,
+					duration: 300
+				}
+			});
+		});
+
+		window.addEventListener('acount', function(e) {
+			$("#phone").text(e.detail.acount);
+		});
+		document.getElementById("quit").addEventListener("tap", function() {
+			/**
+			 * plus.runtime.restart();重启APP
+			 */
+			//plus.runtime.restart();
+			closeApp();
+			/**
+			 * 清理webview
+			 * @example 适用场景：登录注销后，关闭无用或历史webview；
+			 * @param {Array} idList 不被关闭的webview的id集合
+			 */
+
+		})
+
+		function closeApp() {
+			plus.nativeUI.actionSheet({
+				cancel: "取消",
+				buttons: [{
+						title: "确定注销"
+					},
+					//				{
+					//					title: "直接关闭应用"
+					//				}
+				]
+			}, function(e) {
+				var index = e.index;
+				switch(index) { //case 0: 取消
+					case 1:
+						var logouturl = serverAddress + "/api/patient/logout";
+						//plus.webview.getWebviewById("guide").close("none");
+						localStorage.clear();
+						localStorage.setItem("lauchFlag", "1");
+						plus.runtime.restart();
+						var sdksussess = function(data) {
+							console.log(JSON.stringify(data));
+							//退出登录成功之后做YX的loginout
+							plus.qsPlugin.yxLogout("","","","",
+								function(result) {},
+								function(result) {})
+							}
+						commonHttpUtils(logouturl, "post", {}, sdksussess, error, false);
+						
+						break;
+					case 2:
+						localStorage.clear();
+						plus.device.beep(3);
+						plus.runtime.quit();
+						break;
+				}
+			});
+		}
+	</script>
+
+</html>

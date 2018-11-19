@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>签名</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.mui-btn-color {
+				background: #43CED3;
+				border: none;
+				border-radius: 25px;
+				color: #FFFFFF;
+				height: 0.9rem;
+				font-size: 14px;
+				width: 100%;
+			}
+			
+			.blue-border {
+				border: 1px solid #43CED3;
+				margin: 1%;
+				border-radius: 15px;
+				background-color: #FFFFFF;
+			}
+			
+			.save-sign,
+			#sign_name {
+				text-align: center;
+				padding: 4%;
+				color: #3FCCD1;
+			}
+			
+			.no-list-dot {
+				list-style: none;
+			}
+			
+			.team-people {
+				padding: 2% 5%;
+			}
+			
+			.change-main div,
+			.terms,
+			.sign-div {
+				font-size: 14px;
+				color: #4D4D4D;
+				padding: 1% 3%;
+			}
+			
+			.terms {
+				padding: 5% 3%;
+				text-align: justify;
+			}
+			
+			.sign-div {
+				text-align: center;
+				padding-bottom: 10%;
+			}
+			
+			.height-pic {
+				height: 1.2rem;
+			}
+			
+			.mui-input-row label {
+				padding: 11px 0px;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				font-size: 14px;
+				border-bottom: 1px solid #DBDBDB;
+				height: 28px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">签约</h1>
+		</header>
+		<div class="mui-content">
+			<div class="blue-border">
+				<div id="sign_name">
+					基础服务包
+				</div>
+				<div class="change-main">
+					<div>合同编号：<span id="heTongNum"></span></div>
+					<div>甲方（居民）：<span id="username"></span></div>
+					<div>身份证号：<span id="idnumber"></span></div>
+					<div>联系电话：<span id="phone"></span></div>
+					<div class="mui-input-row">
+						<label>社保(医保)卡号：</label>
+						<input id="socialNo" type="text" class="mui-input-clear" placeholder="">
+						<span style="color: red;position: absolute;left: 97%;top: 10px;">*</span>
+					</div>
+					<div class="mui-input-row">
+						<label>紧急联系人：</label>
+						<input id="secondName" type="text" class="mui-input-clear" placeholder="">
+						<span style="color: red;position: absolute;left: 97%;top: 10px;">*</span>
+					</div>
+					<div class="mui-input-row">
+						<label>紧急联系人电话：</label>
+						<input id="secondPhone" type="text" class="mui-input-clear" placeholder="">
+						<span style="color: red;position: absolute;left: 97%;top: 10px;">*</span>
+					</div>
+					<div class="mui-input-row">
+						<label>紧急联系人住址：</label>
+						<input id="secondAddr" type="text" class="mui-input-clear" placeholder="">
+						<span style="color: red;position: absolute;left: 97%;top: 10px;">*</span>
+					</div>
+					<div>乙方（家庭医生团队）：<span id="teamName">市区（县）社区卫生服务中心（乡镇卫生院、社区卫生服务站、村卫生室）</span></div>
+					<div>团队主要人员
+						<ul class="team-people" id="tableUL">
+							<!--<li class="no-list-dot mui-row">
+								<div class="mui-col-xs-6">姓名：韩冰</div>
+								<div class="mui-col-xs-6">岗位：主(副)任护师</div>
+							</li>
+							<li class="no-list-dot mui-row">
+								<div class="mui-col-xs-6">姓名： 腾飞哈哈</div>
+								<div class="mui-col-xs-6">岗位： 护士</div>
+							</li>
+							<li class="no-list-dot mui-row">
+								<div class="mui-col-xs-6">姓名： 田晓环</div>
+								<div class="mui-col-xs-6">岗位： 公卫</div>
+							</li>-->
+						</ul>
+					</div>
+					<div>团队联系电话：<span id="teamTel"></span></div>
+				</div>
+				<div class="terms" id="terms">
+					<!--甲、乙双方本着平等、尊重和自愿的原则，签订此协议，接受以下条款的约定： 1、选择签约服务包：包；政府补助费用：元；居民自付费用：元，自签约3个工作日内向乙方交付，乙方收到甲方付款时出具等額的增值税专用发票。 2、甲方获得签约服务 （1）签约居民与签约团队保持联系，签约居民可以向签约团队进行健康问题咨询。 （2）签约团队为签约居民进行健康评估，制定健康管理方案。 （3）签约团队负责持续监测签约居民的健康状况，并为其定期调整健康管理方案。 （4）签约团队定期为签约居民提供健康知识、健康活动等资讯。 （5）签约团队为签约居民提供国家和当地政府规定的基本公共卫生服务。 （6）签约团队为签约居民提供常见病、多发病的诊疗服务，按相关规定支付诊疗费用。 （7）签约团队向签约居民提供按时就诊提醒服务。 （8）根据签约居民患病状况，签约团队为其提供到上级医院就诊的预约服务。 （9）根据签约居民患病状况，签约团队为其提供转诊服务，并享受当地政府规定的相应优惠政策。 （10）签约团队负责整理签约居民的健康信息。除法律法规规定外，未经签约居民允许，不得提供给第三方。 （11）根据签约居民需求，签约团队为其提供其他必要的帮助。 3、甲方应配合事项 （1）签约居民是健康第一责任人，应主动做好健康自我管理。 （2）遵守签约协议，尊重签约人员。 （3）签约居民保证提供的信息真实有效。 （4）有卫生服务需求时，原则上应先找签约团队就诊。 （5）遵守医嘱，有问题及时咨询。 （6）签约居民在其他医疗机构诊疗等信息，应主动、及时向签约团队反馈。 （7）签约居民住址变更、长期离开居住地、联系方式变更等，应及时告知签约团队 （8）未遵守第6、7条款，视为签约居民主动放弃获得签约服务的权利。 （9）签约居民授权签约团队调阅其健康档案以及在其他医疗机构的诊疗信息等。 （10）签约团队根据签约服务包重复提供单项服务2次时，签约居民仍不配合，视为签约居民主动放弃该签约服务项目的权利。 （11）签约居民作为患者应该履行的其他义务。 4、本协议期限为一年。自 年 月 日起，至 年 月 日止。签约期满后应续签。在签约期内，甲方因居住地变更等客观原因，可提出终止现有签约关系，已交付的签约费不转不退。 5、如甲乙双方在履行本协议过程中发生纠纷，双方应通过友好协商予以解决或由当地医疗纠纷调解委员会调解。协商不成或一方不愿协商，双方均可向有管辖权的法院提起诉讼。 6、本协议自甲方签字、乙方加盖公章之日起生效。 7、本协议一式二份，甲乙双方各执一份，具有同等法律效力。 8、本协议解释权归乙方所用。 （以下无正文)-->
+				</div>
+				<div class="sign-div mui-row">
+					<div class="mui-col-xs-6">
+						<div>甲方</div>
+						<div class="height-pic">
+							<img id="sign_yes" src="" style="width: 1.8rem;" />
+							<button id="to_sign" style="margin-top: 6%;">点击签名</button>
+						</div>
+						<div>日期:<span class="new-time"></span></div>
+					</div>
+					<div class="mui-col-xs-6">
+						<div>乙方</div>
+						<div style="position: absolute;left: 1.3rem;top: -0.05rem;">
+							<img id="hisPic" src="" style="width: 1.8rem;" />
+						</div>
+						<div class="height-pic" style="padding-top: 10%;">单位盖章</div>
+						<div>日期:<span class="new-time"></span></div>
+					</div>
+				</div>
+				<hr style="background-color: #3FCCD1;border:none;height: 1px;" />
+				<div class="save-sign" id="save_sign">
+					确认签字
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		//		mui.init({
+		//			swipeBack: true //启用右滑关闭功能
+		//		});
+		$("#sign_yes").hide();
+
+		var date = new Date();
+		var seperator1 = "-";
+		var seperator2 = ":";
+		var month = date.getMonth() + 1;
+		var strDate = date.getDate();
+
+		if(month >= 1 && month <= 9) {
+			month = "0" + month;
+		};
+		if(strDate >= 0 && strDate <= 9) {
+			strDate = "0" + strDate;
+		};
+		var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+		var yearadd = date.getFullYear() + 1 + seperator1 + month + seperator1 + strDate
+		$('.new-time').html(currentdate); //获取当前日期
+		//		$('.new-time').html(date.toLocaleDateString()); //获取当前日期
+
+		mui.plusReady(function() {
+			var imgUrl = '';
+			var messageInfo = {};
+			window.addEventListener("setImage", function(event) {
+				imgUrl = event.detail.imgUrl;
+				$("#sign_yes").show();
+				$("#sign_yes").attr("src", formatHttpString(imgUrl));
+				$("#to_sign").hide();
+			});
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var self = plus.webview.currentWebview();
+			//判断来源，是否个性服务包页面进入
+			var biaoshi = self.biaoshi;
+			var pkgid = self.pkgid;
+			var fdtid = self.ID ? self.ID : localStorage.getItem("fdt");
+			var dcid = self.DCID;
+			var money = self.money;
+			console.log("fdtid------------》" + fdtid);
+			console.log("pkgid===>" + pkgid);
+
+			if(biaoshi && biaoshi == "gxpkg") {
+				$("#sign_name").html("个性服务包");
+				$("#save_sign").html("支       付");
+
+				//上传签约信息
+				mui(".mui-content").on("tap", "#save_sign", function(e) {
+					//var url = serverAddress + "/api/appfamilydoctorteam/applyBaseAuditSign";
+					vipcontract.socialNo = $("#socialNo").val();
+					vipcontract.secondName = $("#secondName").val();
+					vipcontract.secondPhone = $("#secondPhone").val();
+					vipcontract.secondAddr = $("#secondAddr").val();
+					vipcontract.patientImg = imgUrl; //患者签名图片
+
+					if(!vipcontract.socialNo) {
+						mui.toast("请输入社保(医保)卡号");
+						return false;
+					}
+					if(!vipcontract.secondName) {
+						mui.toast("请输入紧急联系人");
+						return false;
+					}
+					if(!vipcontract.secondPhone) {
+						mui.toast("请输入紧急联系人电话");
+						return false;
+					}
+					if(!vipcontract.secondAddr) {
+						mui.toast("请输入紧急联系人住址");
+						return false;
+					}
+					if(!vipcontract.patientImg) {
+						mui.toast("请点击进行签字");
+						return false;
+					}
+					console.log("上传数据最后：" + JSON.stringify(vipcontract));
+					var _messageInfo = JSON.stringify(vipcontract);
+					localStorage.setItem("VIPPKGcontent", _messageInfo);
+
+					mui.openWindow({
+						url: 'wait-payment_gxpkg.html',
+						id: 'wait-payment_gxpkg.html',
+						extras: {
+							pkgid: pkgid,
+							money: money
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+
+				});
+
+			}
+			//获取本人信息
+			var user;
+			var id = localStorage.getItem("TOKENID");
+			var sussess = function(data) {
+				console.log("个人全部信息" + JSON.stringify(data));
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				if(data.result == "success") {
+					user = data.data;
+					console.log(JSON.stringify(user));
+					$("#username").html(user.realname);
+					$("#idnumber").html(user.idnumber);
+					$("#phone").html(user.tel);
+				}
+			};
+			var url = serverAddress + "/api/patient/getmyinfo/" + id;
+			commonHttpUtils(url, "get", {}, sussess, error, true);
+
+			var url = serverAddress + "/api/appfamilydoctorteamforpatient/redaone/" + fdtid;
+			var success = function(data) {
+				console.log("团队介绍------------》" + JSON.stringify(data));
+				if(data.result == "success") {
+					$("#teamName").html(data.obj.data.hospital.name);
+					//					console.log("成员------------》" + JSON.stringify(data.obj.data));
+
+					$("#tableUL").processTL(templateRegister.sign_doctor_list, {
+						sub: data.obj.data
+					}, "append", function() {});
+					$("#teamTel").html(data.obj.data.phone);
+					var aName = data.obj.data.teamLeader.name;
+					var aPosition = "ZLZZ";
+					var arr = data.obj.data.doctorList;
+					var teamList = [{
+						name: aName,
+						position: aPosition
+					}];
+					for(i = 0; i < arr.length; i++) {
+						teamList.push({
+							"name": arr[i].doctor.name,
+							"position": arr[i].memberType
+						});
+
+					}
+
+					console.log("成员数组------------》" + JSON.stringify(teamList));
+					var image = data.obj.data.hospital.cachetImg;
+					if(image != null && image != '' && (image.indexOf("client\\") == 0)) {
+						localStorage.setItem('HEAD_PHOTO', image.split("client\\")[1]);
+						document.getElementById('hisPic').src = serverAddress + "/" + image.split("client\\")[1];
+
+					}
+					if(image != null && image != '' && (image.indexOf("client\\") < 0)) {
+						localStorage.setItem('HEAD_PHOTO', image);
+						document.getElementById("hisPic").src = serverAddress + "/" + image;
+					}
+					if(image != null && image != '' && (image.indexOf("client/") == 0)) {
+						localStorage.setItem('HEAD_PHOTO', image.split("client/")[1]);
+						document.getElementById('hisPic').src = serverAddress + "/" + image.split("client/")[1];
+					}
+
+					var ele = document.getElementById("hisPic");
+					ele.setAttribute('data-lazyload', ele.src);
+					ele.setAttribute('data-loaded', "");
+
+					var hisId = data.obj.data.hospital._id;
+					//用医院id查询协议合同编号
+					//var url = serverAddress + "/api/appfamilydoctorteam/readBaseFdtServicePackage";
+					var urlvippkg = serverAddress + "/api/appfamilydoctorteam/readVipAgreement";
+					console.log(pkgid)
+					console.log(urlvippkg);
+					var success1 = function(data1) {
+						console.log("协议dddd------------》" + JSON.stringify(data1));
+						if(data1.result == "success") {
+							$("#heTongNum").html(data1.hetongNo);
+							console.log("个人钱数------------》" + data1.data.price);
+							var str = data1.data.vipAgreement[0].agContent;
+							str = str.replace(/jhGovernmentCost/, formatJENO2(data1.data.price));
+							str = str.replace(/jhOneselfCost/, formatJENO2(data1.data.price));
+							str = str.replace(/jhStartDate/, currentdate);
+							str = str.replace(/jhEndDate/, yearadd);
+							$("#terms").html(str);
+
+							vipcontract = {
+								sno: data1.hetongNo, //合同编号
+								name: data1.data.title, //合同名子 
+								startData: currentdate, //合同开始日期
+								endData: yearadd, //合同结束日期
+								patientName: user.realname, //签约人姓名
+								idCardNo: user.idnumber, //签约人身份证号
+								phone: user.tel, //签约人电话
+								fdtName: data.obj.data.hospital.name, //家庭医生所属医院名
+								fdtMember: teamList, //团队成员列表
+								fdtPhone: data.obj.data.phone, //团队电话
+								signData: currentdate, //签约日期，moment.now()
+								content: str, //协议文本
+								fdtImg: data.obj.data.hospital.cachetImg, //团队章图片
+							};
+
+							if(dcid) {
+								messageInfo.fdtShangxian = dcid;
+							}
+							console.log("上传数据：" + JSON.stringify(vipcontract));
+
+						} else {
+							mui.toast(data1.msg);
+						}
+					};
+					commonHttpUtils(urlvippkg, "get", {
+						pkgId: pkgid
+					}, success1, error, true);
+
+				} else {
+					mui.toast(data.msg);
+				}
+			};
+			commonHttpUtils(url, "get", {}, success, error, true);
+
+			//去签字
+			mui(".mui-content").on("tap", "#to_sign", function(e) {
+				var detailid = $(this).attr("data-id");
+				mui.openWindow({
+					url: 'canvas_signature.html',
+					id: 'canvas_signature',
+					extras: {
+						ID: detailid
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			});
+
+		});
+	</script>
+
+</html>

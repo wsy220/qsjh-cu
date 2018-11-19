@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>照相蒙版</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			html,body{
+				
+				background-color: #000000;
+			}
+			.mui-content{
+				background-color: transparent;
+				padding-top: 2.6rem;
+				margin: 0 auto;
+				text-align: center;
+			}
+			#image_mask img{
+				max-width: 65%;
+			}
+			.wenzi{
+				max-width: 65%;
+				margin-left: 1.4rem;
+			}
+			.wenzi p{
+				text-align: left;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div class="mui-content">
+			<p>处方拍摄技巧</p>
+			<div class="mui-content-padded" id="image_mask"><p id="image_mask_p"><img src="../images/img_mask_normal.png"></p></div>
+			<div class="wenzi">
+			<p>1、确保重要信息区域<span style="color: #ff4e00;">拍摄清晰</span></p>
+			<p>2、材料不会对所有人可见</p>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js" ></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script>
+		var w = plus.webview.currentWebview();
+		console.log(w.img_biaoshi);
+		var img_biaoshi=w.img_biaoshi;
+		if(img_biaoshi=="chufang"){
+			$("#image_mask_p>img").attr('src', '../images/img_mask_normal.png');
+			
+		}else if(img_biaoshi=="drug"){
+			$("#image_mask_p>img").attr("src","../images/yaopin.png");
+		}else if(img_biaoshi=="yingxiang"){
+			$("#image_mask_p>img").attr("src","../images/ypjd.png");
+		}
+		
+	</script>
+</html>

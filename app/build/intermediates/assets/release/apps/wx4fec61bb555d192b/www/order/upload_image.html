@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<title>上传就医凭证</title>
+		<style>
+			.mui-grid-view.mui-grid-9 {
+				margin: 0;
+				padding: 0;
+				border-top: 1px solid #eee;
+				border-left: 1px solid #eee;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+				margin: 0;
+				/*padding: 0.5rem 0;*/
+				background-color: #EEEEEE;
+				height: 150px;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				border: 0;
+			}
+			
+			.mui-icon-plus-filled:before {
+				color: #cfcfcf;
+			}
+			
+			.mui-content-padded {
+				padding-bottom: 10px;
+				margin-top: 0;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-media .mui-icon {
+				font-size: 2.4em;
+				position: relative;
+				margin-top: 0.8rem;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+				margin: 0;
+				padding: 0px 0;
+			}
+			
+			.feedback p {
+				padding: 10px 0px 0;
+			}
+			
+			.feedback .image-item .image-up {
+				height: 65px;
+				width: 65px;
+				border-radius: 10px;
+				line-height: 65px;
+				color: #ccc;
+				display: list-item;
+				text-align: center;
+				background: #EEEEEE !important;
+				/*z-index: 999;*/
+			}
+			
+			.mui-btn-block {
+				font-size: 14px;
+				display: block;
+				width: 100%;
+				margin-bottom: 10px;
+				padding: 10px 0;
+				border-radius: 15px;
+				border: 1px solid #e4e4e4;
+			}
+			
+			.tableUL {
+				margin-bottom: 10px;
+				background-color: #FFFFFF;
+			}
+			
+			.huangzi {
+				color: #FF9700;
+			}
+			
+			.redzi {
+				color: #990000;
+			}
+			
+			.heizi {
+				color: #333333;
+				margin-top: 10px;
+				margin-left: 15px;
+				font-weight: bold;
+			}
+			
+			.hongzi2 {
+				color: #bb0000;
+			}
+			
+			#image-list-chufang,
+			#image-list-drug {
+				height: 2rem;
+				width: 2rem;
+				border-radius: 10px;
+				color: #ccc;
+				display: list-item;
+				text-align: center;
+				background: #EEEEEE !important;
+				/*z-index: 999;*/
+			}
+			
+			#image-list-chufang .image-item .image-up:after,
+			#image-list-drug .image-item .image-up:after {
+				font-family: "微软雅黑";
+				content: '+';
+				font-size: 30px;
+				position: absolute;
+				top: -0.8rem;
+				left: 0.8rem;
+			}
+			
+			#image-list-chufang .image-item .content,
+			#image-list-drug .image-item .content {
+				font-size: 15px;
+				margin-top: 100px;
+			}
+			
+			#image-list-chufang .image-item .image-up,
+			#image-list-drug .image-item .image-up {
+				height: 2rem;
+				width: 2rem;
+				border-radius: 10px;
+				line-height: 150px;
+				/*border: 1px solid #ccc;*/
+				color: #ccc;
+				display: list-item;
+				text-align: center;
+				background: #FFFFFF;
+			}
+			
+			#image-list-chufang .image-item,
+			#image-list-drug .image-item {
+				height: 2rem;
+				width: 2rem;
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				margin-top: -10px;
+				margin-left: -10px;
+				border-radius: 10px;
+				/*border: solid 1px #ccc;*/
+			}
+			
+			#image-list-chufang .image-item .image-close,
+			#image-list-drug .image-item .image-close {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">上传就医凭证</h1>
+			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" id="queding">确定</button>
+		</header>
+		<div class="mui-content">
+
+			<ul class="mui-table-view mui-grid-view" id="chufang_and_drug">
+				<div class="mui-content-padded">
+					<p style="padding-top: 10px;"><span id="chufang_and_drug_text">上传处方和药品</span>（<span class="redzi">必填</span>）<span id="result"></span></p>
+				</div>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6 chufangUL" style="display: none;">
+					<div id="feedback" class="feedback ">
+						<div class="mui-page-content">
+							<div class="mui-content-padded">
+								<div id='image-list-chufang' class="row image-list">
+								</div>
+								<!--<button id='demo4' data-options='{"type":"date"}' class="mui-btn mui-btn-block">选择处方日期（ <span class="hongzi2">必选</span>）</button>-->
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6 is_yaopin" style="display:none;">
+					<div id="feedback" class="feedback">
+						<div class="mui-page-content">
+							<div class="mui-content-padded">
+								<div id='image-list-drug' class="row image-list">
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<div class="mui-content-padded">
+					<p class="huangzi">温馨提示：医生为患者开具的输液/肌肉注射处方的有效期为三天。如处方超期，请到医院重新开具。否则医护人员有权停止接单.</p>
+				</div>
+			</ul>
+
+			<ul class="tableUL" id="isneedphoto" style="display: none;">
+				<li>
+					<div id="feedback" class="mui-page feedback">
+						<div class="mui-page-content">
+							<div class="mui-content-padded">
+								<p>上传医嘱（<span class="redzi">必填</span>）</p>
+								<div id='image-list-bingli' class="row image-list">
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul class="tableUL" id="isneedphotoyingxiang" style="display: none;">
+				<li>
+					<div id="feedback" class="mui-page feedback">
+						<div class="mui-page-content">
+							<div class="mui-content-padded">
+								<p>上传影像（<span class="redzi">必填</span>）</p>
+								<div id='image-list-yingxiang' class="row image-list">
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul class="tableUL" id="isneedenvironmen" style="display: none;">
+				<li>
+					<div id="feedback" class="mui-page feedback">
+						<div class="mui-page-content">
+							<div class="mui-content-padded">
+								<p>居住环境（<span class="redzi">必填</span>）</p>
+								<div id='image-list-huanjing' class="row image-list">
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/base64.js"></script>
+	<script type="text/javascript" src="../js/exif.js"></script>
+	<script type="text/javascript" src="../js/mobileBUGFix.mini.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script src="../js/mui.picker.min.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+	<script>
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				
+				var i = plus.webview.getWebviewById("a04_place_order.html");
+				//i.evalJS("removeimg()");
+				//返回true，继续页面关闭逻辑  
+				mui.back;
+
+			}
+		});
+		var isDrug = 0,
+			isBeipin = 0,
+			isChufang = false;
+		var isDrugBO;
+		var isBeipinBO = true;
+		var arydrug = [];
+		mui.plusReady(function() {
+			$('#popover').attr("style", "display:none");
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			//获取曾经上传的图片以及时间
+			var currentarray_recipeImgs = localStorage.getItem("ImageInfo_recipeImgs") == null ? "" : localStorage.getItem('ImageInfo_recipeImgs').split(",");
+			var currentarray_caseImgs = localStorage.getItem("ImageInfo_caseImgs") == null ? "" : localStorage.getItem('ImageInfo_caseImgs').split(",");
+			var currentarray_environmenImgs = localStorage.getItem("ImageInfo_environmenImgs") == null ? "" : localStorage.getItem('ImageInfo_environmenImgs').split(",");
+			var currentarray_recipeTime = localStorage.getItem("recipe_time");
+			var currentarray_yingxiang = localStorage.getItem("ImageInfo_yingxiang") == null ? "" : localStorage.getItem("ImageInfo_yingxiang").split(",");
+			var currentarray_drug=localStorage.getItem("ImageInfo_drugImgs")==null?"":localStorage.getItem("ImageInfo_drugImgs").split(",");
+			panduanJSON = currentView.panduan_JSON;
+			$(".mui-title").text(currentView.title_text);
+			console.log("项目判断" + JSON.stringify(panduanJSON));
+			if(panduanJSON.isneedrecipe || panduanJSON.isDrugs == "0") {
+				if(panduanJSON.isneedrecipe) {
+					$("#chufang_and_drug_text").text("上传处方");
+				}
+				if(panduanJSON.isDrugs == 0) {
+					$("#chufang_and_drug_text").text("上传药品");
+				}
+				if(panduanJSON.isneedrecipe && panduanJSON.isDrugs == 0) {
+					$("#chufang_and_drug_text").text("上传处方和药品");
+				}
+				$("#chufang_and_drug").css("display", "block");
+			} else {
+				$("#chufang_and_drug").css("display", "none");
+			}
+
+			//判断处方
+			if(panduanJSON.isneedrecipe) {
+				isChufang = true;
+				$(".chufangUL").css("display", "inline-block");
+			} else {
+				isChufang = false;
+				$(".chufangUL").css("display", "none");
+			}
+			if(panduanJSON.isDrugs == "0") {
+				$(".is_yaopin").css("display", "inline-block");
+			} else {
+				$(".is_yaopin").css("display", "none");
+			}
+			//环境
+			if(panduanJSON.isneedenvironmen) {
+				$("#isneedenvironmen").css("display", "block");
+			} else {
+				$('#isneedenvironmen').css("display", "none");
+			}
+
+			//医嘱
+			if(panduanJSON.isneedadvice) {
+				$("#isneedphoto").css("display", "block");
+			} else {
+				$("#isneedphoto").css("display", "none");
+			}
+			//影像
+			if(panduanJSON.isneedphoto) {
+				$("#isneedphotoyingxiang").css("display", "block");
+			} else {
+				$("#isneedphotoyingxiang").css("display", "none");
+			}
+
+			qs.initImageList({
+				id: 'image-list-chufang',
+				num: 1,
+				biaoshi: "order_chufang"
+			}, currentarray_recipeImgs);
+
+			qs.initImageList({
+				id: 'image-list-yingxiang',
+				num: 20
+			}, currentarray_yingxiang);
+
+			qs.initImageList({
+				id: 'image-list-bingli',
+				num: 20
+			}, currentarray_caseImgs);
+
+			qs.initImageList({
+				id: 'image-list-huanjing',
+				num: 20
+			}, currentarray_environmenImgs);
+
+			qs.initImageList({
+				id: 'image-list-drug',
+				num: 1,
+				biaoshi: "order_drug"
+			}, currentarray_drug);
+			//			document.getElementById("demo4").addEventListener('tap', function(e) {
+			//
+			//				var now = new Date();
+			//				var optionsJson = this.getAttribute('data-options') || '{}';
+			//				var options = JSON.parse(optionsJson);
+			//				var id = this.getAttribute('id');
+			//
+			//				var picker = new mui.DtPicker({
+			//					"type": "date",
+			//					"beginDate": new Date(moment().subtract(2, 'days')),
+			//					"endDate": new Date(moment())
+			//				});
+			//
+			//				picker.show(function(rs) {
+			//					result.innerText = '选择日期: ' + rs.text;
+			//					$("#demo4").html(rs.text);
+			//					picker.dispose();
+			//				});
+			//			}, false);
+
+			$("#queding").click(function(e) {
+//				var i = plus.webview.getWebviewById("a04_place_order.html");
+//				i.evalJS("removeimg()");
+				
+				if($$.getImageFilesPath("image-list-chufang").length == 0 && isChufang) {
+					mui.toast("请选择上传处方图片");
+					return false;
+				}
+				if($$.getImageFilesPath("image-list-drug").length == 0 && panduanJSON.isDrugs == 0) {
+					mui.toast("请选择上传药品");
+					return false;
+				}
+				if(panduanJSON.isneedadvice) {
+					if($$.getImageFilesPath("image-list-bingli").length == 0) {
+						mui.toast("请选择上传医嘱");
+						return false;
+					}
+				}
+				if(panduanJSON.isneedphoto) {
+					if($$.getImageFilesPath("image-list-yingxiang").length == 0) {
+						mui.toast("请选择上传影像");
+						return false;
+					}
+				}
+				if(panduanJSON.isneedenvironmen) {
+					if($$.getImageFilesPath("image-list-huanjing").length == 0) {
+						mui.toast("请选择上传居住环境");
+						return false;
+					}
+				}
+
+				//				if(result.innerText == "" && isChufang) {
+				//					mui.toast("请选择处方时间");
+				//					return false;
+				//				}
+
+				var ImageInfo = {
+					drugImgs: $$.getImageFilesPath("image-list-drug"), //药品
+					//sparesImgs: arybeipin,//备品
+					recipeImgs: $$.getImageFilesPath("image-list-chufang"), //处方图片
+					caseImgs: $$.getImageFilesPath("image-list-bingli"), //病例图片
+					environmenImgs: $$.getImageFilesPath("image-list-huanjing"), //居住环境图片
+					yingxiangImgs: $$.getImageFilesPath("image-list-yingxiang") //影像
+				};
+
+				var Upload_message = {
+					ImageInfo: ImageInfo,
+					//time: result.innerText.split(":")[1],
+					//isDrugBO: isDrugBO,
+					//isBeipinBO:isBeipinBO
+				};
+				//将之前选择的信息存在本地
+				localStorage.setItem("ImageInfo_drugImgs", $$.getImageFilesPath("image-list-drug"));
+				localStorage.setItem("ImageInfo_recipeImgs", $$.getImageFilesPath("image-list-chufang"));
+				localStorage.setItem("ImageInfo_caseImgs", $$.getImageFilesPath("image-list-bingli"));
+				localStorage.setItem("ImageInfo_environmenImgs", $$.getImageFilesPath("image-list-huanjing"));
+				localStorage.setItem("ImageInfo_yingxiang", $$.getImageFilesPath("image-list-yingxiang"));
+//				localStorage.setItem("ImageInfo_drug",$$.getImageFilesPath("image-list-drug"));
+				//localStorage.setItem("recipe_time", result.innerText.split(":")[1]);
+				//localStorage.setItem("isDrugBo",isDrugBO);
+
+				var main3 = plus.webview.getWebviewById('a04_place_order.html');
+				mui.fire(main3, 'imageinfo', Upload_message);
+				mui.back();
+			});
+		});
+	</script>
+
+</html>

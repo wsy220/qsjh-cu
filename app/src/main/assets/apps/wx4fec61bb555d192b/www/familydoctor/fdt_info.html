@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>团队信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+
+		<style>
+			.mui-content {
+				margin-top: 0.08rem;
+				font-size: 0.2916rem;
+			}
+			
+			#zhaoxiang {
+				height: 2rem;
+			}
+			
+			#zhaoxiang.mui-table-view-cell {
+				padding-top: 0.5rem;
+				height: 130px;
+			}
+			
+			#zhaoxiang a span:after {
+				top: 40%;
+			}
+			
+			#head_image {
+				width: 90px;
+				height: 90px;
+				border-radius: 50px;
+				margin-top: 10px;
+			}
+			
+			.head {
+				margin-top: -0.6rem;
+				margin-right: 15px;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-bottom: 0.08rem;
+			}
+			
+			#libiao li {
+				height: 1.0rem;
+				padding-top: 0.25rem;
+			}
+			
+			#libiao li span {
+				margin-right: 20px;
+				font-size: 14px;
+			}
+			
+			.qianming {
+				width: 50%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: right;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 25px;
+				right: 5px;
+			}
+			
+			.mui-table-view-cell a {
+				color: #424242;
+				font-size: 15px;
+			}
+			
+			.mui-table-view-cell span {
+				color: #999999;
+			}
+			
+			#forward {
+				font-size: 0.3124rem;
+				font-weight: 400;
+			}
+			
+			#male {
+				color: #00c0ff;
+				height: 1.1rem;
+			}
+			
+			#female {
+				color: #ff0072;
+				height: 1.1rem;
+			}
+			
+			#male div,
+			#female div {
+				background: url(../../images/tubiao2.png) no-repeat;
+			}
+			
+			.redword {
+				color: #FF3300 !important;
+			}
+			
+			.shengfen_upload {
+				max-width: 100%;
+				background: #FFFFFF;
+				height: 200px;
+				padding-top: 70px;
+			}
+			
+			.mui-content-padded a {
+				margin: 3px;
+				width: 50px;
+				height: 50px;
+				display: block;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				margin: 0 auto;
+			}
+			
+			.mui-content-padded a .mui-icon {
+				margin-top: 12px;
+				color: #000000;
+				margin-top: -7px;
+				margin-left: -6px;
+			}
+			
+			.mui-icon {
+				font-size: 60px;
+			}
+			
+			.upload_word {
+				margin: 10px auto;
+				display: block;
+				text-align: center;
+			}
+			
+			.phone,
+			.sign_name {
+				width: 70% !important;
+				height: 20px !important;
+				font-size: 14px;
+			}
+			
+			.error_phone {
+				border: 1px dotted rgba(0, 0, 0, 0) !important;
+			}
+			
+			.right_phone {
+				border: 1px solid rgba(0, 0, 0, 0) !important;
+			}
+			
+			.tishi {
+				width: 93%;
+				font-size: 13px;
+				color: #999999;
+				margin: auto;
+			}
+			
+			html,
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.mui-content {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ptitle">团队信息</h1>
+		</header>
+		<div class="mui-content" id="content">
+			<div class="mui-input-row" id="team-summary">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../plugs/qs/qs.immersed.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/sharemethods.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../plugs/art/template-web.js"></script>
+	<script type="text/javascript" src="../plugs/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../plugs/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../plugs/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../plugs/qs/qs.iscroll.js"></script>
+	<script>
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+
+		});
+
+		mui.plusReady(function() {
+			//setPagePos();
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var summary = currentView.summary;
+			$("#team-summary").html(summary);
+		});
+
+		
+	</script>
+
+</html>

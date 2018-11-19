@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>项目详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.media-img {
+				/*background-image: url(../images/cbd.jpg);*/
+				height: 40vw;
+			}
+			
+			.mui-card-footer {
+				background: #FFFFFF;
+			}
+			
+			.mui-card {
+				margin: 0;
+				box-shadow: none;
+				margin-bottom: 4px;
+			}
+			
+			.mui-content>.mui-card:first-child {
+				margin-top: 0;
+			}
+			
+			.mui-card-header:before {
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.middle {
+				text-align: center;
+				justify-content: center;
+			}
+			
+			table.gridtable {
+				font-family: verdana, arial, sans-serif;
+				font-size: 11px;
+				color: #333333;
+				border-width: 1px;
+				border-color: #666666;
+				border-collapse: collapse;
+				width: 100%;
+				text-align: center;
+			}
+			
+			table.gridtable th {
+				border-width: 1px;
+				padding: 8px;
+				border-style: solid;
+				border-color: #666666;
+				background-color: #dedede;
+			}
+			
+			table.gridtable td {
+				border-width: 1px;
+				padding: 8px;
+				border-style: solid;
+				border-color: #D9D9D9;
+				background-color: #ffffff;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.jiage-footer:before {
+				height: 0;
+			}
+			
+			.jiage-footer {
+				color: #FF9E0D;
+				height: 30px;
+			}
+			
+			.smallkf {
+				width: 1.3rem;
+				float: right;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">项目详情</h1>
+			<button id="share" class="mui-btn  mui-btn-link mui-pull-right">
+				<span>分享</span>
+			</button>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<div class="mui-loading">
+					<div class="item1_1" id="sharecontent">
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/arttmpl.js"></script>
+
+		<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+
+		<script>
+			var html = '';
+			var item_name_xiangqing = '',
+				item_name_id = '',
+				isDrugs = '',
+				biaoshi = '',
+				yihuid = '',
+				higherprice = '',
+				ishigherprice = '';
+			var panduanJSON = {};
+			var priceJSON = [];
+			var beipinJSON = [];
+			var shares = null;
+			if(mui.os.ios || mui.os.ipad || mui.os.iphone) {
+				mui.plusReady(function() {
+
+					updateSerivces();
+
+					var self = plus.webview.currentWebview();
+					biaoshi = self.biaoshi;
+					yihuid = self.yihuid;
+					if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+						topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+						document.querySelector("header").style.height = topoffset;
+						document.querySelector("header").style.paddingTop = "20px";
+						document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+					}
+
+					// 加载完毕后关闭等待框，并展示页面
+					var currentView = plus.webview.currentWebview();
+					currentView.show('slide-in-right', 200);
+					plus.nativeUI.closeWaiting();
+
+					window.addEventListener('sevice_item_xiangqing', function(e) {
+						$(".mui-title").html(e.detail.ITEM_NAME);
+						item_name_xiangqing = e.detail.ITEM_NAME;
+						item_name_id = e.detail.ITEM_NAME_ID;
+
+						var url = serverAddress + "/api/item/appitemdetails/" + item_name_id;
+						var item1 = document.querySelector(".mui-content");
+						var success = function(data) {
+							console.log("项目详情" + JSON.stringify(data));
+							isDrugs = data.data.isneeddrugs;
+							isneedspares = data.data.isneedspares;
+							//"isneeddrugs" : "1", 是否需要药品   0-需要 ;1不
+							//isneedrecipe: {type: Boolean, default: false}, //是否需要上传处方
+							//isneedadvice: {type: Boolean, default: false}, //是否需要上传医嘱
+							//isneedphoto: {type: Boolean, default: false}, //是否需要上传影像
+							//isneedenvironmen: {type: Boolean, default: false}, //是否需要上传居住环境
+
+							isneedrecipe = data.data.isneedrecipe;
+							isneedadvice = data.data.isneedadvice;
+							isneedphoto = data.data.isneedphoto;
+							isneedenvironmen = data.data.isneedenvironmen;
+							higherprice = data.data.higherprice;
+							ishigherprice = data.data.ishigherprice;
+							panduanJSON = {
+								isDrugs: isDrugs,
+								isneedspares: isneedspares,
+								isneedrecipe: isneedrecipe,
+								isneedadvice: isneedadvice,
+								isneedphoto: isneedphoto,
+								isneedenvironmen: isneedenvironmen,
+								higherprice: higherprice,
+								ishigherprice: ishigherprice
+							}
+							beipinJSON = data.data.sparesgroupid;
+							var html2 = '';
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							priceJSON = [{
+								price: data.data.price,
+								times: 1
+							}];
+							for(var i = 0; i < priceJSON.length; i++) {
+								html2 += (priceJSON[i].price / 100) + "元/" + priceJSON[i].times + "次";
+							}
+							if(item1.querySelector('.mui-loading')) {
+								if(data.data.serviceDetails) {
+									//								html = '<div class="mui-card"><div class="media-img"><img class="qs-img-lazyload" src="' + serverAddress + '/' + data.data.cover + '" data-lazyload="' + serverAddress + '/' + data.data.cover + '"></div><div class="mui-card-footer jiage-footer" style="margin:0 ,auto ;display:inline-block"><div style="float:left"><img src="../images/jiage.png" height="30px" ><span>价格：' + html2 + ' </span></div><span style="float:right">已购买人数:<span>333</span></span></div></div><div class="mui-card"><div class="mui-card-header">适合人群：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + data.data.crowd + '</div></div><div class="mui-card-header">用户须知：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + formatHttpStringHc(data.data.notice) + '</div></div></div><div class="mui-content-padded"><div class="smallkf"><img src="../images/kf_small.png"></div><button id="xiadan" class="mui-btn mui-btn-block mui-btn-warning" type="submit">立即预约</button></div>'
+									html = '<div class="mui-card"><div class="media-img"><img class="qs-img-lazyload"src="' + serverAddress + '/' + data.data.cover + '"data-lazyload="' + serverAddress + '/' + data.data.cover + '"></div><div class="mui-card-footer jiage-footer"style="margin:0 ,auto ;display:inline-block; width: 100%;"><div style="float:left"><img src="../images/jiage.png"height="30px"><span style="vertical-align: text-top;line-height: 0.1;">价格：' + html2 + '</span></div><span style="float:right;line-height: 2.2;">已有<span>' + data.data.orderCount + '</span>人购买</span></div></div><div class="mui-card"><div class="mui-card-header">适合人群：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + data.data.crowd + '</div></div><div class="mui-card-header">用户须知：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + formatHttpStringHc(data.data.notice) + '</div></div><div class="mui-card-header">服务内容：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + formatHttpStringHc(data.data.serviceDetails) + '</div></div></div><div class="mui-content-padded"><div class="smallkf"><img src="../images/kf_small.png"></div><button id="xiadan"class="mui-btn mui-btn-block mui-btn-warning"type="submit">立即预约</button></div>'
+
+								} else {
+									html = '<div class="mui-card"><div class="media-img"><img class="qs-img-lazyload"src="' + serverAddress + '/' + data.data.cover + '"data-lazyload="' + serverAddress + '/' + data.data.cover + '"></div><div class="mui-card-footer jiage-footer"style="margin:0 ,auto ;display:inline-block; width: 100%;"><div style="float:left"><img src="../images/jiage.png"height="30px"><span style="vertical-align: text-top;line-height: 0.1;">价格：' + html2 + '</span></div><span style="float:right;line-height: 2.2;">已有<span>' + data.data.orderCount + '</span>人购买</span></div></div><div class="mui-card"><div class="mui-card-header">适合人群：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + data.data.crowd + '</div></div><div class="mui-card-header">用户须知：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + formatHttpStringHc(data.data.notice) + '</div></div></div><div class="mui-content-padded"><div class="smallkf"><img src="../images/kf_small.png"></div><button id="xiadan"class="mui-btn mui-btn-block mui-btn-warning"type="submit">立即预约</button></div>'
+								}
+								$(".item1_1").html(html);
+							}
+						};
+						commonHttpUtils(url, "get", {}, success, error, true);
+					});
+				});
+			} else {
+				window.addEventListener('sevice_item_xiangqing', function(e) {
+					$(".mui-title").html(e.detail.ITEM_NAME);
+					item_name_xiangqing = e.detail.ITEM_NAME;
+					item_name_id = e.detail.ITEM_NAME_ID;
+				});
+				mui.plusReady(function() {
+					updateSerivces();
+					var self = plus.webview.currentWebview();
+					biaoshi = self.biaoshi;
+					yihuid = self.yihuid;
+					if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+						// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+						topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+						document.querySelector("header").style.height = topoffset;
+						document.querySelector("header").style.paddingTop = "20px";
+						document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+					}
+					// 加载完毕后关闭等待框，并展示页面
+					var currentView = plus.webview.currentWebview();
+					currentView.show('slide-in-right', 300);
+					plus.nativeUI.closeWaiting();
+
+					var url = serverAddress + "/api/item/appitemdetails/" + item_name_id;
+					var item1 = document.querySelector(".mui-content");
+					var success = function(data) {
+						//						console.log("详情" + JSON.stringify(data));
+						isDrugs = data.data.isneeddrugs;
+						isneedspares = data.data.isneedspares;
+						//"isneeddrugs" : "1", 是否需要药品   0-需要 ;1不
+						//isneedrecipe: {type: Boolean, default: false}, //是否需要上传处方
+						//isneedadvice: {type: Boolean, default: false}, //是否需要上传医嘱
+						//isneedphoto: {type: Boolean, default: false}, //是否需要上传影像
+						//isneedenvironmen: {type: Boolean, default: false}, //是否需要上传居住环境
+
+						isneedrecipe = data.data.isneedrecipe;
+						isneedadvice = data.data.isneedadvice;
+						isneedphoto = data.data.isneedphoto;
+						isneedenvironmen = data.data.isneedenvironmen;
+						higherprice = data.data.higherprice;
+						ishigherprice = data.data.ishigherprice;
+						panduanJSON = {
+							isDrugs: isDrugs,
+							isneedspares: isneedspares,
+							isneedrecipe: isneedrecipe,
+							isneedadvice: isneedadvice,
+							isneedphoto: isneedphoto,
+							isneedenvironmen: isneedenvironmen,
+							higherprice: higherprice,
+							ishigherprice: ishigherprice
+						}
+						beipinJSON = data.data.sparesgroupid;
+						var html2 = '';
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						priceJSON = [{
+							price: data.data.price,
+							times: 1
+						}];
+						for(var i = 0; i < priceJSON.length; i++) {
+							html2 += (priceJSON[i].price / 100) + "元/" + priceJSON[i].times + "次";
+						}
+						if(item1.querySelector('.mui-loading')) {
+							if(data.data.serviceDetails) {
+								//								html = '<div class="mui-card"><div class="media-img"><img class="qs-img-lazyload" src="' + serverAddress + '/' + data.data.cover + '" data-lazyload="' + serverAddress + '/' + data.data.cover + '"></div><div class="mui-card-footer jiage-footer" style="margin:0 ,auto ;display:inline-block"><div style="float:left"><img src="../images/jiage.png" height="30px" ><span>价格：' + html2 + ' </span></div><span style="float:right">已购买人数:<span>333</span></span></div></div><div class="mui-card"><div class="mui-card-header">适合人群：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + data.data.crowd + '</div></div><div class="mui-card-header">用户须知：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + formatHttpStringHc(data.data.notice) + '</div></div></div><div class="mui-content-padded"><div class="smallkf"><img src="../images/kf_small.png"></div><button id="xiadan" class="mui-btn mui-btn-block mui-btn-warning" type="submit">立即预约</button></div>'
+								html = '<div class="mui-card"><div class="media-img"><img class="qs-img-lazyload"src="' + serverAddress + '/' + data.data.cover + '"data-lazyload="' + serverAddress + '/' + data.data.cover + '"></div><div class="mui-card-footer jiage-footer"style="margin:0 ,auto ;display:inline-block; width: 100%;"><div style="float:left"><img src="../images/jiage.png"height="30px"><span style="vertical-align: text-top;line-height: 0.1;">价格：' + html2 + '</span></div><span style="float:right;line-height: 2.2;">已有<span>' + data.data.orderCount + '</span>人购买</span></div></div><div class="mui-card"><div class="mui-card-header">适合人群：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + data.data.crowd + '</div></div><div class="mui-card-header">用户须知：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + formatHttpStringHc(data.data.notice) + '</div></div><div class="mui-card-header">服务内容：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + formatHttpStringHc(data.data.serviceDetails) + '</div></div></div><div class="mui-content-padded"><div class="smallkf"><img src="../images/kf_small.png"></div><button id="xiadan"class="mui-btn mui-btn-block mui-btn-warning"type="submit">立即预约</button></div>'
+							} else {
+								html = '<div class="mui-card"><div class="media-img"><img class="qs-img-lazyload"src="' + serverAddress + '/' + data.data.cover + '"data-lazyload="' + serverAddress + '/' + data.data.cover + '"></div><div class="mui-card-footer jiage-footer"style="margin:0 ,auto ;display:inline-block; width: 100%;"><div style="float:left"><img src="../images/jiage.png"height="30px"><span style="vertical-align: text-top;line-height: 0.1;">价格：' + html2 + '</span></div><span style="float:right;line-height: 2.2;">已有<span>' + data.data.orderCount + '</span>人购买</span></div></div><div class="mui-card"><div class="mui-card-header">适合人群：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + data.data.crowd + '</div></div><div class="mui-card-header">用户须知：</div><div class="mui-card-content"><div class="mui-card-content-inner">' + formatHttpStringHc(data.data.notice) + '</div></div></div><div class="mui-content-padded"><div class="smallkf"><img src="../images/kf_small.png"></div><button id="xiadan"class="mui-btn mui-btn-block mui-btn-warning"type="submit">立即预约</button></div>'
+							}
+							$(".item1_1").html(html);
+						}
+					};
+					commonHttpUtils(url, "get", {}, success, error, true);
+				});
+
+			}
+
+			mui(".item1_1").on("tap", "button", function(e) {
+				//$("#xiadan").addClass("mui-disabled");
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html",
+						id: "login/login.html"
+					});
+					return false;
+				}
+
+				var id = localStorage.getItem("TOKENID");
+				var head_photo = localStorage.getItem('HEAD_PHOTO');
+				var gerenname = localStorage.getItem("GEREN_NAME");
+				var hospital = localStorage.getItem("hospital");
+				var isshiminghoutai = " ";
+				var success = function(data) {
+					if(data.result == "success") {
+						//是否实名认证
+						isshiminghoutai = data.data.idapprove;
+						//后台审核实名认证成功与否
+						if(isshiminghoutai == "2") {
+							mui.openWindow({
+								id: 'a04_place_order.html',
+								url: '../order/a04_place_order.html',
+								show: {
+									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								},
+								extras: {
+									ITEM_NAME: item_name_xiangqing,
+									ITEM_ID: item_name_id,
+									BIAOSHI: biaoshi,
+									YIHU_ID: yihuid,
+									PANDUAN_JSON: panduanJSON,
+									BEIPIN_JSON: beipinJSON,
+									PRICE_JSON: priceJSON
+								}
+							});
+							var sevice_item_xiangqing = plus.webview.getWebviewById('a04_place_order.html');
+							sevice_item_xiangqing.addEventListener('loaded', function() {
+								mui.fire(sevice_item_xiangqing, "sevice_item_xiangqing", {
+									ITEM_NAME: item_name_xiangqing,
+									ITEM_ID: item_name_id,
+									BIAOSHI: biaoshi,
+									YIHU_ID: yihuid,
+									PANDUAN_JSON: panduanJSON,
+									BEIPIN_JSON: beipinJSON,
+									PRICE_JSON: priceJSON
+								});
+							});
+						} else if(isshiminghoutai == "1") {
+							mui.toast("请耐心等待审核！");
+							return false;
+						} else {
+							mui.toast("请实名认证后再进行下单操作！");
+							mui.openWindow({
+								url: "../geren_message/d02_geren_message.html",
+								id: "d02_geren_message.html"
+							});
+							return false;
+						}
+					}
+				};
+				var url = serverAddress + "/api/patient/getmyinfo/" + id;
+				commonHttpUtils(url, "get", {}, success, error, true);
+			})
+
+			mui(".item1_1").on("tap", ".smallkf", function(e) {
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html",
+						id: "login/login.html"
+					});
+					return false;
+				}
+
+				mui.openWindow({
+					id: 'xqzx_auto.html',
+					url: '../geren_message/xqzx/xqzx_auto.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					extras: {
+						biaoshi: "zhengchang" //在下单时做个标识，如果是"zhengchang"就是正常下单，"yihu"就是选择医护下单
+					}
+				});
+			})
+
+			$("#share").click(function(e) {
+				shareHref();
+				console.log(item_name_id);
+				console.log(item_name_xiangqing);
+			})
+
+			function updateSerivces() {
+				plus.share.getServices(function(s) {
+					shares = {};
+					for(var i in s) {
+						var t = s[i];
+						shares[t.id] = t;
+					}
+				}, function(e) {
+					outSet('获取分享服务列表失败：' + e.message);
+				});
+			}
+
+			function shareAction(sb, bh) {
+
+				var url2 = serverAddress + "/shareitem/" + item_name_id
+				console.log(url2);
+				//				var success_share = function(data) {
+				//					console.log("分享" + JSON.stringify(data));
+				//				}
+				//commonHttpUtils(url2, "get", {}, success_share, error, true);
+				var msg = {};
+				if(mui.os.ios || mui.os.ipad || mui.os.iphone) {
+					msg = {
+						thumbs: ["../images/logo.png"],
+						pictures: ["../images/logo.png"],
+						extra: {
+							scene: sb.x
+						},
+						title: '分享',
+						content: item_name_xiangqing+""+url2,
+						href: url2,
+					};
+
+				} else {
+					msg = {
+						thumbs: ["../images/logo.png"],
+						pictures: ["../images/logo.png"],
+						extra: {
+							scene: sb.x
+						},
+						title: '分享' + item_name_xiangqing+" "+url2,
+						href: url2,
+						content: item_name_xiangqing+" "+url2
+					};
+				}
+
+				msg.href = url2;
+				if(sb.s.authenticated) {
+					console.log('---已授权---');
+					shareMessage(msg, sb.s);
+				} else {
+					console.log('---未授权---');
+					sb.s.authorize(function() {
+						shareMessage(msg, sb.s);
+					}, function(e) {
+						console.log('认证授权失败：' + e.code + ' - ' + e.message);
+					});
+				}
+
+			}
+
+			function shareHref() {
+				var shareBts = [];
+				// 更新分享列表
+				var ss = shares['weixin'];
+				ss && ss.nativeClient && (shareBts.push({
+						title: '微信朋友圈',
+						s: ss,
+						x: 'WXSceneTimeline'
+					}),
+					shareBts.push({
+						title: '微信好友',
+						s: ss,
+						x: 'WXSceneSession'
+					}));
+				ss = shares['sinaweibo'];
+				ss && shareBts.push({
+					title: '新浪微博',
+					s: ss
+				});
+				// 弹出分享列表
+				shareBts.length > 0 ? plus.nativeUI.actionSheet({
+					title: '分享链接',
+					cancel: '取消',
+					buttons: shareBts
+				}, function(e) {
+					(e.index > 0) && shareAction(shareBts[e.index - 1], true);
+				}) : plus.nativeUI.alert('当前环境无法支持分享链接操作!');
+			}
+
+			function shareMessage(msg, s) {
+				console.log(JSON.stringify(msg));
+				s.send(msg, function() {
+					mui.toast('分享到"' + s.description + '"成功！');
+				}, function(e) {
+					if(e.code=="-100"){
+						mui.toast("请下载新浪微博授权使用");
+					}
+					console.log('分享到"' + s.description + '"失败: ' + JSON.stringify(e));
+				});
+			}
+		</script>
+	</body>
+
+</html>

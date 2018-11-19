@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+		<title>下单页面</title>
+		<style>
+			input[type=text] {
+				margin-bottom: 0;
+				font-size: 0.2rem;
+				width: 50%;
+				float: right;
+				border: 0;
+				height: 0;
+			}
+			
+			.tableUL {
+				font-size: 15px;
+			}
+			
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			textarea {
+				margin-bottom: 0px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				background-color: #C7C7CC;
+				border-radius: 10px;
+				height: 60px !important;
+			}
+			
+			p {
+				margin-top: -20px;
+				color: #cc6633;
+			}
+			
+			.mui-icon {
+				font-weight: 800;
+			}
+			
+			.photo {
+				margin-top: 20px;
+				background: none;
+			}
+			
+			.photo:before,
+			.photo:after {
+				height: 0;
+			}
+			
+			.radio {
+				display: inline-flex;
+				display: -webkit-inline-box;
+				line-height: 2.5;
+			}
+			
+			.wenzi {
+				vertical-align: -webkit-baseline-middle;
+			}
+			
+			.zhiqing {
+				margin-top: 30px;
+			}
+			
+			li .mui-pull-right {
+				text-align: right;
+				width: 40%;
+				margin-right: 20px;
+			}
+			
+			.icon-bitian {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+			}
+			
+			.row {
+				margin: 0;
+			}
+			
+			.ui-widget-content {
+				border: 0;
+				background: none;
+				color: #000000;
+			}
+			
+			a {
+				color: #FFFFFF;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				margin: -7px -15px;
+			}
+			
+			label {
+				display: inline-block;
+				margin-bottom: 5px;
+				font-weight: normal;
+			}
+			
+			#user_document {
+				color: #990000;
+			}
+			
+			.size12 {
+				color: #333333;
+			}
+			
+			.mui-content-anniu {
+				margin-top: 20px;
+			}
+			
+			.feedback p {
+				padding: 10px 0px 0;
+				font-size: 12px;
+			}
+			
+			#time_message_pull_right {
+				width: 60%;
+			}
+			
+			.wureddian {
+				padding-left: 35px !important;
+			}
+			
+			[data-type=hour] .mui-dtpicker-title h5,
+			[data-type=hour] .mui-picker {
+				width: 15%;
+			}
+			
+			[data-type=hour] [data-id=picker-h],
+			[data-type=hour] [data-id=title-h],
+			[data-type=datetime] [data-id=picker-h],
+			[data-type=datetime] [data-id=title-h] {
+				width: 55% !important;
+			}
+			
+			.mui-poppicker-header {
+				padding: 6px;
+				font-size: 14px;
+				color: #888;
+				background-color: #40ced2;
+			}
+			
+			.mui-btn-blue {
+				color: #333;
+				border: 1px solid #FFFFFF;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell,
+			.mui-table-view-cell.mui-collapse .mui-collapse-content {
+				background-color: #F1F1F1;
+				font-size: 12px;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active,
+			.mui-table-view-cell>a:not(.mui-btn) {
+				background: #FFFFFF;
+			}
+			
+			.feedback-drug p {
+				padding-top: 20px;
+				padding-left: 15px;
+			}
+			
+			.feedback-drug .image-item .image-up {
+				height: 65px;
+				width: 65px;
+				border-radius: 10px;
+				line-height: 65px;
+				color: #ccc;
+				display: list-item;
+				text-align: center;
+				background: #EEEEEE !important;
+				z-index: 999;
+			}
+			
+			.feedback-drug .image-item .image-up .content {
+				padding-top: 40px;
+			}
+			
+			.isyaopin label {
+				font-size: 12px;
+			}
+			
+			.is_yaopin {
+				position: absolute;
+				top: 15px;
+				right: 15px;
+			}
+			
+			.space_p {
+				color: #FF9E0D;
+			}
+			
+			.mui-poppicker-body {
+				height: 150px;
+			}
+			
+			.icon-tishi {
+				color: #75d2d5;
+			}
+			
+			.baoxianimg {
+				max-width: 50%;
+			}
+			
+			#baoxian_document {
+				margin-bottom: 10px;
+			}
+			
+			#youhuijuan_pull_right {
+				margin-right: 20px;
+			}
+			
+			.mui-table-view-cell.youhuijuanLI .mui-table-view {
+				margin-top: 0px;
+				margin-right: 0px;
+				margin-bottom: 5px;
+				margin-left: 5px;
+				border: 0;
+			}
+			
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell:last-child:after,
+			.mui-table-view-cell.mui-collapse .mui-table-view:after {
+				/*height: 1px;*/
+			}
+			
+			.youhuijuanLI.mui-collapse .mui-table-view .mui-table-view-cell {
+				padding-left: 15px;
+			}
+			
+			.bg_white {
+				background-color: #FFFFFF !important;
+				color: #858585;
+			}
+			
+			.bg_huise {
+				background-color: #e8e8e8 !important;
+				color: #ecaa38;
+			}
+			
+			.isbeipin {
+				position: absolute;
+				top: 15px;
+				right: 35px;
+			}
+			
+			#uploadimage_pull_right img {
+				max-width: 30%;
+			}
+			
+			.mui-table-cell,
+			#illmiaoshu {
+				font-size: 0.28rem;
+			}
+			
+			textarea::-webkit-input-placeholder {
+				font-size: 0.28rem;
+			}
+			
+			textarea:-moz-placeholder {
+				font-size: 0.28rem;
+			}
+			
+			textarea::-moz-placeholder {
+				font-size: 0.28rem;
+			}
+			
+			textarea:-ms-input-placeholder {
+				font-size: 0.28rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title"></h1>
+		</header>
+
+		<div class="mui-content">
+
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="baoxian_document">
+				<li class="mui-table-view-cell">
+					<a href="#" class="">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-row">
+								<div class="mui-col-xs-8 mui-col-sm-8 mui-card-media">
+									<img src="../images/baoxian.png" class="baoxianimg">
+								</div>
+								<div class="mui-col-xs-4 mui-col-sm-4">
+									<span class="mui-pull-right" id="baoxianwenzi" style="margin-top: 15px;margin-right: 15px;">查看说明</span>
+								</div>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="service_object">
+				<li class="mui-table-view-cell">
+					<a href="#" class="mui-navigate-right">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								<span class="mui-ellipsis address"><span class="mui-icon iconfont icon-bitian"></span>选择服务对象:</span><span id="service_object_pull_right" class="mui-pull-right mui-ellipsis"></span>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="service_taocan">
+				<li class="mui-table-view-cell">
+					<a href="#" class="mui-navigate-right">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								<span class="mui-ellipsis service_taocan"><span class="mui-icon iconfont icon-bitian "></span>选择服务套餐:</span><span id="taocan_pull_right" class="mui-pull-right mui-ellipsis"></span>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="youhuijuan">
+
+				<li class="mui-table-view-cell mui-collapse youhuijuanLI">
+					<a href="#" class="mui-navigate-right wureddian" style="font-size: 0.28rem;">
+						<span>可用优惠券<span id="youhuijuan_pull_right" class="mui-pull-right">无</span></span>
+					</a>
+					<div class="mui-collapse-content" id="youhuijuanLI_collapse_content">
+					</div>
+				</li>
+
+			</ul>
+
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="illness_select">
+				<li class="mui-table-view-cell">
+					<a href="#" class="mui-navigate-right">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								<span class="mui-ellipsis illness_select"><span class="mui-icon iconfont icon-bitian"></span>选择疾病:</span><span id="illness_pull_right" class="mui-pull-right mui-ellipsis"></span>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="uploadtupian" style="display: none;">
+				<li class="mui-table-view-cell" style="font-size: 0.28rem;">
+					<a href="#" class="mui-navigate-right">
+						<span class="mui-icon iconfont icon-bitian"></span><span id="miaoshu_wenzi">上传就医凭证</span><span id="uploadimage_pull_right" class="mui-pull-right mui-ellipsis"></span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL mui-collapse" id="beipinfuwu" style="display: none; font-size: 0.28rem;">
+			</ul>
+
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="shangmenTime">
+				<li class="mui-table-view-cell">
+					<a href="#" class="mui-navigate-right">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								<span class="mui-ellipsis address"><span class="mui-icon iconfont icon-bitian"></span>请选上门时间:<span id="time_message_pull_right" class="mui-pull-right mui-ellipsis" style="font-size: 0.28rem;"></span>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="mui-input-row" style="margin: 10px 10px;">
+				<textarea id="illmiaoshu" rows="5" placeholder="请详细描述您的疑问、症状或身体情况（最多支持输入300字）如有相关照片请点击添加照片"></textarea>
+			</div>
+			<div id="feedback" class="mui-page feedback">
+				<div class="mui-page-content">
+					<div class="mui-content-padded">
+						<p>图片(提供病情图片截图,总大小10M以下)</p>
+						<div id='image-list' class="row image-list">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-content-padded  zhiqing">
+				<p>
+					<input id="register_user" name="style" type="checkbox" value="slider" class="chk_1">
+					<label for="register_user"></label>
+					<span class="size12" style="font-size: 0.28rem;">已阅读并同意<span id="user_document">《知情同意书》</span></span>
+				</p>
+			</div>
+			<div class="mui-content-padded">
+				<button id='xiadan' class="mui-btn mui-btn-block mui-btn-warning "><span>立即预约</span></button>
+			</div>
+		</div>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/mui.picker.min.js"></script>
+	<script type="text/javascript" src="../js/base64.js"></script>
+	<script type="text/javascript" src="../js/exif.js"></script>
+	<script type="text/javascript" src="../js/mobileBUGFix.mini.js"></script>
+	<script type="text/javascript" src="../js/feedbackMUI2.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min_old.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script type="text/javascript" src="../js/getDate.js"></script>
+
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+
+	<script src="../js/mui.picker.js"></script>
+	<script src="../js/mui.poppicker.js"></script>
+	<script>
+		var shenfen_img = [];
+		var lng = '',
+			lat = '';
+		var item_name_id = '';
+		var isDrugs = '';
+		var item_name = "";
+		var service_object_xiadan = {};
+		var illness_object_xiadan = {};
+		var image_info = {};
+		var biaoshi1 = '';
+		var yihuid = '';
+		var erwai_service = "0" //0为没选中，1为选中
+		var erwai_service_text = '';
+		var panduanJSON = {};
+		var beipinJSON = [];
+		var sparseJSON = {};
+		var priceJSON = []; //项目服务价格
+		var isupload = false;
+		var beipinmoneyOUT = 0;
+		var discount = 0;
+		var isDrug_select = "";
+		var isDrugBO = true;
+		var arydrug = [];
+		var coupon = {}; //优惠券JSON 
+		var isSpareBO = true;
+		var iflock = false;
+
+		mui.plusReady(function() {
+			//feedback.newPlaceholder();
+			qs.initImageList({
+				id: 'image-list',
+				num: 20
+			});
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			//获取上个页面传来的项目信息
+			var self = plus.webview.currentWebview();
+			item_name_id = self.ITEM_ID;
+			item_name = self.ITEM_NAME;
+			biaoshi1 = self.BIAOSHI;
+			yihuid = self.YIHU_ID;
+			panduanJSON = self.PANDUAN_JSON;
+			beipinJSON = self.BEIPIN_JSON;
+			priceJSON = self.PRICE_JSON;
+
+			console.log("状态" + JSON.stringify(panduanJSON));
+			console.log("备品" + JSON.stringify(beipinJSON));
+			var taocantimes = '';
+
+			$(".mui-title").html(item_name);
+			//获取服务套餐
+			$("#taocan_pull_right").html((priceJSON[0].price / 100) + "元/" + priceJSON[0].times + "次");
+
+			//如果项目有备品包
+			if(beipinJSON) {
+
+				$("#beipinfuwu").processTL(templateRegister.order_spares, {
+					beipin_message: beipinJSON
+				}, 'append', function() {
+					mui("#beipinfuwu").on("click", "input[name='leixingradio']", function(e) {
+						$("#time_message_pull_right").html("");
+						var selectvalue = $(this).val();
+						if(selectvalue == "0") {
+
+							isSpareBO = true;
+							$("#beipin_tishi_text").html("注：请您按照备品清单在本次服务约定时间之前准备所需备品，否则医护人员有权拒绝服务，且在您本次服务费中扣除 30%作为医护人员补偿。");
+						} else if(selectvalue == "1") {
+							//如果选择平台代购，将备品费用传入确认支付界面
+							beipinmoneyOUT = beipinJSON.groupprice;
+							//alert(beipinmoneyOUT);
+							isSpareBO = false;
+							$("#beipin_tishi_text").html("");
+
+						}
+					})
+				});
+
+			}
+
+			var get_youhuijuan_url = serverAddress + "/api/item/coupons/" + item_name_id;
+			var sucess_get_youhuijuan = function(data) {
+				console.log("优惠券" + JSON.stringify(data));
+				var youhuijuan_dataArry = data.data;
+				if(data.result == "success") {
+					if(data.data && data.data.length == 0) {
+						$(".youhuijuanLI").removeClass("mui-collapse");
+					} else if(data.data && data.data.length != 0) {
+						$(".youhuijuanLI").addClass("mui-collapse");
+						var max = youhuijuan_dataArry[0].amount / 100;
+						$("#youhuijuan_pull_right").html("-" + max + "代金券");
+						coupon["couponId"] = youhuijuan_dataArry[0]._id;
+						coupon["amount"] = youhuijuan_dataArry[0].amount;
+						//如果有优惠券
+						$("#youhuijuanLI_collapse_content").processTL(templateRegister.order_youhuijuan, {
+							sub: data.data
+						}, 'append', function() {
+							//点击优惠券选择事件
+							mui("#youhuijuanLI_collapse_content").on("tap", "li", function(e) {
+								console.log(this.id);
+								console.log($(this).children("span").text());
+								var couponId = this.id;
+								var amount = $(this).children("span").text();
+								$("#youhuijuan_pull_right").html($(this).children("span").text());
+								var lis = Array.prototype.slice.call(document.getElementById('youhuijuanLI_collapse_content').getElementsByTagName('ul'));
+								var activeLen = document.querySelectorAll('.bg_huise').length;
+
+								if($(this).hasClass("bg_huise")) {
+									$(this).removeClass("bg_huise");
+									$(this).addClass("bg_white");
+
+								} else {
+									if(!activeLen) {
+										$(this).addClass("bg_huise");
+									} else {
+										lis.forEach(function(item) {
+											$(item).children("li").removeClass("bg_huise");
+											$(item).children("li").addClass("bg_white");
+										})
+										$(this).addClass("bg_huise");
+									}
+								}
+								coupon["couponId"] = couponId;
+								coupon["amount"] = amount.replace("-", "").replace("代金券", "") * 100;
+							})
+
+						});
+					}
+				}
+			}
+			commonHttpUtils(get_youhuijuan_url, "get", {}, sucess_get_youhuijuan, error, true);
+
+			//项目是否需要药品
+			var currentarray_drugImgs = localStorage.getItem("ImageInfo_drugImgs") == null ? "" : localStorage.getItem('ImageInfo_drugImgs').split(",");
+			if(panduanJSON.isDrugs == "0") {
+				$("#is_yaopin").css("display", "block");
+
+				$("input[name='leixingradio']").click(function() {
+					$("#isDrug_face_parent").css("display", "block");
+					$("#time_message_pull_right").html("");
+					isDrug_select = $(this).val();
+					var placeholder = document.createElement('p');
+					if(isDrug_select == 0) {
+						$("#isDrug_face1").attr("style", "display: none;");
+						$("#isDrug_face0").attr("style", "display: block;");
+						isDrugBO = true;
+						qs.initImageList({
+							id: 'image-list-drug',
+							num: 20
+						});
+
+					} else if(isDrug_select == 1) {
+						isDrugBO = false;
+						$("#isDrug_face1").attr("style", "display: block;");
+						$("#isDrug_face0").attr("style", "display: none;");
+						image_info["drugImgs"] = '';
+					}
+				});
+
+			} else if(panduanJSON.isDrugs == "1") {
+				$("#is_yaopin").css("display", "none");
+			}
+
+			//获取注册人的信息
+			var account = localStorage.getItem('TOKEN');
+			var accountid = localStorage.getItem('TOKENID');
+			var url = serverAddress + "/api/patient/appgetobjectlist/" + accountid;
+			var sussess = function(data) {
+				console.log("下单滴滴滴" + JSON.stringify(data));
+				if(data.data.length != 0) {
+					var male = data.data[0].gender == "1" ? "女" : "男";
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data.result == "success") {
+						service_object_xiadan = {
+							realname: data.data[0].realname,
+							gender: male,
+							age: data.data[0].age,
+							tel: data.data[0].tel,
+							homeaddress: data.data[0].homeaddress+data.data[0].houseNumber,
+							gpsobj: data.data[0].ordergps,
+							idnumber: data.data[0].idnumber
+						}
+						document.getElementById("service_object_pull_right").innerHTML = data.data[0].realname + " " + male + " " + data.data[0].age + " " + data.data[0].homeaddress;
+					}
+				} else {
+
+				}
+			};
+			commonHttpUtils(url, "get", {}, sussess, error, true);
+
+			//获取服务项目相关信息
+			window.addEventListener('sevice_item_xiangqing', function(e) {
+				$(".mui-title").html(e.detail.ITEM_NAME);
+				item_name = e.detail.ITEM_NAME;
+				item_name_id = e.detail.ITEM_ID;
+				biaoshi1 = e.detail.BIAOSHI;
+				yihuid = e.detail.YIHU_ID;
+				panduanJSON = e.detail.PANDUAN_JSON;
+			});
+			//alert(JSON.stringify(panduanJSON));
+			//如果有高级服务费
+			if(panduanJSON.ishigherprice == "0") {
+				$("#highprice").css("display", "block");
+				$("#highprice_text").html(panduanJSON.higherprice);
+			} else if(panduanJSON.ishigherprice == "1") {
+				$("#highprice").css("display", "none");
+			}
+			//如果项目需要备品
+			if(panduanJSON.isneedspares == "0") {
+				$("#beipinfuwu_text").css("display", "block");
+				$("#beipinfuwu").css("display", "block");
+			} else if(panduanJSON.isneedspares == "1") {
+				$("#beipinfuwu_text").css("display", "none");
+				$("#beipinfuwu").css("display", "none");
+			}
+			//如果项目需要处方
+			if(panduanJSON.isneedrecipe || panduanJSON.isneedphoto || panduanJSON.isneedadvice || panduanJSON.isneedenvironmen) {
+				isupload = true;
+			}
+			if(panduanJSON.isneedrecipe || panduanJSON.isneedphoto || panduanJSON.isneedadvice || panduanJSON.isneedenvironmen) {
+				$("#uploadtupian").css("display", "block");
+			} else {
+				$("#uploadtupian").css("display", "none");
+			}
+
+			/*var wid = plus.geolocation.getCurrentPosition(function(p) {
+				lng = p.coords.longitude;
+				lat = p.coords.latitude;
+				var addresses = p.addresses;
+				localStorage.setItem("ADDRESSES_GPS", addresses);
+				console.log("地址" + addresses);
+				console.log("jingdu" + lat);
+				console.log("weidu" + lng);
+				$("#xiadan").removeClass("mui-disabled")
+			});*/
+			// 关闭页面
+			window.addEventListener('close', function(e) {
+				setTimeout(function() {
+					// 加载完毕后关闭等待框，并展示页面
+					plus.nativeUI.closeWaiting();
+					mui.back();
+				}, 1000);
+			});
+
+			//获取上传图片路径
+			window.addEventListener('imageinfo', function(e) {
+
+				image_info = e.detail;
+				console.log("1image" + JSON.stringify(image_info));
+				var bigImg = document.createElement("img"); //创建一个img元素
+				bigImg.src = "../images/xuanding.png"; //给img元素的src属性赋值  
+
+				//bigImg.width="320";  //320个像素 不用加px  
+				var myDiv = document.getElementById('uploadimage_pull_right'); //获得dom对象  
+				myDiv.innerHTML = "";
+				if(!$.isEmptyObject(image_info) && image_info.ImageInfo) {
+
+					myDiv.appendChild(bigImg); //为dom添加子元素img
+				} else {
+					myDiv.removeChild(bigImg);
+				}
+
+			});
+			//获取服务对象
+			window.addEventListener('service_object', function(event) {
+				service_object = event.detail;
+				document.getElementById("service_object_pull_right").innerHTML = service_object.name + " " + service_object.male + " " + service_object.age + " " + service_object.address;
+				service_object_xiadan = {
+					realname: service_object.name,
+					gender: service_object.male,
+					age: service_object.age,
+					tel: service_object.tel,
+					homeaddress: service_object.address,
+					gpsobj: service_object.gps,
+					idnumber: service_object.idnumber
+				}
+			});
+			//获取疾病
+			window.addEventListener('illness', function(event) {
+				illness = event.detail;
+				illness_object_xiadan = illness;
+				for(var i = 0; i < illness_object_xiadan.length; i++) {
+					console.log(JSON.stringify(illness_object_xiadan[i]));
+
+				}
+				var html = "";
+				for(var i = 0; i < illness_object_xiadan.length; i++) {
+					for(var j = 0; j < illness_object_xiadan[i].diseases.length; j++) {
+						//html += illness_object_xiadan[i].department + " " + illness_object_xiadan[i].diseases[j]
+						html += illness_object_xiadan[i].diseases[j] + " ";
+					}
+				}
+				document.getElementById("illness_pull_right").innerHTML = html;
+			});
+
+			document.getElementById("service_object").addEventListener("tap", function() {
+				mui.openWindow({
+					url: '../service_object/a045_service_object_query.html',
+					id: 'a045_service_object_query',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						service_object_biaoshi: 'xiadan'
+					}
+				});
+			});
+			document.getElementById("illness_select").addEventListener("tap", function() {
+				mui.openWindow({
+					url: 'a047_illness_select.html',
+					id: 'a047_illness_select',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						service_item_id: item_name_id
+					}
+				});
+			});
+
+			var userPicker = new mui.PopPicker({
+				layer: 2,
+				tishi: "true"
+
+			});
+			var cityData = [];
+
+			var _getParam = function(obj, param) {
+				return obj[param] || '';
+			};
+
+			//上门时间
+			document.getElementById("shangmenTime").addEventListener('tap', function(e) {
+
+				//如果是自备备品是，当前下单时间3小时后，如果是平台代购，当前下单时间8小时后
+
+				//console.log("2image" + JSON.stringify(image_info));
+				var now = new Date();
+				var num = now.getHours();
+				var timeArray = [];
+				var timeArrayAll = [];
+				var qishitime = "";
+				var zongdiantime = "";
+				//判断是否需要药品
+				//				if(panduanJSON.isDrugs == "0") {
+				//					//判断是否需要药品
+				//					//					if(!isDrugBO) {
+				//					//						for(var i = 9; i < 24 - parseInt(num) - 1; i++) {
+				//					//							var options2 = {};
+				//					//							options2["text"] = moment().add('hours', 1 + i).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//					//							options2["value"] = moment().add('hours', 1 + i).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//					//							timeArray.push(options2);
+				//					//						}
+				//					//					} else if(isDrugBO) {
+				//					//						for(var i = 1; i < 24 - parseInt(num) - 1; i++) {
+				//					//							var options2 = {};
+				//					//							options2["text"] = moment().add('hours', 1 + i).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//					//							options2["value"] = moment().add('hours', 1 + i).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//					//							timeArray.push(options2);
+				//					//						}
+				//					//					}
+				//
+				//					for(var i = 1; i < 24 - parseInt(num) - 1; i++) {
+				//						var options2 = {};
+				//						options2["text"] = moment().add('hours', 1 + i).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						options2["value"] = moment().add('hours', 1 + i).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						timeArray.push(options2);
+				//					}
+				//				} else if(panduanJSON.isDrugs == "1") {
+				//					for(var i = 1; i < 24 - parseInt(num) - 1; i++) {
+				//						var options2 = {};
+				//						options2["text"] = moment().add('hours', 1 + i).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						options2["value"] = moment().add('hours', 1 + i).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						timeArray.push(options2);
+				//					}
+				//				}
+
+				if(panduanJSON.isneedspares == "0") {
+					//判断备品是否自备
+					if(!isSpareBO) {
+						for(var i = 9; i < 24 - parseInt(num) - 1; i++) {
+							var options2 = {};
+							qishitime = moment().add('hours', 1 + i).format('H');
+							zongdiantime = moment().add('hours', 2 + i).format('H');
+							if(zongdiantime == "0") {
+								zongdiantime = "23:59"
+							}
+
+							options2["text"] = qishitime + ":00-" + zongdiantime + ":00";
+							options2["value"] = qishitime + ":00-" + zongdiantime + ":00";
+
+							timeArray.push(options2);
+						}
+					} else if(isSpareBO) {
+						for(var i = 4; i < 24 - parseInt(num) - 1; i++) {
+							var options2 = {};
+							qishitime = moment().add('hours', 1 + i).format('H');
+							zongdiantime = moment().add('hours', 2 + i).format('H');
+							if(zongdiantime == "0") {
+								zongdiantime = "23:59"
+							}
+							options2["text"] = qishitime + ":00-" + zongdiantime + ":00";
+							options2["value"] = qishitime + ":00-" + zongdiantime + ":00";
+							timeArray.push(options2);
+						}
+					}
+				} else if(panduanJSON.isneedspares == "1") {
+					for(var i = 1; i < 24 - parseInt(num) - 1; i++) {
+						var options2 = {};
+
+						qishitime = moment().add('hours', 1 + i).format('H');
+						zongdiantime = moment().add('hours', 2 + i).format('H');
+						if(zongdiantime == "0") {
+							zongdiantime = "23:59"
+						}
+						options2["text"] = qishitime + ":00-" + zongdiantime + ":00";
+						options2["value"] = qishitime + ":00-" + zongdiantime + ":00";
+						timeArray.push(options2);
+					}
+				}
+				for(var i = 0; i < timeArray.length; i++) {
+					console.log(timeArray[i].text);
+					console.log(timeArray[i].value);
+				}
+				//如果没有处方时间
+				//				if($.isEmptyObject(image_info)) {
+				//					alert(11111);
+				//					for(var i = 0; i < 24; i++) {
+				//						var options2 = {};
+				//						//console.log(moment().add('hours', i + 1).format('H'));
+				//						options2["text"] = moment().add('hours', i + 1).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						options2["value"] = moment().add('hours', i + 1).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						timeArrayAll.push(options2);
+				//					}
+				//
+				//					//构建级联时间
+				//					cityData = [{
+				//							value: '2018',
+				//							text: moment().format('YYYY-MM-DD'),
+				//							children: timeArray
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(1, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(2, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(3, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(4, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(5, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(6, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						}
+				//					];
+				//				} else if(image_info.time == undefined) {
+				//					alert(2222);
+				//					for(var i = 0; i < 24; i++) {
+				//						var options2 = {};
+				//						//console.log(moment().add('hours', i + 1).format('H'));
+				//						options2["text"] = moment().add('hours', i + 1).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						options2["value"] = moment().add('hours', i + 1).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						timeArrayAll.push(options2);
+				//					}
+				//
+				//					//构建级联时间
+				//					cityData = [{
+				//							value: '2018',
+				//							text: moment().format('YYYY-MM-DD'),
+				//							children: timeArray
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(1, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(2, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(3, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(4, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(5, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						},
+				//						{
+				//							value: '2018',
+				//							text: moment().add(6, "days").format('YYYY-MM-DD'),
+				//							children: timeArrayAll
+				//						}
+				//					];
+				//				} else {
+				//					alert(3333);
+				//					console.log("处方时间" + image_info.time);
+				//					for(var i = 0; i < 24; i++) {
+				//						var options2 = {};
+				//						options2["text"] = moment().add('hours', i + 1).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						options2["value"] = moment().add('hours', i + 1).format('H') + ":00-" + moment().add('hours', 2 + i).format('H') + ":00";
+				//						timeArrayAll.push(options2);
+				//					}
+				//
+				//					/*计算处方时间与当前时间相差多少天*/
+				//
+				//					var chufangtime = image_info.time;
+				//					var chufangtimeArr = [];
+				//					if(chufangtime != undefined) {
+				//						chufangtimeArr = chufangtime.split("-");
+				//					}
+				//					var dangqiantime = moment().format('YYYY-MM-DD');
+				//					dangqiantimeArr = [];
+				//					dangqiantimeArr = dangqiantime.split("-");
+				//					var a = moment(dangqiantimeArr);
+				//					var b = moment(chufangtimeArr);
+				//					var diffDay = a.diff(b, 'days');
+				//					cityData = [{
+				//						value: '2018',
+				//						text: moment().format('YYYY-MM-DD'),
+				//						children: timeArray
+				//					}];
+				//					var timeJSON = {};
+				//					if(parseInt(diffDay) == 0) {
+				//						for(var i = parseInt(diffDay); i < (-parseInt(diffDay) + 2); i++) {
+				//							timeJSON = {
+				//								value: '2018',
+				//								text: moment(image_info.time).add(i + 1, "days").format('YYYY-MM-DD'),
+				//								children: timeArrayAll
+				//							}
+				//							cityData.push(timeJSON);
+				//						}
+				//					} else {
+				//						for(var i = parseInt(diffDay); i < (-parseInt(diffDay) + 3); i++) {
+				//							timeJSON = {
+				//								value: '2018',
+				//								text: moment(image_info.time).add(i + 1, "days").format('YYYY-MM-DD'),
+				//								children: timeArrayAll
+				//							}
+				//							cityData.push(timeJSON);
+				//						}
+				//					}
+				//				}
+				for(var i = 0; i < 24; i++) {
+					var options2 = {};
+
+					qishitime = moment().add('hours', 1 + i).format('H');
+					zongdiantime = moment().add('hours', 2 + i).format('H');
+					if(zongdiantime == "0") {
+						zongdiantime = "23:59"
+					}
+					options2["text"] = qishitime + ":00-" + zongdiantime + ":00";
+					options2["value"] = qishitime + ":00-" + zongdiantime + ":00";
+					timeArrayAll.push(options2);
+				}
+				cityData = [{
+						value: '2018',
+						text: moment().format('YYYY-MM-DD'),
+						children: timeArray
+					},
+					{
+						value: '2018',
+						text: moment().add(1, "days").format('YYYY-MM-DD'),
+						children: timeArrayAll
+					},
+					{
+						value: '2018',
+						text: moment().add(2, "days").format('YYYY-MM-DD'),
+						children: timeArrayAll
+					},
+					{
+						value: '2018',
+						text: moment().add(3, "days").format('YYYY-MM-DD'),
+						children: timeArrayAll
+					},
+					{
+						value: '2018',
+						text: moment().add(4, "days").format('YYYY-MM-DD'),
+						children: timeArrayAll
+					},
+					{
+						value: '2018',
+						text: moment().add(5, "days").format('YYYY-MM-DD'),
+						children: timeArrayAll
+					},
+					{
+						value: '2018',
+						text: moment().add(6, "days").format('YYYY-MM-DD'),
+						children: timeArrayAll
+					}
+				];
+
+				userPicker.setData(cityData);
+				userPicker.show(function(items) {
+					if(items[1].value) {
+						$("#time_message_pull_right").html(items[0].text + " " + items[1].value);
+					} else {
+						//return false;
+					}
+				});
+
+			}, false);
+			//进入知情同意书页面
+			document.getElementById("user_document").addEventListener("tap", function(e) {
+				mui.openWindow({
+					url: '../document/use_document.html',
+					id: 'use_document.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+			});
+			//查看保险协议页面
+			$("#baoxianwenzi").click(function(e) {
+				mui.openWindow({
+					url: '../document/baoxian_document.html',
+					id: 'baoxian_document.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+
+				});
+			});
+			//上传处方链接
+			$("#uploadtupian").click(function(e) {
+				mui.openWindow({
+					url: 'upload_image.html',
+					id: 'upload_image.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						panduan_JSON: panduanJSON,
+						title_text: $("#miaoshu_wenzi").html()
+					}
+				});
+			});
+
+			function note_click(target) {
+				if(target.value == '') {
+					target.style.color = "#B0B0B0";
+					target.value = "请选择服务对象电话号码:";
+				} else if(target.value == "请选择服务对象电话号码:") {
+					target.style.color = "#000000";
+					target.value = "";
+				}
+			}
+
+			//知情同意书勾选
+			$('#register_user').click(function(e) {
+				if($(this).is(':checked')) {
+					mui.toast("请阅读知情同意书");
+					mui.openWindow({
+						url: '../document/use_document.html',
+						id: 'use_document.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+
+					window.addEventListener('doit', function(e) {
+						iflock = e.detail.iflock;
+						if(!iflock) {
+							return false;
+						} else {
+
+						}
+					});
+				}
+
+			});
+
+			//下单按钮
+			document.getElementById("xiadan").addEventListener("tap", function(e) {
+				if(!$('#register_user').is(':checked')) {
+					mui.toast("请勾选知情同意书");
+					return false;
+				}
+				console.log("是否进过知情同意书那个页面" + iflock);
+
+				localStorage.removeItem("ImageInfo_recipeImgs");
+				localStorage.removeItem("ImageInfo_caseImgs");
+				localStorage.removeItem("ImageInfo_environmenImgs");
+				localStorage.removeItem("recipe_time");
+				localStorage.removeItem("ImageInfo_yingxiang");
+
+				if($('#erwai_service').is(':checked')) {
+					erwai_service = "0";
+					erwai_service_text = panduanJSON.higherprice;
+				} else {
+					erwai_service = "1";
+					erwai_service_text = "0";
+				}
+				//获取药品上传路径
+				if(isDrug_select == "0") {
+					arydrug = $$.getImageFilesPath("image-list-drug");
+					if(arydrug.length == 0) {
+						mui.toast("请上传药品图片");
+						return false;
+					} else {
+						image_info.ImageInfo["drugImgs"] = arydrug;
+					}
+				}
+
+				var now = new Date();
+				var servicename = document.querySelector('.mui-title').innerText;
+				var time = document.getElementById("time_message_pull_right").innerText;
+				var taocan = document.getElementById("taocan_pull_right").innerText;
+				var object_service = document.getElementById("service_object_pull_right").innerText;
+				var illness_select = document.getElementById("illness_pull_right").innerText;
+				if(servicename == "" || time == "" || taocan == "" || object_service == "" || illness_select == "") {
+					mui.toast("下单必填项有缺失，请填写");
+					$("#xiadan").removeClass("mui-disabled");
+					return false;
+				}
+				if(isupload) {
+					if(jQuery.isEmptyObject(image_info)) {
+						$("#xiadan").removeClass("mui-disabled");
+						mui.toast("请选择上传就医凭证");
+						return false;
+					}
+				}
+				if(panduanJSON.isneedspares == "0") {
+					if(!$("input[name='leixingradio']").is(":checked")) {
+						mui.toast("请选择是否需要备品");
+						return false;
+					}
+				}
+
+				//var leibie = ($("input[id='leixingradio']:checked").val()) == 1 ? '是' : '否';
+				var leibie = $("input[id='leixingradio']:checked").val();
+
+				var taocanPrice = taocan.split("/")[0].split("元")[0];
+				var taocanTimes = taocan.split("/")[1].split("次")[0];
+				var account = localStorage.getItem("TOKENID");
+				var illmiaoshu = $("#illmiaoshu").val();
+				var price = {
+					serviceprice: taocanPrice,
+					time: taocanTimes,
+					discount: discount,
+					sparesprice: beipinmoneyOUT,
+					servicetotalprice: parseFloat(taocanPrice) + parseFloat(erwai_service_text) * parseInt(taocanTimes),
+					//					totalprice: parseFloat(taocanPrice) + parseFloat(erwai_service_text) * parseInt(taocanTimes)+parseFloat(beipinmoneyOUT)
+					totalprice: parseFloat(taocanPrice) + parseFloat(erwai_service_text) * parseInt(taocanTimes)
+				};
+				var additional = {
+					condition: illmiaoshu,
+					pictureurl: shenfen_img
+				};
+
+				//传递后台数据
+				if(biaoshi1 == "zhengchang") {
+					var calltimeAll = time.split(" ");
+					var calltimeYear = calltimeAll[0];
+					var calltimesstringstart = calltimeYear + " " + calltimeAll[1].split("-")[0];
+					var calltimesstringend = calltimeYear + " " + calltimeAll[1].split("-")[1];
+					var interval = {
+						"intervalbegin": calltimesstringstart,
+						"intervalend": calltimesstringend
+					};
+
+					var JSONMessage = {
+						userid: account,
+						interval: interval,
+						additional: additional,
+						price: price,
+						itemid: item_name_id,
+						disease: illness_object_xiadan,
+						customer: service_object_xiadan,
+						ishigherprice: erwai_service,
+					};
+					if(!jQuery.isEmptyObject(coupon)) {
+						JSONMessage["coupon"] = coupon;
+					}
+					if(panduanJSON.isDrugs == "0") {
+						console.log(isDrugBO);
+						JSONMessage["isprovidedrugs"] = isDrugBO
+					}
+
+					if(panduanJSON.isneedspares == "0") {
+						JSONMessage["isprovidespares"] = isSpareBO;
+					}
+					//					if(panduanJSON.isneedrecipe) {
+					//						if(image_info.time) {
+					//							JSONMessage["recipedate"] = image_info.time
+					//						} else {
+					//							mui.toast("请选择处方时间");
+					//							return false;
+					//						}
+					//					}
+					if(image_info.ImageInfo && image_info.ImageInfo.length != 0) {
+						JSONMessage["orderImgs"] = image_info.ImageInfo
+					}
+
+					if(panduanJSON.ishigherprice == "0") {
+						JSONMessage["ishigherprice"] = erwai_service;
+					}
+
+				} else if(biaoshi1 == "yihu") {
+					var JSONMessage = {
+						userid: account,
+						specifieddate: time,
+						additional: additional,
+						price: price,
+						isneedspares: leibie,
+						itemid: item_name_id,
+						disease: illness_object_xiadan,
+						customer: service_object_xiadan,
+						doctorid: yihuid,
+						orderImgs: image_info.ImageInfo,
+						//recipedate: image_info.time,
+						ishigherprice: erwai_service,
+						isprovidedrugs: image_info.isDrugBO,
+						isprovidespares: image_info.isBeipinBO
+					};
+				}
+				console.log("下单准备" + JSON.stringify(JSONMessage));
+				var process = function(id, isneeddrugs, isneedspares) {
+
+					if(biaoshi1 == "zhengchang") {
+						//判断此订单是否为待确认单子，如果为0是，如果为1不是
+						var status = 0;
+						if(isDrugBO == true) {
+							status = 0;
+						} else if(isDrugBO == false) {
+							status = 1;
+						}
+
+						mui.openWindow({
+							id: 'a03_queren_zhifu.html',
+							url: '../order/a03_queren_zhifu.html',
+							show: {
+								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+							},
+							waiting: {
+								autoShow: true //自动显示等待框，默认为true
+							},
+							extras: {
+								ORDER_ID: id, //扩展参数
+								ERWAI_SERVICE: erwai_service,
+								ERWAI_SERVICE_TEXT: erwai_service_text,
+								BEIPIN_MONEY: beipinmoneyOUT,
+								STATUS: status,
+								YOUHUI_JE: coupon.amount
+							}
+						});
+						//plus.webview.currentWebview().opener().opener().close(true);
+						//plus.webview.currentWebview().opener().close(true);
+						if(plus.webview.getWebviewById("a015_item_xiangqing.html")) {
+							plus.webview.getWebviewById("a015_item_xiangqing.html").close(true);
+						}
+						plus.webview.currentWebview().close(true);
+
+					} else if(biaoshi1 == "yihu") {
+						plus.webview.currentWebview().opener().opener().opener().close(true);
+						plus.webview.currentWebview().opener().opener().close(true);
+						plus.webview.currentWebview().opener().close(true);
+						plus.webview.currentWebview().close(true);
+						var i = plus.webview.getLaunchWebview();
+						if(i) {
+							//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+							i.evalJS("setItemActive(2,3)");
+						}
+						return true;
+					}
+				}
+				var sussess = function(data) {
+					console.log("ddd" + JSON.stringify(data));
+					if(data.result == "success") {
+						if(data.date._id) {
+							setTimeout(function() {
+								process(data.date._id, data.date.isneeddrugs, data.date.isneedspares);
+							}, 500)
+						}
+
+					} else {
+						$("#xiadan").removeClass("mui-disabled");
+						if(data.msg == "INTERVAL_TIME_ERR") {
+							mui.toast("下单失败,服务时间错误");
+						}
+						if(data.msg == "RECIPE_TIME_ERR") {
+							mui.toast("下单失败,处方时间错误");
+						}
+					}
+				}
+				var url = serverAddress + "/api/patient/appcreateorder";
+				commonHttpUtils(url, "post", JSONMessage, sussess, error, false);
+			});
+		});
+
+		function removeimg(myDiv, bigImg) {
+			var myDiv = document.getElementById('uploadimage_pull_right'); //获得dom对象  
+			myDiv.innerHTML = " ";
+		}
+
+
+	</script>
+
+</html>

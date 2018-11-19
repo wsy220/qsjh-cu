@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>个性服务包待支付</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.mui-input-group {
+				background-color: #EEEEEE;
+			}
+			
+			.wait-payment {
+				height: 215px;
+				background: white;
+				text-align: center;
+				padding-top: 60px;
+			}
+			
+			.wait-payment div {
+				font-size: 0.5rem;
+				color: #ff9c00;
+				margin-top: 15px;
+			}
+			
+			form {
+				font-size: 0.3rem;
+				margin-top: 4px
+			}
+			
+			.mui-radio input[type=radio]:checked:before {
+				font-size: 20px;
+				color: #FFB032;
+			}
+			
+			.mui-radio input[type=radio]:checked:before {
+				content: '\e442';
+			}
+			
+			.mui-checkbox input[type=checkbox]:before,
+			.mui-radio input[type=radio]:before {
+				font-size: 20px;
+			}
+			
+			.mui-radio input[type=radio] {
+				top: 18px;
+				width: 20px;
+			}
+			
+			.wait-payment img {
+				width: 100px;
+			}
+			
+			.mui-radio img {
+				width: 40px;
+				height: 40px;
+				margin-bottom: 5px;
+				margin-right: 10px
+			}
+			
+			.mui-input-group .mui-input-row {
+				height: 50px;
+				margin-top: 2px;
+			}
+			
+			.mui-checkbox label,
+			.mui-radio label {
+				line-height: 50px;
+			}
+			
+			.mui-input-row label {
+				padding: 0 15px;
+				font-size: 15px;
+			}
+			/*支付成功*/
+			
+			.wait-payment .payment-success {
+				font-size: 0.3rem !important;
+				color: #a4a4a4 !important;
+			}
+			
+			.wait-payment .payment-success span {
+				color: #de6060 !important;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				position: absolute;
+				left: 0px;
+			}
+			
+			.zfje {
+				color: #E4933C;
+				width: 75%;
+				float: left;
+			}
+			
+			.qian {
+				color: #E4933C;
+				font-size: 18px;
+				width: 25%;
+				float: left;
+				padding: 15px 0px;
+			}
+			
+			.mui-input-group .mui-input-row1 {
+				height: 50px;
+				margin-top: 2px;
+				height: 65px;
+			}
+			
+			li {
+				list-style-type: none;
+			}
+			
+			.m-rem50 {
+				padding-top: 10px;
+				height: 60px !important;
+			}
+			
+			.mui-radio label {
+				display: inline-flex;
+			}
+			
+			.zi {
+				margin-top: -5px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 10px;
+				padding-bottom: 5px;
+			}
+			
+			.bg-wh {
+				background: #FFFFFF;
+			}
+			
+			.paddinganniu {
+				padding: 10px;
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
+			.mui-btn-block {
+				margin-bottom: 0;
+				margin-top: 60px;
+			}
+			
+			.mui-input-group:after {
+				background-color: transparent;
+			}
+		</style>
+	</head>
+
+	<body class="bg-whf6">
+
+		<header class="mui-bar mui-bar-transparent mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">付款</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-input-group ">
+				<div class="mui-input-row mui-radio bg-wh">
+					<div>
+						<ul>
+							<li class="zfje">
+								<label id="card">支付金额</label>
+							</li>
+							<li class="qian">￥<span id="qian">430.00</span></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="mui-input-group bg-wh">
+					<div class="mui-input-row mui-radio bg-wh">
+						<label id="card">支付方式</label>
+					</div>
+					<div class="mui-input-row mui-radio bg-wh m-rem50">
+						<label id="wechat"><img src="../images/wx-01.png" /><span class="zi">微信支付</span></label>
+						<input name="style" type="radio" value="wxpay">
+					</div>
+					<div class="mui-input-row mui-radio bg-wh m-rem50">
+						<label><img src="../images/zfb-01.png" /><span class="zi">支付宝支付</span></label>
+						<input name="style" type="radio" value="alipay">
+					</div>
+					<div class="mui-input-row mui-radio bg-wh m-rem50 applepay" style="display: none;">
+						<label><img src="../images/zfb-01.png" /><span class="zi">苹果应用内支付</span></label>
+						<input name="style" type="radio" value="appleiap">
+					</div>
+					<!--<div class="mui-input-row mui-radio bg-wh m-rem50">
+						<label id="yue"><img src="../images/yhk-01.png" /><span class="zi">医保卡支付</span></label>
+						<input name="style" type="radio" value="pay_yibaoka">
+					</div>-->
+				</div>
+				<div class="mui-content-padded">
+					<button id='queren' class="mui-btn mui-btn-block mui-btn-warning" type="submit">确认支付</button>
+				</div>
+			</div>
+			<script type="text/javascript" src="../js/mui.min.js"></script>
+			<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+			<script type="text/javascript" src="../js/xiachenshi.js"></script>
+			<script type="text/javascript" src="../js/constants.js"></script>
+			<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+			<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+			<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+	</body>
+	<script>
+		var pays = {};
+		var pkgid, fdtid, hid, money_heji;
+		var messageInfo = {};
+		mui.plusReady(function() {
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			var self = plus.webview.currentWebview();
+			pkgid = self.pkgid;
+			var money = self.money;
+			$("#qian").html(money);
+
+			fdtid = localStorage.getItem("fdt");
+			hid = localStorage.getItem("HID");
+			console.log(pkgid);
+			console.log(fdtid);
+			console.log(hid);
+
+			console.log("ddddrrrr" + JSON.parse(localStorage.getItem("VIPPKGcontent")));
+			console.log("ddddrrrr2222" + localStorage.getItem("VIPPKGcontent"));
+
+			messageInfo = JSON.parse(localStorage.getItem("VIPPKGcontent"));
+
+			$("#qian").html(money_heji);
+			/*-----------------------合计带元单位，使用时候截取-----------------------------*/
+			function gotoPay(id) {
+
+				var channel;
+				plus.payment.getChannels(function(channels) {
+					for(var i in channels) {
+						channel = channels[i];
+						pays[channel.id] = channel;
+					}
+					if(id == "wxpay") {
+						WXpay("wxpay");
+					}
+					if(id == "alipay") {
+						WXpay("alipay");
+					}
+
+				}, function(e) {
+					console.log("获取支付通道失败：" + e.message);
+				});
+			}
+
+			var w = null;
+			var url = '';
+			var PAYSERVER = serverAddress + '/api/patient/wechat_pkg_pay';
+			var PAYSERVER_ZHIFUBAO = serverAddress + '/api/patient/ali_pkg_pay';
+			var zhifuMessage = {};
+			var amount = ''; //订单钱数
+
+			function processBack(ups) {
+				var orderView = plus.webview.getWebviewById("subpages/tab-webview-subpage-order.html")
+				if(orderView) {
+					plus.webview.getWebviewById("c02_order_xiangqing.html").close(true);
+					orderView.reload(true)
+				} else {
+					mui.openWindow({
+						id: 'subpages/tab-webview-subpage-order.html',
+						url: '../subpages/tab-webview-subpage-order.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: false //自动显示等待框，默认为true
+						},
+						extras: {
+							TITLE: '订单',
+							UPSTATUS: ups
+						}
+					});
+				}
+			}
+
+			function WXpay(id) {
+
+				//				if(w) {
+				//					return;
+				//				} //检查是否请求订单中
+				console.log('----- 请求支付 -----');
+				var appid = plus.runtime.appid;
+				if(navigator.userAgent.indexOf('StreamApp') >= 0) {
+					appid = 'Stream';
+				}
+				w = plus.nativeUI.showWaiting();
+				if(id == "wxpay") {
+					//微信为分单位
+					amount = 1;
+					url = PAYSERVER;
+					zhifuMessage = {
+						spbill_create_ip: returnCitySN.cip,
+						hospital: hid,
+						fdt: fdtid,
+						pkg: pkgid,
+						vipcontract: messageInfo
+					}
+					var success = function(data) {
+						var order = {
+							"appid": data.result.appid,
+							"noncestr": data.result.nonce_str,
+							"package": data.result.package,
+							"partnerid": data.result.mch_id,
+							"prepayid": data.result.prepay_id,
+							"timestamp": parseInt(data.result.time_stamp),
+							"sign": data.result.sign
+						}
+						var orderstr = JSON.stringify(order);
+						plus.payment.request(pays[id], orderstr, function(result) {
+							plus.nativeUI.alert('您的个性服务包已经购买成功', function() {
+								var i = plus.webview.getLaunchWebview();
+								plus.webview.currentWebview().opener().opener().close(true);
+								plus.webview.currentWebview().opener().close(true);
+								var quxiao_current = plus.webview.currentWebview().close(true);
+								mui.back();
+							}, '微信支付成功');
+						}, function(e) {
+							console.log('----- 支付失败 -----');
+							//alert('[' + e.code + ']：' + e.message);
+							//plus.nativeUI.alert('您已经取消支付订单');
+							if(e.code == "-8") {
+								plus.nativeUI.alert('请您确保手机安装微信客户端');
+							}
+							if(e.code == "9") {
+								plus.nativeUI.alert('请您在APP打包状态下选择微信支付');
+							}
+							//plus.webview.currentWebview().opener().close(true);
+
+							mui.back();
+						});
+					};
+					//console.log("支付请求路径：" + url);
+					commonHttpUtils(url, "post", zhifuMessage, success, error, true);
+				} else if(id == "alipay") {
+					//支付宝钱数单位为元
+					amount = 0.01;
+					url = PAYSERVER_ZHIFUBAO;
+					zhifuMessage = {
+						hospital: hid,
+						fdt: fdtid,
+						pkg: pkgid,
+						vipcontract: messageInfo
+
+					}
+					console.log(JSON.stringify(zhifuMessage));
+					var success = function(data) {
+						var orderstr = JSON.stringify(data);
+						console.log("dddd=====>" + data.result);
+						plus.payment.request(pays[id], data.result, function(result) {
+							plus.nativeUI.alert('您的个性服务包已经购买成功', function() {
+								var i = plus.webview.getLaunchWebview();
+								plus.webview.currentWebview().opener().opener().close(true);
+								plus.webview.currentWebview().opener().close(true);
+								var quxiao_current = plus.webview.currentWebview().close(true);
+								mui.back();
+							}, '支付宝支付成功');
+						}, function(e) {
+							console.log('----- 支付失败 -----');
+							//plus.nativeUI.alert('[' + e.code + ']：' + e.message);
+							plus.nativeUI.alert('您已经取消支付');
+
+							var i = plus.webview.getLaunchWebview();
+							plus.webview.currentWebview().opener().opener().close(true);
+							plus.webview.currentWebview().opener().close(true);
+							var quxiao_current = plus.webview.currentWebview().close(true);
+							mui.back();
+						});
+					};
+					console.log("支付请求路径：" + url);
+					console.log("支付信息", JSON.stringify(zhifuMessage));
+
+					commonHttpUtils(url, "post", zhifuMessage, success, error, true);
+				}
+
+			}
+			document.getElementById("queren").addEventListener('tap', function() {
+				handleConfirm();
+			});
+
+			function handleConfirm() {
+				var payChannel = $("input[name='style']:checked").val();
+				if(!payChannel) {
+					mui.toast("请选择支付方式");
+					return false;
+				}
+				gotoPay(payChannel);
+			}
+			// 检测是否安装支付服务
+			function checkServices(pc) {
+				if(!pc.serviceReady) {
+					var txt = null;
+					switch(pc.id) {
+						case 'alipay':
+							txt = '检测到系统未安装“支付宝快捷支付服务”，无法完成支付操作，是否立即安装？';
+							break;
+						default:
+							txt = '系统未安装“' + pc.description + '”服务，无法完成支付，是否立即安装？';
+							break;
+					}
+					plus.nativeUI.confirm(txt, function(e) {
+						if(e.index == 0) {
+							pc.installService();
+						}
+					}, pc.description);
+				}
+			}
+		});
+
+		//		{
+		//			"hospital": "5b67ea4d3b7ada025cc1f21b",
+		//			"fdt": "5b67ed973b7ada025cc1f244",
+		//			"pkg": "5b67fbdabfa4311e3c6e6c41",
+		//			"vipcontract": {
+		//				"patient": "5b6ac0ac405696036882aaf9",
+		//				"hospital": "5b67ea4d3b7ada025cc1f21b",
+		//				"fdt": "5b67ed973b7ada025cc1f244",
+		//				"vipcontract": {
+		//					"sno": 1000000321,
+		//					"name": "个性服务包",
+		//					"startData": "2018-09-14",
+		//					"endData": "2019-09-14",
+		//					"patientName": "暗暗",
+		//					"idCardNo": "430525197603225935",
+		//					"phone": "18888883333",
+		//					"fdtName": "临江社区卫生服务中心",
+		//					"fdtMember": [{
+		//						"name": "朱奕璠",
+		//						"position": "ZLZZ"
+		//					}, {
+		//						"name": "yrk",
+		//						"position": "GWYS"
+		//					}, {
+		//						"name": "朱奕璠",
+		//						"position": "GWYS"
+		//					}],
+		//					"fdtPhone": "18888888881",
+		//					"signData": "2018-09-14",
+		//					"content": "<p>甲、乙双方本着平等、尊重和自愿的原则，签订此协议，接受以下条款的约定：<br />\n1、选择签约服务包：Vip个性服务包；居民自付费用：2元。<br />\n2、甲方获得签约服务：<br />\n（1）签约居民与签约团队保持联系，签约居民可以向签约团队进行健康问题咨询。<br />\n（2）签约团队为签约居民进行健康评估，制定健康管理方案。<br />\n（3）签约团队负责持续监测签约居民的健康状况，并为其定期调整健康管理方案。<br />\n（4）签约团队定期为签约居民提供健康知识、健康活动等资讯。<br />\n（5）签约团队为签约居民提供国家和当地政府规定的基本公共卫生服务。<br />\n（6）签约团队为签约居民提供常见病、多发病的诊疗服务，按相关规定支付诊疗费<br />\n用<br />\n（7）签约团队向签约居民提供按时就诊提醒服务。<br />\n（8）根据签约居民患病状况，签约团队为其提供到上级医院就诊的预约服务。<br />\n（9）根据签约居民患病状况，签约团队为其提供转诊服务，并享受当地政府规定的相应优惠政策。<br />\n（10）签约团队负责整理签约居民的健康信息。除法律法规规定外，未经签约居民允许，不得提供给第三方。<br />\n（11）根据签约居民需求，签约团队为其提供其他必要的帮助。<br />\n3、甲方应配合事项<br />\n（1）签约居民是健康第一责任人，应主动做好健康自我管理。<br />\n（2）遵守签约协议，尊重签约人员。<br />\n（3）签约居民保证提供的信息真实有效。<br />\n（4）有卫生服务需求时，原则上应先找签约团队就诊。<br />\n（5）遵守医嘱，有问题及时咨询。<br />\n（6）签约居民在其他医疗机构诊疗等信息，应主动、及时向签约团队反馈。<br />\n（7）签约居民住址变更、长期离开居住地、联系方式变更等，应及时告知签约团队。<br />\n（8）未遵遵守第6、7条款，视为签约居民主动放弃获得签约服务的权利。<br />\n（9）签约居民授权签约团队调阅其健康档案以及在其他医疗机构的诊疗信息等。<br />\n（10）签约团队根据签约服务包重复提供单项服务2次时，签约居民仍不配合，视为签约居民主动放弃该签约服务项目的权利。<br />\n（11）签约居民作为患者应该履行的其他义务。<br />\n4、本协议期限为一年。自2018-09-14起，至2019-09-14日止。签约期满后，应续签。在签约期内，甲方因居住地变更等客观原因，可提出终止现有签约关系，已交付的签约费不转不退。<br />\n5、如甲乙双方在履行本协议过程中发生纠纷，双方应通过友好协商予以解决或由当地医疗纠纷调解委员会调解。协商不成或一方不愿协商，双方均可向有管辖权的法院提起诉讼。<br />\n6、本协议自甲方签字、乙方加盖公章之日起生效。<br />\n7、本协议一式二份，甲乙双方各执一份，具有同等法律效力。<br />\n8、本协议解释权归乙方所用。</p>\n",
+		//					"fdtImg": "\\assets\\uploads\\single-file-1535357914531.jpg",
+		//					"socialNo": "黄金季节",
+		//					"secondName": "vbb",
+		//					"secondPhone": "vvb",
+		//					"secondAddr": "vbb",
+		//					"patientImg": "client\\assets\\uploads\\single-file-1536889841177.jpg"
+		//				}
+		//			}
+		//		}
+
+		//		{
+		//			"hospital": "5b67ea4d3b7ada025cc1f21b",
+		//			"fdt": "5b67ed973b7ada025cc1f244",
+		//			"pkg": "5b5fc5a57a8c0426eca70bb6",
+		//			"vipcontract": {
+		//				"sno": 1000000323,
+		//				"name": "烧烫伤护理",
+		//				"startData": "2018-09-14",
+		//				"endData": "2019-09-14",
+		//				"patientName": "暗暗",
+		//				"idCardNo": "430525197603225935",
+		//				"phone": "18888883333",
+		//				"fdtName": "临江社区卫生服务中心",
+		//				"fdtMember": [{
+		//					"name": "朱奕璠",
+		//					"position": "ZLZZ"
+		//				}, {
+		//					"name": "yrk",
+		//					"position": "GWYS"
+		//				}, {
+		//					"name": "朱奕璠",
+		//					"position": "GWYS"
+		//				}],
+		//				"fdtPhone": "18888888881",
+		//				"signData": "2018-09-14",
+		//				"content": "<p>甲、乙双方本着平等、尊重和自愿的原则，签订此协议，接受以下条款的约定：<br />\n1、选择签约服务包：Vip个性服务包；居民自付费用：120元。<br />\n2、甲方获得签约服务：<br />\n（1）签约居民与签约团队保持联系，签约居民可以向签约团队进行健康问题咨询。<br />\n（2）签约团队为签约居民进行健康评估，制定健康管理方案。<br />\n（3）签约团队负责持续监测签约居民的健康状况，并为其定期调整健康管理方案。<br />\n（4）签约团队定期为签约居民提供健康知识、健康活动等资讯。<br />\n（5）签约团队为签约居民提供国家和当地政府规定的基本公共卫生服务。<br />\n（6）签约团队为签约居民提供常见病、多发病的诊疗服务，按相关规定支付诊疗费<br />\n用<br />\n（7）签约团队向签约居民提供按时就诊提醒服务。<br />\n（8）根据签约居民患病状况，签约团队为其提供到上级医院就诊的预约服务。<br />\n（9）根据签约居民患病状况，签约团队为其提供转诊服务，并享受当地政府规定的相应优惠政策。<br />\n（10）签约团队负责整理签约居民的健康信息。除法律法规规定外，未经签约居民允许，不得提供给第三方。<br />\n（11）根据签约居民需求，签约团队为其提供其他必要的帮助。<br />\n3、甲方应配合事项<br />\n（1）签约居民是健康第一责任人，应主动做好健康自我管理。<br />\n（2）遵守签约协议，尊重签约人员。<br />\n（3）签约居民保证提供的信息真实有效。<br />\n（4）有卫生服务需求时，原则上应先找签约团队就诊。<br />\n（5）遵守医嘱，有问题及时咨询。<br />\n（6）签约居民在其他医疗机构诊疗等信息，应主动、及时向签约团队反馈。<br />\n（7）签约居民住址变更、长期离开居住地、联系方式变更等，应及时告知签约团队。<br />\n（8）未遵遵守第6、7条款，视为签约居民主动放弃获得签约服务的权利。<br />\n（9）签约居民授权签约团队调阅其健康档案以及在其他医疗机构的诊疗信息等。<br />\n（10）签约团队根据签约服务包重复提供单项服务2次时，签约居民仍不配合，视为签约居民主动放弃该签约服务项目的权利。<br />\n（11）签约居民作为患者应该履行的其他义务。<br />\n4、本协议期限为一年。自2018-09-14起，至2019-09-14日止。签约期满后，应续签。在签约期内，甲方因居住地变更等客观原因，可提出终止现有签约关系，已交付的签约费不转不退。<br />\n5、如甲乙双方在履行本协议过程中发生纠纷，双方应通过友好协商予以解决或由当地医疗纠纷调解委员会调解。协商不成或一方不愿协商，双方均可向有管辖权的法院提起诉讼。<br />\n6、本协议自甲方签字、乙方加盖公章之日起生效。<br />\n7、本协议一式二份，甲乙双方各执一份，具有同等法律效力。<br />\n8、本协议解释权归乙方所用。</p>\n",
+		//				"fdtImg": "\\assets\\uploads\\single-file-1535357914531.jpg",
+		//				"socialNo": "好姐姐",
+		//				"secondName": "g g h",
+		//				"secondPhone": "g g",
+		//				"secondAddr": "f f g g h",
+		//				"patientImg": "client\\assets\\uploads\\single-file-1536890714951.jpg"
+		//			}
+		//		}
+	</script>
+
+</html>

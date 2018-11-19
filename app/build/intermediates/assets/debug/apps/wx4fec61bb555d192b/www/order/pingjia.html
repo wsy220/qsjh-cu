@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>评价</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<style>
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0.8rem !important;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				font-size: 15px;
+				color: #333333;
+				line-height: 0.6rem;
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-size: 20px;
+				font-style: normal;
+				color: #ff3300;
+				margin-left: 10px;
+				margin-top: 5px;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.mui-table-view-cell {
+				position: relative;
+				overflow: hidden;
+				padding: 11px 15px;
+				-webkit-touch-callout: none;
+				line-height: 30px;
+			}
+			
+			.iconfont2 {
+				font-family: "iconfont" !important;
+				font-size: 20px;
+				font-style: normal;
+				color: #bcbcbc;
+				margin-left: 10px;
+				margin-top: 5px;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.neirong {
+				color: #333333;
+				font-size: 15px;
+				float: left;
+			}
+			
+			.pingjia {
+				color: #333333;
+				font-size: 15px;
+				font-weight: bold;
+				float: left;
+			}
+			
+			.mui-content-padded {
+				margin-top: 30px;
+			}
+			
+			.mui-btn-warning {
+				background: #FCB565;
+				border-radius: 10px;
+				width: 100%;
+				font-size: 15px;
+				margin-top: 150px;
+			}
+			
+			.mui-icon-star {
+				border: 0;
+				color: #BBBBBB;
+			}
+			
+			.mui-icon-star-filled {
+				border: 0;
+				color: red;
+			}
+			
+			.mui-icon {
+				margin-left: 10px;
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">评价</h1>
+
+		</header>
+		<div class="mui-content">
+
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div>
+						<div class="pingjia">评价对象：</div>
+						<div class="neirong"><span id="doctor_name">丁丽辉</span> <span id="doctor_type">副主任护师</span></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div>
+						<div class="pingjia" id="item1">技术操作：</div>
+						<div>
+							<div class="icons mui-inline" id="xingxing">
+								<i data-index="1" class="mui-icon mui-icon-star"></i>
+								<i data-index="2" class="mui-icon mui-icon-star"></i>
+								<i data-index="3" class="mui-icon mui-icon-star"></i>
+								<i data-index="4" class="mui-icon mui-icon-star"></i>
+								<i data-index="5" class="mui-icon mui-icon-star"></i>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="pingjia"  id="item2">服务守时：</div>
+					<div>
+						<div class="icons mui-inline" id="xingxing2">
+							<i data-index="1" class="mui-icon mui-icon-star"></i>
+							<i data-index="2" class="mui-icon mui-icon-star"></i>
+							<i data-index="3" class="mui-icon mui-icon-star"></i>
+							<i data-index="4" class="mui-icon mui-icon-star"></i>
+							<i data-index="5" class="mui-icon mui-icon-star"></i>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="pingjia"  id="item3">服务态度：</div>
+					<div>
+						<div class="icons mui-inline" id="xingxing3">
+							<i data-index="1" class="mui-icon mui-icon-star"></i>
+							<i data-index="2" class="mui-icon mui-icon-star"></i>
+							<i data-index="3" class="mui-icon mui-icon-star"></i>
+							<i data-index="4" class="mui-icon mui-icon-star"></i>
+							<i data-index="5" class="mui-icon mui-icon-star"></i>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="mui-content-padded">
+			<button id='save' class="mui-btn mui-btn-block mui-btn-warning">提交</button>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script>
+		mui.plusReady(function() {
+			var starIndex1 = 0,
+				starIndex2 = 0,
+				starIndex3 = 0;
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			var self = plus.webview.currentWebview();
+			order_id_page = self.ORDER_ID;
+			doctor_name = self.Doctor_Name;
+			doctor_type = self.Doctor_Type;
+			order_type=self.order_type;
+			if(order_type=="0"){
+				$("#item1").val("技术操作：");
+				$("#item2").val("服务守时：");
+				$("#item3").val("服务态度：");
+			}else if(order_type=="1"){
+				$("#item1").val("讲解细致：");
+				$("#item2").val("服务态度：");
+				$("#item3").val("回答迅速：");
+			}
+			switch(doctor_type) {
+				case "nurse":
+					doctor_type = "护士";
+					break;
+				case "doctor":
+					doctor_type = "医生";
+					break;
+			}
+			$("#doctor_name").html(doctor_name);
+			$("#doctor_type").html(doctor_type);
+
+			var success = function(data) {
+				console.log("------" + JSON.stringify(data));
+				if(data.result == "success") {
+					//var list = plus.webview.getWebviewById("subpages/tab-webview-subpage-order.html");
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+					//mui.fire(list, 'refresh');
+					//返回true，继续页面关闭逻辑
+					//plus.webview.currentWebview().opener().close(true);
+					//plus.webview.currentWebview().close(true);
+					//					var i = plus.webview.getLaunchWebview();
+					//					if(i) {
+					//						//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+					//						//mui.fire(i,"refresh");
+					//						i.evalJS("setItemActive(2,0)");
+					//						localStorage.setItem("upitem",0);
+					//						mui.fire(i, 'refresh');
+					//					}
+
+					//					localStorage.setItem("upitem", 0);
+					//					mui.openWindow({
+					//						id: '../subpages/tab-webview-subpage-order.html',
+					//						url: '../subpages/tab-webview-subpage-order.html',
+					//						show: {
+					//							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					//							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					//						},
+					//						waiting: {
+					//							autoShow: false //自动显示等待框，默认为true
+					//						},
+					//						extras: {
+					//							TITLE: '订单',
+					//							UPSTATUS: 0
+					//						}
+					//					});
+
+					//					return true;
+				}
+			};
+			var url = serverAddress + "/api/patient/appgetorder/" + order_id_page;
+			commonHttpUtils(url, "get", {}, success, error, false);
+
+			mui('#xingxing').on('tap', 'i', function() {
+
+				var index = parseInt(this.getAttribute("data-index"));
+				var parent = this.parentNode;
+				var children = parent.children;
+				if(this.classList.contains("mui-icon-star")) {
+					for(var i = 0; i < index; i++) {
+						children[i].classList.remove('mui-icon-star');
+						children[i].classList.add('mui-icon-star-filled');
+					}
+				} else {
+					for(var i = index - 1; i < 5; i++) {
+						children[i].classList.add('mui-icon-star')
+						children[i].classList.remove('mui-icon-star-filled')
+						if(i == 0) index = 0;
+					}
+				}
+				//选择得星星个数
+				starIndex1 = index;
+
+			});
+			mui('#xingxing2').on('tap', 'i', function() {
+				var index = parseInt(this.getAttribute("data-index"));
+				var parent = this.parentNode;
+				var children = parent.children;
+				if(this.classList.contains("mui-icon-star")) {
+					for(var i = 0; i < index; i++) {
+						children[i].classList.remove('mui-icon-star');
+						children[i].classList.add('mui-icon-star-filled');
+					}
+				} else {
+					for(var i = index - 1; i < 5; i++) {
+						children[i].classList.add('mui-icon-star');
+						children[i].classList.remove('mui-icon-star-filled');
+						if(i == 0) index = 0;
+					}
+				}
+				//选择得星星个数
+				starIndex2 = index;
+			});
+			mui('#xingxing3').on('tap', 'i', function() {
+				var index = parseInt(this.getAttribute("data-index"));
+				var parent = this.parentNode;
+				var children = parent.children;
+				if(this.classList.contains("mui-icon-star")) {
+					for(var i = 0; i < index; i++) {
+						children[i].classList.remove('mui-icon-star');
+						children[i].classList.add('mui-icon-star-filled');
+					}
+				} else {
+					for(var i = index - 1; i < 5; i++) {
+						children[i].classList.add('mui-icon-star');
+						children[i].classList.remove('mui-icon-star-filled');
+						if(i == 0) index = 0;
+					}
+				}
+				//选择得星星个数
+				starIndex3 = index;
+
+			});
+			$("#save").click(function(e) {
+				var url = serverAddress + "/api/patient/evaluateOrder";
+				var xiugaiInfo = {
+					id: order_id_page,
+					skill: starIndex1,
+					punctual: starIndex2,
+					attitude: starIndex3
+				};
+				var success = function(data) {
+					mui.toast("评价完成");
+					localStorage.setItem("upitem", 3);
+					var i=plus.webview.getWebviewById("subpages/tab-webview-subpage-order.html");
+					if(i){
+						i.reload(true);
+					}
+					plus.webview.currentWebview().opener().close(true);
+					var quxiao_current = plus.webview.currentWebview().close(true);
+					
+					
+//					var i = plus.webview.getLaunchWebview();
+//					if(i) {
+//						//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+//						localStorage.setItem("upitem", 0);
+//						//i.evalJS("setItemActive(2,0)");
+//
+//						mui.openWindow({
+//							id: '../subpages/tab-webview-subpage-order.html',
+//							url: '../subpages/tab-webview-subpage-order.html',
+//							show: {
+//								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+//								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+//							},
+//							waiting: {
+//								autoShow: false //自动显示等待框，默认为true
+//							},
+//							extras: {
+//								TITLE: '订单',
+//								UPSTATUS: 0
+//							}
+//						});
+//
+//					}
+					return true;
+
+				};
+				commonHttpUtilsNoWaiting(url, "post", xiugaiInfo, success, error, true);
+				$("#save").addClass("mui-disabled");
+			});
+		});
+	</script>
+
+</html>

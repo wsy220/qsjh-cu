@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>柒拾客服</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.mui-search {
+				position: relative;
+				width: 78%;
+				float: left;
+			}
+			
+			.mui-bar-nav~.mui-content {
+				/* padding-top: 44px; */
+				margin-top: 10px;
+				width: 97%;
+				margin: 10px;
+			}
+			
+			.mui-bar-nav~.mui-content1 {
+				/*margin-top: 10px;*/
+				width: 100%;
+				padding-top: 39px;
+			}
+			
+			.mui-button-row {
+				position: relative;
+				/* padding-top: 5px; */
+				text-align: center;
+				width: 20%;
+				float: left;
+				padding-left: 5px;
+			}
+			
+			.mui-button-row {
+				position: relative;
+				padding-top: 0px;
+				text-align: center;
+			}
+			
+			.mui-btn-primary {
+				border: 1px solid #ff9e0d;
+				background: #ff9e0d;
+			}
+			
+			input[type=search] {
+				font-size: 16px;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				height: 34px;
+				text-align: center;
+				border: 0;
+				border-radius: 6px;
+				background-color: #FFFFFF;
+				border: 1px solid #D7D7D7;
+			}
+			
+			#head-img {
+				max-width: 70px;
+				height: 70px;
+				margin-top: 0.3rem;
+				border-radius: 50%;
+			}
+			
+			#gerenzhongxin .mui-media-body {
+				font-size: 0.3751rem;
+				padding-top: 0.4rem;
+				padding-left: 10px;
+			}
+			
+			.firstUl {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 0.5rem;
+				color: #E0E0E0;
+				right: 0;
+			}
+			
+			#table-viewX {
+				font-size: 0.2916rem;
+			}
+			
+			#table-viewX img {
+				width: 0.45rem;
+				height: 0.45rem;
+				margin-top: 5px;
+			}
+			
+			#table-viewX .mui-media-body {
+				margin-top: 0.1rem;
+				width: 90%;
+				float: right;
+				font-size: 15px;
+				color: #333333;
+			}
+			
+			.mui-pull-right {
+				margin-right: 25px;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+			}
+			
+			.mui-table-view:before {
+				height: 1px;
+				background-color: #ececec;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active {
+				background-color: transparent;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.tubiao {
+				width: 10%;
+				float: left;
+			}
+			
+			.wrz {
+				width: 20px;
+				height: 20px;
+				float: left;
+			}
+			
+			.renzheng {
+				padding-top: 10px;
+			}
+			
+			.ssjj {
+				font-size: 15px;
+				color: #999999;
+				width: 100%;
+				text-align: center;
+				padding-top: 44px;
+			}
+			
+			.jg {
+				color: #FF9E0D;
+			}
+			
+			.mui-content1 ul>.mui-media-body {
+				font-size: 10px;
+			}
+			
+			#table-viewX .mui-media-body {
+				white-space: initial;
+			}
+			
+			.mui-card-content-inner {
+				min-height: 350px;
+				min-height: 80vh;
+			}
+			
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">柒拾客服</h1>
+
+		</header>
+		<div class="mui-content">
+			<div class="mui-input-row mui-search mui-active">
+				<input type="search" class="mui-input-clear" placeholder="" data-input-clear="1" data-input-search="1" id="search_text"><span class="mui-icon mui-icon-clear mui-hidden"></span><span class="mui-placeholder"><span class="mui-icon mui-icon-search"></span><span></span></span>
+			</div>
+			<div class="mui-button-row">
+				<button type="button" class="mui-btn mui-btn-primary" onclick="return false;" id="search">搜索</button>
+			</div>
+
+		</div>
+
+		<div class="mui-content1">
+			<div class="mui-card-content-inner">
+				<div id="scroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll" id="tableUL">
+						<!--<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="mui-table-view" id="table-viewX">
+							<li class="mui-table-view-cell">
+								<a id="about_us" class="mui-navigate-right">
+									<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/kefu.png" /></div>
+									<div class="mui-media-body">
+										下单的具体流程？
+									</div>
+								</a>
+							</li>
+						</ul>-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/text/kefu.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.new.js"></script>
+
+	<script>
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+		mui.plusReady(function() {
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			var data = text_question[0].children;
+			initData(data);
+
+			function initData(ary) {
+				$("#tableUL").processTL(templateRegister.kefu_question, {
+					kefu_question: ary,
+				}, 'html', function() {});
+			}
+			mui(".mui-content1").on("tap", "a", function(event) {
+				var question_id = this.getAttribute("id");
+				mui.openWindow({
+					url: '../geren_message/qskf_xiangqing.html',
+					id: 'qskf_xiangqing.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						question_id: question_id
+					}
+				});
+			});
+
+			$("#search").click(function(e) {
+				var JSON_part = [];
+				//console.log($(".mui-media-body").text().trim());
+				//console.log($("#search_text").val());
+				var search_text = $("#search_text").val();
+
+				for(var i = 0; i < data.length; i++) {
+					if(data[i].value.indexOf(search_text) > -1) {
+						JSON_part.push(data[i]);
+					}
+				}
+				initData(JSON_part);
+			})
+
+			$("#search_text").bind("input  propertychange", function() {　　　
+				initData(data);
+			})
+
+		});
+	</script>
+
+</html>

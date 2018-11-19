@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<title>过敏史</title>
+		<style>
+		input,
+			textarea {
+				font-size: 0.3rem;
+			}
+			
+			.mui-content {
+				/*margin-top: 0.08rem;*/
+				font-size: 0.2916rem;
+				background-color: #FFFFFF;
+			}
+			
+			.head {
+				margin-top: -0.6rem;
+				margin-right: 15px;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-bottom: 0.08rem;
+			}
+			
+			#libiao li {
+				height: 1.0rem;
+				padding-top: 0.25rem;
+			}
+			
+			#libiao li span {
+				font-size: 14px;
+			}
+			
+			#libiao2 li,
+			#libiao3 li {
+				padding-top: 0.25rem;
+			}
+			
+			font-size: 14px;
+		}
+		.mui-table-view-cell:after {
+			left: 0;
+		}
+		.mui-navigate-right:after {
+			font-size: 25px;
+			right: 5px;
+		}
+		.mui-table-view-cell a {
+			color: #424242;
+			font-size: 15px;
+		}
+		.mui-table-view-cell span {
+			color: #999999;
+		}
+		.mui-content-padded a {
+			margin: 3px;
+			width: 50px;
+			height: 50px;
+			display: block;
+			text-align: center;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 25px;
+			background-clip: padding-box;
+			margin: 0 auto;
+		}
+		.mui-content-padded a .mui-icon {
+			margin-top: 12px;
+			color: #000000;
+			margin-top: -7px;
+			margin-left: -6px;
+		}
+		.mui-icon {
+			font-size: 60px;
+		}
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+			/*overflow: hidden;*/
+			/*-webkit-touch-callout: none;*/
+			/*-webkit-user-select: none;*/
+		}
+		.mui-content {
+			height: 100%;
+			overflow: auto;
+		}
+		#showUserPicker {
+			float: inherit;
+			width: 87%;
+			padding: 10px 15px;
+			background-color: #FFF !important;
+			color: #424242;
+		}
+		input[type=color],
+		input[type=date],
+		input[type=datetime-local],
+		input[type=datetime],
+		input[type=email],
+		input[type=month],
+		input[type=number],
+		input[type=password],
+		input[type=search],
+		input[type=tel],
+		input[type=text],
+		input[type=time],
+		input[type=url],
+		input[type=week],
+		select {
+			line-height: 21px;
+			width: 100%;
+			height: 40px;
+			margin-bottom: 4px;
+			padding: 10px 15px 10px;
+			-webkit-user-select: text;
+			border: none;
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+		}
+		.content {
+			background-color: #ffffff;
+		}
+		.mui-btn-color {
+			background: #FCB565;
+			border: none;
+			border-radius: 7px;
+			color: #FFFFFF;
+			height: 0.9rem;
+			font-size: 14px;
+			width: 95%;
+		}
+		.mui-table-view-cell.mui-active {
+			background-color: #FFFFFF;
+		}
+		textarea {
+			line-height: 20px;
+		}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">过敏史</h1>
+		</header>
+		<div class="mui-content" id="content">
+			<div class="" id="">
+				<form>
+					<ul class="mui-table-view" id="">
+						<li class="mui-table-view-cell">
+							<a id="">药物过敏：
+								<span class="mui-pull-right" style="">
+								<input id="M_yes" name="medicalAllergy" class="medicalAllergy" type="radio" value="有"></input>
+								<label>有</label>&nbsp;&nbsp;
+								<input id="M_no" name="medicalAllergy" class="medicalAllergy" type="radio" value="无"></input>
+								<label>无</label>&nbsp;&nbsp;
+								<input id="M_unknown" name="medicalAllergy" class="medicalAllergy" type="radio" value="不详"></input>
+								<label>不详</label>&nbsp;&nbsp;
+							</span>
+
+							</a>
+							<div class="mui-input-row" style="margin:10px 5px 0;">
+								<textarea id="medical_allergy" rows="5" placeholder=""></textarea>
+							</div>
+						</li>
+					</ul>
+					<ul class="mui-table-view" id="">
+						<li class="mui-table-view-cell">
+							<a id="">食物过敏：
+								<span class="mui-pull-right" style="">
+								<input id="F_yes" name="foodAllergy" class="foodAllergy" type="radio" value="有"></input>
+								<label>有</label>&nbsp;&nbsp;
+								<input id="F_no" name="foodAllergy" class="foodAllergy" type="radio" value="无"></input>
+								<label>无</label>&nbsp;&nbsp;
+								<input id="F_unknown" name="foodAllergy" class="foodAllergy" type="radio" value="不详"></input>
+								<label>不详</label>&nbsp;&nbsp;
+							</span>
+
+							</a>
+							<div class="mui-input-row" style="margin: 10px 5px 0;">
+								<textarea id="food_allergy" rows="5" placeholder=""></textarea>
+							</div>
+						</li>
+					</ul>
+				</form>
+
+			</div>
+			<div class="mui-content-padded" style="width: 100%;">
+				<button id="save" class=" mui-btn mui-btn-color">保存</button>
+			</div>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+		<script type="text/javascript" src="../js/IScard.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+		<script>
+			var m_ishave, f_ishave = null;
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					return true;
+				},
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui('#scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			mui.plusReady(function() {
+				if(mui.os.ios || mui.os.ipad || mui.os.iphone) {
+					plus.webview.currentWebview().setStyle({
+						softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+					});
+				}
+				//				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				//					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				//					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				//					document.querySelector("header").style.height = topoffset;
+				//					document.querySelector("header").style.paddingTop = "20px";
+				//					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				//				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				var self = plus.webview.currentWebview();
+				var id = self.ID;
+				console.log("id------------》" + id);
+
+				var url = serverAddress + "/api/patient/appgetobject/" + id;
+				var success = function(data) {
+//					console.log("健康管理个人进入------------》" + JSON.stringify(data));
+					if(data.result == "success") {
+						var allergyHistory = data.data.allergy;
+						console.log("获取之前的过敏史------------》" + JSON.stringify(allergyHistory));
+
+						if(allergyHistory) {
+							$("#medical_allergy").val(allergyHistory.medicine.desc);
+							m_ishave = allergyHistory.medicine.ishave
+							if(m_ishave == "有") {
+								$("#M_yes").click();
+							} else if(m_ishave == "无") {
+								$("#medical_allergy").hide();
+								$("#M_no").click();
+							} else if(m_ishave == "不详") {
+								$("#M_unknown").click();
+							}
+							$("#food_allergy").val(allergyHistory.food.desc);
+							f_ishave = allergyHistory.food.ishave
+							if(f_ishave == "有") {
+								$("#F_yes").click();
+							} else if(f_ishave == "无") {
+								$("#food_allergy").hide();
+								$("#F_no").click();
+							} else if(f_ishave == "不详") {
+								$("#F_unknown").click();
+							}
+						}
+
+						//选择药物过敏
+						$(".medicalAllergy").click(function() {
+							m_ishave = $(this).val();
+							if(m_ishave == "无") {
+								$("#medical_allergy").hide();
+							} else {
+								$("#medical_allergy").show();
+							}
+
+						});
+						//选择食物过敏
+						$(".foodAllergy").click(function() {
+							f_ishave = $(this).val();
+							if(f_ishave == "无") {
+								$("#food_allergy").hide();
+							} else {
+								$("#food_allergy").show();
+							}
+						});
+					}
+				};
+				commonHttpUtils(url, "get", {}, success, error, true);
+
+				mui(".mui-content").on("tap", "#save", function(e) {
+					var medicalAllergy = $("#medical_allergy").val();
+					var foodAllergy = $("#food_allergy").val();
+
+					//编辑服务对象
+					var url = serverAddress + "/api/patient/appupdateobject";
+					var messageInfo = {
+						_id: id,
+						allergy: {
+							medicine: {
+								ishave: m_ishave,
+								desc: medicalAllergy
+							},
+							food: {
+								ishave: f_ishave,
+								desc: foodAllergy
+							},
+						}
+					};
+					console.log("上传数据：" + JSON.stringify(messageInfo));
+					var sussess1 = function(data) {
+						console.log("添加过敏史------------》" + JSON.stringify(data));
+						if(data.result == "success") {
+							mui.toast("添加成功");
+							mui.back();
+//							var list = plus.webview.currentWebview().opener();
+//							list.evalJS("detailMsg()");
+							//							list.reload(true);
+						}
+					};
+					commonHttpUtils(url, "post", messageInfo, sussess1, error, true);
+				})
+			});
+		</script>
+	</body>
+
+</html>

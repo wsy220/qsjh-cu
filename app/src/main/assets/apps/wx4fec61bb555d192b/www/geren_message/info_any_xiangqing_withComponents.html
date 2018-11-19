@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>文字详情模板</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../js/vue/vue-router.min.js"></script>
+		<script type="text/javascript" src="../components_vue/App.js"></script>
+		<style>
+			p {
+				text-indent: 1px;
+				padding: 0;
+			}
+			.mui-card-content-inner{
+				padding: 0;
+			}
+			html,
+			body,
+			.mui-content {
+				background-color: #fff;
+			}
+			
+			h4 {
+				margin-left: 5px;
+			}
+			
+			.qrcode {
+				top: 50px;
+				width: 100%;
+				text-align: center;
+			}
+			
+			.qrcode img {
+				margin: 0 auto;
+			}
+			
+			.mui-table-view:before {
+				height: 0;
+			}
+			
+			#title_big {
+				font-size: 0.32rem;
+			}
+			
+			.xiaozi {
+				font-size: 0.22rem;
+				color: #999999;
+			}
+			
+			.mui-table-view:after {
+				height: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<div class="mui-card-content">
+
+					<!--<my-item-content v-for="(post,index) in props" v-bind:key="post._id" v-bind:index="index" v-bind:post="post"></my-item-content>-->
+
+					<ul class="mui-table-view" style="text-align: center;">
+						<li class="mui-table-view-cell"><span id="title_big">{{title}}</span></li>
+					</ul>
+					<ul class="mui-table-view xiaozi">
+						<li class="mui-table-view-cell"><span id="readrecord" style="text-align: left;">预览：{{count}}</span><span id="time" style="float: right;">{{time}}</span></span>
+						</li>
+					</ul>
+					<div class="mui-card-content">
+						<div class="mui-card-content-inner">
+							<p v-html="content">
+
+								<!--<section class="KolEditor">
+									<section style="margin:10px auto;text-align:center;">
+										<img src="http://editor-material.oss-cn-beijing.aliyuncs.com/style/20180730/1532921972/%E7%AB%8B%E7%A7%8B%2C%E7%A7%8B%E5%A4%A9%2C%E8%8A%82%E6%B0%94_5_114817.png" style="max-width:100%;margin:0px auto;" class="KolImg" />
+									</section>
+								</section>
+
+								<section class="KolEditor">
+									<section style="margin: 10px auto;display: flex;justify-content: center;align-items: center;">
+										<section style="width: 30px;flex-shrink: 0;margin-right: 10px;">
+											<img src="http://editor-material.oss-cn-beijing.aliyuncs.com/style/20180730/1532921972/%E7%AB%8B%E7%A7%8B%2C%E7%A7%8B%E5%A4%A9%2C%E8%8A%82%E6%B0%94_6_114817.png" alt="" style="width: 100%;" />
+										</section>
+										<section>
+											<p style="font-size: 18px;margin: 0;text-align: center;">
+												立秋
+											</p>
+
+										</section>
+									</section>
+								</section>
+
+								<section class="KolEditor">
+									<section style="margin:10px auto;padding: 10px;">
+										<p style="margin: 0px;line-height: 1.5;font-size: 15px;">
+											立秋，是农历二十四节气中的第13个节气，更是秋天的第一个节气，标志着孟秋时节的正式开始：“秋”就是指暑去凉来。
+										</p>
+
+									</section>
+								</section>
+								<section class="KolEditor">
+									<section style="margin: 10px auto;display: flex;justify-content: center;align-items: center;">
+										<section style="width: 30px;flex-shrink: 0;margin-right: 10px;">
+											<img src="http://editor-material.oss-cn-beijing.aliyuncs.com/style/20180730/1532921972/%E7%AB%8B%E7%A7%8B%2C%E7%A7%8B%E5%A4%A9%2C%E8%8A%82%E6%B0%94_7_114817.png" alt="" style="width: 100%;" />
+										</section>
+										<section>
+											<p style="font-size: 18px;margin: 0;text-align: center;">
+												饮食养生
+											</p>
+
+										</section>
+									</section>
+								</section>-->
+<!--<p><img alt="" src="http://pt.70jiahu.com/assets/uploads/upload-1533871579470.jpg" /></p>\n-->
+							</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../js/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/json_time.js"></script>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					return true;
+				}
+			});
+
+			function getDefaultData() {
+				return {
+					title: '',
+					count: '',
+					time: '',
+					content: ''
+				}
+			}
+			var vm = new Vue({
+				el: '.mui-content',
+				data: getDefaultData(),
+				methods: {}
+			});
+
+			mui.plusReady(function() {
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				var self = plus.webview.currentWebview();
+				var AnydataId = self.dataId;
+
+				console.log(AnydataId);
+				//获取上一页所有数据
+				var AnydataJSON = self.dataJSON;
+				if(AnydataJSON) {
+					console.log(JSON.parse(AnydataJSON));
+					var AnydataJSON = JSON.parse(AnydataJSON)
+					console.log(AnydataJSON.name);
+					vm.title = AnydataJSON.name;
+					vm.content = AnydataJSON.content;
+				}
+
+				if(AnydataId) {
+					var gonggao_url = serverAddress + "/api/selected/app/detail/" + AnydataId;
+					console.log(gonggao_url);
+					var success = function(data) {
+						console.log("柒拾数据===>" + JSON.stringify(data));
+						AnydataJSON = data.data;
+						vm.title = data.data.name;
+						vm.content = data.data.content;
+						vm.count = data.data.readcount;
+						vm.time = getDate(data.data.createdOn);
+					};
+					commonHttpUtilsLUNBO(gonggao_url, "get", {}, success, error, true);
+				}
+
+			});
+
+//			{
+//				"result": "success",
+//				"msg": "获取精选详情成功",
+//				"data": {
+//					"status": "1",
+//					"readcount": 1,
+//					"createdOn": "2018-08-10T03:26:37.094Z",
+//					"_id": "5b6d05ede125c269db001c69",
+//					"cover": "/assets/uploads/single-file-1533871542325.png",
+//					"name": "在家坐享医疗服务，您以前敢想吗？",
+//					"introduction": "用户通过一部手机，使用柒拾佳护APP软件发送居家医疗需求，即可得到专业人员接单后上门提供的护理、康复等几十项医疗护理服务及享受家庭医生预约签约、健康档案管理、健康知识智能推介等信息服务。",
+//					"indexnumber": 2,
+//					"content": "<p><img alt=\"\" src=\"http://pt.70jiahu.com/assets/uploads/upload-1533871579470.jpg\" /></p>\n",
+//					"__v": 0
+//				}
+//			}
+		</script>
+	</body>
+
+</html>

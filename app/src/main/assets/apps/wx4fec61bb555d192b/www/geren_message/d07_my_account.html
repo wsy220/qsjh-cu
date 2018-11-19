@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的账户</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<style>
+			.tableDIV {
+				border-top: 0px solid #dddddd;
+				border-right: 1px solid #dddddd;
+				border-bottom: 1px solid #dddddd;
+				background-color: #FFFFFF;
+				text-align: center;
+				height: 60px;
+			}
+			
+			.tableDIV:after,
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			.mingxi {
+				background-color: #44cfd4;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+				margin-top: 8px;
+			}
+			
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				/*min-height: 550px;*/
+			}
+			
+			.mui-segmented-control {
+				border: 0;
+				border-bottom: 1px solid #d9d9d9;
+				height: 60px;
+			}
+			
+			.mui-segmented-control .mui-control-item.mui-active {
+				background: none;
+				color: #44cfd4;
+				border-bottom: 2px solid;
+				font-weight: bold;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				color: #666666;
+				border-left: 0;
+			}
+			
+			.uptab {
+				background: #FFFFFF;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				line-height: 60px;
+			}
+			
+			.youhui_keyong {
+				background: url(../images/myaccount/djbj.png);
+			}
+			
+			.youhui_guoqi {
+				background: url(../images/myaccount/djbjsx.png);
+			}
+			
+			.youhui_keyong,
+			.youhui_guoqi {
+				background-repeat: no-repeat;
+				background-size: 100%, 100%;
+				height: 2rem;
+				margin: 5px;
+			}
+			
+			.youhui_keyong:after,
+			.youhui_guoqi:after {
+				height: 0 !important;
+			}
+			
+			.youhui_keyong p,
+			.youhui_guoqi p {
+				margin-top: 5px;
+			}
+			
+			p {
+				font-size: 14px;
+				margin-top: 11px;
+				margin-bottom: 10px;
+				color: #8f8f94;
+			}
+			
+			.zhanghu {
+				height: 120px;
+			}
+			
+			.tu {
+				width: 60px;
+				height: 60px;
+				margin-top: 20px;
+			}
+			
+			.tu2 {
+				width: 30px;
+				height: 30px;
+				margin-top: 5px;
+			}
+			
+			.m-rem2 {
+				margin-top: 0.7rem;
+				width: 79%;
+				float: right;
+				font-weight: bold;
+				color: #454545;
+				font-size: 20px;
+			}
+			
+			.jine {
+				font-size: 20px;
+				color: #e4933b;
+				padding-left: 10px;
+			}
+			
+			.zuo {
+				width: 100%;
+			}
+			
+			.tupian {
+				width: 22%;
+				float: left;
+			}
+			
+			.daijinquan {
+				width: 78%;
+				float: left;
+				font-size: 15px;
+				color: #1c2633;
+				padding-top: 8px;
+				text-align: left;
+				padding-left: 4px;
+			}
+			
+			li {
+				list-style-type: none;
+			}
+			
+			.mingxi {
+				font-size: 15px;
+				font-weight: bold;
+				color: #ffffff;
+			}
+			
+			.mui-navigate-right1 {
+				font-size: 15px;
+				color: #999999 !important;
+			}
+			
+			.mui-ellipsis {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				color: #333333;
+				font-size: 15px;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #d9d9d9;
+			}
+			
+			.mui-badge-blue,
+			.mui-badge-primary {
+				color: #fff;
+				background-color: #669966;
+				border-radius: 5px;
+			}
+			
+			.mui-badge1 {
+				color: #ffffff;
+				border-radius: 100px;
+				background-color: #FF0000;
+				position: absolute;
+				top: 50%;
+				right: 15px;
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 3px 6px;
+				border-radius: 5px;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+			
+			.mui-badge2 {
+				color: #ffffff;
+				border-radius: 100px;
+				background-color: #999999;
+				position: absolute;
+				top: 50%;
+				right: 15px;
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 3px 6px;
+				border-radius: 5px;
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.mui-table-view {
+				background: transparent;
+			}
+			
+			.mui-table-view:before {
+				height: 0;
+			}
+			
+			.mui-badge-red {
+				color: #FFFFFF;
+				background: red;
+				width: 72px;
+				margin-left: 6px;
+				text-align: center;
+			}
+			
+			.mui-badge-red-youhui {
+				padding: 5px 5px;
+				margin-left: -15px;
+				font-size: 10px;
+				line-height: 1.4;
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				background: red;
+				border-radius: 50px;
+			}
+			
+			.B_f {
+				font-size: 45px;
+				color: #FFFFFF;
+				font-weight: bold;
+			}
+			
+			.p_color {
+				color: #8c8c8c;
+			}
+			
+			.H_f {
+				font-size: 45px;
+				color: #C0C0C0;
+				font-weight: bold;
+			}
+			
+			.F_12_h {
+				font-size: 12px;
+				color: #C0C0C0;
+			}
+			
+			.F_10_h {
+				font-size: 10px;
+				color: #C0C0C0;
+			}
+		</style>
+	</head>
+
+	<body onload="init()">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的账户</h1>
+		</header>
+		<div class="mui-content">
+			<div class="uptab">
+				<div id="segmentedControl" class="mui-segmented-control">
+					<a class="mui-control-item mui-active" href="#item1">消费</a>
+					<a class="mui-control-item" href="#item3">退款</a>
+					<a class="mui-control-item youhuijuan_Item" id="youhuijuan_Item" href="#item2">
+						<div><span class="mui-badge-red-youhui" id="red_dian"></span>我的优惠券</div>
+					</a>
+				</div>
+			</div>
+			<div id="item1" class="mui-control-content mui-active">
+				<div id="refreshContainer" class="mui-content">
+					<div id="wrapper01" class="wrapper" style="bottom: 2px;">
+						<ul id="scroller" class="scroller" style="margin: 0; padding: 0;">
+							<ul class="mui-table-view" id="messageUL">
+								
+							</ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="item2" class="mui-control-content mui-active">
+				<div id="refreshContainer" class="mui-content">
+					<div id="wrapper03" class="wrapper" style="bottom: 2px;">
+						<ul id="scroller" class="scroller" style="margin: 0; padding: 0;">
+							<ul class="mui-table-view" id="youhui_messageUL">
+								<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>
+							</ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div id="item3" class="mui-control-content mui-active">
+				<div id="refreshContainer" class="mui-content">
+					<div id="wrapper02" class="wrapper" style="bottom: 2px;">
+						<ul id="scroller" class="scroller" style="margin: 0; padding: 0;">
+							<ul class="mui-table-view" id="sys_messageUL">
+
+							</ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/art/template-web.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+		<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+		<script type="text/javascript"src="../js/immersed.js" ></script>
+
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				//如果从优惠券过来的链接，指定上TAB为我的优惠券
+				console.log(currentView.TAB);
+				
+				$(".mui-control-content").css("height", (screenHeight - 60 - 60));
+				if(currentView.TAB == "3") {
+					mui.trigger(document.getElementById('youhuijuan_Item'), 'touchstart');
+					mui.trigger(document.getElementById('youhuijuan_Item'), 'tap');
+					plus.storage.setItem("youhuijuan_read", "read");
+					//localStorage.setItem("youhuijuan_read", "read");
+				}
+				var youhuijuan_read = plus.storage.getItem('youhuijuan_read') ? plus.storage.getItem('youhuijuan_read') : null;
+				//plus.storage.clear();
+				//var youhuijuan_read = localStorage.getItem('youhuijuan_read') ? localStorage.getItem('youhuijuan_read') : null;
+
+				if(youhuijuan_read == "read") {
+					$("#red_dian").hide();
+					var i = plus.webview.getWebviewById("subpages/tab-webview-subpage-home.html");
+					i.evalJS("hide_youhui_active()");
+				}
+			});
+
+			var wrapper01;
+			var wrapper02;
+			var wrapper03;
+
+			function processConfimAction(myScroll) {
+				if(myScroll.page == 1) {
+					$("#messageUL").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+					$("#messageUL").css("background", "transparent");
+				}
+				var sussess = function(data) {
+					console.log("消费" + JSON.stringify(data));
+					if(data.result == "success") {
+						if(data.data.length != 0) {
+							if(myScroll.page == 1) {
+								$("#messageUL").html('');
+							}
+							if(data.data.length == myScroll.limit) {
+								myScroll.page = myScroll.page + 1;
+								myScroll.upFlag = true
+							} else {
+								myScroll.upFlag = false
+							}
+							$("#messageUL").css("background", "#FFFFFF");
+							$("#messageUL").processTL(templateRegister.myaccount_cost, {
+								sub: data.data
+							}, 'append', function() {
+								myScroll.refresh()
+							})
+						} else {
+							//mui.toast('没有更多信息');
+							myScroll.upFlag = false;
+						}
+					} else {
+						mui.toast("查询失败");
+					}
+				};
+				commonHttpUtilsNoWaiting(notificationurl + "?page=" + myScroll.page + "&limit=" + myScroll.limit, "get", "", sussess, error);
+			}
+
+			function processListAction(myScroll) {
+				if(myScroll.page == 1) {
+					$("#sys_messageUL").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+					$("#sys_messageUL").css("background", "transparent");
+				}
+				var sussess = function(data) {
+					console.log("退款" + JSON.stringify(data));
+					if(data.result == "success") {
+						if(data.data.length != 0) {
+							if(myScroll.page == 1) {
+								$("#sys_messageUL").html('');
+							}
+							if(data.data.length == myScroll.limit) {
+								myScroll.page = myScroll.page + 1;
+								myScroll.upFlag = true
+							} else {
+								myScroll.upFlag = false
+							}
+							$("#sys_messageUL").css("background", "#FFFFFF");
+							$("#sys_messageUL").processTL(templateRegister.myaccount_list, {
+								sub: data.data
+							}, 'append', function() {
+								myScroll.refresh()
+							})
+						} else {
+							//mui.toast('没有更多信息');
+							myScroll.upFlag = false;
+							//$("#sys_messageUL").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+							//$("#sys_messageUL").css("background", "transparent");
+						}
+					} else {
+						mui.toast("查询失败");
+						myScroll.upFlag = false
+					}
+				};
+				commonHttpUtilsNoWaiting(notificationListurl + "?page=" + myScroll.page + "&limit=" + myScroll.limit, "get", "", sussess, error);
+			}
+
+			function youhuijuan_processListAction(myScroll) {
+				//				if(myScroll.page == 1) {
+				//					$("#youhui_messageUL").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+				//					$("#youhui_messageUL").css("background", "transparent");
+				//					myScroll.refresh()
+				//				}
+				var sussess = function(data) {
+					console.log("优惠券" + JSON.stringify(data));
+					if(data.result == "success") {
+						if(data.data.length != 0) {
+							if(myScroll.page == 1) {
+								$("#youhui_messageUL").html('');
+							}
+							if(data.data.length == myScroll.limit) {
+								myScroll.page = myScroll.page + 1;
+								myScroll.upFlag = true
+							} else {
+								myScroll.upFlag = false
+							}
+							$("#youhui_messageUL").css("background", "#FFFFFF");
+							console.log(data.data._id);
+							$("#youhui_messageUL").processTL(templateRegister.myyouhuijuan_list, {
+								sub: data.data
+							}, 'append', function() {
+								mui("#youhui_messageUL").on("tap", "#youhui_order", function(e) {
+									mui.openWindow({
+										id: 'service_item.html',
+										url: '../order/service_item.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: false //自动显示等待框，默认为true
+										}
+									});
+
+									var sevice_item_message = plus.webview.getWebviewById('service_item.html');
+
+									//									sevice_item_message.addEventListener('loaded', function() {
+									//										mui.fire(sevice_item_message, "sevice_item_message", {
+									//											item_name: "上门康复"
+									//										});
+									//									});
+									sevice_item_message.addEventListener('loaded', function() {
+										mui.fire(sevice_item_message, "sevice_item_message", {
+											item_name: "上门护理"
+										});
+									});
+									//									sevice_item_message.addEventListener('loaded', function() {
+									//										mui.fire(sevice_item_message, "sevice_item_message", {
+									//											item_name: "综合服务"
+									//										});
+									//									});
+								});
+								mui("#youhui_messageUL").on("tap", "#active_instruction", function(e) {
+									var dataId = $(this).attr("data-id");
+									var dataContent = $(this).attr("data-content");
+									mui.openWindow({
+										id: 'youhuijuan_message_xiangqing.html',
+										url: 'youhuijuan_message_xiangqing.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: false //自动显示等待框，默认为true
+										},
+										extras: {
+											ARTICLEID: dataId,
+											ARTICLECONTENT: dataContent
+										}
+
+									});
+								});
+								myScroll.refresh()
+							})
+						} else {
+							//mui.toast('没有更多信息');
+							myScroll.upFlag = false;
+						}
+					} else {
+						mui.toast("查询失败");
+						myScroll.upFlag = false
+					}
+				};
+				commonHttpUtilsNoWaiting(youhuijuanListurl + "?page=" + myScroll.page + "&limit=" + myScroll.limit, "get", "", sussess, error);
+			}
+
+			var init = function() {
+				wrapper01 = $.initIscroll({
+					id: "wrapper01",
+					pullUpAction: processConfimAction,
+					pullDownAction: processConfimAction,
+					limit: 5
+				});
+				processConfimAction(wrapper01);
+				wrapper02 = $.initIscroll({
+					id: "wrapper02",
+					pullUpAction: processListAction,
+					pullDownAction: processListAction,
+					limit: 5
+				});
+
+				wrapper03 = $.initIscroll({
+					id: "wrapper03",
+					pullUpAction: youhuijuan_processListAction,
+					pullDownAction: youhuijuan_processListAction,
+					limit: 5
+				});
+			}
+			var notificationurl = null;
+			var notificationListurl = null;
+			var youhuijuanListurl = null;
+			notificationurl = serverAddress + "/api/patient/finishlist";
+			notificationListurl = serverAddress + "/api/patient/refundlist";
+			youhuijuanListurl = serverAddress + "/api/patient/coupons";
+			mui("#segmentedControl").on("tap", "a", function(event) {
+				var orderId = this.getAttribute("href");
+				if(orderId == "#item2") {
+					plus.storage.setItem("youhuijuan_read", "read");
+					$("#red_dian").hide();
+				}
+				switch(orderId) {
+					case "#item1":
+						processConfimAction(wrapper01);
+						break;
+					case "#item3":
+						processListAction(wrapper02);
+						break;
+					case "#item2":
+						youhuijuan_processListAction(wrapper03);
+						break;
+				}
+			});
+		</script>
+	</body>
+
+</html>

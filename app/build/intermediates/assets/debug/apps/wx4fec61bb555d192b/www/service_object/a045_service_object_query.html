@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<title>服务对象查询</title>
+		<style>
+			.twoword {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 3;
+				/*文本行数*/
+				overflow: hidden;
+			}
+			
+			.mui-badge {
+				padding: 3px 16px;
+			}
+			
+			.mui-btn-block {
+				padding: 0;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: #EEEEEE;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">服务对象</h1>
+			<button id="service_add" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				创建</button>
+		</header>
+		<div class="mui-content ">
+			<div class="item1_1">
+				<script type="text/template" id="radio-tigan">
+					<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL ">
+						<% for(var i in record){ var item=record[i];%>
+						<li class="mui-table-view-cell" id='addressmessage'>
+							<a href="#" class="" id=<%=item._id%> data-id=
+								<%=item.ordergps%>>
+								<div class="mui-table">
+									<div class="mui-table-cell">
+										<p>姓名:<span id='name'><%=item.realname%></span></p>
+
+										<p class="mui-ellipsis-2">地址:<span id='address'><%=item.homeaddress%><%=item.houseNumber%></span></p>
+										<p>电话:<span id='phone'><%=item.tel%></span></p>
+										<input type="hidden" value=<%=item._id%> id="idinput" />
+										<input type="hidden" value=<%=item.ordergps%> id="gpsinput" />
+									</div>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<div class="mui-table">
+								<div class="mui-table-cell">
+									<span class="mui-ellipsis mui-pull-right"><span class="mui-h5"><span class="mui-badge mui-badge-warning mui-text-right" id="service_Edit" name="<%=item._id%>">修改</span> <span class="mui-badge mui-badge-huise" id="<%=item._id%>">删除</span></span>
+									</span>
+								</div>
+							</div>
+						</li>
+						<%}%>
+					</ul>
+				</script>
+			</div>
+			<!--<div class="mui-content-padded dibu">
+				<button id='service_add' class="mui-btn mui-btn-block mui-btn-warning">+添加新对象</button>
+			</div>-->
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script>
+		var detail = null;
+		var gpsobj = [];
+		var biaoshi_pre = '';
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			var self = plus.webview.currentWebview();
+			var biaoshi_pre = self.service_object_biaoshi;
+			if(biaoshi_pre == "xiadan") {
+				//返回订单页面，将地址信息传递给下单页面
+				mui(".item1_1").on("tap", "a", function(e) {
+					var name = document.getElementById("name").innerHTML;
+					//var male = document.getElementById("male").innerHTML;
+					//var age = document.getElementById("age").innerHTML;
+					var phone = document.getElementById("phone").innerHTML;
+					var address = document.getElementById("address").innerHTML;
+					var tel = localStorage.getItem("TOKEN");
+					var id = this.id;
+
+					var url = serverAddress + "/api/patient/appgetobject/" + id;
+					var service_object = {};
+					var sussess = function(data) {
+						console.log("111" + JSON.stringify(data));
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						if(data.result == "success") {
+							gpsobj = data.data.ordergps;
+							var male = data.data.gender;
+							console.log(male);
+							if(male == 0) {
+								male = "男";
+							} else {
+								male = "女";
+							}
+							service_object = {
+								name: data.data.realname,
+								male: male,
+								age: data.data.age,
+								address: data.data.homeaddress + data.data.houseNumber,
+								tel: data.data.tel,
+								gps: gpsobj,
+								idnumber: data.data.idnumber
+							};
+							mui.back();
+							var main3 = plus.webview.getWebviewById('a04_place_order.html');
+							mui.fire(main3, 'service_object', service_object);
+						}
+					};
+
+					commonHttpUtils(url, "get", {}, sussess, error, false);
+
+				})
+			}
+
+			//获取服务对象列表
+			var account = localStorage.getItem('TOKEN');
+			var accountid = localStorage.getItem('TOKENID');
+			var url = serverAddress + "/api/patient/appgetobjectlist/" + accountid;
+			var sussess = function(data) {
+				if(data.data.length != 0) {
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data.result == "success") {
+						record_1 = data.data;
+						var str = template('radio-tigan', {
+							"record": record_1
+						});
+						document.querySelector(".item1_1").innerHTML = str;
+					}
+				} else {
+					document.querySelector(".item1_1").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>'
+				}
+
+			};
+			commonHttpUtils(url, "get", {}, sussess, error, true);
+
+		});
+		//编辑服务对象按钮
+		mui(".item1_1").on("tap", ".mui-badge-warning", function(e) {
+			var id1 = $(this).eq(0).attr('name');
+			mui.openWindow({
+				url: 'service_object_edit.html',
+				id: 'service_object_edit',
+				extras: {
+					ID: id1
+				}
+			});
+		});
+
+		//删除服务对象按钮
+		mui(".item1_1").on("tap", ".mui-badge-huise", function(e) {
+			var id = $(this).eq(0).attr('id')
+			var url = serverAddress + "/api/patient/appremoveobject";
+			var sussess = function(data) {
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				if(data.result == "success") {
+					var ws = plus.webview.currentWebview();
+					ws.reload(true);
+				}
+				if(data.result == "error") {
+					if(data.msg) {
+						mui.toast(data.msg);
+					} else {
+						mui.toast("删除服务对象失败");
+					}
+				}
+			};
+
+			var btnArray = ['否', '是'];
+			mui.confirm('确定要删除吗？', '', btnArray, function(e) {
+				if(e.index == 1) {
+					commonHttpUtils(url, "post", {
+						_id: id
+					}, sussess, error, true);
+				} else {
+
+				}
+			})
+
+		})
+
+		$("#service_add").click(function(e) {
+			mui.openWindow({
+				url: '../service_object/service_object_add.html',
+				id: 'service_object_add',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+
+		// 刷新页面
+		window.addEventListener('refresh', function(e) {
+			// 刷新页面
+			location.reload();
+			return true;
+		});
+	</script>
+
+</html>

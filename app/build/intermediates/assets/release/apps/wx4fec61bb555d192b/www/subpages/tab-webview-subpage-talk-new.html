@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>消息通知信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<link rel="stylesheet" href="../css/familydoctor/messagelist.css" />
+
+		<style>
+			.mui-table-view {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-table-view .mui-media-object {
+				height: 0.8rem;
+				line-height: 0.8rem;
+				max-width: 0.8rem;
+			}
+			
+			.mui-media-body {
+				font-size: 0.3rem;
+				color: rgba(77, 77, 77, 1);
+				/*line-height: 17px;*/
+				font-weight: bold;
+				margin-top: 0.2rem;
+			}
+			
+			.mui-ellipsis {
+				margin-top: 8px;
+				font-size: 0.2rem;
+				color: rgba(153, 153, 153, 1);
+				line-height: 17px;
+			}
+			
+			.mui-badge {
+				padding: 5px 5px;
+				margin-left: -15px;
+				font-size: 10px;
+				line-height: 1.4;
+				position: absolute;
+				top: 10px;
+				left: 55px;
+				background: red;
+				border-radius: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell mui-media">
+
+				<a href="javascript:;">
+					<div>
+						<img class="mui-media-object mui-pull-left" src="../images/notify/icon_qiling.png">
+						<span class="mui-badge" id="red_dian_70" style="display: none;">
+					</div>
+					<div class="mui-media-body" id="QS_message">
+						70精选
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="javascript:;" id="order_message">
+					<div>
+						<img class="mui-media-object mui-pull-left" src="../images/notify/icon_order.png">
+						<span class="mui-badge" id="red_dian_order" style="display: none;">
+					</div>
+					<div class="mui-media-body">
+						系统消息
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="javascript:;">
+					<div>
+						<img class="mui-media-object mui-pull-left" src="../images/notify/icon_chat.png">
+						<span class="mui-badge" id="red_dian_chat" style="display: none;">
+					</div>
+					<div class="mui-media-body" id="im-chat">
+						聊天消息
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media">
+				<a href="javascript:;">
+					<div>
+						<img class="mui-media-object mui-pull-left" src="../images/notify/icon_community.png">
+						<span class="mui-badge" id="red_dian_shequ" style="display: none;">
+					</div>
+					<div class="mui-media-body" id="shequ_message">
+						社区通知
+					</div>
+				</a>
+			</li>
+		</ul>
+
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/immersed.js"></script>
+
+	<!--<script type="text/javascript" src="../js/sdk/lib/jquery.json2html-master/json2html.js"></script>-->
+	<!--<script type="text/javascript" src="../js/sdk/lib/jquery.json2html-master/jquery.json2html.js"></script>-->
+
+	<!--<script type="text/javascript" src="../js/sdk/webim/common/webim.js"></script>-->
+	<!--描述：展示获取的一条消息-->
+	<!--描述：设置聊天对象-->
+	<!--<script type="text/javascript" src="../js/sdk/webim/common/sdk_sendmsg_api.js"></script>-->
+	<!--描述：获取新消息-->
+	<!--<script type="text/javascript" src="../js/sdk/webim/common/receive_new_msg.js"></script>-->
+	<!--描述：聊天登录-->
+	<!--<script type="text/javascript" src="../js/sdk/webim/common/login.js"></script>-->
+	<!--描述：发消息-->
+	<!--<script type="text/javascript" src="../js/sdk/webim/common/send_common_msg.js"></script>-->
+	<!--描述：上传图片-->
+	<!--<script type="text/javascript" src="../js/sdk/webim/common/upload_and_send_pic_msg.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/get_history_msg.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/recent_contact_list_manager.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/show_one_msg.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/receive_new_msg.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/private/switch_chat_obj.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/group_manager.js"></script>-->
+
+	<script>
+		
+		
+		mui.plusReady(function() {
+			var self = plus.webview.currentWebview();
+			var whichread = self.red70;
+			console.log(whichread);
+			changeReddian_new(whichread);
+		
+		
+			$("#order_message").click(function(e) {
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html"
+					});
+					return false;
+				}else{
+					mui.openWindow({
+						id: 'tab-webview-subpage-talk.html',
+						url: '../subpages/tab-webview-subpage-talk.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: false //自动显示等待框，默认为true
+						},
+						styles: returnstyleTitle("tab-webview-subpage-talk.html", "系统消息")
+					});
+				
+					changeReddian_new_X("red_dian_order");
+					if(localStorage.getItem("red_70")){
+						localStorage.removeItem("red_70");
+					}
+				}
+			})
+			$("#shequ_message").click(function(e){
+				mui.openWindow({
+					id: 'tab-webview-subpage-shequtalk.html',
+					url: '../subpages/talk/tab-webview-subpage-shequtalk.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					styles: returnstyleTitle("tab-webview-subpage-shequtalk.html", "社区消息")
+				});
+				changeReddian_new_X("red_dian_shequ");
+				if(localStorage.getItem("red_70")){
+						localStorage.removeItem("red_70");
+				}
+			})
+			$("#QS_message").click(function(e){
+				mui.openWindow({
+					id: 'tab-webview-subpage-QStalk.html',
+					url: '../subpages/talk/tab-webview-subpage-QStalk.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					styles: returnstyleTitle("tab-webview-subpage-QStalk.html", "70精选")
+				});
+				changeReddian_new_X("red_dian_70");
+				if(localStorage.getItem("red_70")){
+					localStorage.removeItem("red_70");
+				}
+			});
+			$("#im-chat").click(function(e) {
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html"
+					});
+					return false;
+				}
+				mui.openWindow({
+					id: 'message_list.html',
+					url: '../familydoctor/message_list.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+//					styles: returnstyleTitle("tab-webview-subpage-talk.html", "订单消息")
+				});
+				changeReddian_new_X("red_dian_chat");
+				if(localStorage.getItem("red_70")){
+					localStorage.removeItem("red_70");
+				}
+			})
+			
+			function changeReddian_new(witchnotice) {
+				$("#" + witchnotice).show();
+			}
+			function changeReddian_new_X(withnotice) {
+				$("#" + withnotice).hide();
+			}
+			function changeReaddianAll() {
+				$('.mui-badge').hide();
+			}
+		});
+	</script>
+
+</html>

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>七十佳护首页</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link href="../css/app.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="../css/icons-extra.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/scroll_style.css" />
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link rel="stylesheet" href="../css/lunbo.css" />
+		<link rel="stylesheet" href="../css/animate/rob_order.css" />
+		<script src="../js/jquery-3.1.1.min.js"></script>
+		<link rel="stylesheet" href="../css/animate/animate.css" />
+
+		<script src="../js/bootstrap.min.js"></script>
+		<style>
+			.mui-grid-view.mui-grid-9 {
+				margin: 0;
+				padding-top: 40px;
+				border: 0;
+				background: none;
+				margin-left: 0.5rem;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+			
+			html {
+				font-size: 100%;
+				background-color: #ffffff;
+			}
+			
+			body {
+				background-color: #ffffff;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				margin: 0;
+				border: 0;
+			}
+			
+			.mui-table-view-cell {
+				padding: 0px 0px;
+			}
+			
+			.fuwucategory {
+				margin: 10px 20px !important;
+			}
+			
+			.mui-table-view-cell.mui-active,
+			.mui-table-view-cell>a:not(.mui-btn).mui-active {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-table-view-cell.mui-collapse .mui-collapse-content>.mui-input-group,
+			.mui-table-view-cell.mui-collapse .mui-collapse-content>.mui-slider {
+				margin: 0px -15px;
+			}
+			
+			.anniu {
+				background: url(../images/main_bg.png) no-repeat;
+				background-size: 110% 5.5rem;
+				background-size: 110% 60vh;
+				width: 100%;
+				height: 5.5rem;
+				height: 60vh;
+				z-index: 0;
+				margin-top: -45px;
+				position: absolute;
+				top: 4.3rem;
+			}
+			
+			body {
+				background: none;
+			}
+			
+			.mui-slider {
+				z-index: 0;
+			}
+			
+			.mui-content {
+				background: none;
+			}
+			
+			.mui-slider-indicator {
+				position: absolute;
+				bottom: 45px;
+				left: 0px;
+				width: 100%;
+				text-align: center;
+				background: 0 0;
+			}
+			
+			.lefttop1 img,
+			.lefttop2 img,
+			.righttop1 img,
+			.righttop2 img,
+			.center2 img,
+			.center3 img {
+				max-width: 1.3rem;
+				text-align: center;
+			}
+			
+			.center1 img {
+				max-width: 3.1rem;
+				text-align: center;
+			}
+			
+			.lefttop1,
+			.lefttop2,
+			.righttop1,
+			.righttop2,
+			.center2,
+			.center3,
+			.center1 {
+				text-align: center;
+			}
+			
+			.lefttop1 {
+				position: absolute;
+				top: 1.42rem;
+				left: 0.26rem;
+			}
+			
+			.center1 {
+				position: absolute;
+				top: 0.27rem;
+				left: 2.07rem;
+			}
+			
+			.lefttop2 {
+				position: absolute;
+				top: 3.2rem;
+				left: 0.8rem;
+			}
+			
+			.righttop1 {
+				position: absolute;
+				top: 1.42rem;
+				right: 0.26rem;
+			}
+			
+			.center2 {
+				position: absolute;
+				top: 4.1rem;
+				left: 3rem;
+			}
+			
+			.center3 {
+				position: absolute;
+				top: 4.1rem;
+				right: 2.2rem;
+			}
+			
+			.righttop2 {
+				position: absolute;
+				top: 3.2rem;
+				right: 0.8rem;
+			}
+			
+			#myCarousel {
+				z-index: -99;
+			}
+			
+			.mui-badge {
+				font-size: 10px;
+				line-height: 1;
+				display: inline-block;
+				padding: 4px 0px;
+				color: #333;
+				border-radius: 8px;
+				border: 1px solid #DFDFDF;
+				background-color: #FFFFFF;
+				width: 55px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 999;
+				margin-top: 10px;
+			}
+			
+			.mui-badge-huise {
+				color: #333;
+				border: 1px solid #DFDFDF;
+				background-color: #FFFFFF;
+				width: 40px;
+				text-align: center;
+				margin-left: 0;
+				margin-left: 10px;
+				opacity: 0.5;
+				height: 20px;
+			}
+			
+			.lunbo_gonggao {
+				position: absolute;
+				bottom: 10px;
+			}
+			
+			.guanbi {
+				float: right;
+			}
+			
+			.mui-icon {
+				font-size: 2em !important;
+				color: #d68a47;
+				max-width: 90%;
+			}
+			
+			a {
+				color: #d68a47;
+			}
+			
+			a:visited {
+				color: #d68a47;
+			}
+			
+			.mui-slider {
+				max-height: 4.2rem;
+			}
+			
+			.hide_img {
+				position: absolute;
+				z-index: 999;
+				right: 0;
+				top: 3.2rem;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 8px 15px;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell.mui-active {
+				background-color: transparent;
+			}
+			
+			.active_img {
+				position: absolute;
+				top: 0.9rem;
+				right: 0px;
+			}
+			
+			.gray {
+				opacity: 0.4;
+				filter: alpha(opacity=40);
+			}
+			
+			.displayNon {
+				display: none;
+			}
+			
+			.displayYes {
+				display: block;
+			}
+			
+			.mui-media-body {
+				font-size: 12px;
+				margin-top: 0.05rem;
+				margin-left: 0.1rem;
+			}
+			
+			.youhui_active {
+				position: absolute;
+				top: 1.8rem;
+				right: 1.8rem;
+				z-index: 999;
+				width: 1.27rem;
+			}
+			
+			.top-area {
+				position: absolute;
+				z-index: 999;
+				top: 0;
+				left: 0;
+				height: 60px;
+				background-color: #CCCCCC;
+				width: 100%;
+				text-align: center;
+				display: flex;
+			}
+			.saoma,.search_text,.address,.message{
+				padding: 10px 10px;
+				color: #454545;
+				font-size: 12px;
+			}
+			
+			input{
+				border-radius: 10px !important;
+			}
+		</style>
+	</head>
+
+	<body style="overflow:scroll;overflow-x:hidden">
+		<div class="mui-content">
+			<div class="top-area ">
+				<div class="saoma"><span class="mui-icon-extra mui-icon-extra-class"></span><div>扫一扫</div></div>
+				<div class="search_text"><input type="text"></div>
+				<div class="address"><span class="mui-icon mui-icon-settings"></span><div>定位</div></div>
+				<div class="message" id="message" style="right: 10px;"><span class="mui-icon mui-icon-map"></span><div>消息</div></div>
+			</div>
+
+			<div id="lunbo" style="height: 0.2rem;">
+
+			</div>
+
+			<!--右边划出便利贴-->
+			<div id="hide_img" class="hide_img animated fadeInLeftBig">
+				<img src="../images/rob_img/tjff.png" style="max-width: 2.11rem;">
+			</div>
+
+			<!--弹出推荐服务项目-->
+			<div id="rob_order" class="bo-ri">
+			</div>
+
+			<div class="anniu">
+
+				<div class=" center1" id="xiaoqi_kefu">
+					<span class="mui-icon"><img src="../images/index_img/mainxiaoqi.gif"></span>
+					<div class="mui-media-body"></div>
+				</div>
+				<div class="center2" id="familydoctor"><span class="mui-icon"><img src="../images/index_img/main_button4.png"></span>
+					<div class="mui-media-body">家庭医生</div>
+				</div>
+				<div class="lefttop2" id="item1_kangfu"><span class="mui-icon"><img src="../images/index_img/main_button6.png"></span>
+					<div class="mui-media-body">上门服务</div>
+				</div>
+				<div class="righttop2" id="report_online"><span class="mui-icon"><img src="../images/index_img/main_button8.png"></span>
+					<div class="mui-media-body">线上服务</div>
+				</div>
+			</div>
+
+			<div class="huadong" id="huadong">
+				<div class="notice_active" id="huadong_UL">
+
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/scroll.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+
+	<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+	<script type="text/javascript" src="../js/comfirmConnect.js"></script>
+
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		var fenlei_nickname = null;
+		var fenlei_name_id = null;
+		var fenlei_typename = null;
+
+		function hide_youhui_active() {
+			if($("#youhui_active")) {
+				$("#youhui_active").hide();
+			}
+		}
+		mui.plusReady(function() {
+			//plus.storage.clear();
+			//小柒客户按钮可以点击
+			var xiaoqi_url = serverAddress + "/api/commerical/app/list?type=xq";
+			var success_xiaoqi = function(data) {
+				var value = data.data;
+
+				if(data.result == "success") {
+					setTimeout(function() {
+						$(".anniu").processTL(templateRegister.youhuijuan, {
+							sub: value
+						}, 'append', function() {
+							$(".qs-img-lazyload").each(function(i, v) {
+								$$.lazyload(v)
+							})
+							if(data.data.length != 0) {
+								var youhuijuan_read = plus.storage.getItem('youhuijuan_read' + data.data[0]._id) ? plus.storage.getItem('youhuijuan_read' + data.data[0]._id) : null;
+							}
+						});
+					}, 150);
+					//修改优惠券红点展示
+					mui(".anniu").on("tap", "#youhui_active", function(e) {
+						var forwardtype = $(this).attr("data-forward");
+						var extras = $(this).attr("data-ext");
+						var def = dataConfig_imglunbo["MSG001"];
+						if(forwardtype == "1") {
+							mui.openWindow({
+								url: def.link,
+								id: def.link,
+								extras: {
+									TAB: extras
+								},
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded'
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+								}
+							});
+						}
+					})
+				}
+			}
+			commonHttpUtilsLUNBO(xiaoqi_url, "get", {}, success_xiaoqi, error, true);
+
+			$("#xiaoqi_kefu").bind("click", function(e) {
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html"
+					});
+					return false;
+				}
+
+				mui.openWindow({
+					id: 'xqzx_auto.html',
+					url: '../geren_message/xqzx/xqzx_auto.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					extras: {
+						biaoshi: "zhengchang" //在下单时做个标识，如果是"zhengchang"就是正常下单，"yihu"就是选择医护下单
+					}
+				});
+			})
+
+			//弹出推荐服务项目
+			//setTimeout(floatWebview(), 8000);
+			function getfuwuItem(biaoshi) {
+				var tuijian_item_url = serverAddress + "/api/item/spreadclass";
+				var success = function(data) {
+					console.log("tuijianxiangmu" + JSON.stringify(data));
+					var type = data.data.hasOwnProperty("item");
+					console.log(type);
+					var value_class = data.data.class;
+					var value_item = null;
+					if(type) {
+						value_item = data.data.item;
+					}
+
+					if(biaoshi == "back") {
+						type = false;
+						value_item = null;
+					}
+
+					$("#rob_order").html("");
+
+					if(data.result == "success") {
+						$("#rob_order").processTL(templateRegister.tuijian_item, {
+							value_class: value_class,
+							value_item: value_item,
+							type: type
+						}, 'prepend', function() {
+							$(".qs-img-lazyload").each(function(i, v) {
+								$$.lazyload(v)
+							})
+						});
+					}
+				}
+				commonHttpUtils(tuijian_item_url, "get", {}, success, error, true);
+			}
+			$("#rob_order").hide();
+			$("#rob_order:first").click(function(e) {
+				$("#rob_order").fadeOut();
+				$("#hide_img").show();
+				$("#hide_img").fadeIn().animate({
+					opacity: 0.25,
+					'right': '+=160',
+				}, 1000, function() {
+					// Animation complete.
+
+				});
+			});
+			if(localStorage.getItem("TOKENID") == null) {
+				$("#hide_img").hide();
+
+			} else {
+				$("#hide_img").show();
+				getfuwuItem("next");
+			}
+			mui("#rob_order").on("tap", "a", function(e) {
+
+				var tuijian_type = $(this).attr("data_type");
+				/*tuijian_type为item时，为扫码注册，tuijian_type为class时，为自然注册*/
+				if(tuijian_type == "item") {
+					var item_name_xiangqing = $(this).attr("data_name");
+					var item_name_id = this.id;
+					mui.openWindow({
+						id: 'a015_item_xiangqing.html',
+						url: '../order/a015_item_xiangqing.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: false //自动显示等待框，默认为true
+						},
+						extras: {
+							biaoshi: "zhengchang" //在下单时做个标识，如果是"zhengchang"就是正常下单，"yihu"就是选择医护下单
+						}
+					});
+					var sevice_item_xiangqing = plus.webview.getWebviewById('a015_item_xiangqing.html');
+					sevice_item_xiangqing.addEventListener('loaded', function() {
+						mui.fire(sevice_item_xiangqing, "sevice_item_xiangqing", {
+							ITEM_NAME: item_name_xiangqing,
+							ITEM_NAME_ID: item_name_id
+						});
+					});
+				} else if(tuijian_type == "class") {
+					var lis = Array.prototype.slice.call(document.getElementById('UL_TABLE').getElementsByTagName('li'));
+					var len = lis.length;
+					var activeLen = document.querySelectorAll('.gray').length;
+					if($(this).find("#item_img").hasClass("gray") && $(this).find("#active_img").hasClass("displayNon")) {
+						$(this).find("#item_img").removeClass("gray");
+						$(this).find("#active_img").removeClass("displayNon");
+						$(this).find("#active_img").addClass("displayYes");
+
+					} else {
+						if(!activeLen) {
+							$(this).find("#item_img").addClass("gray");
+							$(this).find("#active_img").toggleClass("displayNon", "displayYes");
+						} else {
+							lis.forEach(function(item) {
+								$(item).find("#item_img").removeClass("gray");
+								$(item).find("#active_img").removeClass("displayYes");
+								$(item).find("#active_img").addClass("displayNon");
+							})
+							$(this).find("#item_img").addClass("gray");
+							$(this).find("#active_img").removeClass("displayNon");
+							$(this).find("#active_img").addClass("displayYes");
+						}
+					}
+					fenlei_nickname = $(this).attr("data_name");
+					fenlei_name_id = this.id;
+					fenlei_typename = $(this).attr("data_typename");
+
+				}
+			});
+			//分类确认按钮
+			mui("#rob_order").on("tap", "button", function(e) {
+				if(fenlei_name_id == "") {
+					mui.toast("请选择分类");
+					return false;
+				}
+				var tijiao_url = serverAddress + "/api/patient/setspreadclass";
+				var success = function(data) {
+					console.log("ddd" + JSON.stringify(data));
+					if(data.result == "success") {
+						getfuwuItem();
+					}
+				}
+				commonHttpUtils(tijiao_url, "POST", {
+					nickname: fenlei_nickname,
+					typename: fenlei_typename
+				}, success, error, true);
+			});
+			//其他推荐选择按钮
+			mui("#rob_order").on("tap", "#back", function(e) {
+				$("#hide_img").hide();
+				getfuwuItem("back");
+			});
+
+			$("#hide_img").click(function() {
+				$(this).animate({
+					'right': -160
+				}, 'slow', function() {
+					//animate回调函数，首先距离移动图片，距离左边界150px，此时在右边界处了。在移动至贴近左边界。  
+					$(this).hide();
+					$("#rob_order").fadeIn();
+
+				});
+				$("#hide_img").show();
+			});
+
+			$(".anniu>div").filter('[id*="item"]').click(function(e) {
+				if(types[plus.networkinfo.getCurrentType()] == "None connection") {
+					mui.openWindow({
+						id: 'error.html',
+						url: '../geren_message/error.html',
+						waiting: {
+							autoShow: false
+						}
+					});
+					return false;
+				}
+
+				mui.openWindow({
+					id: 'item-order-all.html',
+					url: '../order/item-order-all.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					}
+				});
+				var sevice_item_message = plus.webview.getWebviewById('item-order-all.html');
+				if($(this).attr("id").indexOf("item1") >= 0) {
+
+					if($(this).attr("id").indexOf("kangfu") >= 0) {
+						sevice_item_message.addEventListener('loaded', function() {
+							mui.fire(sevice_item_message, "sevice_item_message", {
+								item_name: "上门康复"
+							});
+						});
+					} else if($(this).attr("id").indexOf("huli") >= 0) {
+						sevice_item_message.addEventListener('loaded', function() {
+							mui.fire(sevice_item_message, "sevice_item_message", {
+								item_name: "上门护理"
+							});
+						});
+					}
+				}
+				if($(this).attr("id").indexOf("item2") >= 0) {
+					sevice_item_message.addEventListener('loaded', function() {
+						mui.fire(sevice_item_message, "sevice_item_message", {
+							item_name: "综合服务"
+						});
+					});
+				}
+			});
+			$("#familydoctor").click(function(e) {
+				if(types[plus.networkinfo.getCurrentType()] == "None connection") {
+					mui.openWindow({
+						id: 'error.html',
+						url: '../geren_message/error.html',
+						waiting: {
+							autoShow: false
+						}
+					});
+					return false;
+				}
+
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html"
+					});
+					return false;
+				}
+
+				var id = localStorage.getItem("TOKENID");
+				if(id == null) {
+					var self = plus.webview.currentWebview();
+					id = self.USER_ID;
+				}
+				mui.openWindow({
+					id: 'familydoctor.html',
+					url: '../familydoctor/familydoctor.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					}
+				});
+			});
+
+			$("#report_online").click(function(e) {
+				//				if(localStorage.getItem("TOKENID") == null) {
+				//					mui.openWindow({
+				//						url: "../login/login.html"
+				//					});
+				//					return false;
+				//				}
+				//设置报告解读页面样式
+				var titleNView = {
+					backgroundColor: '#45d0d5', //导航栏背景色
+					titleColor: '#FFFFFF',
+					type: 'transparent', //透明渐变样式
+					autoBackButton: true, //自动绘制返回箭头
+
+				}
+				mui.openWindow({
+					url: "../order/online_service_vue_router.html",
+					id: "online_service_vue_router.html",
+					styles: {
+						//titleNView: titleNView
+					}
+				});
+
+			});
+
+			$("#wodehuayandan").click(function(e) {
+				mui.openWindow({
+					id: 'fuyao_notice.html',
+					url: '../geren_message/fuyao_notice.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					}
+				});
+				//mui.toast("正在建设中......");
+			});
+			$("#wode_healthness").click(function(e) {
+
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html"
+					});
+					return false;
+				}
+
+				mui.openWindow({
+					id: 'echarts.html',
+					url: '../familydoctor/echarts.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					}
+				});
+				//mui.toast("正在建设中......");
+			});
+
+			mui("#huadong_UL").on("tap", ".guanbi", function() {
+				$("#huadong").hide();
+			});
+			//获取服务器端广告位图片
+			//type(ggw：广告位、sp：闪屏、xq：小七)
+
+			var lunbo_url = serverAddress + "/api/commerical/app/list?type=ggw";
+			var html = '<div id="slider" class="mui-slider"><div class="mui-slider-group mui-slider-loop"><!--额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)--><div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../images/banner2.png"></a></div><!--第一张--><div class="mui-slider-item"><a href="#"><img src="../images/banner2.png"></a></div><!--第二张--><div class="mui-slider-item"><a href="#"><img src="../images/banner3.jpg"></a></div><!--第三张--><div class="mui-slider-item"><a href="#"><img src="../images/banner4.png"></a></div><!--第四张--><div class="mui-slider-item"><a href="#"><img src="../images/banner5.png"></a></div><div class="mui-slider-item"><a href="#"><img src="../images/banner5.png"></a></div><!--额外增加的一个节点(循环轮播：最后一个节点是第一张轮播)--><div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../images/advert/banner.jpg"></a></div></div><div class="mui-slider-indicator"><div class="mui-indicator mui-active"></div></div></div>'
+			plus.nativeUI.showWaiting();
+			$("#lunbo").html(html);
+
+			var success = function(data) {
+				console.log("广告位" + JSON.stringify(data));
+				var value = data.data;
+				if(data.result == "success" && value.length != 0) {
+					plus.nativeUI.closeWaiting();
+					setTimeout(function() {
+						$("body").processTL(templateRegister.lunbo_main, {
+							sub: value
+						}, 'prepend', function() {
+							var slider = mui("#slider");
+							slider.slider({
+								interval: 5000
+							});
+							$(".qs-img-lazyload").each(function(i, v) {
+								$$.lazyload(v)
+							})
+						});
+					}, 150);
+
+					mui("body").on("tap", ".mui-slider-item", function() {
+						var forwardtype = $(this).attr("data-forward");
+						var extras = $(this).attr("data-ext");
+						var dataurl = $(this).attr("data-url");
+						var dataname = $(this).attr("data-name");
+						var dataurlWebview = $(this).attr("data-dataurl");
+						console.log(dataname);
+						//alert(dataurl);
+						var def = {};
+						//1进优惠券，-1外链，2进入关于我们
+						if(forwardtype == "1") {
+							def = dataConfig_imglunbo["MSG001"];
+						} else if(forwardtype == "-1") {
+							def = dataConfig_imglunbo["MSG002"];
+							def.link = dataurl;
+							def.name = dataname;
+							mui.openWindow({
+								url: def.link,
+								id: def.link,
+								styles: returnstyleTitle(def.link, def.name)
+							});
+
+						} else if(forwardtype == "2") {
+							def = dataConfig_imglunbo["MSG003"];
+							def.name = dataname;
+							def.link = "/geren_message/info2.html";
+							mui.openWindow({
+								url: def.link,
+								id: def.link,
+								styles: returnstyleTitle(def.link, def.name),
+								extras: {
+									dataurlWebview: dataurlWebview
+								}
+							});
+						}
+
+						if(!$.isEmptyObject(def) || forwardtype == "1") {
+							mui.openWindow({
+								url: def.link,
+								id: def.link,
+								extras: {
+									TAB: extras
+								},
+								show: {
+									autoShow: true, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded'
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+								}
+							});
+						}
+					});
+				}
+
+			}
+			commonHttpUtilsLUNBO(lunbo_url, "get", {}, success, error, true);
+			getGPS()
+
+			function getPos() {
+				//confirmGPS("我们将获取您的GPS信息进行推单操作，以便医护针对您的位置进行服务",'','')
+				plus.geolocation.getCurrentPosition(geoInf, function(e) {
+					console.log("获取位置信息失败：" + e.message);
+					//原生获取不到经纬度，使用百度API
+
+				}, {
+					geocode: false
+				});
+
+				return false;
+			}
+
+			function geoInf(position, otherinfo) {
+				var str = "";
+				str += "地址：" + position.addresses + "\n"; //获取地址信息
+				str += "坐标类型：" + position.coordsType + "\n";
+				var timeflag = position.timestamp; //获取到地理位置信息的时间戳；一个毫秒数；
+				str += "时间戳：" + timeflag + "\n";
+				var codns = position.coords; //获取地理坐标信息；
+				var lat = codns.latitude; //获取到当前位置的纬度；
+				str += "纬度：" + lat + "\n";
+				var longt = codns.longitude; //获取到当前位置的经度
+				str += "经度：" + longt + "\n";
+				var alt = codns.altitude; //获取到当前位置的海拔信息；
+				str += "海拔：" + alt + "\n";
+				var accu = codns.accuracy; //地理坐标信息精确度信息；
+				str += "精确度：" + accu + "\n";
+				var altAcc = codns.altitudeAccuracy; //获取海拔信息的精确度；
+				str += "海拔精确度：" + altAcc + "\n";
+				var head = codns.heading; //获取设备的移动方向；
+				str += "移动方向：" + head + "\n";
+				var sped = codns.speed; //获取设备的移动速度；
+				str += "移动速度：" + sped + "\n";
+				var citycode = codns.city;
+				str += "城市编码：" + citycode;
+				console.log(JSON.stringify(position));
+				console.log(str);
+				longitude = position.coords.longitude;
+				latitude = position.coords.latitude;
+				getGPS(longitude, latitude);
+
+			}
+			//获取公告轮播数据
+			function getGPS(longitude, latitude) {
+				if(types[plus.networkinfo.getCurrentType()] != "None connection") {
+					// 百度地图API功能
+					var result, addressComponent, adcode;
+					//获取当前地址城市的CODE
+					$.ajax({
+						url: 'http://api.map.baidu.com/geocoder/v2/?ak=x8wP7ck7pQ4P8UAol2pen8B5&location=' + latitude + ',' + longitude + '&output=json&pois=1',
+						dataType: 'jsonp',
+						callback: 'BMap._rd._cbk43398',
+						success: function(res) {
+							console.log(res);
+							result = res.result;
+							addressComponent = result.addressComponent;
+							adcode = addressComponent.adcode;
+							adcode = adcode.replace(adcode.charAt(adcode.length - 1), "00");
+							adcode = adcode.substring(0, adcode.length - 3) + "00";
+							//获取公告轮播数据
+							var gonggao_url = serverAddress + "/api/notice/app/scroll";
+							$("#huadong").hide();
+
+							var success = function(data) {
+								console.log("轮播数据===>" + JSON.stringify(data));
+								if(data) {
+									$("#huadong").show();
+								}
+								if(data.result == "success") {
+									$("#huadong_UL").processTL(templateRegister.huadong_main, {
+										sub: data.data
+									}, 'append', function() {
+
+										//获取当前时间的小时数
+										var frequency = 3500;
+										var current_hour = parseInt(moment().hour());
+										if(21 <= current_hour && current_hour <= 24 || 1 <= current_hour && current_hour <= 5) {
+											frequency = 60000;
+										} else {
+											frequency = 3500;
+										}
+
+										//公告上下轮播
+
+										var num = $('.notice_active').find('li').length;
+										if(num > 1) {
+											var time = setInterval('timer(".notice_active")', frequency);
+											$('.gg_more a').mousemove(function() {
+												clearInterval(time);
+											}).mouseout(function() {
+												time = setInterval('timer(".notice_active")', frequency);
+											});
+										}
+
+										mui("#huadong_UL").on("tap", ".mui-media-body", function(e) {
+											var dataId = $(this).attr("data-id");
+											var dataJSON = $(this).attr("data-ext");
+											console.log(dataId);
+											console.log(dataJSON)
+											mui.openWindow({
+												url: "../geren_message/info_any_xiangqing.html",
+												id: "info_any_xiangqing.html",
+												styles: returnstyleTitle("info_any_xiangqing.html", "通知详情"),
+												extras: {
+													dataId: dataId,
+													dataJSON: dataJSON
+												}
+											});
+										});
+									});
+								}
+							};
+							commonHttpUtilsLUNBO(gonggao_url, "get", {
+								cityCode: adcode
+							}, success, error, true);
+							setTimeout(function(e) {
+								commonHttpUtilsLUNBO(gonggao_url, "get", {
+									cityCode: adcode
+								}, success, error, true);
+							}, 120000);
+
+						}
+					})
+
+				} else {
+					mui.toast("请确认网络开启");
+				}
+			}
+			$(".message").click(function(e) {
+				mui.openWindow({
+					url: "../subpages/tab-webview-subpage-talk-new.html",
+					id: "tab-webview-subpage-talk-new.html",
+					styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+				});
+			});
+
+		});
+
+		function clickButton() {
+			mui.back();
+		}
+
+		function timer(opj) {
+			$(opj).find('ul').animate({
+				marginTop: "-7rem"
+			}, 0, function() {
+				$(this).css({
+					marginTop: "0.15rem"
+				}).find("li:first").appendTo(this);
+			})
+		}
+		var floatw = null;
+
+		function floatWebview() {
+			if(floatw) { // 避免快速多次点击创建多个窗口
+				return;
+			}
+
+			floatw = plus.webview.create("../order/rob_order.html", "rob_order.html", {
+				width: '100%',
+				height: '51%',
+				margin: "auto",
+				//				background: "rgba(0,0,0,0.4)",
+				scrollIndicator: 'vertical',
+				scalable: false,
+				popGesture: 'none'
+			});
+			floatw.addEventListener("loaded", function() {
+				floatw.show('slide-in-right', 300);
+				floatw = null;
+			}, false);
+		}
+	</script>
+
+</html>

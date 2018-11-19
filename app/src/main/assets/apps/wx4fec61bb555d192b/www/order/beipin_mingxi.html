@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<title>备品明细</title>
+		<style>
+			.mui-grid-view.mui-grid-9 {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-icon img {
+				max-width: 60%;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 10px 10px;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 14px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: #EEEEEE;
+			}
+			
+			.LIimage img {
+				width: 0.5rem;
+				margin-right: 10px;
+				vertical-align: bottom;
+			}
+			.wuxian:after{
+				height: 0;
+			}
+			.title,#mingxiUL{
+				font-size: 15px;
+				color: #333;
+			}
+			.title li,#mingxiUL li{
+				height: 50px;
+				padding-top: 15px;
+			}
+			.mui-table-view-cell.mui-active{
+				background-color: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">备品明细</h1>
+		</header>
+
+		<div class="mui-content">
+			<ul class="mui-table-view title">
+				 <li class="mui-table-view-cell"><span class="mui-pull-left">种类</span><span class="mui-pull-right">规格/数量</span></li>
+			</ul>
+			<ul class="mui-table-view" id="mingxiUL">
+				 <li class="mui-table-view-cell"><span class="mui-pull-left" id="beipinzhonglei">一次性输液器</span><span class="mui-pull-right" id="beipinname">针头/<span id="beipinnum">1</span></span></li>
+		         <li class="mui-table-view-cell"><span class="mui-pull-left">一次性输液器</span><span class="mui-pull-right">针头/1</span></li>
+		         <li class="mui-table-view-cell"><span class="mui-pull-left">一次性输液器</span><span class="mui-pull-right">针头/1</span></li>
+			</ul>
+			<div class="mui-content-padded">
+				<button id='back' class="mui-btn mui-btn-block mui-btn-warning"><span>确定</span></button>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+	<script>
+		
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				
+				var spares=currentView.BEIPIN_MINGXI.replace(/\'/g,'"');
+				var sparesJSON=JSON.parse(spares);
+				var html='';
+				for(var i=0;i<sparesJSON.length;i++){
+					console.log(JSON.stringify(sparesJSON[i]));
+					html+='<li class="mui-table-view-cell"><span class="mui-pull-left" id="beipinzhonglei">'+sparesJSON[i].name+'</span><span class="mui-pull-right" id="beipinname">'+sparesJSON[i].standard+'/<span id="beipinnum">'+sparesJSON[i].number+'</span></span></li>'
+					$("#mingxiUL").html(html);
+				}
+				$("#back").click(function(e){
+					mui.back();
+				})
+			});
+					
+		
+	</script>
+
+</html>

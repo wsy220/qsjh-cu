@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<title>线上服务</title>
+		<style>
+			.mui-grid-view.mui-grid-9 {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-icon img {
+				max-width: 50%;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 10px 10px;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 14px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: #EEEEEE;
+			}
+			
+			.LIimage img {
+				width: 0.5rem;
+				margin-right: 10px;
+				vertical-align: bottom;
+			}
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+				line-height: 1.2;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">线上服务</h1>
+		</header>
+
+		<div class="mui-content">
+
+			<ul class="mui-table-view mui-grid-view mui-grid-9" id="up_jingtai" style="display: block;">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" id="yuyueguahao">
+					<a href="#">
+						<span class="mui-icon"><img src="../images/guahao.png"></span>
+						<div class="mui-media-body">预约挂号</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" id="baogaojiedu">
+					<a href="#">
+						<span class="mui-icon"><img src="../images/baogaojiedu_icon.png"></span>
+						<div class="mui-media-body">报告解读</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4" id="tijian_report">
+					<a href="#">
+						<span class="mui-icon"><img src="../images/checkbody.png"></span>
+						<div class="mui-media-body">体检报告</div>
+					</a>
+				</li>
+			</ul>
+
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+
+	<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js" ></script>
+
+	<script>
+		mui.plusReady(function() {
+//			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+//				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+//				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+//				document.querySelector("header").style.height = topoffset;
+//				document.querySelector("header").style.paddingTop = "20px";
+//				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+//			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
+				mui.toast("确认手机是否连接网络！");
+				$(".mui-content").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+				return false;
+			}
+			mui("#up_jingtai").on("tap", "#yuyueguahao", function(e) {
+				mui.openWindow({
+					id: 'tl_bank_pay.html',
+					url: '../document/tl_bank_pay.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					}
+				});
+			})
+			mui("#up_jingtai").on("tap", "#baogaojiedu", function(e) {
+				mui.openWindow({
+					url: "../online_answer_order/online_answer_index.html",
+					id: "online_answer_index.html",
+					styles: {
+						//titleNView: titleNView
+					}
+				});
+			})
+
+			mui("#up_jingtai").on("tap", "#tijian_report", function(e) {
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html",
+						id: 'login/login.html'
+					});
+					return false;
+				}
+
+				mui.openWindow({
+					url: "bodyCheck_report_withVue.html",
+					id: "bodyCheck_report_withVue.html",
+					styles: {
+						//titleNView: titleNView
+					}
+				});
+			})
+		});
+	</script>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x8wP7ck7pQ4P8UAol2pen8B5"></script>
+		<title>设置服务对象地址</title>
+		<style>
+			body,
+			html,
+			#allmap {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				margin: 0;
+				font-family: "微软雅黑";
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">设置服务对象地址</h1>
+		</header>
+		<div class="mui-content">
+
+			<div class="mui-input-row mui-content-padded">
+				<input type="search" class="searchinput" id="ADDRESS_NAME_BEGIN" name="ADDRESS_NAME_BEGIN" placeholder="请输入地址" title="起点" />
+				<input type="hidden" id="LNG" name="LNG" />
+				<input type="hidden" id="LAT" name="LAT" />
+
+			</div>
+			<div id="allmap"></div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+		<script type="text/javascript" src="../js/IScard.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+		<script>
+			var myValue = "";
+			var longitude = "";
+			var latitude = "";
+			var map = new BMap.Map("allmap"); // 创建Map实例
+			map.centerAndZoom("长春", 15);
+			//添加地图类型控件
+			map.addControl(new BMap.MapTypeControl({
+				mapTypes: [
+					BMAP_NORMAL_MAP,
+					BMAP_HYBRID_MAP
+				]
+			}));
+			mui.init({
+				beforeback: function() {
+					var indx = plus.webview.getWebviewById('service_object_add');
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+					var indx_edit = plus.webview.getWebviewById('service_object_edit');
+					var indx_health=plus.webview.getWebviewById("health_object_add");
+					var indx_health_file=plus.webview.getWebviewById("health_file_detail");
+					mui.fire(indx, 'refresher', {
+						myvalue: myValue,
+						longitude: longitude,
+						latitude: latitude
+					});
+					mui.fire(indx_edit, 'refresher', {
+						myvalue: myValue,
+						longitude: longitude,
+						latitude: latitude
+					});
+					mui.fire(indx_health, 'refresher', {
+						myvalue: myValue,
+						longitude: longitude,
+						latitude: latitude
+					});
+					mui.fire(indx_health_file, 'refresher', {
+						myvalue: myValue,
+						longitude: longitude,
+						latitude: latitude
+					});
+					//返回true，继续页面关闭逻辑
+					return true;
+
+				}
+			});
+			mui.plusReady(function() {
+				console.log('setting plusReady.');
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				function G(id) {
+					return document.getElementById(id);
+				}
+
+				map.centerAndZoom("长春", 12); // 初始化地图,设置城市和地图级别。
+
+				var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+					{
+						"input": "ADDRESS_NAME_BEGIN",
+						"location": map
+					});
+
+				ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
+					var str = "";
+					var _value = e.fromitem.value;
+					var value = "";
+					if(e.fromitem.index > -1) {
+						value = _value.province + _value.city + _value.district + _value.street + _value.business;
+					}
+					str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+					value = "";
+					if(e.toitem.index > -1) {
+						_value = e.toitem.value;
+						value = _value.province + _value.city + _value.district + _value.street + _value.business;
+					}
+					str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+				});
+
+				ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+					console.log(e)
+					var _value = e.item.value;
+					myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+					console.log(myValue);
+					localStorage.selectedAddress = myValue;
+					document.getElementById("ADDRESS_NAME_BEGIN").value = myValue;
+					localStorage.myvalue = myValue;
+					setPlace(myValue);
+
+				});
+
+				function setPlace(myValue) {
+					map.clearOverlays(); //清除地图上所有覆盖物
+					function myFun() {
+
+						var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+						map.centerAndZoom(pp, 18);
+						map.addOverlay(new BMap.Marker(pp)); //添加标注
+
+						document.getElementById("LNG").value = pp.lng;
+						document.getElementById("LAT").value = pp.lat;
+						longitude = pp.lng;
+						latitude = pp.lat;
+						
+						localStorage.longitude = longitude;
+						localStorage.latitude = latitude;
+//						if(plus.webview.getWebviewById("service_object_add")) {
+//							plus.webview.getWebviewById("service_object_add").reload(true);
+//						}
+//						if(plus.webview.getWebviewById("service_object_edit")) {
+//							plus.webview.getWebviewById("service_object_edit").reload(true);
+//						}
+						mui.back();
+					}
+					var local = new BMap.LocalSearch(map, { //智能搜索
+						onSearchComplete: myFun
+					});
+					local.search(myValue);
+				}
+			});
+		</script>
+	</body>
+
+</html>

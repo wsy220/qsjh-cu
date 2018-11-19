@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>资讯</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x8wP7ck7pQ4P8UAol2pen8B5"></script>-->
+		<style>
+			/* css 重置 */
+			
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			img {
+				border: 0;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #333;
+			}
+			
+			a:hover {
+				color: #1974A1;
+			}
+			
+			.location_img {
+				background: url(../images/index_img/icon_location.png);
+				background-repeat: no-repeat;
+				background-position: right;
+				background-size: 20%;
+				padding: 10px;
+				font-size: 0.23rem;
+				color: #FFFFFF;
+			}
+			
+			.saoma,
+			.message {
+				padding-top: 10px;
+			}
+			/* 社区消息轮播 */
+			
+			.txtScroll-top {
+				position: relative;
+			}
+			
+			.txtScroll-top .bd {
+				/*padding: 15px;*/
+			}
+			
+			.txtScroll-top .infoList li {
+				height: 24px;
+				line-height: 24px;
+				padding-right: 10px;
+			}
+			/*社区消息轮播end*/
+			
+			.health_date {
+				padding: 10px;
+			}
+			
+			.health_date img {
+				border-radius: 5px;
+			}
+			
+			.ziti {
+				font-size: 14px;
+				color: #4D4D4D;
+				font-weight: bold;
+			}
+			
+			.ziticontent {
+				font-size: 12px;
+				color: #999999;
+			}
+			
+			.lunboziticontent {
+				font-size: 0.22rem;
+				color: #4D4D4D;
+			}
+			/*医生介绍轮播样式*/
+			
+			.picScroll-left {
+				width: 100%;
+				overflow: hidden;
+				position: relative;
+				border: 1px solid #ccc;
+			}
+			
+			.picScroll-left .hd {
+				height: 0.38rem;
+				text-align: center;
+				padding: 5px;
+				padding-right: 10px;
+				padding-left: 10px;
+			}
+			
+			.picScroll-left .hd .title {
+				color: #3DCAD0;
+				font-size: 0.25rem;
+			}
+			
+			.picScroll-left .hd .pageState1 {
+				color: #4D4D4D;
+				font-size: 0.22rem;
+			}
+			
+			.picScroll-left .bd {
+				padding: 10px;
+			}
+			
+			.picScroll-left .bd ul {
+				overflow: hidden;
+				zoom: 1;
+			}
+			
+			.picScroll-left .bd ul li {
+				margin: 8px 8px;
+				float: left;
+				_display: inline;
+				overflow: hidden;
+				text-align: center;
+			}
+			
+			.picScroll-left .bd ul li .pic {
+				text-align: center;
+				width: 85px;
+				height: 3rem;
+				display: block;
+				background-color: #FFFFFF;
+			}
+			
+			.picScroll-left .bd ul li .pic .pic_img {
+				width: 1.04rem;
+				height: 1.04rem;
+				border-radius: 200px;
+				border: 1px solid #EBEBEB;
+				margin-top: 0.3rem
+			}
+			
+			.picScroll-left .bd ul li .pic img {
+				width: 1.04rem;
+				height: 1.04rem;
+				padding: 2px;
+				border-radius: 200px;
+			}
+			
+			.picScroll-left .bd ul li .pic a:hover img {
+				border-color: #999;
+			}
+			
+			.picScroll-left .bd ul li .title {
+				line-height: 24px;
+				color: #4D4D4D;
+				font-size: 0.24rem;
+				font-weight: bold;
+			}
+			
+			.picScroll-left .bd ul li .description {
+				font-size: 0.18rem;
+				color: #999999;
+			}
+			/*医生介绍轮播样式 end*/
+			
+			.box-img {
+				height: 3.16rem;
+			}
+			
+			.box {
+				display: -webkit-flex;
+				display: flex;
+				width: 100%;
+				height: 100px;
+				margin: 0 0;
+				padding: 0;
+				border-radius: 5px;
+				list-style: none;
+				background-color: #eee;
+			}
+			
+			.box li {
+				background: url(../images/inde);
+				text-align: center;
+			}
+			
+			.box li:nth-child(1) {
+				background: url(../images/index_img/new_index_img/saoyisao.png);
+				background-size: 3.8rem;
+				height: 3.16rem;
+				border-left: 1px solid #EBEBEB;
+			}
+			
+			.box li:nth-child(2) {
+				background: #aaa;
+			}
+			
+			#box li:nth-child(1) {
+				-webkit-flex: 1;
+				flex: 1;
+			}
+			
+			#box li:nth-child(2) {
+				-webkit-flex: 1;
+				flex: 1;
+			}
+			
+			.box2 li:nth-child(1) {
+				background: url(../images/index_img/new_index_img/icon_web_therapy.png);
+				background-size: 3.98rem;
+				background-repeat: no-repeat;
+				height: 1.58rem;
+			}
+			
+			.box2 li:nth-child(2) {
+				background: url(../images/index_img/new_index_img/shangmen.png);
+				background-size: 3.98rem;
+				background-repeat: no-repeat;
+				height: 1.58rem;
+				border-left: 1px solid #ebebeb;
+			}
+			
+			.mui-bar-nav~.mui-content {
+				padding-top: 0;
+			}
+			
+			.mui-btn-success {
+				color: #fff;
+				border: 1px solid #3DCAD0;
+				background-color: #3DCAD0;
+				border-radius: 100px;
+			}
+			
+			.biaoqian_right {
+				position: absolute;
+				top: 0.35rem;
+				left: 5px;
+				height: 0.27rem;
+				background-color: #43CED3;
+				color: #FFFFFF;
+				font-size: 0.19rem;
+			}
+			
+			.mui-badge-success {
+				color: #fff;
+				background-color: #3DCAD0;
+			}
+			
+			.health_hyxt {
+				padding: 0;
+				margin-top: 0.16rem;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<div class="saoma mui-pull-left">
+				<span class=""><img src="../images/index_img/icon_intelligent_community.png" style="width: 3.14rem;"></span>
+				<!--<span class="location_img">定位</span>-->
+			</div>
+			<div class="message mui-pull-right" id="message" style="padding-top: 13px;">
+				<span class="barcode" style="padding-right: 5px;"><img src="../images/index_img/icon_scan.png" style="width: 0.35rem;"></span>
+				<span class="message_all"><img src="../images/index_img/icon_information.png" style="width: 0.36rem;"></span>
+			</div>
+		</header>
+		<div class="mui-content" style="height: 100vh;">
+			<div id="allmap"></div>
+			<div id="lunbo" style="height: 3.5rem;">
+				<div id="slider" class="mui-slider" style="height: 3.5rem; ">
+					<div class="mui-slider-group mui-slider-loop">
+						<div class="mui-slider-item mui-slider-item-duplicate">
+							<a href="#">
+								<img style="height: 3.5rem;" class="qs-img-lazyload" src="../images/banner2.png">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--
+            	作者：35551400@qq.com
+            	时间：2018-07-31
+            	描述：社区消息
+            -->
+
+			<div class="txtScroll-top" style="width: 100%; background-color: #FFFFFF; <!--height: 1.1rem;-->" id="huadong">
+				<div class="bd">
+					<div class="tempWrap" style="overflow:hidden; position:relative; height:50px; display: flex; width: 100%;<!-- padding-top: 2px;-->">
+						<div id="shequ_zhanshi"><img src="../images/index_img/my_shequ.gif" style="width: 1.39rem;margin: 10px;"></div>
+						<div style="float:left;width: 1px;height: 0.86rem; background: #EBEBEB; margin-top: 5px;"></div>
+						<ul class="infoList" style="left:15px;position: relative; width:4.5rem" id="huadong_UL">
+
+							<li style="height: 0.4rem;margin-top: 2px;" class="mui-ellipsis ziticontent">
+								<a href="" class="mui-ellipsis"><span><img src="../images/index_img/icon_new_information.png" style="width: 0.25rem;margin-right: 5px;vertical-align: middle;"></span><span style="line-height:0.4rem;font-size: 10px; color: #999999;">中国打破了世界软件巨头规则中国打破了世界软件巨头规则中国打破了世界软件巨头规则</span></a>
+							</li>
+							<li style="height: 0.4rem;margin-top: 2px;" class="mui-ellipsis ziticontent">
+								<a href="" class="mui-ellipsis"><span><img src="../images/index_img/icon_new_information.png" style="width: 0.25rem;margin-right: 5px;vertical-align: middle;"></span><span style="line-height:0.4rem;font-size: 10px; color: #999999;">中国打破了世界软件巨头规则中国打破了世界软件巨头规则中国打破了世界软件巨头规则</span></a>
+							</li>
+
+						</ul>
+						<div style="background-color: #ffedda; color: #ef8c21; padding: 5px 10px;font-size: 11px;position: absolute;right: 0;" id="_shequmore">
+
+							<table>
+								<tr>
+									<td colspan="4" align="left">更</td>
+									<td colspan="4">多</td>
+								</tr>
+								<tr>
+									<td colspan="4" align="right">信</td>
+									<td colspan="4" align="right">息</td>
+								</tr>
+							</table>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<ul class="mui-table-view" style="margin-top: 5px;" id="qy_ul">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<span class="mui-btn mui-btn-success" id="qianyue">
+							去签约
+						</span>
+						<div class="mui-media-body ziti" id="jiating_doctor">
+							<span><img src="../images/index_img/icon_family_doctor.png" style="vertical-align: middle; padding-right: 5px; width: 0.4rem;"></span>家庭医生服务
+							<p class="mui-ellipsis ziticontent">绑定您的家庭医生实现优惠看病</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="health_date" id="health_date">
+				<img src="../images/index_img/health_data_img.png">
+			</div>
+
+			<div class="box-img">
+				<ul id="box" class="box">
+					<li id="box1"></li>
+					<li>
+						<ul class="box2">
+							<li id="im-chat"></li>
+							<li id="item_shangmen_service"></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="health_hyxt" id="health_hyxt">
+				<!--<img src="../images/index_img/icon_huayixuetang.png">-->
+			</div>
+			<!--
+				作者：35551400@qq.com
+				时间：2018-08-01
+				描述：社区医生介绍
+			-->
+			<!--<div class="picScroll-left" style="display: none;" id="doctor_jieshao">
+				<div class="hd">
+					<span class="title"><img src="../images/index_img/icon_left.png" style="width: 0.35rem;">社区医生介绍<img src="../images/index_img/icon_right.png" style="width: 0.35rem;"></span>
+					<span class="pageState1 mui-pull-right" id="pic_more">更多>></span>
+				</div>
+
+				<div class="bd">
+					<ul class="picList" id="picList">
+					</ul>
+				</div>
+			</div>-->
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<!--<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>-->
+		<script type="text/javascript" src="../js/scroll.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/json_time.js"></script>
+		<script type="text/javascript" src="../js/art/template-web.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+
+		<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+		<script type="text/javascript" src="../js/comfirmConnect.js"></script>
+		<script type="text/javascript" src="../js/xiachenshi.js"></script>
+
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xASog0skex3rFo5IcxT74ugewrWbwvP1"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+
+			mui.plusReady(function() {
+				showMap();
+				document.addEventListener('plusready', function() {
+					console.log("QS_Immersed-UserAgent: " + navigator.userAgent);
+				}, false);
+
+				var immersed = 0;
+				var ms = (/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi).exec(navigator.userAgent);
+				if(ms && ms.length >= 3) {
+					immersed = parseFloat(ms[2]);
+				}
+				window.immersed = immersed;
+
+				if(!immersed) {
+					return;
+				}
+				var topoffset = '45px';
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (immersed + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = immersed + "px";
+
+				if(document.getElementById('cus-modal')) {
+					document.getElementById('cus-modal').style.top = topoffset;
+				}
+				if(document.getElementById('cus-wrapper')) {
+					document.getElementById('cus-wrapper').style.top = topoffset;
+				}
+
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				var ifqy = false;
+				var isshiminghoutai = ""; //是否实名认证
+				var hidID = ""; //患者签约社区医院ID
+
+				var qystatus = ""; //签约状态
+				//登录之后获取用户签约状态
+				var id = localStorage.getItem("TOKENID");
+				var fdtid = "";
+				var sussess = function(data) {
+					console.log("ddddddeeeee_index" + JSON.stringify(data));
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data.result == "success") {
+						isshiminghoutai = data.data.idapprove
+						console.log(data.data.node);
+						qystatus = data.data.node;
+						fdtid = data.data.fdt;
+						hidID = data.data.signHid;
+
+						//						alert(qystatus);
+						//						try{
+						//							plus.qsPlugin.yxLogin(data.data._id, data.data.IMToken, "", "",
+						//							function(result) {},
+						//							function(result) {});
+						//						}catch(e){
+						//							console.log("0000000000000000000000000000000000000000000")
+						//							console.log(e)
+						//						}
+
+						//获取签约社区医生信息
+						if(fdtid) {
+							//getDoc();
+						}
+						if(qystatus == "WFP" || qystatus == "JQ" || qystatus == "YFP") {
+							$("#qy_ul").show();
+							$("#qianyue").html("去签约");
+							$("#doctor_jieshao").attr("style", "display: none;");
+							$(".barcode,#box1").click(function(e) {
+								if(localStorage.getItem("TOKENID") == null) {
+									mui.openWindow({
+										url: "../login/login.html"
+									});
+									return false;
+								}
+
+								if(isshiminghoutai == "1") {
+									mui.toast("请耐心等待后台做实名认证审核！");
+									return false;
+								} else if(isshiminghoutai == "0") {
+									mui.toast("请实名认证后再进行签约！");
+									mui.openWindow({
+										url: "../geren_message/d02_geren_message.html",
+										id: "d02_geren_message.html"
+									});
+									return false;
+								} else if(isshiminghoutai == "2") {
+									mui.openWindow({
+										url: "../set/barcode_scan.html",
+										id: "barcode_scan.html",
+										show: {
+											autoShow: true, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded'
+										},
+										waiting: {
+											autoShow: true, //自动显示等待框，默认为true
+										}
+										//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+									});
+								}
+							});
+
+							$("#qianyue").click(function(e) {
+								if(localStorage.getItem("TOKENID") == null) {
+									mui.openWindow({
+										url: "../login/login.html"
+									});
+									return false;
+								}
+
+								var sussess = function(data) {
+									console.log("ddddddeeeee_index" + JSON.stringify(data));
+									//服务器返回响应，根据响应结果，分析是否登录成功；
+									if(data.result == "success") {
+										isshiminghoutai = data.data.idapprove
+										console.log(data.data.node);
+										qystatus = data.data.node;
+
+										if(isshiminghoutai == "1") {
+											mui.toast("请耐心等待后台做实名认证审核！");
+											return false;
+										} else if(isshiminghoutai == "0") {
+											mui.toast("请实名认证后再进行签约！");
+											mui.openWindow({
+												url: "../geren_message/d02_geren_message.html",
+												id: "d02_geren_message.html"
+											});
+											return false;
+										} else if(isshiminghoutai == "2") {
+											mui.openWindow({
+												url: "../familydoctor/z01_communityList.html",
+												id: "z01_communityList.html",
+												show: {
+													autoShow: true, //页面loaded事件发生后自动显示，默认为true
+													event: 'loaded'
+												},
+												waiting: {
+													autoShow: true, //自动显示等待框，默认为true
+												}
+												//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+											});
+										}
+
+									}
+								};
+								var url = serverAddress + "/api/patient/getmyinfo/" + id;
+								if(id) {
+									commonHttpUtils(url, "get", {}, sussess, error, true);
+								}
+
+							});
+
+						} else if(qystatus == "YQ") {
+							$("#qianyue").html("已签约");
+							//$("#doctor_jieshao").show();
+							$("#qy_ul").hide();
+							$("#box1").css("background", "url(../images/index_img/new_index_img/jiating_doc.png)");
+							$('#box1').css("background-size", "3.52rem");
+							$('#box1').css("height", "3.16rem");
+
+							$(".barcode").hide();
+							$("#box1").click(function(e) {
+								mui.openWindow({
+									url: "../familydoctor/z01_fdtPackages.html",
+									id: "z01_fdtPackages.html",
+									show: {
+										autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded'
+									},
+									waiting: {
+										autoShow: true, //自动显示等待框，默认为true
+									}
+									//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+								});
+							});
+							$("#shequ_zhanshi").click(function(e) {
+								mui.openWindow({
+									url: "../familydoctor/z01_hospital_introduce.html",
+									id: "z01_hospital_introduce.html",
+									show: {
+										autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded'
+									},
+									waiting: {
+										autoShow: true, //自动显示等待框，默认为true
+									},
+									extras: {
+										hid: hidID,
+										fdtid: fdtid
+									}
+									//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+								});
+							})
+
+						} else if(qystatus == "DSH") {
+							$("#qianyue").html("待审核");
+						}
+					}
+				};
+				var url = serverAddress + "/api/patient/getmyinfo/" + id;
+				if(id) {
+					commonHttpUtils(url, "get", {}, sussess, error, true);
+				} else {
+					$("#qianyue").click(function(e) {
+						mui.openWindow({
+							url: "../login/login.html"
+						});
+						return false;
+					});
+				}
+
+				if(localStorage.getItem("TOKENID") == null) {
+					$(".barcode,#box1").click(function(e) {
+						if(localStorage.getItem("TOKENID") == null) {
+							mui.openWindow({
+								url: "../login/login.html"
+							});
+							return false;
+						}
+
+						mui.openWindow({
+							url: "../set/barcode_scan.html",
+							id: "barcode_scan.html",
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded'
+							},
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+							}
+							//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+						});
+					});
+				}
+				//获取服务器端广告位图片
+				//type(ggw：广告位、sp：闪屏、xq：小七)
+
+				var lunbo_url = serverAddress + "/api/commerical/app/list?type=ggw";
+				var html = '<div id="slider" class="mui-slider"><div class="mui-slider-group mui-slider-loop"><!--额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)--><div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../images/banner2.png"></a></div><!--第一张--><div class="mui-slider-item"><a href="#"><img src="../images/banner2.png"></a></div><!--第二张--><div class="mui-slider-item"><a href="#"><img src="../images/banner3.jpg"></a></div><!--第三张--><div class="mui-slider-item"><a href="#"><img src="../images/banner4.png"></a></div><!--第四张--><div class="mui-slider-item"><a href="#"><img src="../images/banner5.png"></a></div><div class="mui-slider-item"><a href="#"><img src="../images/banner5.png"></a></div><!--额外增加的一个节点(循环轮播：最后一个节点是第一张轮播)--><div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../images/advert/banner.jpg"></a></div></div><div class="mui-slider-indicator"><div class="mui-indicator mui-active"></div></div></div>'
+				plus.nativeUI.showWaiting();
+
+				var success = function(data) {
+					console.log("广告位" + JSON.stringify(data));
+					var value = data.data;
+					if(data.result == "success" && value.length != 0) {
+						$("#lunbo").html("");
+						plus.nativeUI.closeWaiting();
+						setTimeout(function() {
+							$("#lunbo").processTL(templateRegister.lunbo_main, {
+								sub: value
+							}, 'prepend', function() {
+								var slider = mui("#slider");
+								slider.slider({
+									interval: 5000
+								});
+								$(".qs-img-lazyload").each(function(i, v) {
+									$$.lazyload(v)
+								})
+							});
+						}, 150);
+
+						mui("#lunbo").on("tap", ".mui-slider-item", function() {
+							var forwardtype = $(this).attr("data-forward");
+							var extras = $(this).attr("data-ext");
+							var dataurl = $(this).attr("data-url");
+							var dataname = $(this).attr("data-name");
+							var dataurlWebview = $(this).attr("data-dataurl");
+							console.log(dataname);
+							var def = {};
+							//1进优惠券，-1外链，2进入关于我们
+							if(forwardtype == "1") {
+								def = dataConfig_imglunbo["MSG001"];
+							} else if(forwardtype == "-1") {
+								def = dataConfig_imglunbo["MSG002"];
+								def.link = dataurl;
+								def.name = dataname;
+								mui.openWindow({
+									url: def.link,
+									id: def.link,
+									styles: returnstyleTitle(def.link, def.name)
+								});
+
+							} else if(forwardtype == "2") {
+								def = dataConfig_imglunbo["MSG003"];
+								def.name = dataname;
+								def.link = "/geren_message/info2.html";
+								mui.openWindow({
+									url: def.link,
+									id: def.link,
+									styles: returnstyleTitle(def.link, def.name),
+									extras: {
+										dataurlWebview: dataurlWebview
+									}
+								});
+							}
+
+							if(!$.isEmptyObject(def) || forwardtype == "1") {
+								mui.openWindow({
+									url: def.link,
+									id: def.link,
+									extras: {
+										TAB: extras
+									},
+									show: {
+										autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded'
+									},
+									waiting: {
+										autoShow: true, //自动显示等待框，默认为true
+									}
+								});
+							}
+						});
+					}
+
+				}
+				commonHttpUtilsLUNBO(lunbo_url, "get", {}, success, error, true);
+
+				//获取华裔血糖之类的图片，以及图片链接
+				var lunbo_url = serverAddress + "/api/commerical/app/list?type=bbanner";
+				var html = '<div id="slider" class="mui-slider"><div class="mui-slider-group mui-slider-loop"><!--额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)--><div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../images/banner2.png"></a></div><!--第一张--><div class="mui-slider-item"><a href="#"><img src="../images/banner2.png"></a></div><!--第二张--><div class="mui-slider-item"><a href="#"><img src="../images/banner3.jpg"></a></div><!--第三张--><div class="mui-slider-item"><a href="#"><img src="../images/banner4.png"></a></div><!--第四张--><div class="mui-slider-item"><a href="#"><img src="../images/banner5.png"></a></div><div class="mui-slider-item"><a href="#"><img src="../images/banner5.png"></a></div><!--额外增加的一个节点(循环轮播：最后一个节点是第一张轮播)--><div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="../images/advert/banner.jpg"></a></div></div><div class="mui-slider-indicator"><div class="mui-indicator mui-active"></div></div></div>'
+				plus.nativeUI.showWaiting();
+
+				var success = function(data) {
+					console.log("banner" + JSON.stringify(data));
+					var value = data.data;
+					//					var value = data.data[0];
+					if(data.result == "success" && value.length != 0) {
+						plus.nativeUI.closeWaiting();
+						setTimeout(function() {
+							$("#health_hyxt").processTL(templateRegister.lunbo_bbanner, {
+								sub: value
+							}, 'prepend', function() {
+
+							});
+						}, 150);
+
+						mui("#health_hyxt").on("tap", "a", function() {
+							var forwardtype = $(this).attr("data-forward");
+							var extras = $(this).attr("data-ext");
+							var dataurl = $(this).attr("data-url");
+							var dataname = $(this).attr("data-name");
+							var dataurlWebview = $(this).attr("data-dataurl");
+							console.log(dataname);
+							var def = {};
+							//1进优惠券，-1外链，2进入关于我们
+							if(forwardtype == "1") {
+								def = dataConfig_imglunbo["MSG001"];
+							} else if(forwardtype == "-1") {
+								def = dataConfig_imglunbo["MSG002"];
+								def.link = dataurl;
+								def.name = dataname;
+								mui.openWindow({
+									url: def.link,
+									id: def.link,
+									styles: returnstyleTitle(def.link, def.name)
+								});
+
+							} else if(forwardtype == "2") {
+								def = dataConfig_imglunbo["MSG003"];
+								def.name = dataname;
+								def.link = "/geren_message/info2.html";
+								mui.openWindow({
+									url: def.link,
+									id: def.link,
+									styles: returnstyleTitle(def.link, def.name),
+									extras: {
+										dataurlWebview: dataurlWebview
+									}
+								});
+							}
+
+							if(!$.isEmptyObject(def) || forwardtype == "1") {
+								mui.openWindow({
+									url: def.link,
+									id: def.link,
+									extras: {
+										TAB: extras
+									},
+									show: {
+										autoShow: true, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded'
+									},
+									waiting: {
+										autoShow: true, //自动显示等待框，默认为true
+									}
+								});
+							}
+						});
+					} else {
+						$("#health_hyxt").hide();
+					}
+
+				}
+				commonHttpUtilsLUNBO(lunbo_url, "get", {}, success, error, true);
+
+				//如果用户已经签约
+				function getDoc() {
+					var talktoID = "";
+					var talktoName = "";
+					var talkJSON = {};
+					var url = serverAddress + "/api/appfamilydoctorteamforpatient/redaone/" + fdtid;
+					var success = function(data) {
+						console.log("团队介绍------------》" + JSON.stringify(data));
+						if(data.result == "success") {
+							if(data.obj.length != 0) {
+								talktoID = data.obj.data.teamLeader._id;
+								console.log("老大ID" + talktoID);
+								talktoName = data.obj.data.teamLeader.name;
+								console.log("老大名字" + talktoName);
+								talkJSON = {
+									'talktoID': talktoID,
+									'talktoName': talktoName
+								};
+								console.log(JSON.stringify(talkJSON));
+
+								$("#picList").processTL(templateRegister.lunbo_pic_doctor, {
+									sub: data.obj.data.doctorList,
+								}, "append", function() {
+
+									jQuery(".picScroll-left").slide({
+										titCell: ".hd ul",
+										mainCell: ".bd ul",
+										autoPage: true,
+										effect: "left",
+										autoPlay: true,
+										vis: 3,
+										trigger: "click"
+									});
+									//alert(JSON.stringify(talkJSON));
+									return talkJSON;
+
+								});
+							} else {
+								//document.querySelector(".item0_0").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							}
+						} else {
+							mui.toast(data.msg);
+						}
+					};
+					commonHttpUtils(url, "get", {}, success, error, true);
+
+				}
+				$("#im-chat").click(function(e) {
+					var talktoJSON = {};
+					var dataId = "";
+					var name = "";
+
+					if(localStorage.getItem("TOKENID") == null) {
+						mui.openWindow({
+							url: "../login/login.html"
+						});
+						return false;
+					}
+
+					if(qystatus == "WFP" || qystatus == "JQ") {
+						mui.toast("您还没有签约任何家庭医生");
+						return false;
+					} else if(qystatus == "DSH") {
+						mui.toast("您的签约正在后台审核");
+						return false;
+					}
+
+					if(fdtid) {
+						mui.openWindow({
+							url: "../familydoctor/z01_chat_list.html",
+							id: "z01_chat_list.html",
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded'
+							},
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+							}
+							//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+						});
+
+						//						var url = serverAddress + "/api/appfamilydoctorteamforpatient/redaone/" + fdtid;
+						//						var success = function(data11) {
+						//							console.log("团队介绍------------》" + JSON.stringify(data11));
+						//							if(data11.result == "success") {
+						//								if(data11.obj.length != 0) {
+						//									dataId = data11.obj.data.teamLeader._id;
+						//									name = data11.obj.data.teamLeader.name;
+						//									console.log("老大ID" + dataId);
+						//									console.log("老大名字" + name);
+						//									mui.openWindow({
+						//										url: '../familydoctor/im-chat.html',
+						//										id: 'im-chat.html',
+						//										show: {
+						//											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						//											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						//										},
+						//										waiting: {
+						//											autoShow: true //自动显示等待框，默认为true
+						//										},
+						//										extras: {
+						//											TO_ACCOUNT: dataId,
+						//											TO_NAME: name
+						//										}
+						//									});
+						//								} else {
+						//
+						//								}
+						//							} else {
+						//								mui.toast(data11.msg);
+						//							}
+						//						};
+						//						commonHttpUtils(url, "get", {}, success, error, true);
+
+					}
+
+				})
+				//getPos();//原生获取GPS
+				//showMap(); //百度获取GPS
+
+				function getPos() {
+					//confirmGPS("我们将获取您的GPS信息进行推单操作，以便医护针对您的位置进行服务",'','')
+					plus.geolocation.getCurrentPosition(geoInf, function(e) {
+						console.log("获取位置信息失败：" + e.message);
+						//原生获取不到经纬度，使用百度API
+
+					}, {
+						geocode: false
+					});
+
+					return false;
+				}
+
+				function showMap() {
+
+					var geolocation = new BMap.Geolocation();
+					geolocation.getCurrentPosition(function(r) {
+						longitude = r.point.lng;
+						latitude = r.point.lat;
+						alert(longitude);
+						alert(latitude);
+						getGPS(longitude, latitude);
+					});
+
+				}
+
+				function geoInf(position, otherinfo) {
+					var str = "";
+					str += "地址：" + position.addresses + "\n"; //获取地址信息
+					str += "坐标类型：" + position.coordsType + "\n";
+					var timeflag = position.timestamp; //获取到地理位置信息的时间戳；一个毫秒数；
+					str += "时间戳：" + timeflag + "\n";
+					var codns = position.coords; //获取地理坐标信息；
+					var lat = codns.latitude; //获取到当前位置的纬度；
+					str += "纬度：" + lat + "\n";
+					var longt = codns.longitude; //获取到当前位置的经度
+					str += "经度：" + longt + "\n";
+					var alt = codns.altitude; //获取到当前位置的海拔信息；
+					str += "海拔：" + alt + "\n";
+					var accu = codns.accuracy; //地理坐标信息精确度信息；
+					str += "精确度：" + accu + "\n";
+					var altAcc = codns.altitudeAccuracy; //获取海拔信息的精确度；
+					str += "海拔精确度：" + altAcc + "\n";
+					var head = codns.heading; //获取设备的移动方向；
+					str += "移动方向：" + head + "\n";
+					var sped = codns.speed; //获取设备的移动速度；
+					str += "移动速度：" + sped + "\n";
+					var citycode = codns.city;
+					str += "城市编码：" + citycode;
+					console.log(JSON.stringify(position));
+					console.log(str);
+					longitude = position.coords.longitude;
+					latitude = position.coords.latitude;
+					getGPS(longitude, latitude);
+
+				}
+				//获取公告轮播数据
+				function getGPS(longitude, latitude) {
+					if(types[plus.networkinfo.getCurrentType()] != "None connection") {
+						// 百度地图API功能
+						var result, addressComponent, adcode;
+						//获取当前地址城市的CODE
+						$.ajax({
+							url: 'http://api.map.baidu.com/geocoder/v2/?ak=x8wP7ck7pQ4P8UAol2pen8B5&location=' + latitude + ',' + longitude + '&output=json&pois=1',
+							dataType: 'jsonp',
+							callback: 'BMap._rd._cbk43398',
+							success: function(res) {
+								result = res.result;
+								addressComponent = result.addressComponent;
+								adcode = addressComponent.adcode;
+								adcode = adcode.replace(adcode.charAt(adcode.length - 1), "00");
+								adcode = adcode.substring(0, adcode.length - 3) + "00";
+								localStorage.setItem("adcode", adcode);
+								//获取公告轮播数据
+								var gonggao_url = serverAddress + "/api/notice/app/scroll";
+								var success = function(data) {
+									console.log("轮播数据===>" + JSON.stringify(data));
+									if(data.result == "success") {
+										$("#huadong_UL").processTL(templateRegister.huadong_main, {
+											sub: data.data
+										}, 'html', function() {
+
+											jQuery(".txtScroll-top").slide({
+												mainCell: ".bd ul",
+												autoPage: true,
+												effect: "top",
+												autoPlay: true,
+												scroll: 2,
+												vis: 2
+											});
+
+											mui("#huadong_UL").on("tap", "li>a", function(e) {
+												var dataId = $(this).attr("data-id");
+												var dataJSON = $(this).attr("data-ext");
+												console.log(dataId);
+												console.log(dataJSON)
+												if(dataId) {
+													mui.openWindow({
+														url: "../geren_message/info_any_xiangqing.html",
+														id: "info_any_xiangqing.html",
+														styles: returnstyleTitle("info_any_xiangqing.html", "通知详情"),
+														extras: {
+															dataId: dataId,
+															dataJSON: dataJSON
+														}
+													});
+												}
+											});
+
+											$("#_shequmore").click(function(e) {
+												mui.openWindow({
+													id: 'tab-webview-subpage-shequtalk.html',
+													url: '../subpages/talk/tab-webview-subpage-shequtalk.html',
+													show: {
+														autoShow: false, //页面loaded事件发生后自动显示，默认为true
+														event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+													},
+													waiting: {
+														autoShow: false //自动显示等待框，默认为true
+													},
+													styles: returnstyleTitle("tab-webview-subpage-shequtalk.html", "社区消息")
+												});
+												changeReddian_new_X("red_dian_shequ");
+												if(localStorage.getItem("red_70")) {
+													localStorage.removeItem("red_70");
+												}
+											});
+
+										});
+									}
+								};
+								commonHttpUtilsLUNBO(gonggao_url, "get", {
+									cityCode: adcode,
+									userType: "pa"
+								}, success, error, true);
+								setTimeout(function(e) {
+									commonHttpUtilsLUNBO(gonggao_url, "get", {
+										cityCode: adcode,
+										userType: "pa"
+									}, success, error, true);
+								}, 120000);
+
+							},
+							error: function(e) {
+								var gonggao_url = serverAddress + "/api/notice/app/scroll";
+								$("#huadong").hide();
+								var success = function(data) {
+									console.log("轮播数据没有ACODE===>" + JSON.stringify(data));
+									if(data) {
+										$("#huadong").show();
+									}
+									if(data.result == "success") {
+										$("#huadong_UL").processTL(templateRegister.huadong_main, {
+											sub: data.data
+										}, 'append', function() {
+
+											jQuery(".txtScroll-top").slide({
+												mainCell: ".bd ul",
+												autoPage: true,
+												effect: "top",
+												autoPlay: true,
+												scroll: 2,
+												vis: 2
+											});
+
+											mui("#huadong_UL").on("tap", "li>a", function(e) {
+												var dataId = $(this).attr("data-id");
+												var dataJSON = $(this).attr("data-ext");
+												console.log(dataId);
+												console.log(dataJSON)
+												mui.openWindow({
+													url: "../geren_message/info_any_xiangqing.html",
+													id: "info_any_xiangqing.html",
+													styles: returnstyleTitle("info_any_xiangqing.html", "通知详情"),
+													extras: {
+														dataId: dataId,
+														dataJSON: dataJSON
+													}
+												});
+											});
+
+										});
+									}
+								};
+								commonHttpUtilsLUNBO(gonggao_url, "get", {
+									userType: "pa"
+								}, success, error, true);
+								setTimeout(function(e) {
+									commonHttpUtilsLUNBO(gonggao_url, "get", {
+										userType: "pa"
+									}, success, error, true);
+								}, 120000);
+							}
+
+						})
+
+					} else {
+						mui.toast("请确认网络开启");
+					}
+				}
+				$(".message_all").click(function(e) {
+					mui.openWindow({
+						url: "../subpages/tab-webview-subpage-talk-new.html",
+						id: "tab-webview-subpage-talk-new.html",
+						styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息"),
+						extras: {
+							red70: localStorage.getItem("red_70"),
+						}
+					});
+				});
+
+				$("#pic_more").click(function(e) {
+					mui.openWindow({
+						url: "../familydoctor/z01_doctor_list.html",
+						id: "z01_doctor_list.html",
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded'
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+						}
+						//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+					});
+				})
+				mui("#picList").on("tap", "li", function(e) {
+					var dataId = $(this).attr("data-id");
+					var dataJSON = $(this).attr("data-main");
+					mui.openWindow({
+						url: "../familydoctor/z01_doctor_detail.html",
+						id: "z01_doctor_detail.html",
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded'
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+						},
+						extras: {
+							dataId: dataId,
+							dataJSON: dataJSON
+						}
+						//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+					});
+				})
+				$("#health_date").click(function(e) {
+					if(localStorage.getItem("TOKENID") == null) {
+						mui.openWindow({
+							url: "../login/login.html"
+						});
+						return false;
+					}
+
+					if(isshiminghoutai == "1") {
+						mui.toast("请耐心等待后台做实名认证审核！");
+						return false;
+					} else if(isshiminghoutai == "0") {
+						mui.toast("请实名认证后再进行签约！");
+						mui.openWindow({
+							url: "../geren_message/d02_geren_message.html",
+							id: "d02_geren_message.html"
+						});
+						return false;
+					} else if(isshiminghoutai == "2") {
+						mui.openWindow({
+							url: "../health_file/health_file.html",
+							id: "health_file.html",
+							show: {
+								autoShow: true, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded'
+							},
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+							}
+						});
+					}
+
+				})
+				$("#item_shangmen_service").click(function(e) {
+					mui.openWindow({
+						id: 'item-order-all.html',
+						url: '../order/item-order-all.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: false //自动显示等待框，默认为true
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

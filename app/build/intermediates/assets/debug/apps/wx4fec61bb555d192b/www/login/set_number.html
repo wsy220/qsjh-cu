@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>修改手机号</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+				height: 0.9rem;
+				font-size: 14px;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+				border-radius: 20px;
+				width: 100%;
+				height: 0.9rem;
+				margin: 0 auto;
+			}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 19px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			
+			input[type=text] {
+				width: 60%;
+			}
+			/*.verification {
+				width: 5.6em;
+				height: 2.0625em;
+				line-height: 2.0625em;
+				padding: 2px 0;
+				right: 10px;
+				float: right;
+				border: 0;
+				font-size: 1em;
+				
+			}*/
+			
+			.verification1 {
+				width: 6.6em;
+				height: 2.2em;
+				line-height: 1.8em;
+				padding: 3px 12px;
+				right: 10px;
+				float: right;
+				border: 0;
+				font-size: 1em;
+				font-size: 14px;
+			}
+			
+			button:enabled:active {
+				background-color: #FFFFFF;
+				color: #000000;
+			}
+			
+			#password {
+				/*width: 60%;*/
+			}
+			
+			.mui-input-group {
+				background: none;
+			}
+			
+			.mui-input-group:before,
+			.mui-input-group:after {
+				height: 0;
+			}
+			
+			.mui-input-group input {
+				background-color: #FFFFFF !important;
+				width: 95% !important;
+				border-radius: 25px !important;
+				margin: 10px 0px 10px 0px!important;
+				margin-top: 10px;
+				padding-left: 55px !important;
+				float: inherit !important;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				height: 0;
+			}
+			
+			.mui-input-group .mui-input-row {
+				text-align: center;
+			}
+			
+			.mui-input-group .mui-input-row {
+				height: inherit;
+			}
+			
+			p {
+				font-size: 14px;
+				margin-top: 20px;
+				margin-bottom: 10px;
+				color: #8f8f94;
+			}
+			
+			p a {
+				color: #7b7b7b;
+				padding: 0 20px;
+			}
+			
+			.mui-content {
+				background: none;
+			}
+			
+			.mui-input-group label {
+				position: absolute;
+				top: 5px;
+				left: -5px;
+			}
+			
+			.mui-input-group img {
+				width: 0.69rem;
+				vertical-align: -webkit-baseline-middle;
+			}
+			
+			#yanzhengBtn {
+				position: absolute;
+				top: 20px;
+				right: 35px;
+				background: #ffcc99;
+				border: 0;
+				border-radius: 20px;
+			}
+			
+			.mui-btn,
+			button,
+			input[type=button],
+			input[type=reset],
+			input[type=submit] {
+				font-size: 18px;
+				line-height: 1.42;
+				padding: 6px 12px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">修改手机号</h1>
+		</header>
+		<div class="mui-content">
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label><img src="../images/exit/dl.png" /></label>
+					<input id='username' name='username' type="text" class="mui-input" placeholder="请输入新手机号" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')"></input>
+				</div>
+				<div class="mui-input-row">
+					<label><img src="../images/exit/yzm.png" /></label>
+					<input id='password' name='password' type="password" class="mui-input password" placeholder="请输入验证码"><button type="button" class="verification1 size12" id="yanzhengBtn">获取验证码</button></input>
+				</div>
+				<!--<div class="mui-input-row">
+					<label><img src="../images/exit/dl.png" /></label>
+					<input id='username' name='username' type="text" class="mui-input" placeholder="请输入手机号码"></input>
+				</div>-->
+				<div class="mui-content-padded">
+					<button id='login' class="mui-btn mui-btn-block mui-btn-primary">保存</button>
+				</div>
+
+			</form>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.enterfocus.js"></script>
+		<script src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.validate.js"></script>
+		<script type="text/javascript" src="../plugs/moment/moment.min.js" ></script>
+		<script type="text/javascript" src="../js/json_time.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js" ></script>
+		<script>
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					return true;
+				}
+			});
+
+			var client_id = '';
+			var usernameArray = Array();
+			var mainPage = mui.preload({
+				"id": 'main',
+				"url": '../main.html'
+			});
+			mui.plusReady(function() {
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+//				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+//					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+//					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+//					document.querySelector("header").style.height = topoffset;
+//					document.querySelector("header").style.paddingTop = "20px";
+//					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+//				}
+				// 输入参数
+				var loginConfig = {
+					username: mui("#username")[0],
+					password: mui("#password")[0]
+				};
+
+				
+
+				
+				// 退出的逻辑
+				var backButtonPress = 0;
+				mui.back = function(event) {
+					backButtonPress++;
+					if(backButtonPress > 1) {
+						plus.runtime.quit();
+					} else {
+						plus.nativeUI.toast('再按一次退出应用');
+					}
+					setTimeout(function() {
+						backButtonPress = 0;
+					}, 1000);
+					return false;
+				};
+			})
+			// 是否为电话号码
+			function isMobile(value) {
+				var validateReg = /0?(13|14|15|18)[0-9]{9}/;
+				return validateReg.test(value);
+			}
+
+			// 是否为空
+			function isEmpty(value) {
+				var validateReg = /^\S+$/;
+				return validateReg.test(value);
+			}
+
+			/*通过prototype定义了数组方法，这样就可以在任意数组调用contains方法*/
+			Array.prototype.contains = function(needle) {
+				for(i in this) {
+					if(this[i] == needle) return true;
+				}
+				return false;
+			}
+		</script>
+	</body>
+
+</html>

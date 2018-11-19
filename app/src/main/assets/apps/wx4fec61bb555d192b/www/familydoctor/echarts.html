@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>健康数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/icons-extra.css" />
+		<link rel="stylesheet" href="../fonts/iconfont.css" />
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+
+		<style>
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #FFFFFF;
+				height: 55px;
+				text-align: center;
+				padding-top: 10px;
+			}
+			
+			.mui-bar.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+				width: 100%;
+			}
+			
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+				border: 0;
+				margin-top: 18px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 42px;
+				max-width: 130px;
+				height: 100px;
+			}
+			
+			.doctor {
+				color: #FFE5CC;
+			}
+			
+			.mui-ellipsis {
+				overflow: hidden;
+				white-space: normal;
+				text-overflow: ellipsis;
+				font-weight: bold;
+			}
+			
+			.tableUL {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 9px;
+				color: #FFFFFF;
+				border-radius: 8px;
+				background-color: #66cc99;
+				width: 55px;
+			}
+			
+			.mui-badge-huise {
+				color: #FFFFFF;
+				background: rgba(0, 0, 0, .15);
+				background-color: #aeaeae;
+				width: 72px;
+				margin-left: 6px;
+				text-align: center;
+			}
+			
+			.mui-badge-huise1 {
+				color: #FFFFFF;
+				background: rgba(0, 0, 0, .15);
+				background-color: #aeaeae;
+				width: 70px;
+				text-align: center;
+				margin-left: 6px;
+			}
+			
+			.mui-badge-red {
+				color: #FFFFFF;
+				background: #ff9900;
+			}
+			
+			.mui-badge-green {
+				color: #FFFFFF;
+				background: #ff0000;
+			}
+			
+			.mui-badge-green2 {
+				color: #FFFFFF;
+				background: #669966;
+			}
+			
+			.mui-col-xs-8 {
+				width: 70%;
+			}
+			
+			.mui-col-xs-4 {
+				width: 33%;
+			}
+			
+			@media screen and (min-width: 320px) {
+				.mui-col-xs-8 {
+					width: 60%;
+				}
+				.mui-col-xs-4 {
+					width: 33%;
+					text-align: right;
+				}
+			}
+			
+			@media screen and (min-width: 400px) {
+				.mui-col-xs-8 {
+					width: 60%;
+				}
+				.mui-col-xs-4 {
+					width: 33%;
+					text-align: right;
+				}
+				.mui-col-xs-10 {
+					width: 60%;
+				}
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 40px;
+			}
+			
+			.widthdaxiao {
+				width: 15%;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar {
+				background-color: #40ccd2;
+			}
+			
+			.mui-segmented-control {
+				font-size: 0.28rem;
+				font-weight: 400;
+				position: relative;
+				display: table;
+				overflow: hidden;
+				width: 100%;
+				table-layout: fixed;
+				border: 1px solid #007aff;
+				border-radius: 3px;
+				background-color: transparent;
+				-webkit-touch-callout: none;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #40ccd2;
+				font-weight: bold;
+				font-size: 0.28rem;
+			}
+			
+			.cus_title_01 {
+				color: #EFEFEF;
+				background-color: #aab940;
+				border-radius: 0 10px 10px 0;
+				padding: 5px 15px 5px 15px;
+				margin-left: -15px;
+			}
+			
+			.cus_title_02 {
+				color: #EFEFEF;
+				font-weight: 500;
+				background-color: #91a9cd;
+				border-radius: 0 10px 10px 0;
+				padding: 10px 15px 10px 15px;
+				margin-left: -15px;
+			}
+			
+			b,
+			strong {
+				font-weight: 700;
+				font-size: 0.26rem;
+				color: #000;
+			}
+			
+			span {
+				font-size: 0.28rem;
+			}
+			
+			.mui-table-view-left {
+				width: 25%;
+			}
+			
+			.mui-table-view-left img {
+				width: 100%;
+			}
+			
+			.mui-table-view-cus {
+				width: 100%;
+			}
+			
+			.clear_float {
+				overflow: hidden;
+				width: 100%;
+			}
+			
+			.left {
+				float: left;
+			}
+			
+			.mui-table-vieww {
+				width: 100%;
+			}
+			
+			.mui-table-vieww-cell {
+				width: 100%;
+				border-bottom: 1px solid #eeeeee;
+				height: 0.8rem !important;
+				padding-top: 2%;
+				padding-left: 4%;
+			}
+			
+			.kuan_one {
+				padding: 10px 15px;
+			}
+			
+			.kuan_two {
+				width: 100%;
+			}
+			
+			.dot_qiangdan_dot {
+				float: left;
+				height: 195px;
+				background-color: #fff;
+			}
+			
+			.baby_service {
+				width: 10% !important;
+			}
+			
+			.clear_float_top {
+				border-bottom: 8px solid #eeeeee!important;
+			}
+			
+			.black_tip {
+				color: #000;
+			}
+			
+			.let_go img {
+				width: 27% !important;
+				display: inline-block !important;
+				margin-left: 5%;
+			}
+			
+			.clear_float_top_one {
+				background-color: #fff;
+			}
+			
+			.half_one {
+				color: #aab940;
+				font-size: 0.28rem;
+				margin-left: 10px;
+				padding-top: 20% !important;
+			}
+			
+			.peixun_one {
+				height: 0.7rem;
+				width: 1.4rem;
+				line-height: 0.7rem;
+				background-color: #fba94f;
+				color: #fff;
+				text-align: center;
+				border-radius: 5px 5px;
+				margin-left: 10px;
+				margin-top: 20% !important;
+			}
+			
+			.yingji_one {
+				height: 0.7rem;
+				width: 1.4rem;
+				line-height: 0.7rem;
+				background-color: #fba94f;
+				color: #fff;
+				text-align: center;
+				border-radius: 5px 5px;
+				margin-left: 10px;
+				margin-top: 30% !important;
+			}
+			
+			.baifen_one {
+				width: 100% !important;
+			}
+			
+			.time_title_one01 {
+				text-align: center;
+				height: 0.6rem;
+				background-color: #aab940;
+				border-radius: 0 14px 14px 0;
+			}
+			
+			.time_title_one02 {
+				text-align: center;
+				height: 0.6rem;
+				background-color: #aab940;
+				border-radius: 0 14px 14px 0;
+			}
+			
+			.clear_float_top_one {
+				border-bottom: 8px solid #eeeeee;
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background-color: #fff
+			}
+			
+			.beaty {
+				padding-left: 3%;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				max-width: 60%;
+				margin: 0 auto;
+				display: table;
+				padding-top: 30px;
+			}
+			
+			.chart {
+				height: 200px;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			h5 {
+				margin-top: 30px;
+				font-weight: bold;
+			}
+			
+			h5:first-child {
+				margin-top: 15px;
+			}
+			
+			.mui-bar-nav~.mui-content .mui-slider.mui-fullscreen {
+				top: 205px;
+			}
+			
+			.mui-segmented-control .mui-control-item.mui-active {
+				color: #fff;
+				background-color: #44cfd4;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-icon img {
+				max-width: 60%;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 10px 10px;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-control-content {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 14px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: #EEEEEE;
+			}
+			
+			.LIimage img {
+				width: 0.5rem;
+				margin-right: 10px;
+				vertical-align: bottom;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">健康数据</h1>
+			<!--<span style="float: right;"><button type="button" class="mui-btn" id="btn_add_fdtaddress">添加地址</button></span>-->
+		</header>
+		<div class="mui-content">
+
+			<ul class="mui-table-view mui-grid-view mui-grid-9" id="up_jingtai" style="display: block;">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="#" id="healthness_xue_add.html">
+						<span class="mui-icon"><img src="../images/familydoctor/xueya-01.png"></span>
+						<div class="mui-media-body">记录血压</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="#" id="healthness_tang_add.html">
+						<span class="mui-icon"><img src="../images/familydoctor/xietang-01.png"></span>
+						<div class="mui-media-body">记录血糖</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+					<a href="#" id="healthness_xin_add.html">
+						<span class="mui-icon"><img src="../images/familydoctor/xinlv-01.png"></span>
+						<div class="mui-media-body">记录心率</div>
+					</a>
+				</li>
+			</ul>
+
+		</div>
+		<div id="refreshContainer" class="mui-content">
+
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedOrderControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active" href="#item2order" id="mainItem2">
+						血糖
+					</a>
+					<a class="mui-control-item" href="#item3order" id="mainItem3">
+						血压
+					</a>
+					<a class="mui-control-item" href="#item4order" id="mainItem4">
+						心率
+					</a>
+				</div>
+
+				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+
+				<div class="mui-slider-group">
+					<div id="item2order" class="mui-slider-item mui-control-content">
+						<div id="item2wrapper" class="mui-scroll-wrapper">
+							<div id="wrapper01" class="wrapper">
+								<div id="scroller" class="scroller">
+									<div id="waitConfimBillDiv">
+										<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="is_yaopin">
+											<li class="mui-table-view-cell">
+												日&nbsp;&nbsp;&nbsp;&nbsp;期：
+												<span class="mui-pull-right">
+													<label>周</label>
+													<input class="xuetangRadio" id="xuetangDateScope" name="xuetangDateScope" type="radio" value="week" checked="checked">
+													<label>月</label>
+													<input class="xuetangRadio" id="xuetangDateScope" name="xuetangDateScope" type="radio" value="month">
+													</span>
+											</li>
+										</ul>
+										<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="is_yaopin">
+											<li class="mui-table-view-cell">
+												时&nbsp;&nbsp;&nbsp;&nbsp;段：
+												<span class="mui-pull-right">
+													<label>早晨</label>
+													<input class="xuetangRadio" id="xuetangSequance" name="xuetangSequance" type="radio" value="morning" checked="checked">&nbsp;&nbsp;&nbsp;
+													<label>中午</label>
+													<input class="xuetangRadio" id="xuetangSequance" name="xuetangSequance" type="radio" value="noon" >&nbsp;&nbsp;&nbsp;
+													<label>晚上</label>
+													<input class="xuetangRadio" id="xuetangSequance" name="xuetangSequance" type="radio" value="night">
+													</span>
+											</li>
+										</ul>
+										<div class="chart" id="lineChart1"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div id="item3order" class="mui-slider-item mui-control-content">
+						<div id="item3wrapper" class="mui-scroll-wrapper">
+							<div id="wrapper02" class="wrapper">
+								<div id="scroller" class="scroller">
+									<div id="waitServiceBillDiv">
+										<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="is_yaopin">
+											<li class="mui-table-view-cell">
+												日&nbsp;&nbsp;&nbsp;&nbsp;期：
+												<span class="mui-pull-right">
+													<label>周</label>
+													<input class="xueyaRadio" id="xueyaDateScope" name="xueyaDateScope" type="radio" value="week" checked="checked">
+													<label>月</label>
+													<input class="xueyaRadio" id="xueyaDateScope" name="xueyaDateScope" type="radio" value="month">
+													</span>
+											</li>
+										</ul>
+										<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="is_yaopin">
+											<li class="mui-table-view-cell">
+												时&nbsp;&nbsp;&nbsp;&nbsp;段：
+												<span class="mui-pull-right">
+													<label>早晨</label>
+													<input class="xueyaRadio" id="xueyaSequance" name="xueyaSequance" type="radio" value="morning" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;
+													<label>中午</label>
+													<input class="xueyaRadio" id="xueyaSequance" name="xueyaSequance" type="radio" value="noon" >&nbsp;&nbsp;&nbsp;&nbsp;
+													<label>晚上</label>
+													<input class="xueyaRadio" id="xueyaSequance" name="xueyaSequance" type="radio" value="night">
+													</span>
+											</li>
+										</ul>
+										<div class="chart" id="lineChart2"></div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item4order" class="mui-slider-item mui-control-content">
+						<div id="item4wrapper" class="mui-scroll-wrapper">
+							<div id="wrapper03" class="wrapper">
+								<div id="scroller" class="scroller">
+									<div id="endBillDiv">
+										<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="is_yaopin">
+											<li class="mui-table-view-cell">
+												日&nbsp;&nbsp;&nbsp;&nbsp;期：
+												<span class="mui-pull-right">
+													<label>周</label>
+													<input class="xinlvRadio"  id="xinlvDateScope" name="xinlvDateScope" type="radio" value="week" checked="checked">
+													<label>月</label>
+													<input class="xinlvRadio"  id="xinlvDateScope" name="xinlvDateScope" type="radio" value="month">
+													</span>
+											</li>
+										</ul>
+										<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="is_yaopin">
+											<li class="mui-table-view-cell">
+												时&nbsp;&nbsp;&nbsp;&nbsp;段：
+												<span class="mui-pull-right">
+													<label>早晨</label>
+													<input class="xinlvRadio"  id="xinlvSequance" name="xinlvSequance" type="radio" value="morning" checked="checked">&nbsp;&nbsp;&nbsp;&nbsp;
+													<label>中午</label>
+													<input class="xinlvRadio"  id="xinlvSequance" name="xinlvSequance" type="radio" value="noon" >&nbsp;&nbsp;&nbsp;&nbsp;
+													<label>晚上</label>
+													<input class="xinlvRadio"  id="xinlvSequance" name="xinlvSequance" type="radio" value="night">
+													</span>
+											</li>
+										</ul>
+										<div class="chart" id="lineChart3"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<!--<script type="text/javascript" src="../plugs/qs/qs.immersed.js"></script>-->
+	<!--<script type="text/javascript" src="../js/app.js"></script>-->
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/constants.map.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../libs/echarts-all.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<!--<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>-->
+
+	<script>
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				//返回true，继续页面关闭逻辑  
+				mui.back;
+				//获得列表界面的webview
+				var list = plus.webview.currentWebview().opener();
+				//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+				list.evalJS("reload_familydoctor()");
+				//返回true，继续页面关闭逻辑
+				return true;
+			}
+		});
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			initData();
+			refreshXTPage();
+			var userId = localStorage.getItem("TOKENID");
+			$("#btn_add_fdtaddress").click(function(e) {
+				mui.openWindow({
+					id: 'home_position.html',
+					url: 'home_position.html',
+					extras: {
+						dataType: "bloodpressure",
+						patient: userId
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+			});
+		});
+		var initData = function() {
+			var fdt = localStorage.getItem("currentFDT");
+			var userId = localStorage.getItem("TOKENID");
+			//获取今天健康数据详情
+			var url = serverAddress + "/api/appfamilydoctorteam/readOneHealthDataToday";
+			var filterMap = {
+				patient: userId,
+				dataType: "bloodpressure",
+			};
+			console.log("查询患者【" + filterMap.patient + "】类型为【" + filterMap.dataType + "】")
+			var success = function(data) {
+				if(data.result == "success" && data.obj && data.obj.data) {
+					console.log("患者【" + userId + "】当日健康数据：" + JSON.stringify(data.obj));
+					var hd = data.obj.data;
+					$("#M_h_text").val(hd && hd.morning && hd.morning.d2 ? hd.morning.d2 : "");
+					$("#M_l_text").val(hd && hd.morning && hd.morning.d1 ? hd.morning.d1 : "");
+					$("#A_h_text").val(hd && hd.noon && hd.noon.d2 ? hd.noon.d2 : "");
+					$("#A_l_text").val(hd && hd.noon && hd.noon.d1 ? hd.noon.d1 : "");
+					$("#N_h_text").val(hd && hd.night && hd.night.d2 ? hd.night.d2 : "");
+					$("#N_l_text").val(hd && hd.night && hd.night.d1 ? hd.night.d1 : "");
+				}
+			}
+			commonHttpUtils(url, "post", filterMap, success, error, true);
+		}
+
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+
+		document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+			var nm = mui("#slider").slider().getSlideNumber()
+			if(nm == '0') {
+				refreshXTPage();
+			} else if(nm == '1') {
+				refreshXYPage();
+			} else if(nm == '2') {
+				refreshXLPage();
+			}
+		});
+
+		// 上面按钮点击事件
+		mui("#up_jingtai").on("tap", "a", function(e) {
+			mui.openWindow({
+				url: this.id,
+				id: this.id,
+				show: {
+					autoShow: true, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded'
+				},
+				waiting: {
+					autoShow: true, //自动显示等待框，默认为true
+				}
+			});
+		});
+
+		//单选按钮点击事件
+		$(".xuetangRadio").click(function() {
+			refreshXTPage();
+		});
+		$(".xueyaRadio").click(function() {
+			refreshXYPage();
+		});
+		$(".xinlvRadio").click(function() {
+			refreshXLPage();
+		});
+
+		document.addEventListener('touchmove', function(e) {
+			e.preventDefault();
+		}, isPassive() ? {
+			capture: false,
+			passive: false
+		} : false);
+
+		function isPassive() {
+			var supportsPassiveOption = false;
+			try {
+				addEventListener("test", null, Object.defineProperty({}, 'passive', {
+					get: function() {
+						supportsPassiveOption = true;
+					}
+				}));
+			} catch(e) {}
+			return supportsPassiveOption;
+		}
+
+		//-----------------------------------------------------------------------------
+		var refreshXTPage = function() {
+			var url = serverAddress + "/api/appfamilydoctorteam/getChartsData";
+			var userId = localStorage.getItem("TOKENID");
+			var dateScope = $("input[name='xuetangDateScope']:checked").val();
+			var dataSequance = $("input[name='xuetangSequance']:checked").val();
+			var sussess = function(data) {
+				if(data.result == "success") {
+					console.log("血糖图表数据返回值：" + JSON.stringify(data.obj));
+					var rows = data.obj;
+					var datetime = [];
+					var low = [];
+					var high = [];
+					var night = [];
+
+					for(var i = 0; i < rows.length; i++) {
+						if((rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d1) || (rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d2) || (rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d3)) {
+							datetime.push(moment(rows[i].createdOn).format('YYYYMMDD'));
+							low.push(rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d1 ? rows[i].data[dataSequance].d1 : "");
+							high.push(rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d2 ? rows[i].data[dataSequance].d2 : "");
+							if((rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d3)) {
+								night.push(rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d3 ? rows[i].data[dataSequance].d3 : "");
+							}
+						}
+					}
+					lineChart1 = echarts.init(byId('lineChart1'));
+					lineChart1.setOption({
+						legend: {
+							data: ['餐前', '餐后', '睡前']
+						},
+						grid: {
+							x: 35,
+							x2: 10,
+							y: 30,
+							y2: 25
+						},
+						toolbox: {
+							show: false,
+							feature: {
+								mark: {
+									show: true
+								},
+								dataView: {
+									show: true,
+									readOnly: false
+								},
+								magicType: {
+									show: true,
+									type: ['line', 'bar']
+								},
+								restore: {
+									show: true
+								},
+								saveAsImage: {
+									show: true
+								}
+							}
+						},
+						calculable: false,
+						xAxis: [{
+							type: 'category',
+							data: datetime,
+							dataMin: 'dataMin'
+						}],
+						yAxis: [{
+							type: 'value',
+							splitArea: {
+								show: true
+							}
+						}],
+						series: [{
+							name: '餐前',
+							type: 'line',
+							data: low
+						}, {
+							name: '餐后',
+							type: 'line',
+							data: high
+						}, {
+							name: '睡前',
+							type: 'line',
+							data: night
+						}]
+					});
+				}
+			};
+			commonHttpUtils(url, "POST", {
+				dateScope: dateScope,
+				dataType: "bloodsugar",
+				patient: userId
+			}, sussess, error);
+		}
+
+		var refreshXYPage = function() {
+			var url = serverAddress + "/api/appfamilydoctorteam/getChartsData";
+			var userId = localStorage.getItem("TOKENID");
+			var dateScope = $("input[name='xueyaDateScope']:checked").val();
+			var dataSequance = $("input[name='xueyaSequance']:checked").val();
+			var sussess = function(data) {
+				if(data.result == "success") {
+					console.log("血压图表数据返回值：" + JSON.stringify(data.obj));
+					var rows = data.obj;
+					var datetime = [];
+					var low = [];
+					var high = [];
+
+					for(var i = 0; i < rows.length; i++) {
+						if((rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d1) || (rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d2)) {
+							datetime.push(moment(rows[i].createdOn).format('YYYYMMDD'));
+							low.push(rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d1 ? rows[i].data[dataSequance].d1 : "");
+							high.push(rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d2 ? rows[i].data[dataSequance].d2 : "");
+						}
+					}
+					lineChart2 = echarts.init(byId('lineChart2'));
+					lineChart2.setOption({
+						legend: {
+							data: ['高压', '低压']
+						},
+						grid: {
+							x: 35,
+							x2: 10,
+							y: 30,
+							y2: 25
+						},
+						toolbox: {
+							show: false,
+							feature: {
+								mark: {
+									show: true
+								},
+								dataView: {
+									show: true,
+									readOnly: false
+								},
+								magicType: {
+									show: true,
+									type: ['line', 'bar']
+								},
+								restore: {
+									show: true
+								},
+								saveAsImage: {
+									show: true
+								}
+							}
+						},
+						calculable: false,
+						xAxis: [{
+							type: 'category',
+							data: datetime
+						}],
+						yAxis: [{
+							type: 'value',
+							splitArea: {
+								show: true
+							}
+						}],
+						series: [{
+							name: '低压',
+							type: 'line',
+							data: low
+						}, {
+							name: '高压',
+							type: 'line',
+							data: high
+						}]
+					});
+				}
+			};
+			commonHttpUtils(url, "POST", {
+				dateScope: dateScope,
+				dataType: "bloodpressure",
+				patient: userId
+			}, sussess, error);
+		}
+
+		var refreshXLPage = function() {
+			var url = serverAddress + "/api/appfamilydoctorteam/getChartsData";
+			var userId = localStorage.getItem("TOKENID");
+			var dateScope = $("input[name='xinlvDateScope']:checked").val();
+			var dataSequance = $("input[name='xinlvSequance']:checked").val();
+			var sussess = function(data) {
+				if(data.result == "success") {
+					console.log("心率图表数据返回值：" + JSON.stringify(data.obj));
+					var rows = data.obj;
+					var datetime = [];
+					var low = [];
+
+					for(var i = 0; i < rows.length; i++) {
+						if((rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d1)) {
+							datetime.push(moment(rows[i].createdOn).format('YYYYMMDD'));
+							low.push(rows[i] && rows[i].data && rows[i].data[dataSequance] && rows[i].data[dataSequance].d1 ? rows[i].data[dataSequance].d1 : "");
+						}
+					}
+					lineChart3 = echarts.init(byId('lineChart3'));
+					lineChart3.setOption({
+						legend: {
+							data: ['心率']
+						},
+						grid: {
+							x: 35,
+							x2: 10,
+							y: 30,
+							y2: 25
+						},
+						toolbox: {
+							show: false,
+							feature: {
+								mark: {
+									show: true
+								},
+								dataView: {
+									show: true,
+									readOnly: false
+								},
+								magicType: {
+									show: true,
+									type: ['line', 'bar']
+								},
+								restore: {
+									show: true
+								},
+								saveAsImage: {
+									show: true
+								}
+							}
+						},
+						calculable: false,
+						xAxis: [{
+							type: 'category',
+							data: datetime
+						}],
+						yAxis: [{
+							type: 'value',
+							splitArea: {
+								show: true
+							}
+						}],
+						series: [{
+							name: '心率',
+							type: 'line',
+							data: low
+						}]
+					});
+				}
+			};
+			commonHttpUtils(url, "POST", {
+				dateScope: dateScope,
+				dataType: "heartrate",
+				patient: userId
+			}, sussess, error);
+		}
+
+		var byId = function(id) {
+			return document.getElementById(id);
+		};
+
+		var lineChart1 = echarts.init(byId('lineChart1'));
+		var lineChart2 = echarts.init(byId('lineChart2'));
+		var lineChart3 = echarts.init(byId('lineChart3'));
+	</script>
+
+</html>

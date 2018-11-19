@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/main.css" />
+		<link rel="stylesheet" href="../../css/iconfont.css" />
+		<link rel="stylesheet" href="ion.rangeSlider-2.2.0/css/ion.rangeSlider.css" />
+		<link rel="stylesheet" href="ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinSimple.css" />
+
+		<title>血压</title>
+		<style>
+			#box1,
+			#box2,
+			#box3 {
+				background: #f6f6f6;
+				padding: 5%
+			}
+			
+			#value1,
+			#value2,
+			#value3 {
+				margin-bottom: 10px;
+				color: #666;
+				font-size: 14px;
+			}
+			
+			button {
+				border: none;
+				padding: 0;
+				width: 80px;
+				height: 30px;
+				line-height: 30px;
+				background: #00a5ff;
+				color: #fff;
+				border-radius: 5px;
+			}
+			
+			.btn {
+				margin-top: 10px;
+				padding: 10px;
+			}
+			
+			.mui-content-padded a {
+				margin: 3px;
+				width: 50px;
+				height: 50px;
+				display: block;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				margin: 0 auto;
+			}
+			
+			.mui-content-padded a .mui-icon {
+				margin-top: 12px;
+				color: #000000;
+				margin-top: -7px;
+				margin-left: -6px;
+			}
+			
+			.mui-btn-color {
+				background: #FCB565;
+				border: none;
+				border-radius: 7px;
+				color: #FFFFFF;
+				height: 0.9rem;
+				font-size: 14px;
+				width: 95%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">血压</h1>
+		</header>
+		<div class="mui-content" id="content">
+
+			<div id='box1'>
+				<div id='value1'>高压<span id='unit'>(mmHg)</span></div>
+				<!--<div id='rulerWrapper1'></div>-->
+				<input type="text" id="range" value="" name="range" />
+			</div>
+			<div id='box2'>
+				<div id='value2'>低压<span id='unit'>(mmHg)</span></div>
+				<input type="text" id="range2" value="" name="range2" />
+			</div>
+			<div id='box3'>
+				<div id='value3'>心率<span id='unit'>(次/分)</span></div>
+				<input type="text" id="range3" value="" name="range3" />
+			</div>
+
+			<div class="mui-content-padded " style="position:fixed; bottom:0;width: 100%;">
+				<button id="save" class=" mui-btn mui-btn-color">保存</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-labelauty.js"></script>
+		<script type="text/javascript" src="../../js/IScard.js"></script>
+		<script type="text/javascript" src="../../js/qs/qs.immersed.js"></script>
+
+		<script src="ion.rangeSlider-2.2.0/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+		<script>
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					return true;
+				}
+			});
+			mui('#scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+
+			$(function() {
+
+				$("#range").ionRangeSlider({
+					hide_min_max: true,
+					keyboard: true,
+					min: 40,
+					max: 220,
+					from: 120,
+					type: 'single',
+					step: 1,
+					prefix: "",
+					grid: true
+				});
+
+				$("#range2").ionRangeSlider({
+					hide_min_max: true,
+					keyboard: true,
+					min: 40,
+					max: 220,
+					from: 80,
+					type: 'single',
+					step: 1,
+					prefix: "",
+					grid: true
+				});
+
+				$("#range3").ionRangeSlider({
+					hide_min_max: true,
+					keyboard: true,
+					min: 1,
+					max: 180,
+					from: 70,
+					type: 'single',
+					step: 1,
+					prefix: "",
+					grid: true
+				});
+
+			});
+
+			var higePressure, lowPressure, heart;
+			mui.plusReady(function() {
+				if(mui.os.ios || mui.os.ipad || mui.os.iphone) {
+					plus.webview.currentWebview().setStyle({
+						softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+					});
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				var self = plus.webview.currentWebview();
+				var id = self.ID;
+				console.log("id------------》" + id);
+
+				//获取日期
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				if(month < 10) {
+					month = "0" + month;
+				}
+				var day = date.getDate();
+				if(day < 10) {
+					day = "0" + day;
+				}
+				//获取时间
+				var hour = "00" + date.getHours();
+				hour = hour.substr(hour.length - 2);
+				var minute = "00" + date.getMinutes();
+				minute = minute.substr(minute.length - 2);
+				var second = "00" + date.getSeconds();
+				second = second.substr(second.length - 2);
+				//输入的内容
+				var currentdate = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+
+				console.log("当前时间------》" + currentdate);
+
+				mui(".mui-content").on("tap", "#save", function(e) {
+					higePressure = $("#range").val();
+					lowPressure = $("#range2").val();
+					heart = $("#range3").val();
+					var data = {
+						dataType: "bloodpressure",
+						serviceObject: id,
+						date: currentdate,
+						data: {
+							"data": {
+								oncedata: {
+									d1: higePressure,
+									d2: lowPressure,
+									d3: heart
+								}
+							}
+						}
+					}
+					console.log("上传血压2-------------》" + JSON.stringify(data));
+					var url = serverAddress + "/api/appfamilydoctorteam/saveOrUpdateHealthDataNew";
+					var success = function(data) {
+						console.log("返回数值-------------》" + JSON.stringify(data));
+						if(data.result == "success") {
+							mui.toast("上传成功");
+							mui.back();
+							var list = plus.webview.currentWebview().opener();
+							//触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+							list.reload(true);
+
+						} else {
+							mui.toast(data.msg);
+						}
+					};
+					commonHttpUtils(url, "post", data, success, error, true);
+
+				});
+			})
+		</script>
+	</body>
+
+</html>

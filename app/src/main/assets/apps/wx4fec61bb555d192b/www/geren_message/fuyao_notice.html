@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>服药提醒</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.poppicker.css" />
+		<style>
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			
+			.oa-contact-content {
+				width: 100%;
+			}
+			
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			
+			.oa-contact-name,
+			.oa-contact-position {
+				float: left;
+			}
+			
+			.price {
+				position: absolute;
+				top: 35px;
+				right: 0px;
+				font-size: 16px;
+				font-weight: bold;
+				color: #FF0000;
+			}
+			
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 435px;
+			}
+			
+			.mui-segmented-control {
+				border: 0;
+				border-bottom: 1px solid #C8C7CC;
+				height: 60px;
+			}
+			
+			.mui-segmented-control .mui-control-item.mui-active {
+				background: none;
+				color: #15B5E9;
+				border-bottom: 2px solid;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				color: #666666;
+				border-left: 0;
+			}
+			
+			.uptab {
+				background: #FFFFFF;
+				margin-top: 8px;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				line-height: 60px;
+			}
+			
+			.mui-ellipsis-2 {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 6;
+				-webkit-box-orient: vertical;
+				padding-top: 10px;
+				font-size: 15px;
+			}
+			
+			.tableUL {
+				background: #FFFFFF;
+			}
+			
+			.mui-table-view {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-pull-right {
+				font-size: 14px;
+				color: #737372;
+				font-weight: bold;
+			}
+			
+			.ziti {
+				font-size: 15px;
+				color: #000000;
+				font-weight: bold;
+			}
+			
+			.mui-scroll-wrapper {
+				top: 44px;
+			}
+			
+			.mui-badge {
+				font-size: 8px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 6px;
+				color: #333;
+				border-radius: 100px;
+				background-color: red;
+				position: absolute;
+				left: 45px;
+			}
+			
+			#drug_name {
+				line-height: 39px;
+			}
+			
+			.mui-card-content {
+				margin-bottom: 10px;
+			}
+			
+			.mui-btn-block {
+				font-size: 14px;
+				display: block;
+				width: 100%;
+				margin-bottom: 10px;
+				padding: 15px 0;
+				border-color: #E8E8E8;
+				background-color: #fff;
+			}
+			
+			.TUL {
+				margin-bottom: 8px;
+			}
+			
+			.mui-table-view-cell>.mui-switch {
+				right: 55px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">服药提醒</h1>
+		</header>
+		<div class="mui-content">
+			<!--<div class="mui-card-content">
+				<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>
+			</div>-->
+			<div class="mui-card-content" id="tableUL">
+
+			</div>
+			<div class="mui-content-padded">
+				<button type="button" class="mui-btn mui-btn-block mui-btn-outlined" id="queding">+新增服药提醒</button>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script src="../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var drugMessage = [];
+		var isopen = false;
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			if(plus.os.name == "Android") {
+
+				//安卓系统的服药提醒
+				var setcalendar = function() {
+					mui.toast('功能加载中,请稍后', {
+						type: 'div',
+						duration: 1000
+					});
+				};
+				var deletecalendar = function() {
+					mui.toast('功能加载中,请稍后', {
+						type: 'div',
+						duration: 1000
+					});
+				};
+				var calanderURL = 'content://com.android.calendar/calendars',
+					eventsURL = 'content://com.android.calendar/events',
+					ContentValues = plus.android.importClass("android.content.ContentValues"),
+					Uri = plus.android.importClass('android.net.Uri'),
+					ContentUris = plus.android.importClass('android.content.ContentUris'),
+					Calendar = plus.android.importClass('java.util.Calendar'),
+					main = plus.android.runtimeMainActivity(),
+					userCursor = plus.android.invoke(main.getContentResolver(), 'query', Uri.parse(calanderURL), null, null, null, null),
+					userCursor_count = plus.android.invoke(userCursor, 'getCount'),
+					TimeZone = plus.android.importClass('java.util.TimeZone'),
+					TimeZone_str = plus.android.invoke(TimeZone.getDefault(), 'getID');
+				setcalendar = function(title, description, date_str) {
+					console.log("setcalendar " + date_str);
+					if(userCursor_count <= 0) { //如果没有日历账户
+						var account = new ContentValues(),
+							buildUpon = plus.android.invoke(Uri.parse(calanderURL), 'buildUpon'),
+							CalendarContract = plus.android.importClass('android.provider.CalendarContract');
+						plus.android.invoke(buildUpon, 'appendQueryParameter', CalendarContract.CALLER_IS_SYNCADAPTER, 'true');
+						plus.android.invoke(buildUpon, 'appendQueryParameter', 'account_name', 'wangshuyu@70jiahu.com');
+						plus.android.invoke(buildUpon, 'appendQueryParameter', 'account_type', 'com.android.exchange');
+						//设置账户信息
+						account.put('name', 'qs');
+						account.put('account_name', 'wangshuyu@70jiahu.com');
+						account.put('account_type', 'com.android.exchange');
+						account.put('calendar_displayName', 'someone_calendar');
+						account.put('visible', 1);
+						account.put('calendar_color', '-9206951');
+						account.put('calendar_access_level', '700');
+						account.put('sync_events', 1);
+						account.put('calendar_timezone', TimeZone_str);
+						account.put('ownerAccount', 'someone@something.com');
+						account.put('canOrganizerRespond', 0);
+						//保存账户信息
+						plus.android.invoke(main.getContentResolver(), 'insert', plus.android.invoke(buildUpon, 'build'), account);
+						//重新定义userCursor
+						userCursor = plus.android.invoke(main.getContentResolver(), 'query', Uri.parse(calanderURL), null, null, null, null);
+						//重新定义userCursor_count
+						userCursor_count++;
+					}
+					plus.android.invoke(userCursor, 'moveToLast');
+					var calId = plus.android.invoke(userCursor, 'getString', plus.android.invoke(userCursor, 'getColumnIndex', '_id')),
+						events = new ContentValues(),
+						mCalendar = Calendar.getInstance(),
+						date = date_str.split(/\s{1}|:|-/g);
+					plus.android.invoke(mCalendar, 'set', Calendar.YEAR, ~~date[0]);
+					plus.android.invoke(mCalendar, 'set', Calendar.MONTH, ((~~date[1]) - 1));
+					plus.android.invoke(mCalendar, 'set', Calendar.DATE, ~~date[2]);
+					plus.android.invoke(mCalendar, 'set', Calendar.HOUR_OF_DAY, ~~date[3]);
+					plus.android.invoke(mCalendar, 'set', Calendar.MINUTE, ~~date[4]);
+					var start = plus.android.invoke(plus.android.invoke(mCalendar, 'getTime'), 'getTime'),
+						end = plus.android.invoke(plus.android.invoke(mCalendar, 'getTime'), 'getTime');
+					//设置日历事件
+					events.put('title', title);
+					events.put('description', description);
+					events.put('calendar_id', calId);
+					events.put('dtstart', start);
+					events.put('dtend', end);
+					events.put('hasAlarm', 2);
+					events.put('eventTimezone', TimeZone_str);
+					events.put('RRULE', 'RFC5545');
+					events.put('RDATE',"day");
+					var newEvent = plus.android.invoke(main.getContentResolver(), 'insert', Uri.parse('content://com.android.calendar/events'), events);
+					var id = plus.android.invoke(newEvent, 'getLastPathSegment');
+					var values = new ContentValues();
+					values.put('event_id', id);
+					values.put('minutes', '0');
+					values.put('method', '2');
+					//plus.android.invoke(main.getContentResolver(), 'insert', Uri.parse('content://com.android.calendar/reminders'), values);
+					mui.toast(title + '设置提醒成功');
+				}
+				deletecalendar = function(title) {
+					if(userCursor_count <= 0) { //如果没有日历账户
+						var account = new ContentValues(),
+							buildUpon = plus.android.invoke(Uri.parse(calanderURL), 'buildUpon'),
+							CalendarContract = plus.android.importClass('android.provider.CalendarContract');
+						plus.android.invoke(buildUpon, 'appendQueryParameter', CalendarContract.CALLER_IS_SYNCADAPTER, 'true');
+						plus.android.invoke(buildUpon, 'appendQueryParameter', 'account_name', 'someone@something.com');
+						plus.android.invoke(buildUpon, 'appendQueryParameter', 'account_type', 'com.android.exchange');
+						//设置账户信息
+						account.put('name', 'someone');
+						account.put('account_name', 'someone@something.com');
+						account.put('account_type', 'com.android.exchange');
+						account.put('calendar_displayName', 'someone_calendar');
+						account.put('visible', 1);
+						account.put('calendar_color', '-9206951');
+						account.put('calendar_access_level', '700');
+						account.put('sync_events', 1);
+						account.put('calendar_timezone', TimeZone_str);
+						account.put('ownerAccount', 'someone@something.com');
+						account.put('canOrganizerRespond', 0);
+						//保存账户信息
+						plus.android.invoke(main.getContentResolver(), 'insert', plus.android.invoke(buildUpon, 'build'), account);
+					}
+					//定义EventCursor用于删除
+					var userCursor2 = plus.android.invoke(main.getContentResolver(), 'query', Uri.parse(eventsURL), null, null, null, null);
+
+					deleteitem = title;
+					plus.android.invoke(userCursor2, 'moveToFirst');
+					while(!plus.android.invoke(userCursor2, 'isAfterLast')) {
+						var eventTitle = plus.android.invoke(userCursor2, "getString", plus.android.invoke(userCursor2, 'getColumnIndex', 'title'));
+						if(title == eventTitle) {
+							var id = plus.android.invoke(userCursor2, 'getInt', plus.android.invoke(userCursor2, 'getColumnIndex', '_id'));
+							var deleteUri = ContentUris.withAppendedId(Uri.parse(eventsURL), id);
+							var rows = plus.android.invoke(main.getContentResolver(), "delete", deleteUri, null, null);
+							if(rows == -1) {
+								//事件删除失败
+								mui.toast("删除失败");
+								return;
+							}
+							mui.toast("删除成功");
+						}
+						plus.android.invoke(userCursor2, 'moveToNext');
+					}
+				}
+
+			}
+
+			initData();
+
+			function initData() {
+				//isopen = JSON.parse(localStorage.getItem("switch_isopen") == null ? false : localStorage.getItem("switch_isopen"));
+				var date = new Date();
+				drugMessage = JSON.parse(localStorage.getItem("drugmessage"));
+				if(drugMessage) {
+					if(drugMessage.length == 0) {
+						$("#tableUL").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+					}
+					$("#tableUL").processTL(templateRegister.fuyao_query, {
+						drugmessage: drugMessage,
+					}, 'append', function() {});
+
+					//					for(var i = 0; i < drugMessage.length; i++) {
+					//						console.log(JSON.stringify(drugMessage[i]));
+					//						if(drugMessage[i].isopen == "true") {
+					//							for(var j = 0; j < drugMessage[i].drugtx.length; j++) {
+					//								! function(j) {
+					//									console.log("init" + moment(date).format('YYYY-MM-DD') + " " + drugMessage[i].drugtx[j]);
+					//									var time = moment(date).format('YYYY-MM-DD') + " " + drugMessage[i].drugtx[j];
+					//									if(plus.os.name == "Android") {
+					//										setcalendar('设置服药提醒' + j, '您设置了服药提醒，请吃药！', time);
+					//									}
+					//								}(j);
+					//							}
+					//						}else if(drugMessage[i].isopen == "false") {
+					//							for(var j = 0; j < drugMessage[i].drugtx.length; j++) {
+					//								! function(j) {
+					//									if(plus.os.name == "Android") {
+					//										deletecalendar('设置服药提醒' + j);
+					//									}
+					//								}(j);
+					//							}
+					//						}
+					//					}
+				}
+			}
+
+			mui('.mui-card-content').on("tap", ".mui-switch", function() {
+				//console.log(this.getAttribute("data-id"));
+				var index = this.getAttribute("data-id");
+				var date = new Date();
+				//开关开启
+				if($(this).hasClass("mui-active")) {
+					var selectedTask = drugMessage[index].drugtx
+					$(this).removeClass("mui-active");
+					for(var j = 0; j < selectedTask.length; j++) {
+						! function(j) {
+							if(plus.os.name == "Android") {
+								deletecalendar('设置服药提醒' + drugMessage[index].drugname + " " + j);
+							}
+						}(j);
+					}
+					drugMessage[index].isopen = "false";
+				} else {
+					$(this).addClass("mui-active");
+					//console.log(JSON.stringify(drugMessage[index]));
+					//*
+					var selectedTask = drugMessage[index].drugtx;
+					for(var j = 0; j < selectedTask.length; j++) {
+						! function(j) {
+							var time = moment(date).format('YYYY-MM-DD') + " " + selectedTask[j];
+							if(plus.os.name == "Android") {
+								setcalendar('设置服药提醒' + drugMessage[index].drugname + " " + j, '您设置了服药提醒，请吃药！', time);
+							}
+						}(j);
+					} //*/
+
+					/*
+					for(var j = 0; j < drugMessage[index].drugtx.length; j++) {
+						console.log(moment(date).format('YYYY-MM-DD') + " " + drugMessage[index].drugtx[j]);
+						var time = moment(date).format('YYYY-MM-DD') + " " + drugMessage[index].drugtx[j]
+						setcalendar('设置服药提醒', '您设置了服药提醒，请吃药！', time);
+					}//*/
+					drugMessage[index].isopen = "true";
+
+				}
+				
+				localStorage.setItem("drugmessage", JSON.stringify(drugMessage));
+			});
+
+			mui(".mui-card-content").on("tap", ".msdel", function(e) {
+				var index = this.getAttribute("data-id");
+				var btnArray = ['否', '是'];
+				mui.confirm('确认删除此条提醒？', '服药提醒删除', btnArray, function(e) {
+					if(e.index == 1) {
+						//删除数组指定索引
+						drugMessage.splice(index, 1);
+//						for(var i = 0; i < drugMessage.length; i++) {
+//							console.log(JSON.stringify(drugMessage[i]));
+//						}
+						localStorage.setItem("drugmessage", JSON.stringify(drugMessage));
+						window.location.reload();
+					} else {
+
+					}
+				})
+			})
+
+			$("#queding").click(function(e) {
+				if(plus.os.name == "iOS") {
+					mui.openWindow({
+						url: 'fuyao_notice_add.html',
+						id: 'fuyao_notice_add.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				} else if(plus.os.name == "Android") {
+
+					//					var now = new Date();
+					//					var dtPicker = new mui.DtPicker({
+					//						"type": "time",
+					//						"customData": {
+					//							"i": [{
+					//									"text": "00",
+					//									"value": "00"
+					//								},
+					//								{
+					//									"text": "15",
+					//									"value": "15"
+					//								},
+					//								{
+					//									"text": "30",
+					//									"value": "30"
+					//								},
+					//								{
+					//									"text": "45",
+					//									"value": "45"
+					//								}
+					//							]
+					//						}
+					//					});
+					//					var dtPicker = new mui.DtPicker();
+					//					dtPicker.show(function(rs) {
+					//						setcalendar('设置服药提醒', '您设置了服药提醒，请吃药！', rs.text);
+					//						//deletecalendar('测试提醒标题');
+					//						dtPicker.dispose();
+					//					});
+
+					mui.openWindow({
+						url: 'fuyao_notice_add.html',
+						id: 'fuyao_notice_add.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+
+				}
+			});
+		});
+	</script>
+
+</html>

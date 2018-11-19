@@ -1,0 +1,143 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "io.dcloud.jiahucustomer"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.appTargetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            def apkStoreFile = '../keystore/jhcu.keystore'
+            def apkKeyAlias = 'hbuilder'
+            def apkKeyPassword = '123456'
+            def apkStorePassword = '123456'
+            def isSigning = (apkStoreFile != null) && (apkKeyAlias != null) && (apkKeyPassword != null) && (apkStorePassword != null)
+            if (isSigning) {
+                storeFile file(apkStoreFile)
+                keyAlias apkKeyAlias
+                keyPassword apkKeyPassword
+                storePassword apkStorePassword
+            } else {
+//                storeFile file("debug.keystore")
+//                keyAlias "AndroidDebugKey"
+//                keyPassword "android"
+//                storePassword "android"
+            }
+        }
+        debug111 {
+            keyAlias 'hbuilder'
+            keyPassword '123456'
+            storeFile file('C:/HBuilder.keystore')
+            storePassword '123456'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+        debug {
+            signingConfig signingConfigs.debug111
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    dexOptions {
+        // incremental true
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    // implementation 'com.android.support:support-v4:19.1.0'
+    implementation files('libs/GetuiSDK2.10.3.5.jar')
+    implementation files('libs/MapApiLocation_1.3.3.jar')
+    //    implementation files('libs/MiPush_SDK_Client_3_1_2.jar')
+    implementation files('libs/Msc.jar')
+    implementation files('libs/alipaySingle-20161222.jar')
+    implementation files('libs/alipayutdid.jar')
+    implementation files('libs/aps-igexin.jar')
+    implementation files('libs/aps.jar')
+    implementation files('libs/audio.jar')
+    implementation files('libs/barcode.jar')
+    implementation files('libs/camera.jar')
+    implementation files('libs/contacts.jar')
+    implementation files('libs/device.jar')
+    implementation files('libs/downloader.jar')
+    implementation files('libs/file.jar')
+    implementation files('libs/gallery.jar')
+    implementation files('libs/geolocation-amap.jar')
+    implementation files('libs/geolocation-baidu.jar')
+    implementation files('libs/geolocation-system.jar')
+    implementation files('libs/geolocation.jar')
+    implementation files('libs/gif.jar')
+    implementation files('libs/invocation.jar')
+    implementation files('libs/map-baidu.jar')
+    implementation files('libs/messaging.jar')
+    implementation files('libs/my-imageloader.jar')
+    implementation files('libs/my-nineoldandroids-2.4.0.jar')
+    implementation files('libs/mysonic.jar')
+    implementation files('libs/nativeObj.jar')
+    implementation files('libs/nativeui.jar')
+    implementation files('libs/navigatorui.jar')
+    implementation files('libs/nopermission.jar')
+    implementation files('libs/oauth-miui.jar')
+    implementation files('libs/oauth-qq.jar')
+    implementation files('libs/oauth-sina.jar')
+    implementation files('libs/oauth-weixin.jar')
+    implementation files('libs/oauth.jar')
+    implementation files('libs/payment-alipay.jar')
+    implementation files('libs/payment-weixin.jar')
+    implementation files('libs/payment.jar')
+    implementation files('libs/pdr.jar')
+    implementation files('libs/qq_mta-sdk-1.6.2.jar')
+    implementation files('libs/qq_sdk_v3.1.0.jar')
+    implementation files('libs/sensor.jar')
+    implementation files('libs/share-qq.jar')
+    implementation files('libs/share-sina.jar')
+    implementation files('libs/share-tencent.jar')
+    implementation files('libs/share-weixin.jar')
+    implementation files('libs/share.jar')
+    implementation files('libs/sinaweibo4.1.jar')
+    implementation files('libs/speech.jar')
+    implementation files('libs/speech_ifly.jar')
+    implementation files('libs/statistics-umeng.jar')
+    implementation files('libs/tx_weibo_sdk-httpclient-3.0.1.jar')
+    implementation files('libs/tx_weibo_sdk.jar')
+    implementation files('libs/tx_weibo_sdk_component.jar')
+    implementation files('libs/tx_wx.jar')
+    implementation files('libs/ui.jar')
+    implementation files('libs/umeng-analytics-v6.0.1.jar')
+    implementation files('libs/uploader.jar')
+    implementation files('libs/xhr.jar')
+    implementation files('libs/xiaomi-oauth.1.6.6.jar')
+    implementation fileTree(include: ['*.jar'], dir: '../avchatkit/libs')
+    implementation "com.android.support:appcompat-v7:${V7_APPCOMPAT_VERSION}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation "com.android.support:design:${DESIGIN_SUPPORT_VERSION}"
+    testImplementation 'junit:junit:4.12'
+    // compileOnly fileTree(include: ['*.jar'], dir: 'libs')
+    //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation project(':avchatkit')
+}

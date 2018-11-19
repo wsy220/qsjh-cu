@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>我的</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			#head-img {
+				width: 70px;
+				height: 70px;
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				border-radius: 50%;
+				margin-top: 0.3rem;
+			}
+			
+			#head-img-button {
+				margin-top: 0.3rem;
+				max-width: 1.54rem;
+				height: .58rem;
+			}
+			
+			.mui-table-view-chevron .mui-table-view-cell>a:not(.mui-btn) {
+				margin-right: -145px;
+			}
+			
+			#gerenzhongxin .mui-media-body {
+				font-size: 16px;
+				padding-top: 0.4rem;
+				padding-left: 10px;
+				/*height: 60px;*/
+			}
+			
+			.firstUl {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 0.5rem;
+				color: #E0E0E0;
+				right: 0;
+			}
+			
+			#table-viewX {
+				font-size: 0.2916rem;
+			}
+			
+			#table-viewX img {
+				width: 0.65rem;
+				height: 0.65rem;
+			}
+			
+			#table-viewX .mui-media-body {
+				margin-top: 0.15rem;
+				width: 90%;
+				float: right;
+				font-size: 15px;
+				padding-left: 10px;
+			}
+			
+			.mui-pull-right {
+				margin-right: 25px;
+			}
+			
+			.mui-btn {
+				border-radius: 0;
+				font-size: 0.3126rem;
+				color: #1d1d1d;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+			}
+			
+			.mui-table-view:before {
+				height: 1px;
+				background-color: #ececec;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active {
+				background-color: transparent;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.tubiao {
+				width: 10%;
+				float: left;
+			}
+			
+			.wrz {
+				width: 15px;
+				height: 15px;
+				float: left;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0 !important;
+			}
+			
+			.renzheng {
+				margin-top: 6px;
+				line-height: 1.5;
+			}
+			
+			p {
+				font-size: 12px;
+			}
+			
+			.displayNon {
+				display: none !important;
+			}
+			
+			.displayBloci {
+				display: block !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-right: 15px;" id="header">
+			<h1 id="title" class="mui-title">我的</h1>
+			<button id="set_detail" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;margin-right: 0;">
+				<i class="mui-icon mui-icon-gear"></i></button>
+		</header>
+
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron gerenzhongxin" id="gerenzhongxin">
+				<li class="mui-table-view-cell mui-media">
+					<a class="geren_message" id="geren_message">
+						<img class="mui-action-preview mui-pull-left" id="head-img" src="../images/txmrt.png">
+						<div class="mui-media-body">
+							<img class="mui-media-object mui-pull-right displayNon " id="head-img-button" src="../images/qrz.png">
+							<span id="geren_name"></span>
+							<div class="renzheng">
+								<img class="wrz displayNon" src="" id="renzhengIMG">
+								<p class="mui-ellipsis" id="isshiming"></p>
+								<p class="mui-ellipsis" id="hospital"></p>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view firstUl" id="table-viewX">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="wodeyihu">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/wdyh.png"></div>
+						<div class="mui-media-body">我的医护</div>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="service_object">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/ffdx.png" /></div>
+						<div class="mui-media-body">
+							添加服务对象
+						</div>
+					</a>
+
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="wodezhanghu">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/wdzh.png" /></div>
+						<div class="mui-media-body">
+							我的账户
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="wodeorder">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/dd.png" /></div>
+						<div class="mui-media-body">
+							我的订单
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="healthData">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/pbb.png" /></div>
+						<div class="mui-media-body">
+							健康档案
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="shareQR">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/xm.png" /></div>
+						<div class="mui-media-body">
+							我的推广码
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<!--<ul class="mui-table-view" id="table-viewX">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="setting">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/sz.png" /></div>
+						<div class="mui-media-body">
+							设置
+						</div>
+					</a>
+				</li>
+			</ul>-->
+
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+	<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				//返回true，继续页面关闭逻辑  
+				mui.back;
+				return true;
+			}
+		});
+		var id = localStorage.getItem("TOKENID");
+		var head_photo = localStorage.getItem('HEAD_PHOTO');
+		var gerenname = localStorage.getItem("GEREN_NAME");
+		var hospital = localStorage.getItem("hospital");
+		//SHIMING_TOKEN1判断本地是否实名认证，SHIMING_TOKEN判断后台是否审核成功
+		var isshiming = localStorage.getItem("SHIMING_TOKEN1");
+		
+		var isshiminghoutai = '';
+
+		mui.plusReady(function() {
+			var sussess = function(data) {
+				console.log("ddddddeeeee" + JSON.stringify(data));
+				
+				
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				if(data.result == "success") {
+					if(data.data.signHid){
+						//存储签约社区ID
+						localStorage.setItem("HID",data.data.signHid);
+					}
+					if(data.data.fdt){
+						localStorage.setItem("fdt",data.data.fdt);
+					}
+					
+					var image = data.data.patientavatar;
+					setTimeout(function() {
+						defaultImg(image);
+					}, 500);
+					//身份证号
+					var shenfencard = data.data.idnumber;
+					if(shenfencard != "") {
+						localStorage.setItem('SHENFEN_CARD', shenfencard);
+					}
+					// 姓名
+					var name = decodeURI(data.data.realname);
+					console.log(localStorage.getItem("TOKEN"));
+					//所属医院
+					document.getElementById("hospital").innerHTML = localStorage.getItem("TOKEN");
+					if(name != "" && name != "undefined") {
+						// 个人姓名存入缓存
+						localStorage.setItem('GEREN_NAME', name);
+						document.getElementById('geren_name').innerHTML = localStorage.getItem('GEREN_NAME');
+					} else {
+						// 默认个人姓名
+						document.getElementById('geren_name').innerHTML = '佚名';
+					}
+
+					//是否实名认证
+					$("#head-img-button").removeClass("displayNon");
+					isshiminghoutai = data.data.idapprove;
+					//alert(isshiminghoutai);
+					$("#renzhengIMG").addClass("displayBloci");
+					if(isshiminghoutai == "0") {
+						$("#head-img-button").css("display", "block");
+						document.getElementById("renzhengIMG").src = "../images/wode/wrz.png";
+						document.getElementById("isshiming").innerText = "未实名认证";
+					} else if(isshiminghoutai == "1") {
+						$("#head-img-button").css("display", "none");
+						document.getElementById("renzhengIMG").src = "../images/wode/wrz.png";
+						document.getElementById("isshiming").innerText = "待审核";
+					} else if(isshiminghoutai == "2") {
+						$("#head-img-button").css("display", "none");
+						document.getElementById("renzhengIMG").src = "../images/wode/yrz.png";
+						document.getElementById("isshiming").innerText = "已认证";
+					} else if(isshiminghoutai == "3") {
+						$("#head-img-button").css("display", "block");
+						document.getElementById("renzhengIMG").src = "../images/wode/wrz.png";
+						document.getElementById("isshiming").innerText = "未通过实名认证";
+					}
+				}
+			};
+			var url = serverAddress + "/api/patient/getmyinfo/" + id;
+			if(id) {
+				commonHttpUtils(url, "get", {}, sussess, error, true);
+			}
+
+			function initHeadIMG() {
+				var imgs = document.querySelectorAll("img.mui-action-preview");
+				imgs = mui.slice.call(imgs);
+				if(imgs && imgs.length > 0) {
+					var slider = document.createElement("div");
+					slider.setAttribute("id", "__mui-imageview__");
+					slider.classList.add("mui-slider");
+					slider.classList.add("mui-fullscreen");
+					slider.style.display = "none";
+					slider.addEventListener("tap", function() {
+						slider.style.display = "none";
+					});
+					slider.addEventListener("touchmove", function(event) {
+						event.preventDefault();
+					})
+					var slider_group = document.createElement("div");
+					slider_group.setAttribute("id", "__mui-imageview__group");
+					slider_group.classList.add("mui-slider-group");
+					imgs.forEach(function(value, index, array) {
+						//给图片添加点击事件，触发预览显示；
+						value.addEventListener('tap', function() {
+							slider.style.display = "block";
+							_slider.refresh();
+							_slider.gotoItem(index, 0);
+						})
+						var item = document.createElement("div");
+						item.classList.add("mui-slider-item");
+						var a = document.createElement("a");
+						var img = document.createElement("img");
+						img.setAttribute("src", value.src);
+						a.appendChild(img)
+						item.appendChild(a);
+						slider_group.appendChild(item);
+					});
+					slider.appendChild(slider_group);
+					document.body.appendChild(slider);
+					var _slider = mui(slider).slider();
+				}
+			}
+
+			function defaultImg(image) {
+
+				if(image) {
+					if(image != null && image != '' && (image.indexOf("client\\") == 0)) {
+						localStorage.setItem('HEAD_PHOTO', image.split("client\\")[1]);
+						document.getElementById('head-img').src = serverAddress + "/" + image.split("client\\")[1];
+
+					}
+					if(image != null && image != '' && (image.indexOf("client\\") < 0)) {
+						localStorage.setItem('HEAD_PHOTO', image);
+						document.getElementById("head-img").src = serverAddress + "/" + image;
+					}
+					if(image != null && image != '' && (image.indexOf("client/") == 0)) {
+						localStorage.setItem('HEAD_PHOTO', image.split("client/")[1]);
+						document.getElementById('head-img').src = serverAddress + "/" + image.split("client/")[1];
+					}
+
+					var ele = document.getElementById("head-img");
+					ele.setAttribute('data-lazyload', ele.src);
+					ele.setAttribute('data-loaded', "");
+					$$.lazyload(ele);
+				} else {
+					image.src = "../images/txmrt.png"
+				}
+
+			}
+		});
+
+		document.getElementById("head-img").addEventListener('tap', function() {
+			// 从缓存中读取个人信息，并将缓存信息传递给个人信息页面
+			var head_photo = localStorage.getItem('HEAD_PHOTO') == null ? "" : localStorage.getItem('HEAD_PHOTO');
+			mui.openWindow({
+				url: '../geren_message/d02_geren_messageTouxiang.html',
+				id: 'd02_geren_messageTouxiang.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+
+			var geren_message = plus.webview.getWebviewById('d02_geren_messageTouxiang.html');
+			geren_message.addEventListener('loaded', function() {
+				mui.fire(geren_message, "geren_message", {
+					HEAD_PHOTO: head_photo,
+				});
+			});
+		});
+		//去认证按钮
+		document.getElementById("head-img-button").addEventListener("tap", function(e) {
+			mui.openWindow({
+				url: '../geren_message/d02_geren_message.html',
+				id: 'd02_geren_message.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+		//		document.getElementById("setting").addEventListener("tap", function(e) {
+		//			mui.openWindow({
+		//				url: '../geren_message/setting.html',
+		//				id: 'setting.html',
+		//				show: {
+		//					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+		//					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+		//				},
+		//				waiting: {
+		//					autoShow: true //自动显示等待框，默认为true
+		//				}
+		//			});
+		//		})
+		document.getElementById("wodeyihu").addEventListener("tap", function() {
+			mui.openWindow({
+				url: '../geren_message/d03_wodeyihu.html',
+				id: 'd03_wodeyihu.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+
+		document.getElementById("wodezhanghu").addEventListener("tap", function() {
+			mui.openWindow({
+				url: '../geren_message/d07_my_account.html',
+				id: 'd07_my_account.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+
+		document.getElementById("service_object").addEventListener("tap", function(e) {
+			mui.openWindow({
+				url: '../service_object/a045_service_object_query.html',
+				id: 'a045_service_object_query.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				},
+				extras: {
+					service_object_biaoshi: 'wode'
+				}
+			});
+		});
+		document.getElementById("wodeorder").addEventListener("tap", function(e) {
+			localStorage.setItem("upitem", 0);
+			mui.openWindow({
+				url: 'tab-webview-subpage-order.html',
+				id: 'subpages/tab-webview-subpage-order.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+		document.getElementById("shareQR").addEventListener("tap", function(e) {
+			localStorage.setItem("upitem", 0);
+			mui.openWindow({
+				url: '../geren_message/share_qrcode.html',
+				id: 'share_qrcode.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+		document.getElementById("healthData").addEventListener("tap", function(e) {
+			if(isshiminghoutai == "1") {
+				mui.toast("请耐心等待后台做实名认证审核！");
+				return false;
+			} else if(isshiminghoutai == "0") {
+				mui.toast("请实名认证后再进行签约！");
+				mui.openWindow({
+					url: "../geren_message/d02_geren_message.html",
+					id: "d02_geren_message.html"
+				});
+				return false;
+			} else if(isshiminghoutai == "2") {
+				localStorage.setItem("upitem", 0);
+				mui.openWindow({
+					url: "../health_file/health_file.html",
+					id: "health_file.html",
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded'
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+					}
+				});
+			}
+
+			
+		});
+		window.addEventListener('refresh', function(e) {
+			var head_photo = e.detail.HEAD_PHOTO;
+			location.reload();
+		});
+
+		document.getElementById("set_detail").addEventListener('tap', function(event) {
+			mui.openWindow({
+				url: '../geren_message/setting.html',
+				id: 'setting.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		}); 
+//		{
+//			"result": "success",
+//			"msg": "获取我的信息成功",
+//			"data": {
+//				"hardware": {
+//					"hyxt": {
+//						"no": ""
+//					}
+//				},
+//				"basecontract": {
+//					"fdtMember": [{
+//						"name": "朱奕璠",
+//						"position": "QKYS",
+//						"_id": "5b6ac5e1405696036882ab33"
+//					}, {
+//						"name": "yrk",
+//						"position": "GWYS",
+//						"_id": "5b6ac5e1405696036882ab32"
+//					}, {
+//						"name": "朱奕璠",
+//						"position": "GWYS",
+//						"_id": "5b6ac5e1405696036882ab31"
+//					}],
+//					"sno": "1000000242",
+//					"name": "基础服务包",
+//					"startData": "2018-08-08",
+//					"endData": "2019-08-08",
+//					"patientName": "暗暗",
+//					"idCardNo": "430525197603225935",
+//					"phone": "18888883333",
+//					"fdtName": "吉大三院社区测试",
+//					"fdtPhone": "18888888881",
+//					"signData": "2018-08-08",
+//					"content": "<p>甲、乙双方本着平等、尊重和自愿的原则，签订此协议，接受以下条款的约定：<br />\n1、选择签约服务包：基础包；政府补助费用：55元；居民自付费用：250元。<br />\n2、甲方获得签约服务：<br />\n（1）签约居民与签约团队保持联系，签约居民可以向签约团队进行健康问题咨询。<br />\n（2）签约团队为签约居民进行健康评估，制定健康管理方案。<br />\n（3）签约团队负责持续监测签约居民的健康状况，并为其定期调整健康管理方案。<br />\n（4）签约团队定期为签约居民提供健康知识、健康活动等资讯。<br />\n（5）签约团队为签约居民提供国家和当地政府规定的基本公共卫生服务。<br />\n（6）签约团队为签约居民提供常见病、多发病的诊疗服务，按相关规定支付诊疗费<br />\n用<br />\n（7）签约园队向签约居民提供按时就诊提醒服务。<br />\n（8）根据签约居民患病状况，签约团队为其提供到上级医院就诊的预约服务。<br />\n（9）根据签约居民患病状况，签约团队为其提供转诊服务，并享受当地政府规定的相应优惠政策。<br />\n（10）签约团队负责整理签约居民的健康信息。除法律法规规定外，未经签约居民允许，不得提供给第三方。<br />\n（11）根据签约居民需求，签约团队为其提供其他必要的帮助。<br />\n3、甲方应配合事项<br />\n（1）签约居民是健康第一责任人，应主动做好健康自我管理。<br />\n（2）遵守签约协议，尊重签约人员。<br />\n（3）签约居民保证提供的信息真实有效。<br />\n（4）有卫生服务需求时，原则上应先找签约团队就诊。<br />\n（5）遵守医嘱，有问题及时咨询。<br />\n（6）签约居民在其他医疗机构诊疗等信息，应主动、及时向签约团队反馈。<br />\n（7）签约居民住址变更、长期离开居住地、联系方式变更等，应及时告知签约团队。<br />\n（8）未遵遵守第6、7条款，视为签约居民主动放弃获得签约服务的权利。<br />\n（9）签约居民授权签约团队调阅其健康档案以及在其他医疗机构的诊疗信息等。<br />\n（10）签约团队根据签约服务包重复提供单项服务2次时，签约居民仍不配合，视为签约居民主动放弃该签约服务项目的权利。<br />\n（11）签约居民作为患者应该履行的其他义务。<br />\n4、本协议期限为一年。自2018-08-08起，至2019-08-08日止。签约期满后，应续签。在签约期内，甲方因居住地变更等客观原因，可提出终止现有签约关系，已交付的签约费不转不退。<br />\n5、如甲乙双方在履行本协议过程中发生纠纷，双方应通过友好协商予以解决或由当地医疗纠纷调解委员会调解。协商不成或一方不愿协商，双方均可向有管辖权的法院提起诉讼。<br />\n6、本协议自甲方签字、乙方加盖公章之日起生效。<br />\n7、本协议一式二份，甲乙双方各执一份，具有同等法律效力。<br />\n8、本协议解释权归乙方所用。</p>\n",
+//					"fdtImg": "\\assets\\uploads\\single-file-1533723147248.jpg",
+//					"socialNo": "123",
+//					"secondName": "123",
+//					"secondPhone": "134",
+//					"secondAddr": "134",
+//					"patientImg": "client\\assets\\uploads\\single-file-1533724128544.jpg"
+//				},
+//				"sendMsgCount": -1,
+//				"patientsource": "0",
+//				"extensionFrom": "其它",
+//				"node": "YQ",
+//				"protocol": [],
+//				"patientavatar": "images/defaultavatar.png",
+//				"avatarapprove": "0",
+//				"idapprove": "2",
+//				"sdkStatus": "1",
+//				"status": "1",
+//				"coupon": [],
+//				"os": "iOS",
+//				"weixinFlag": false,
+//				"createdOn": "2018-08-08T10:06:36.173Z",
+//				"updatedOn": "2018-08-08T10:08:20.836Z",
+//				"vipcontract": [],
+//				"synchronization": "WTB",
+//				"_id": "5b6ac0ac405696036882aaf9",
+//				"tel": "18888883333",
+//				"password": "5f8591a3d4fe06393cad53edff27ba05",
+//				"clientid": "6703094ed99f4efa56d849544de0b648",
+//				"__v": 0,
+//				"access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNmFjMGFjNDA1Njk2MDM2ODgyYWFmOSIsInV1aWQiOiIxNUI0RjUxRS0wNjVDLTQ1NDItODNCNS0xNTRENDQzOEQ1NzMiLCJvcyI6ImlPUyIsImlhdCI6MTUzNjYyOTQyMCwiZXhwIjoxNTQ0NDA1NDIwfQ.URYQaifUUBDkZ64v0QENulB4FFwxvzh3dn_HZMEd1pY",
+//				"uuid": "15B4F51E-065C-4542-83B5-154D4438D573",
+//				"cityCode": "00",
+//				"age": 42,
+//				"gender": "0",
+//				"idbackavatar": "client\\assets\\uploads\\single-file-1533722881620.jpg",
+//				"idfaceavatar": "client\\assets\\uploads\\single-file-1533722877314.jpg",
+//				"idnumber": "430525197603225935",
+//				"realname": "暗暗",
+//				"applyDate": "2018-08-08T10:28:49.957Z",
+//				"fdt": "5b67ed973b7ada025cc1f244",
+//				"fdtShangxian": "",
+//				"nodeChangeTime": "2018-08-08T10:31:37.258Z",
+//				"signHid": "5b67ea4d3b7ada025cc1f21b",
+//				"opinion": "",
+//				"IMToken": "15bb3a92016488d3ce71f5a78235f284",
+//				"accid": "5b6ac0ac405696036882aaf9"
+//			}
+//		}
+	</script>
+	</script>
+
+</html>

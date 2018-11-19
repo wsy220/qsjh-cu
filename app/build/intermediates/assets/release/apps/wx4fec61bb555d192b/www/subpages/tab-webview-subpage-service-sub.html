@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>资讯</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+				border: 0;
+				margin-top: 8px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 42px;
+				max-width: 130px;
+				height: 100px;
+			}
+			
+			.doctor {
+				color: #d98502;
+				font-size: 12px;
+			}
+			
+			.mui-ellipsis {
+				overflow: hidden;
+				white-space: normal;
+				text-overflow: ellipsis;
+			}
+			
+			.mui-media-body p img {
+				line-height: 42px;
+				max-width: 130px;
+				max-height: 100px;
+				margin-right: 10px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper {
+				height: 55px;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 50px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+				padding: 10px 10px;
+				width: 19.5%;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+				width: 100%;
+				height: 40px;
+				white-space: nowrap;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #40ccd2;
+				font-weight: bold;
+				font-size: 15px;
+			}
+			
+			.mui-segmented-control {
+				font-size: 12px;
+				font-weight: 400;
+				position: relative;
+				display: table;
+				overflow: hidden;
+				width: 100%;
+				table-layout: fixed;
+				border: 1px solid #007aff;
+				border-radius: 3px;
+				background-color: transparent;
+				-webkit-touch-callout: none;
+			}
+			
+			.tableUL {
+				background: #FFFFFF;
+				margin-top: 0.1rem;
+			}
+			
+			.mui-table-view {
+				background-color: #eee;
+				min-height: 500px;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item .mui-table-view:after,
+			.mui-slider .mui-slider-group .mui-slider-item .mui-table-view:before {
+				height: 1px;
+			}
+			
+			#tableUL:after {
+				display: none;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item .mui-table-view:before {
+				display: none;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.mui-content-padded {
+				background-color: transparent;
+			}
+			
+			.mui-ellipsis-2 {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				font-size: ;
+			}
+			
+			.mui-ellipsis-3 {
+				overflow: hidden;
+				white-space: normal;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-media {
+				background: #FFFFFF;
+			}
+			
+			.mui-table-view-cell {
+				margin-bottom: 0.05rem;
+			}
+			
+			.wenzi_time {
+				position: absolute;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.imgwenzhang {
+				border: 1px solid #e5e5e5;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll" id="uptab">
+						<a class="mui-control-item" href="#item1mobile">
+							暂无网络
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+
+						</a>
+						<a class="mui-control-item" href="#item3mobile">
+
+						</a>
+						<a class="mui-control-item" href="#item4mobile">
+
+						</a>
+						<a class="mui-control-item" href="#item5mobile">
+
+						</a>
+						<a class="mui-control-item" href="#item6mobile">
+
+						</a>
+						<a class="mui-control-item" href="#item5mobile">
+
+						</a>
+						<a class="mui-control-item" href="#item6mobile">
+
+						</a>
+					</div>
+				</div>
+				<ul class="mui-table-view" id="backImG">
+				</ul>
+				<div class="mui-slider-group" id="slider_group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="tableUL">
+									<div class="wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>
+
+									<!--<li class="mui-table-view-cell mui-media" v-for="item in items">
+											<a href="javascript:;" :data-guid="item.guid" @tap="open_detail(item)">
+												<img class="mui-media-object mui-pull-left" :src="item.cover">
+												<div class="mui-media-body" style="padding-left: 10px;">
+													<div class="" style="white-space: normal; height: 40px;  overflow: hidden">1999浏览19991999浏览19991999浏览19991999浏览19991999浏览19991999浏览19991999浏览19991999浏览19991999浏览1999</div>
+													<div style="padding-top: 20px;">
+														<p class="doctor">dddd</p>
+														<div style="margin: 0 auto; width: 100%;">
+															<div  style="float: left;font-size: 10px; ">2018-05-10 08:58:03</div>
+															<div style="font-size: 10px; float:right; ">1999浏览</div>
+														</div>
+													</div>
+												</div>
+											</a>
+										</li>-->
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<div class="wutu"><img src="../images/no_data/1-02.png" style="width: 150px;"></div>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<div class="wutu"><img src="../images/no_data/1-02.png" style="width: 150px;"></div>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<div class="wutu"><img src="../images/no_data/1-02.png" style="width: 150px;"></div>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item5mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<div class="wutu"><img src="../images/no_data/1-02.png" style="width: 150px;"></div>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item6mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view">
+									<div class="wutu"><img src="../images/no_data/1-02.png" style="width: 150px;"></div>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="../js/mui.min.js"></script>
+			<script src="../js/mui.pullToRefresh.js"></script>
+			<script src="../js/mui.pullToRefresh.material.js"></script>
+			<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+			<script type="text/javascript" src="../js/constants.js"></script>
+			<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+			<script type="text/javascript" src="../js/arttmpl.js"></script>
+			<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+			<script type="text/javascript" src="../js/json_time.js"></script>
+			<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+			<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+
+			<script>
+				var page = 1,
+					limit = 5;
+				mui.plusReady(function() {
+
+					function wainshow(self) {
+						if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
+							self.endPullDownToRefresh();
+							mui.toast("确认手机是否连接网络！");
+						}
+					}
+
+					(function(muip) {
+						//阻尼系数
+						var deceleration = mui.os.ios ? 0.003 : 0.0009;
+						muip('.mui-scroll-wrapper').scroll({
+							bounce: false,
+							indicators: true, //是否显示滚动条
+							deceleration: deceleration
+						});
+						//禁止上TAB左右滑动
+						muip('.mui-slider').slider().setStopped(true);
+						muip.ready(function() {
+							var url = serverAddress + "/api/articletype/list";
+							var htmls = '';
+							var htmls2 = '';
+							var success = function(data) {
+								if(data.rows.length != 0) {
+									var datalength;
+									if(data.rows.length < 5) {
+										datalength = data.rows.length;
+									} else if(data.length > 5) {
+										datalength = 5
+									}
+									for(var i = 0; i < datalength; i++) {
+										if(i == 0) {
+											htmls += '<a class="mui-control-item mui-active" href="#item' + (i + 1) + 'mobile" id="' + data.rows[i]._id + '">' + data.rows[i].typename + '</a>'
+										} else {
+											htmls += '<a class="mui-control-item" href="#item' + (i + 1) + 'mobile" id="' + data.rows[i]._id + '">' + data.rows[i].typename + '</a>'
+										}
+										document.getElementById("uptab").innerHTML = htmls;
+
+										htmls2 += '<div id="#item' + (i + 1) + 'mobile" class="mui-slider-item mui-control-content"><div class="mui-scroll-wrapper"><div class="mui-scroll"><ul class="mui-table-view" id="tableUL"></ul></div></div></div>';
+										document.getElementById("slider_group").innerHTML = htmls2;
+									}
+									firsttab = data.rows[0]._id;
+									var url = serverAddress + "/api/article/applist/" + firsttab + "?page=" + page + "&limit=" + limit;
+									var success = function(data) {
+										var htmls = '';
+										console.log("咨询列表初始" + JSON.stringify(data));
+										if(data.length == 0) {
+											htmls = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>'
+											document.getElementById("tableUL").innerHTML = htmls;
+											$(".mui-table-view").css("background-color", "transparent");
+											$("ul").css({
+												"background-color": "transparent",
+												"font-size": "200%"
+											});
+										} else {
+											for(var i = 0; i < data.length; i++) {
+
+												if(data[i].publishType == "web") {
+
+													htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang"  src=" ' + serverAddress + data[i].cover + '" data-lazyload="' + serverAddress + data[i].cover + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articleauthor + ' </span></p><p class="wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+
+												} else if(data[i].publishType == "dcapp") {
+													//var path = serverAddress + "/" + data[i].imgList[0].split("client\\")[1];
+													//htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + "/" + data[i].imgList[0].split("client\\")[1] + '" data-lazyload="' + path + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articledc.nickname + ' </span></p><p class=" wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+													if(data[i].imgList[0].indexOf("client\\") < 0) {
+														var path = serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "\\");
+														htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "\\") + '" data-lazyload="' + path + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articledc.nickname + ' </span></p><p class=" wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+													} else if(data[i].imgList[0].indexOf("client/") < 0) {
+														var path = serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "/");
+														htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "/") + '" data-lazyload="' + path + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articledc.nickname + ' </span></p><p class=" wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+													}
+												}
+												document.getElementById("tableUL").innerHTML = htmls;
+											}
+											page++;
+										}
+										$(".qs-img-lazyload").each(function(i, v) {
+											$$.lazyload(v)
+										})
+									};
+									if(firsttab != "") {
+										commonHttpUtils(url, "get", {}, success, error, false);
+									}
+								}
+							};
+							commonHttpUtils(url, "get", {}, success, error, false);
+
+							//循环初始化所有下拉刷新，上拉加载。
+							muip.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+								muip(pullRefreshEl).pullToRefresh({
+									down: {
+										callback: function() {
+											var self = this;
+											setTimeout(function() {
+												document.addEventListener("netchange", wainshow(self), false);
+												var ul = self.element.querySelector('.mui-table-view');
+												createFragment(ul, index, 5, true, self, firsttab, "down");
+												self.endPullDownToRefresh();
+											}, 1000);
+										}
+									},
+									up: {
+										callback: function() {
+											var self = this;
+											setTimeout(function() {
+												var ul = self.element.querySelector('.mui-table-view');
+												createFragment(ul, index, 5, true, self, firsttab, "up");
+												self.endPullUpToRefresh();
+											}, 1000);
+										}
+									}
+								});
+							});
+							var createFragment = function(ul, index, count, reverse, self, itemid, type) {
+								var url = serverAddress + "/api/article/applist/" + itemid + "?page=" + page + "&limit=" + count;
+								if(page == 0) {
+									return false;
+								}
+								var success = function(data) {
+									console.log("咨询列表下拉" + JSON.stringify(data));
+									if(data.length == 0) {
+										page = 0;
+										self.endPullUpToRefresh();
+										return false;
+									} else {
+										var htmlcreate = '';
+										for(var i = 0; i < data.length; i++) {
+											if(data[i].publishType == "web") {
+												htmlcreate += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + data[i].cover + '" data-lazyload="' + serverAddress + data[i].cover + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articleauthor + ' </span></p><p class="wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+
+											} else if(data[i].publishType == "dcapp") {
+												//var path = serverAddress + "/" + data[i].imgList[0].split("client\\")[1];
+												//htmlcreate += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + "/" + data[i].imgList[0].split("client\\")[1] + '" data-lazyload="' + path + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articledc.nickname + ' </span></p><p class=" wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+
+												if(data[i].imgList[0].indexOf("client\\") < 0) {
+													var path = serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "\\");
+													htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "\\") + '" data-lazyload="' + path + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articledc.nickname + ' </span></p><p class=" wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+												} else if(data[i].imgList[0].indexOf("client/") < 0) {
+													var path = serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "/");
+													htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "/") + '" data-lazyload="' + path + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articledc.nickname + ' </span></p><p class=" wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+												}
+
+											}
+										}
+										if(type == "down") {
+											$("#tableUL").prepend(htmlcreate);
+										} else if(type == "up") {
+											$("#tableUL").append(htmlcreate);
+										}
+										page++;
+									}
+								};
+								commonHttpUtils(url, "get", {}, success, error, false);
+							};
+
+							//点击类别查询相关列表
+							mui("#uptab").on("tap", "a", function(e) {
+								page = 2;
+								firsttab = this.id;
+								var url = serverAddress + "/api/article/applist/" + this.id;
+								var htmls = '';
+								var success = function(data) {
+									console.log("咨询列表初始a" + JSON.stringify(data));
+									if(data.length == 0) {
+										htmls = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>'
+										document.getElementById("tableUL").innerHTML = htmls;
+										$(".mui-table-view").css("background-color", "transparent");
+										$(".mui-slider .mui-slider-group .mui-slider-item .mui-table-view:before").css("display", "none");
+									} else {
+										for(var i = 0; i < data.length; i++) {
+											if(data[i].publishType == "web") {
+
+												htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang"  src=" ' + serverAddress + data[i].cover + '" data-lazyload="' + serverAddress + data[i].cover + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articleauthor + ' </span></p><p class="wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+
+											} else if(data[i].publishType == "dcapp") {
+												if(data[i].articledc != null) {
+													if(data[i].imgList[0].indexOf("client\\") < 0) {
+														var path = serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "\\");
+														htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "\\") + '" data-lazyload="' + path + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articledc.nickname + ' </span></p><p class=" wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+													} else if(data[i].imgList[0].indexOf("client/") < 0) {
+														var path = serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "/");
+														htmls += '<li class="mui-table-view-cell mui-media" id="' + data[i]._id + '"><a href="javascript:;"> <img class="mui-media-object mui-pull-left qs-img-lazyload imgwenzhang" src=" ' + serverAddress + "/" + data[i].imgList[0].replace('client', '').replace(/\\/g, "/") + '" data-lazyload="' + path + '"><div class="mui-media-body" style="padding-left:10px;"><div class="mui-row"><span class="">' + data[i].articletitle + '</span></div><div style="position: absolute;bottom: 30px;"><p class=""><span class="doctor">' + data[i].articledc.nickname + ' </span></p><p class=" wenzi_time">' + getDate(data[i].createdOn) + '</p></div></div></a></li>';
+													}
+												}
+											}
+											document.getElementById("tableUL").innerHTML = htmls;
+										}
+									}
+								};
+								if(this.id != "") {
+									commonHttpUtils(url, "get", {}, success, error, true);
+								}
+							});
+							//查看咨询详情
+							mui(".mui-table-view").on('tap', '.mui-table-view-cell', function() {
+								//获取id
+								var id = this.getAttribute("id");
+								mui.openWindow({
+									id: 'message_xiangqing.html',
+									url: '../main_sub/message_xiangqing.html',
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										ARTICLEID: id
+									}
+								});
+							})
+						});
+					})(mui);
+				});
+			</script>
+	</body>
+</html>

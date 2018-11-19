@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>添加医护</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.mui-content {
+				background: none;
+			}
+			
+			.mui-bar .mui-btn.mui-pull-right {
+				/* margin-left: 10px; */
+				background-color: #ffffff;
+				color: #333333;
+				height: 20px;
+				margin-top: 12px;
+				text-align: center;
+				/* margin: 0px; */
+				width: 67px;
+			}
+			
+			.mui-bar .mui-btn-link {
+				font-size: 12px;
+				line-height: 20px;
+				top: 0;
+				padding: 0;
+				color: #FFFFFF;
+				border: 0;
+			}
+			
+			.mui-search .mui-placeholder .mui-icon {
+				font-size: 20px;
+				color: #333;
+				float: right;
+				padding-top: 8px;
+				padding-right: 10px;
+			}
+			
+			p {
+				font-size: 15px;
+				margin-top: 0;
+				margin-bottom: 10px;
+				color: #333333;
+				font-weight: bold;
+			}
+			
+			input[type=search] {
+				font-size: 16px;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				height: 40px;
+				text-align: center;
+				border: 0;
+				border-radius: 6px;
+				background-color:#FFFFFF;
+				border: 1px solid #D9D9D9;
+			}
+			.ditem{
+				font-size: 13px;
+				color: #999999;
+				background-color: #e6e6e6;
+				height: 38px;
+				text-align: center;
+				padding-top: 10px;
+				margin-top: 5px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">添加到我的医护</h1>
+			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" id="erwei">扫描二维码</button>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 20px 5px;">
+				<p>佳护号码：</p>
+				<div class="mui-input-row mui-search">
+					<input type="search" class="mui-input-clear" placeholder="">
+				</div>
+				<ul id="history" class="dlist" style="text-align:left;">
+					<li id="nohistory" class="ditem" onclick="onempty()">无历史记录 </li>
+					<li><div class="button button-waring ditem" onclick="cleanHistroy()">清空历史记录</div></li>
+				</ul>
+				
+			</div>
+			<div class="mui-content-padded">
+				<button type="button" class="mui-btn mui-btn-block mui-btn-warning">搜索</button>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/immersed.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js" ></script>
+	<script>
+		mui.plusReady(function() {
+//			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+//				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+//				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+//				document.querySelector("header").style.height = topoffset;
+//				document.querySelector("header").style.paddingTop = "20px";
+//				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop=topoffset;
+//			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+		});
+		var img = null;
+		var blist = [];
+
+		function scaned(t, r, f) {
+			var d = new Date();
+			var h = d.getHours(),
+				m = d.getMinutes(),
+				s = d.getSeconds(),
+				ms = d.getMilliseconds();
+			if(h < 10) {
+				h = '0' + h;
+			}
+			if(m < 10) {
+				m = '0' + m;
+			}
+			if(s < 10) {
+				s = '0' + s;
+			}
+			if(ms < 10) {
+				ms = '00' + ms;
+			} else if(ms < 100) {
+				ms = '0' + ms;
+			}
+			var ts = '[' + h + ':' + m + ':' + s + '.' + ms + ']';
+			var li = null,
+				hl = document.getElementById('history');
+			if(blist.length > 0) {
+				li = document.createElement('li');
+				li.className = 'ditem';
+				hl.insertBefore(li, hl.childNodes[0]);
+			} else {
+				li = document.getElementById('nohistory');
+			}
+			li.id = blist.length;
+			var html = '[' + h + ':' + m + ':' + s + '.' + ms + ']' + '　　' + t + '码<div class="hdata">';
+			html += r;
+			html += '</div>';
+			li.innerHTML = html;
+			li.setAttribute('onclick', 'selected(id)');
+			blist[blist.length] = {
+				type: t,
+				result: r,
+				file: f
+			};
+			update(t, r, f);
+		}
+
+		function selected(id) {
+			var h = blist[id];
+			update(h.type, h.result, h.file);
+			if(h.result.indexOf('http://') == 0 || h.result.indexOf('https://') == 0) {
+				plus.nativeUI.confirm(h.result, function(i) {
+					if(i.index == 0) {
+						plus.runtime.openURL(h.result);
+					}
+				}, '', ['打开', '取消']);
+			} else {
+				plus.nativeUI.alert(h.result);
+			}
+		}
+
+		function update(t, r, f) {
+			outSet('扫描成功：');
+			outLine(t);
+			outLine(r);
+			outLine('\n图片地址：' + f);
+			if(!f || f == 'null') {
+				img.src = '../img/barcode.png';
+			} else {
+				plus.io.resolveLocalFileSystemURL(f, function(entry) {
+					img.src = entry.toLocalURL();
+				});
+				//img.src = 'http://localhost:13131/'+f;
+			}
+		}
+
+		function onempty() {
+			if(window.plus) {
+				plus.nativeUI.alert('无扫描记录');
+			} else {
+				alert('无扫描记录');
+			}
+		}
+
+		function cleanHistroy() {
+			if(blist.length > 0) {
+				var hl = document.getElementById('history');
+				hl.innerHTML = '<li id="nohistory" class="ditem" onclick="onempty();">无历史记录	</li>';
+			}
+			plus.io.resolveLocalFileSystemURL('_doc/barcode/', function(entry) {
+				entry.removeRecursively(function() {
+					// Success
+				}, function(e) {
+					//alert( "failed"+e.message );
+				});
+			});
+		}
+
+		document.getElementById("erwei").addEventListener("tap", function(e) {
+			clicked('barcode_scan.html', true, true)
+		});
+	</script>
+
+</html>

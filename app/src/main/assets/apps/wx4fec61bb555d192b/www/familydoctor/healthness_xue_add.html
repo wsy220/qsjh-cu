@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x8wP7ck7pQ4P8UAol2pen8B5"></script>
+		<title>血压增加</title>
+		<style>
+			input,
+			textarea {
+				font-size: 0.3rem;
+			}
+			
+			.mui-content {
+				background: #EEEEEE;
+			}
+			
+			.mui-btn {
+				padding: 6px 6px !important;
+				margin: 6px 0px;
+			}
+			
+			.mui-table-view-cell {
+				padding: 0px 0px;
+			}
+			
+			.mui-table-view-cell:after,
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			.mui-input-row label {
+				font-size: 0.25rem;
+				width: 30%;
+				padding: 11px 0px;
+				color: #333333;
+			}
+			
+			.mui-input-row label~input {
+				width: 40%;
+				height: 35px;
+				font-size: 14px;
+				padding-left: 8px;
+			}
+			
+			.mui-input-row {
+				background-color: #FFFFFF!important;
+				padding-left: 10px;
+				padding-top: 5px;
+				padding-right: 10px;
+				width: 100%;
+				border-bottom: 1px solid #E3E3E3;
+			}
+			
+			.borderred {
+				border: 1px solid #ff0000;
+			}
+			
+			.mui-btn-block {
+				padding: 0;
+			}
+			
+			textarea {
+				border: 1px solid #E3E3E3;
+			}
+			
+			.shurukuang {
+				font-size: 14px;
+				color: #333333;
+				height: 120px;
+			}
+			
+			input[type=color],
+			input[type=date],
+			input[type=datetime-local],
+			input[type=datetime],
+			input[type=email],
+			input[type=month],
+			input[type=number],
+			input[type=password],
+			input[type=search],
+			input[type=tel],
+			input[type=text],
+			input[type=time],
+			input[type=url],
+			input[type=week],
+			select,
+			textarea {
+				line-height: 21px;
+				width: 100%;
+				height: 40px;
+				margin-bottom: 5px;
+				padding: 10px 15px;
+				-webkit-user-select: text;
+				border: 1px solid #E3E3E3;
+				border-radius: 3px;
+				outline: 0;
+				background-color: #fff;
+				-webkit-appearance: none;
+			}
+			
+			.mui-content-padded {
+				margin: 10px;
+			}
+			
+			.icon-bitian:before {
+				content: "\e607";
+				color: #CF2D28;
+			}
+			
+			.mui-icon {
+				font-weight: 800;
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.mui-control-content {
+				height: 350px;
+				height: 95vh;
+				display: block;
+			}
+			
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			
+			.mui-scroll-wrapper {
+				position: absolute;
+				z-index: 0;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				overflow: hidden;
+				width: 100%;
+			}
+			
+			.icon-bitian {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+			}
+			
+			.imgL {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			.title {
+				color: #FFFFFF;
+				font-size: 15px;
+				background-color: #f59595;
+				height: 20px;
+			}
+			
+			.titlewai .titleinner,
+			.titlenei .titleinner {
+				margin: 0px 15px 7px;
+				padding-top: 10px;
+			}
+			
+			.title .titleinner {
+				float: right;
+				padding: 0px 10px;
+				font-size: 12px;
+			}
+			
+			.titleinner img {
+				width: 35px;
+				margin-top: -13px;
+			}
+			
+			.service-package-item {
+				font-size: 15px;
+			}
+			
+			.mui-input-row label~input {
+				float: left;
+			}
+			
+			.titlewai {
+				background: gray;
+				/* 一些不支持背景渐变的浏览器 */
+				background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(253, 253, 253, 0.5)), to(rgba(217, 217, 217, 0.5)));
+				background: -webkit-linear-gradient(rgba(253, 253, 253, 0.5), rgba(217, 217, 217, 0.5));
+				background: -moz-linear-gradient(rgba(253, 253, 253, 0.5), rgba(217, 217, 217, 0.5));
+				background: -o-linear-gradient(rgba(253, 253, 253, 0.5), rgba(217, 217, 217, 0.5));
+				background: linear-gradient(rgba(253, 253, 253, 1), rgba(217, 217, 217, 1));
+				height: 43px;
+			}
+			
+			.messageUL {
+				border-top: 1px solid #E3E3E3;
+				margin-top: 5px;
+			}
+			
+			.dibu {
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">输入血压</h1>
+			<span style="float: right;"><button type="button" class="mui-btn" id="show_healthness_history">历史记录</button></span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-control-content">
+				<div class="mui-scroll-wrapper" id="scroll">
+					<div class="mui-scroll">
+						<div class="messageUL">
+							<div class="titlewai">
+								<div class="titleinner"><img src="../images/familydoctor/zao.png"></div>
+							</div>
+							<div class="mui-input-row" id="waikuang">
+								<label class="font-bold">血压高压：</label>
+								<input type="text" class="mui-input" data-input-password="3" placeholder="请输入数值" id="M_h_text" onblur="javascript:changeWord(this.value,this.id)" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')">
+								<label class="font-bold mui-pull-right" style="text-align: right;">mmHg</label>
+							</div>
+							<div class="title" style="display: none;" id="M_h_text_span">
+								<div class="titleinner">血压已超标！请注意身体</div>
+							</div>
+							<div class="mui-input-row" id="waikuang">
+								<label class="font-bold">血压低压：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入数值" id="M_l_text" onblur="javascript:changeWord(this.value,this.id)" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')">
+								<label class="font-bold mui-pull-right" style="text-align: right;">mmHg</label>
+							</div>
+							<div class="title" style="display: none;" id="M_l_text_span">
+								<div class="titleinner">血压已超标！请注意身体</div>
+							</div>
+						</div>
+						<div class="messageUL">
+							<div class="titlewai">
+								<div class="titleinner"><img src="../images/familydoctor/zhong.png"></div>
+							</div>
+							<div class="mui-input-row" id="waikuang">
+								<label class="font-bold">血压高压：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入数值" id="A_h_text" onblur="javascript:changeWord(this.value,this.id)" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')">
+								<label class="font-bold mui-pull-right" style="text-align: right;">mmHg</label>
+							</div>
+							<div class="title" style="display: none;" id="A_h_text_span">
+								<div class="titleinner">血压已超标！请注意身体</div>
+							</div>
+							<div class="mui-input-row" id="waikuang">
+								<label class="font-bold">血压低压：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入数值" id="A_l_text" onblur="javascript:changeWord(this.value,this.id)" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')">
+								<label class="font-bold mui-pull-right" style="text-align: right;">mmHg</label>
+							</div>
+							<div class="title" style="display: none;" id="A_l_text_span">
+								<div class="titleinner">血压已超标！请注意身体</div>
+							</div>
+						</div>
+						<div class="messageUL">
+							<div class="titlewai">
+								<div class="titleinner"><img src="../images/familydoctor/wan.png"></div>
+							</div>
+							<div class="mui-input-row" id="waikuang">
+								<label class="font-bold">血压高压：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入数值" id="N_h_text" onblur="javascript:changeWord(this.value,this.id)" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')">
+								<label class="font-bold mui-pull-right" style="text-align: right;">mmHg</label>
+							</div>
+							<div class="title" style="display: none;" id="N_h_text_span">
+								<div class="titleinner">血压已超标！请注意身体</div>
+							</div>
+							<div class="mui-input-row" id="waikuang">
+								<label class="font-bold">血压低压：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入数值" id="N_l_text" onblur="javascript:changeWord(this.value,this.id)" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')">
+								<label class="font-bold mui-pull-right" style="text-align: right;">mmHg</label>
+							</div>
+							<div class="title" style="display: none;" id="N_l_text_span">
+								<div class="titleinner">血压已超标！请注意身体</div>
+							</div>
+						</div>
+						<div class="mui-content-padded dibu">
+							<button id='save' class="mui-btn mui-btn-block mui-btn-warning">保存</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script>
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					return true;
+				},
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui('#scroll').scroll({
+				indicators: true //是否显示滚动条
+			});
+			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({
+					softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+				});
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				initData();
+
+				var userId = localStorage.getItem("TOKENID");
+				$("#show_healthness_history").click(function(e) {
+					mui.openWindow({
+						id: 'healthness_record.html',
+						url: 'healthness_record.html',
+						extras: {
+							dataType: "bloodpressure",
+							patient: userId
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				});
+			});
+
+			var initData = function() {
+				var fdt = localStorage.getItem("currentFDT");
+				var userId = localStorage.getItem("TOKENID");
+				//获取今天健康数据详情
+				var url = serverAddress + "/api/appfamilydoctorteam/readOneHealthDataToday";
+				var filterMap = {
+					patient: userId,
+					dataType: "bloodpressure",
+				};
+				console.log("查询患者【" + filterMap.patient + "】类型为【" + filterMap.dataType + "】")
+				var success = function(data) {
+					if(data.result == "success" && data.obj && data.obj.data) {
+						console.log("患者【" + userId + "】当日健康数据：" + JSON.stringify(data.obj));
+						var hd = data.obj.data;
+						$("#M_h_text").val(hd && hd.morning && hd.morning.d2 ? hd.morning.d2 : "");
+						changeWord(hd && hd.morning && hd.morning.d2 ? hd.morning.d2 : "", 'M_h_text');
+
+						$("#M_l_text").val(hd && hd.morning && hd.morning.d1 ? hd.morning.d1 : "");
+						changeWord(hd && hd.morning && hd.morning.d1 ? hd.morning.d1 : "", 'M_l_text');
+
+						$("#A_h_text").val(hd && hd.noon && hd.noon.d2 ? hd.noon.d2 : "");
+						changeWord(hd && hd.noon && hd.noon.d2 ? hd.noon.d2 : "", 'A_h_text');
+
+						$("#A_l_text").val(hd && hd.noon && hd.noon.d1 ? hd.noon.d1 : "");
+						changeWord(hd && hd.noon && hd.noon.d1 ? hd.noon.d1 : "", 'A_l_text');
+
+						$("#N_h_text").val(hd && hd.night && hd.night.d2 ? hd.night.d2 : "");
+						changeWord(hd && hd.night && hd.night.d2 ? hd.night.d2 : "", 'N_h_text');
+
+						$("#N_l_text").val(hd && hd.night && hd.night.d1 ? hd.night.d1 : "");
+						changeWord(hd && hd.night && hd.night.d1 ? hd.night.d1 : "", 'N_l_text');
+					}
+				}
+				commonHttpUtils(url, "post", filterMap, success, error, true);
+			}
+
+			//判断血压高低，显示报警
+			function changeWord(value, which_span) {
+				if(which_span.endsWith('h_text')) {
+					if(parseInt(value) >= 140 || parseInt(value) <= 90) {
+						$("#" + which_span).parent().addClass("borderred");
+						$("#" + which_span + "_span").show();
+					} else {
+						$("#" + which_span).parent().removeClass("borderred");
+						$("#" + which_span + "_span").hide()
+					}
+				}
+
+				if(which_span.endsWith('l_text')) {
+					if(parseInt(value) >= 90 || parseInt(value) <= 60) {
+						$("#" + which_span).parent().addClass("borderred");
+						$("#" + which_span + "_span").show();
+					} else {
+						$("#" + which_span).parent().removeClass("borderred");
+						$("#" + which_span + "_span").hide()
+					}
+				}
+			}
+
+			//保存按钮事件
+			$("#save").click(function(e) {
+				var M_h_text = $("#M_h_text").val();
+				var M_l_text = $("#M_l_text").val();
+				var A_h_text = $("#A_h_text").val();
+				var A_l_text = $("#A_l_text").val();
+				var N_h_text = $("#N_h_text").val();
+				var N_l_text = $("#N_l_text").val();
+				//				if(M_h_text == "" || M_l_text == "" || A_h_text == "" || A_l_text == "" || N_h_text == "" || N_l_text == "") {
+				//					mui.toast("请填写数值");
+				//					return false;
+				//				}
+				var fdt = localStorage.getItem("currentFDT");
+				var userId = localStorage.getItem("TOKENID");
+				//添加健康数据接口
+				var url = serverAddress + "/api/appfamilydoctorteam/createHealthData";
+				var HealthDataSchema = {
+					patient: userId,
+					dataType: "bloodpressure",
+					data: {
+						morning: {
+							d1: M_l_text,
+							d2: M_h_text
+						},
+						noon: {
+							d1: A_l_text,
+							d2: A_h_text
+						},
+						night: {
+							d1: N_l_text,
+							d2: N_h_text
+						}
+					}
+				};
+
+				var success = function(data) {
+					if(data.result == "success") {
+						mui.toast("数据存储成功！");
+						plus.nativeUI.closeWaiting();
+						mui.openWindow({
+							id: 'healthness_record.html',
+							url: 'healthness_record.html',
+							extras: {
+								dataType: "bloodpressure",
+								patient: userId
+							},
+							show: {
+								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+							},
+							waiting: {
+								autoShow: true //自动显示等待框，默认为true
+							}
+						});
+					}
+				}
+				commonHttpUtils(url, "post", HealthDataSchema, success, error, true);
+			});
+		</script>
+	</body>
+
+</html>

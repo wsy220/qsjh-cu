@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>问卷调查</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<style>
+			.mui-card {
+				margin: 0;
+			}
+			
+			#title_big {
+				vertical-align: middle;
+			}
+			
+			#title,
+			#zuozhe {
+				color: #999999;
+				font-size: 12px;
+			}
+			
+			.m-right-rem10 {
+				margin-right: 10px;
+				color: #1D1D1D;
+			}
+			
+			.zantu {
+				background: url(../images/zan.png) no-repeat center;
+				height: 50px;
+				padding-top: 20px;
+				padding-left: 5px;
+				font-size: 10px;
+			}
+			
+			.mui-btn-outlined {
+				margin-left: 2.5rem;
+			}
+			
+			.mui-btn-outlined img {
+				width: 40%;
+				margin-right: 10px;
+			}
+			
+			.zanszi {
+				vertical-align: super;
+			}
+			
+			.pinglunzi .mui-table-view-cell:after {
+				height: 1px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">问卷详情</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<div class="mui-card-header"></div>
+				<div class="mui-card-content">
+					<!--<iframe frameborder="no" id="questionnaire" name="questionnaire"></iframe>-->
+					<div class="mui-card-content-inner">
+						包含页眉页脚的卡片，页眉常用来显示面板标题，页脚用来显示额外信息或支持的操作（比如点赞、评论等）
+					</div>
+				</div>
+				<div class="mui-card-footer">
+					<button id="save" class="mui-btn mui-btn-block mui-btn-warning">提交</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script type="text/javascript" src="../js/sdk/lib/jquery.json2html-master/json2html.js"></script>
+	<script type="text/javascript" src="../js/sdk/lib/jquery.json2html-master/jquery.json2html.js"></script>
+	<!--<script>
+		var msgId = "";
+		mui.plusReady(function() {
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			var self = plus.webview.currentWebview();
+			msgId = self.msgId;
+			var url = serverAddress + "/api/getnotification/" + msgId;
+			var sussess = function(data) {
+				console.log("咨询详情" + JSON.stringify(data));
+				var userID = localStorage.getItem("TOKENID");
+				var notification = data.obj;
+				$(".mui-card-content-inner").html(notification[0].content);
+//				$("#title").html(getDate(notification.createdOn));
+//				$("#zuozhe").html(notification.articleauthor);
+
+			};
+			commonHttpUtils(url, "get", {}, sussess, error, false);
+
+		});
+	</script>-->
+	<script>
+		var msgId = "";
+		mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					return true;
+				},
+				swipeBack: true //启用右滑关闭功能
+			});
+		mui.plusReady(function() {
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			var self = plus.webview.currentWebview();
+			msgId = self.msgId;
+			var url = serverAddress + "/api/getnotification/" + msgId;
+			var sussess = function(data) {
+				console.log("咨询详情" + JSON.stringify(data));
+				var userID = localStorage.getItem("TOKENID");
+				var notification = data.obj;
+				//				$(".mui-card-content-inner").html(notification[0].content);
+				//					$("#questionnaire").attr('srcdoc', notification[0].jsoncontent);
+				var obj = new Array();
+				// var t = {'<>':'div','html':'${label} ${type}'};
+				var d = notification[0].jsoncontent;
+				var batch = notification[0].extras;
+				var notid = notification[0]._id;
+				for(var i = 0; i < d.length; i++) {
+					var type = d[i]['type'];
+					var label = d[i]['label'];
+					var sub = d[i]['sub'];
+					var subtype = d[i]['subtype'];
+					var name = d[i]['name'];
+					var id = d[i]['id'];
+					var classname = d[i]['className'];
+					var min = d[i]['min'];
+					var max = d[i]['max'];
+					var step = d[i]['step'];
+					if(type === 'header') {
+						$(".mui-card-header").html('<h2>'+label+'</h2>');
+						/*obj.push({
+							'<>': 'div',
+							'align': 'center',
+							'html': [{
+								'<>': 'h2',
+								'html': label
+							}]
+						});*/
+					} else if(type === 'text') {
+						obj.push({
+							'<>': 'div',
+							'html': [{
+								'<>': 'label',
+								'html': label
+							}]
+						})
+						obj.push({
+							'<>': 'div',
+							'class': 'mui-input-row',
+							'html': [{
+								'<>': 'input',
+								'type': type,
+								'name': name
+							}]
+						})
+					} else if(type === 'checkbox-group') {
+						obj.push({
+							'<>': 'div',
+							'html': [{
+								'<>': 'label',
+								'html': label
+							}]
+						})
+						for(var j = 0; j < sub.length; j++) {
+							var obj1 = sub[j];
+							obj.push({
+								'<>': 'div',
+								'class': 'mui-input-row mui-checkbox mui-left',
+								'html': [{
+									'<>': 'label',
+									'html': [{
+										'<>': 'input',
+										'type': 'checkbox',
+										'name': name,
+										'value': sub[j].value,
+										'html': sub[j].label
+									}]
+								}]
+							})
+							// obj.push({'<>': 'input', 'type': 'checkbox', 'name': name, 'value': sub[j].value})
+							// obj.push({'<>': 'label', 'html': sub[j].label})
+						}
+					} else if(type === 'radio-group') {
+						obj.push({
+							'<>': 'div',
+							'html': [{
+								'<>': 'label',
+								'html': label
+							}]
+						})
+						for(var j = 0; j < sub.length; j++) {
+							var obj1 = sub[j];
+							obj.push({
+								'<>': 'div',
+								'class': 'mui-input-row mui-radio mui-left',
+								'html': [{
+									'<>': 'label',
+									'html': [{
+										'<>': 'input',
+										'type': 'radio',
+										'name': name,
+										'value': sub[j].value,
+										'html': sub[j].label
+									}]
+								}]
+							})
+							// obj.push({'<>': 'input', 'type': 'radio', 'name': name, 'value': sub[j].value})
+							// obj.push({'<>': 'label', 'html': sub[j].label})
+						}
+					} else if(type === 'textarea') {
+						obj.push({
+							'<>': 'div',
+							'html': [{
+								'<>': 'label',
+								'html': label
+							}]
+						})
+						obj.push({
+							'<>': 'textarea',
+							'class': 'form-control'
+						})
+					} else if(type === 'number') {
+						obj.push({
+							'<>': 'div',
+							'html': [{
+								'<>': 'label',
+								'html': label
+							}]
+						})
+						obj.push({
+							'<>': 'div',
+							'class': 'mui-numbox',
+							'data-numbox-min': min,
+							'data-numbox-max': max,
+							'data-numbox-step': step,
+							'html': [{
+								'<>': 'button',
+								'type': 'button',
+								'class': 'mui-btn mui-numbox-btn-minus',
+								'html': '-'
+							}, {
+								'<>': 'input',
+								'type': 'number',
+								'class': 'mui-numbox-input',
+								'name': name
+							}, {
+								'<>': 'button',
+								'type': 'button',
+								'class': 'mui-btn mui-numbox-btn-plus',
+								'html': '+'
+							}]
+						})
+						/*	obj.push(
+								{
+									'<>':'button',
+									'type':'button',
+									'class':'mui-btn mui-numbox-btn-minus',
+									'html':'-'
+								}
+							)
+							obj.push({
+								'<>': 'input',
+								'type': 'number',
+								'class': 'mui-numbox-input',
+								'name': name
+							})
+							obj.push(
+								{
+									'<>':'button',
+									'type':'button',
+									'class':'mui-btn mui-numbox-btn-plus',
+									'html':'+'
+								}
+							)*/
+					} else if(type === 'button') {
+						/*obj.push({
+							'<>': 'button',
+							'class': classname,
+							'id': 'save',
+							'type': subtype,
+							'html': label
+						});*/
+					}
+				}
+
+				var transform = {
+					'<>': 'form',
+					'id': 'questionnaire',
+					'name': 'questionnaire',
+					'action': serverAddress + '/api/questionnaire/submit',
+					'method': 'post',
+					'html': [{
+						'<>': 'input',
+						'type': 'hidden',
+						'name': 'batch',
+						'value': batch
+					}, {
+						'<>': 'input',
+						'type': 'hidden',
+						'id': 'access_token',
+						'name': 'access_token'
+					},{
+						'<>': 'input',
+						'type': 'hidden',
+						'id': 'notid',
+						'name': 'notid',
+						'value': notid
+					}, {
+						'<>': 'div',
+						'html': obj
+					}]
+				};
+				var html = json2html.transform({}, transform);
+				$(".mui-card-content-inner").html(html);
+				mui($(".mui-numbox")).numbox();
+			};
+			commonHttpUtils(url, "get", {}, sussess, error, false);
+			$("#save").click(function(e) {
+				$("#access_token").val(localStorage.getItem("TOKENMD5"));
+				$('#questionnaire').submit();
+				plus.nativeUI.alert('提交成功');
+				mui.back();
+				var list = plus.webview.currentWebview().opener();
+				mui.fire(list, 'refresh');
+			})
+		});
+	</script>
+
+</html>

@@ -1,0 +1,889 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:1:1-626:12
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:1:1-626:12
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:1:1-626:12
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:1:1-626:12
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:2:1-44:12
+MERGED from [:faceunity] D:\qsjh-cu\faceunity\build\intermediates\manifests\full\release\AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b2abdad347a3b15f042d79b14b2b859\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\0caa1959015fa1e9b5822e18f8d98acb\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\84414616613c77da009a60b26eee6c07\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be003205c9137999b0d8233dfe94b618\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\6fd1d204ec57e46d626ef57eef2e5ce2\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\094f7f94f3e9229b98bdd238082fe43a\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\ed1fc0b820c2071c279b427cfd465946\AndroidManifest.xml:17:1-28:12
+MERGED from [org.adw.library:discrete-seekbar:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\discrete-seekbar-1.0.1.aar\60c2bef327fa1d0d89ca3559da5fa3f7\AndroidManifest.xml:17:1-30:12
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\65050e8c581a93ee0f840df7dcb929be\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\ee44a52977180aac5d705ccd946c5acb\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\be8b06a0d726686a58ea7e912757dcd7\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\680374f90f57dc7fbc4175238b252d59\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3559e2e67f8557613eb6263c46495ae8\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6bcf8a8a440e6930998012997162ac93\AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\1426636638020f80a8d448888f1b49d6\AndroidManifest.xml:17:1-30:12
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:1:1-626:12
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:1:1-626:12
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:1:1-626:12
+	package
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:2:5-38
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:4:5-34
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:1:11-69
+	android:versionCode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:3:5-32
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+supports-screens
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:6:5-11:39
+	android:largeScreens
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:8:9-36
+	android:smallScreens
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:11:9-36
+	android:normalScreens
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:9:9-37
+	android:resizeable
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:10:9-34
+	android:anyDensity
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:7:9-34
+uses-sdk
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:13:5-43
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:13:5-43
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:13:5-43
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:7:5-9:41
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:7:5-9:41
+MERGED from [:faceunity] D:\qsjh-cu\faceunity\build\intermediates\manifests\full\release\AndroidManifest.xml:5:5-7:41
+MERGED from [:faceunity] D:\qsjh-cu\faceunity\build\intermediates\manifests\full\release\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b2abdad347a3b15f042d79b14b2b859\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b2abdad347a3b15f042d79b14b2b859\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\0caa1959015fa1e9b5822e18f8d98acb\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\0caa1959015fa1e9b5822e18f8d98acb\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\84414616613c77da009a60b26eee6c07\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\multidex-1.0.2.aar\84414616613c77da009a60b26eee6c07\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be003205c9137999b0d8233dfe94b618\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be003205c9137999b0d8233dfe94b618\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\6fd1d204ec57e46d626ef57eef2e5ce2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\6fd1d204ec57e46d626ef57eef2e5ce2\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\094f7f94f3e9229b98bdd238082fe43a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\094f7f94f3e9229b98bdd238082fe43a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\ed1fc0b820c2071c279b427cfd465946\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\ed1fc0b820c2071c279b427cfd465946\AndroidManifest.xml:20:5-44
+MERGED from [org.adw.library:discrete-seekbar:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\discrete-seekbar-1.0.1.aar\60c2bef327fa1d0d89ca3559da5fa3f7\AndroidManifest.xml:23:5-25:41
+MERGED from [org.adw.library:discrete-seekbar:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\discrete-seekbar-1.0.1.aar\60c2bef327fa1d0d89ca3559da5fa3f7\AndroidManifest.xml:23:5-25:41
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\65050e8c581a93ee0f840df7dcb929be\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\65050e8c581a93ee0f840df7dcb929be\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\ee44a52977180aac5d705ccd946c5acb\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\ee44a52977180aac5d705ccd946c5acb\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\be8b06a0d726686a58ea7e912757dcd7\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\be8b06a0d726686a58ea7e912757dcd7\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\680374f90f57dc7fbc4175238b252d59\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\680374f90f57dc7fbc4175238b252d59\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3559e2e67f8557613eb6263c46495ae8\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3559e2e67f8557613eb6263c46495ae8\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6bcf8a8a440e6930998012997162ac93\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6bcf8a8a440e6930998012997162ac93\AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\1426636638020f80a8d448888f1b49d6\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\1426636638020f80a8d448888f1b49d6\AndroidManifest.xml:20:5-22:41
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:13:5-43
+INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:13:5-43
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:13:5-43
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:13:15-40
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+		INJECTED from D:\qsjh-cu\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:16:5-67
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:16:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:18:5-81
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:18:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:20:5-79
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:11:5-79
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:20:22-76
+uses-permission#android.permission.GET_TASKS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:21:5-68
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:21:22-65
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:27:5-71
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:27:22-68
+uses-permission#android.permission.MODIFY_AUDIO_SETTINGS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:29:5-80
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:29:22-77
+uses-permission#android.permission.CAMERA
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:35:5-65
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:35:22-62
+uses-feature#android.hardware.camera
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:37:5-60
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:37:19-57
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:43:5-71
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:43:22-68
+uses-permission#android.permission.WRITE_CONTACTS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:44:5-73
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:44:22-70
+uses-permission#android.permission.READ_CONTACTS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:45:5-72
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:45:22-69
+uses-permission#android.permission.WAKE_LOCK
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:51:5-68
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:51:22-65
+uses-permission#android.permission.VIBRATE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:53:5-66
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:53:22-63
+uses-permission#android.permission.CALL_PHONE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:55:5-69
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:55:22-66
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:57:5-76
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:12:5-76
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:12:5-76
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:57:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:60:5-75
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:60:22-72
+uses-permission#android.permission.SEND_SMS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:69:5-67
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:69:22-64
+uses-permission#android.permission.WRITE_SMS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:70:5-68
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:70:22-65
+uses-permission#android.permission.READ_SMS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:71:5-67
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:71:22-64
+uses-permission#com.android.launcher.permission.INSTALL_SHORTCUT
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:79:5-88
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:79:22-85
+uses-permission#com.android.launcher.permission.UNINSTALL_SHORTCUT
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:80:5-90
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:80:22-87
+uses-feature#android.hardware.camera.autofocus
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:89:5-70
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:89:19-67
+uses-permission#android.permission.FLASHLIGHT
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:92:5-69
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:92:22-66
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:100:5-81
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:100:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:101:5-79
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:101:22-76
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:102:5-73
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:102:22-70
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:104:5-76
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:104:22-73
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:106:5-84
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:106:22-81
+uses-permission#android.permission.READ_LOGS
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:107:5-68
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:107:22-65
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:157:5-81
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:157:22-78
+uses-permission#getui.permission.GetuiService.io.dcloud.jiahucustomer
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:162:5-93
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:162:22-90
+permission#getui.permission.GetuiService.io.dcloud.jiahucustomer
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:164:5-166:44
+	android:protectionLevel
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:166:9-41
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:165:9-77
+uses-permission#android.permission.BLUETOOTH
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:170:5-68
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:170:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:171:5-74
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:171:22-71
+uses-permission#android.permission.BROADCAST_STICKY
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:173:5-74
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:173:22-72
+uses-feature#0x00020000
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:176:5-78
+	android:glEsVersion
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:176:19-51
+	android:required
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:176:52-75
+uses-permission#android.permission.ACCESS_MOCK_LOCATION
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:188:5-79
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:188:22-76
+permission#io.dcloud.jiahucustomer.permission.RECEIVE_MSG
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:195:5-197:46
+	android:protectionLevel
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:197:9-44
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:196:9-70
+uses-permission#io.dcloud.jiahucustomer.permission.RECEIVE_MSG
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:199:5-85
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:199:22-83
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:210:5-79
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:210:22-76
+uses-permission#android.permission.RECEIVE_USER_PRESENT
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:219:5-79
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:219:22-76
+uses-permission#com.xiaomi.permission.AUTH_SERVICE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:228:5-74
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:228:22-71
+application
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:232:5-624:19
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:14:5-42:19
+MERGED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:14:5-42:19
+MERGED from [:faceunity] D:\qsjh-cu\faceunity\build\intermediates\manifests\full\release\AndroidManifest.xml:9:5-13:19
+MERGED from [:faceunity] D:\qsjh-cu\faceunity\build\intermediates\manifests\full\release\AndroidManifest.xml:9:5-13:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b2abdad347a3b15f042d79b14b2b859\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b2abdad347a3b15f042d79b14b2b859\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\0caa1959015fa1e9b5822e18f8d98acb\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\0caa1959015fa1e9b5822e18f8d98acb\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be003205c9137999b0d8233dfe94b618\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be003205c9137999b0d8233dfe94b618\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\6fd1d204ec57e46d626ef57eef2e5ce2\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\6fd1d204ec57e46d626ef57eef2e5ce2\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\094f7f94f3e9229b98bdd238082fe43a\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\094f7f94f3e9229b98bdd238082fe43a\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\ed1fc0b820c2071c279b427cfd465946\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\ed1fc0b820c2071c279b427cfd465946\AndroidManifest.xml:22:5-26:19
+MERGED from [org.adw.library:discrete-seekbar:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\discrete-seekbar-1.0.1.aar\60c2bef327fa1d0d89ca3559da5fa3f7\AndroidManifest.xml:27:5-28:19
+MERGED from [org.adw.library:discrete-seekbar:1.0.1] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\discrete-seekbar-1.0.1.aar\60c2bef327fa1d0d89ca3559da5fa3f7\AndroidManifest.xml:27:5-28:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\65050e8c581a93ee0f840df7dcb929be\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\65050e8c581a93ee0f840df7dcb929be\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\ee44a52977180aac5d705ccd946c5acb\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\ee44a52977180aac5d705ccd946c5acb\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\be8b06a0d726686a58ea7e912757dcd7\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\be8b06a0d726686a58ea7e912757dcd7\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\680374f90f57dc7fbc4175238b252d59\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\680374f90f57dc7fbc4175238b252d59\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3559e2e67f8557613eb6263c46495ae8\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3559e2e67f8557613eb6263c46495ae8\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6bcf8a8a440e6930998012997162ac93\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6bcf8a8a440e6930998012997162ac93\AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\1426636638020f80a8d448888f1b49d6\AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\1426636638020f80a8d448888f1b49d6\AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from [:faceunity] D:\qsjh-cu\faceunity\build\intermediates\manifests\full\release\AndroidManifest.xml:12:9-35
+	android:label
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:236:9-41
+	android:allowClearUserData
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:234:9-42
+	android:allowBackup
+		ADDED from [:faceunity] D:\qsjh-cu\faceunity\build\intermediates\manifests\full\release\AndroidManifest.xml:10:9-35
+	android:largeHeap
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:237:9-33
+	android:icon
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:235:9-38
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:233:9-56
+activity#io.dcloud.PandoraEntry
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:239:9-253:20
+	android:screenOrientation
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:245:13-45
+	android:label
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:243:13-45
+	android:launchMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:244:13-44
+	android:hardwareAccelerated
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:242:13-47
+	android:windowSoftInputMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:247:13-55
+	android:configChanges
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:241:13-83
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:246:13-52
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:240:13-50
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:248:13-252:29
+action#android.intent.action.MAIN
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:249:17-69
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:249:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:251:17-77
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:251:27-74
+activity#io.dcloud.PandoraEntryActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:254:9-262:67
+	android:screenOrientation
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:260:13-45
+	android:label
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:258:13-33
+	android:launchMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:259:13-44
+	android:hardwareAccelerated
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:257:13-47
+	android:windowSoftInputMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:262:13-55
+	android:configChanges
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:256:13-112
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:261:13-47
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:255:13-58
+service#io.dcloud.common.adapter.io.MiniServerService
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:264:9-266:39
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:266:13-36
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:265:13-73
+activity#io.dcloud.imagepick.CustomGalleryActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:268:9-275:20
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:268:19-75
+intent-filter#action:name:io.dcloud.ACTION_MULTIPLE_PICK+action:name:io.dcloud.ACTION_PICK+category:name:android.intent.category.DEFAULT
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:269:13-274:29
+action#io.dcloud.ACTION_PICK
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:270:17-64
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:270:25-61
+action#io.dcloud.ACTION_MULTIPLE_PICK
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:271:17-73
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:271:25-70
+category#android.intent.category.DEFAULT
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:273:17-76
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:273:27-73
+activity#io.dcloud.TestActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:276:9-282:20
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:276:19-56
+meta-data#UMENG_APPKEY
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:292:9-294:44
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:294:13-41
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:293:13-40
+meta-data#UMENG_CHANNEL
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:295:9-297:42
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:297:13-39
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:296:13-41
+meta-data#com.baidu.lbsapi.API_KEY
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:303:9-305:74
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:305:13-61
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:304:13-52
+service#com.baidu.location.f
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:307:9-310:49
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:310:13-38
+	android:enabled
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:309:13-35
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:308:13-48
+meta-data#com.amap.api.v2.apikey
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:315:9-317:46
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:317:13-43
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:316:13-50
+meta-data#QQ_APPID
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:322:9-324:37
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:324:13-34
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:323:13-36
+activity#com.tencent.tauth.AuthActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:326:9-338:20
+	android:launchMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:328:13-44
+	android:noHistory
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:329:13-37
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:327:13-58
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:appid
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:330:13-337:29
+action#android.intent.action.VIEW
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:331:17-69
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:331:25-66
+category#android.intent.category.BROWSABLE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:334:17-78
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:334:27-75
+data
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:336:17-48
+	android:scheme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:336:23-45
+activity#com.tencent.connect.common.AssistActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:339:9-342:75
+	android:screenOrientation
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:341:13-49
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:342:13-72
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:340:13-69
+meta-data#IFLY_APPKEY
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:354:9-356:40
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:356:13-37
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:355:13-39
+meta-data#PUSH_APPID
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:366:9-368:54
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:368:13-51
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:367:13-38
+meta-data#PUSH_APPKEY
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:369:9-371:54
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:371:13-51
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:370:13-39
+meta-data#PUSH_APPSECRET
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:372:9-374:54
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:374:13-51
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:373:13-42
+service#com.igexin.sdk.PushService
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:376:9-384:19
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:380:13-43
+	android:label
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:379:13-47
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:378:13-36
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:377:13-54
+intent-filter#action:name:com.igexin.sdk.action.service.message
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:381:13-383:29
+action#com.igexin.sdk.action.service.message
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:382:17-80
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:382:25-77
+receiver#com.igexin.sdk.PushReceiver
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:385:9-395:20
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:385:19-61
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED+action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MEDIA_MOUNTED+action:name:android.intent.action.USER_PRESENT+action:name:android.net.conn.CONNECTIVITY_CHANGE+action:name:com.igexin.sdk.action.refreshls
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:386:13-394:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:387:17-79
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:387:25-76
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:388:17-79
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:388:25-76
+action#android.intent.action.USER_PRESENT
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:389:17-77
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:389:25-74
+action#com.igexin.sdk.action.refreshls
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:390:17-74
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:390:25-71
+action#android.intent.action.MEDIA_MOUNTED
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:391:17-78
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:391:25-75
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:392:17-87
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:392:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:393:17-90
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:393:25-87
+activity#com.igexin.sdk.PushActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:397:9-403:75
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:401:13-43
+	android:excludeFromRecents
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:399:13-46
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:400:13-37
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:403:13-72
+	android:taskAffinity
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:402:13-67
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:398:13-55
+activity#com.igexin.sdk.GActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:404:9-410:75
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:408:13-43
+	android:excludeFromRecents
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:406:13-46
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:407:13-36
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:410:13-72
+	android:taskAffinity
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:409:13-67
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:405:13-52
+receiver#io.dcloud.feature.apsGt.GTNotificationReceiver
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:412:9-420:20
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:412:19-80
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:io.dcloud.jiahucustomer.__CLEAR_NOTIFICATION+action:name:io.dcloud.jiahucustomer.__CLILK_NOTIFICATION+action:name:io.dcloud.jiahucustomer.__CREATE_NOTIFICATION+action:name:io.dcloud.jiahucustomer.__REMOVE_NOTIFICATION
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:413:13-419:29
+action#io.dcloud.jiahucustomer.__CREATE_NOTIFICATION
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:415:17-88
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:415:25-85
+action#io.dcloud.jiahucustomer.__REMOVE_NOTIFICATION
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:416:17-88
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:416:25-85
+action#io.dcloud.jiahucustomer.__CLEAR_NOTIFICATION
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:417:17-87
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:417:25-84
+action#io.dcloud.jiahucustomer.__CLILK_NOTIFICATION
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:418:17-87
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:418:25-84
+service#io.dcloud.feature.apsGt.GTNormalIntentService
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:422:9-81
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:422:18-78
+service#io.dcloud.feature.apsGt.GTNormalPushService
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:423:9-427:54
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:427:13-43
+	android:label
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:426:13-40
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:425:13-36
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:424:13-71
+meta-data#SINA_REDIRECT_URI
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:434:9-436:73
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:436:13-70
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:435:13-45
+meta-data#SINA_SECRET
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:437:9-439:64
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:439:13-61
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:438:13-39
+meta-data#SINA_APPKEY
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:440:9-442:43
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:442:13-40
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:441:13-39
+activity#com.sina.weibo.sdk.web.WeiboSdkWebActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:444:9-448:67
+	android:windowSoftInputMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:448:13-55
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:447:13-37
+	android:configChanges
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:446:13-63
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:445:13-70
+activity#com.sina.weibo.sdk.share.WbShareTransActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:450:9-459:20
+	android:launchMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:452:13-44
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:453:13-83
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:451:13-73
+intent-filter#action:name:com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY+category:name:android.intent.category.DEFAULT
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:454:13-458:29
+action#com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:455:17-92
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:455:25-89
+meta-data#TENCENT_REDIRECT_URI
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:462:9-464:51
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:464:13-48
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:463:13-48
+meta-data#TENCENT_SECRET
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:465:9-467:51
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:467:13-48
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:466:13-42
+meta-data#TENCENT_APPKEY
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:468:9-470:63
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:470:13-60
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:469:13-42
+activity#io.dcloud.share.tencent.WebAuthorize
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:472:9-474:72
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:474:13-60
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:473:13-64
+meta-data#WX_SECRET
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:476:9-478:64
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:478:13-61
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:477:13-37
+meta-data#WX_APPID
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:479:9-481:50
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:481:13-47
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:480:13-36
+activity#io.dcloud.jiahucustomer.wxapi.WXEntryActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:483:9-494:20
+	android:label
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:486:13-45
+	android:launchMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:487:13-43
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:485:13-36
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:488:13-72
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:484:13-73
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.DEFAULT+data:scheme:wx2ebd0be7a1e2abf7
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:489:13-493:29
+activity#com.alipay.sdk.app.H5PayActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:497:9-502:79
+	android:screenOrientation
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:501:13-47
+	android:windowSoftInputMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:502:13-67
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:500:13-37
+	android:configChanges
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:499:13-74
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:498:13-60
+activity#com.alipay.sdk.auth.AuthActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:503:9-507:59
+	android:screenOrientation
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:507:13-47
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:506:13-37
+	android:configChanges
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:505:13-74
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:504:13-60
+activity#io.dcloud.jiahucustomer.wxapi.WXPayEntryActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:512:9-516:75
+	android:launchMode
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:515:13-43
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:514:13-36
+	android:theme
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:516:13-72
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:513:13-76
+meta-data#MIUI_APPID
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:524:9-526:43
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:526:13-40
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:525:13-38
+meta-data#MIUI_APPSECRET
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:527:9-529:46
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:529:13-43
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:528:13-42
+meta-data#MIUI_REDIRECT_URI
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:530:9-532:41
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:532:13-38
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:531:13-45
+activity#com.xiaomi.account.openauth.AuthorizeActivity
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:534:9-82
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:534:19-79
+meta-data#com.netease.nim.appKey
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:580:9-582:64
+	android:value
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:582:13-61
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:581:13-50
+service#com.netease.nimlib.service.NimService
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:585:9-587:38
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:587:13-36
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:586:13-65
+service#com.netease.nimlib.service.NimService$Aux
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:590:9-592:38
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:592:13-36
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:591:13-69
+service#com.netease.nimlib.job.NIMJobService
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:595:9-599:38
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:599:13-36
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:597:13-36
+	android:permission
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:598:13-69
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:596:13-64
+receiver#com.netease.nimlib.service.NimReceiver
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:602:9-609:20
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:603:13-36
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:604:13-37
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:602:19-72
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.net.conn.CONNECTIVITY_CHANGE
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:605:13-608:29
+receiver#com.netease.nimlib.service.ResponseReceiver
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:612:9-79
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:612:19-77
+service#com.netease.nimlib.service.ResponseService
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:615:9-77
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:615:18-75
+provider#com.netease.nimlib.ipc.NIMContentProvider
+ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:619:9-623:39
+	android:process
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:623:13-36
+	android:authorities
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:621:13-71
+	android:exported
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:622:13-37
+	android:name
+		ADDED from D:\qsjh-cu\app\src\main\AndroidManifest.xml:620:13-69
+activity#com.netease.nim.avchatkit.activity.AVChatActivity
+ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:15:9-20:63
+	android:screenOrientation
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:18:13-49
+	android:launchMode
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:17:13-48
+	android:windowSoftInputMode
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:20:13-60
+	android:theme
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:19:13-51
+	android:name
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:16:13-77
+activity#com.netease.nim.avchatkit.teamavchat.activity.TeamAVChatActivity
+ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:23:9-28:63
+	android:screenOrientation
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:26:13-49
+	android:launchMode
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:25:13-48
+	android:windowSoftInputMode
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:28:13-60
+	android:theme
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:27:13-51
+	android:name
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:24:13-92
+activity#com.netease.nim.avchatkit.activity.AVChatSettingsActivity
+ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:31:9-33:52
+	android:screenOrientation
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:33:13-49
+	android:name
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:32:13-85
+receiver#com.netease.nim.avchatkit.receiver.IncomingCallReceiver
+ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:37:9-41:20
+	android:name
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:37:19-89
+intent-filter#action:name:android.intent.action.PHONE_STATE
+ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:38:13-40:29
+action#android.intent.action.PHONE_STATE
+ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:39:17-76
+	android:name
+		ADDED from [:avchatkit] D:\qsjh-cu\avchatkit\build\intermediates\manifests\full\release\AndroidManifest.xml:39:25-73
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b2abdad347a3b15f042d79b14b2b859\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b2abdad347a3b15f042d79b14b2b859\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be003205c9137999b0d8233dfe94b618\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\be003205c9137999b0d8233dfe94b618\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\6fd1d204ec57e46d626ef57eef2e5ce2\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\6fd1d204ec57e46d626ef57eef2e5ce2\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\094f7f94f3e9229b98bdd238082fe43a\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\094f7f94f3e9229b98bdd238082fe43a\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\ed1fc0b820c2071c279b427cfd465946\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\ed1fc0b820c2071c279b427cfd465946\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\65050e8c581a93ee0f840df7dcb929be\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\65050e8c581a93ee0f840df7dcb929be\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\ee44a52977180aac5d705ccd946c5acb\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\ee44a52977180aac5d705ccd946c5acb\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\be8b06a0d726686a58ea7e912757dcd7\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\be8b06a0d726686a58ea7e912757dcd7\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\680374f90f57dc7fbc4175238b252d59\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\680374f90f57dc7fbc4175238b252d59\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3559e2e67f8557613eb6263c46495ae8\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\3559e2e67f8557613eb6263c46495ae8\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6bcf8a8a440e6930998012997162ac93\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\6bcf8a8a440e6930998012997162ac93\AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\3ad52a5d31ec5f7c9c6ea5923427613c\AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\1426636638020f80a8d448888f1b49d6\AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\1426636638020f80a8d448888f1b49d6\AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\1426636638020f80a8d448888f1b49d6\AndroidManifest.xml:26:13-58

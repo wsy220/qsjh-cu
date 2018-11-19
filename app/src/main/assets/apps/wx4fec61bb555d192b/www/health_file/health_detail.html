@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>健康管理</title>
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x8wP7ck7pQ4P8UAol2pen8B5"></script>-->
+		<style>
+		.mui-content {
+				/*margin-top: 0.08rem;*/
+				font-size: 0.2916rem;
+			}
+			
+			.head {
+				margin-top: -0.6rem;
+				margin-right: 15px;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-bottom: 0.08rem;
+			}
+			
+			#libiao li {
+				height: 1.0rem;
+				padding-top: 0.25rem;
+			}
+			
+			#libiao li span {
+				font-size: 14px;
+			}
+			
+			#libiao2 li,
+			#libiao3 li {
+				padding-top: 0.25rem;
+			}
+			
+			font-size: 14px;
+		}
+		.qianming {
+			width: 50%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-align: right;
+		}
+		.mui-table-view-cell:after {
+			left: 0;
+		}
+		.mui-navigate-right:after {
+			font-size: 25px;
+			right: 5px;
+		}
+		.mui-table-view-cell a {
+			color: #424242;
+			font-size: 15px;
+		}
+		.mui-table-view-cell span {
+			color: #999999;
+		}
+		#forward {
+			font-size: 0.3124rem;
+			font-weight: 400;
+		}
+		#male {
+			color: #00c0ff;
+			height: 1.1rem;
+		}
+		#female {
+			color: #ff0072;
+			height: 1.1rem;
+		}
+		#male div,
+		#female div {
+			background: url(../../../images/tubiao2.png) no-repeat;
+		}
+		.redword {
+			color: #FF3300 !important;
+		}
+		.shengfen_upload {
+			max-width: 100%;
+			background: #FFFFFF;
+			height: 200px;
+			padding-top: 70px;
+		}
+		.mui-content-padded a {
+			margin: 3px;
+			width: 50px;
+			height: 50px;
+			display: block;
+			text-align: center;
+			background-color: #fff;
+			border: 1px solid #ddd;
+			border-radius: 25px;
+			background-clip: padding-box;
+			margin: 0 auto;
+		}
+		.mui-content-padded a .mui-icon {
+			margin-top: 12px;
+			color: #000000;
+			margin-top: -7px;
+			margin-left: -6px;
+		}
+		.mui-icon {
+			font-size: 60px;
+		}
+		.upload_word {
+			margin: 10px auto;
+			display: block;
+			text-align: center;
+		}
+		.shenfen_card,
+		.sign_name {
+			width: 90% !important;
+			height: 20px !important;
+			font-size: 14px;
+		}
+		.shenfen_card1 {
+			width: 80% !important;
+			height: 20px !important;
+			font-size: 14px;
+		}
+		.error_shenfen_card {
+			border: 1px dotted rgba(0, 0, 0, 0) !important;
+		}
+		.right_shenfen_card {
+			border: 1px solid rgba(0, 0, 0, 0) !important;
+		}
+		.tishi {
+			width: 93%;
+			font-size: 13px;
+			color: #999999;
+			margin: auto;
+			/*input[type="number"] {
+				border: 1px solid rgba(0, 0, 0, 0) !important;
+				/*line-height: 30px;*/
+		}
+		html,
+		body {
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+			/*overflow: hidden;*/
+			/*-webkit-touch-callout: none;*/
+			/*-webkit-user-select: none;*/
+		}
+		.mui-content {
+			height: 100%;
+			overflow: auto;
+		}
+		#showUserPicker {
+			float: inherit;
+			width: 87%;
+			padding: 10px 15px;
+			background-color: #FFF !important;
+			color: #424242;
+		}
+		input[type=color],
+		input[type=date],
+		input[type=datetime-local],
+		input[type=datetime],
+		input[type=email],
+		input[type=month],
+		input[type=number],
+		input[type=password],
+		input[type=search],
+		input[type=tel],
+		input[type=text],
+		input[type=time],
+		input[type=url],
+		input[type=week],
+		select,
+		textarea {
+			line-height: 21px;
+			width: 100%;
+			height: 40px;
+			margin-bottom: 4px;
+			padding: 10px 15px 10px;
+			-webkit-user-select: text;
+			border: none;
+			border-radius: 3px;
+			outline: 0;
+			background-color: #fff;
+			-webkit-appearance: none;
+			text-align: right;
+		}
+		.doctor_one {
+			background-color: #ffffff;
+			border-bottom: 1px solid #eeeeee;
+		}
+		.content {
+			background-color: #ffffff;
+		}
+		.qs-image-div {
+			padding: 10px;
+			width: 100%;
+			text-align: center;
+		}
+		#userPhone {
+			width: 50%;
+			padding-bottom: 8%;
+			float: right;
+		}
+		.text-center {
+			text-align: center;
+			font-size: 14px;
+		}
+		.padding-5 {
+			padding: 4% 0;
+		}
+		.change-color {
+			color: #33c3cb;
+			border-bottom: 2px solid #33c3cb;
+			z-index: 999;
+		}
+		.mui-btn-color {
+			background: #FCB565;
+			border-radius: 7px;
+			color: #FFFFFF;
+			height: 0.9rem;
+			font-size: 14px;
+			width: 95%;
+			margin-left: 2%;
+			border: none;
+		}
+		.mui-table-view-cell.mui-active {
+			background-color: #FFFFFF;
+		}
+		.tap-fordata {
+			padding: 5%;
+			text-align: center;
+		}
+		.tap-click {
+			color: #3C3C3C;
+			padding: 10%;
+			border: 1px solid #e3e3e5;
+			border-radius: 10px;
+		}
+		#blood_pressure {
+			background-image: url("../images/healthdata/background_blood_pressure.png");
+			background-size: 100%;
+			height: 2.5rem;
+		}
+		#blood_sugar {
+			background: url("../images/healthdata/background_blood_sugar.png");
+			background-size: 100%;
+			height: 2.5rem;
+		}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">健康管理</h1>
+		</header>
+		<div class="mui-content content" id="content">
+			<div class="mui-row text-center">
+				<div class="mui-col-xs-6 padding-5 change-color" id="base">基础信息</div>
+				<div class="mui-col-xs-6 padding-5" id="detail">详细信息</div>
+				<!--<div class="mui-col-xs-4 padding-5" id="detection">健康监测</div>-->
+			</div>
+			<div class="basic-information" id="baseMain">
+				<form>
+					<ul class="mui-table-view" id="libiao">
+						<li class="mui-table-view-cell">
+							<a id="signatureLi">姓名：
+								<input id="name" name="name" type="text" class="sign_name error_shenfen_card mui-input" placeholder="">
+								<span class="mui-icon mui-icon-checkmarkempty duihao" style="font-size: 24px; display: none;"></span> </a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="signatureLi">性别：
+								<span class="mui-pull-right" style="margin-right: 10px;">
+								<input id="women" name="gender" class="gender" type="radio" value="1"></input>
+								<label>女</label>&nbsp;&nbsp;
+								<input id="men" name="gender" class="gender" type="radio" value="0"></input>
+								<label>男</label>
+							</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="signatureLi">电话：
+								<input id="phone" name="phone" type="text" class="shenfen_card error_shenfen_card" placeholder=""></a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="signatureLi">身份证号：
+								<input id="idnumber" name="idnumber" type="text" class="shenfen_card1 error_shenfen_card" placeholder=""></a>
+						</li>
+						<li class="mui-table-view-cell">
+							<!--<div id="l-map"></div>-->
+							<a id="signatureLi">地址：
+								<input id="xiangxiaddress" type="text" class="shenfen_card error_shenfen_card" placeholder=""></a>
+						</li>
+
+					</ul>
+				</form>
+			</div>
+
+			<div class="paperwork-main" id="detailMain">
+				<form>
+					<ul class="mui-table-view" id="libiao2">
+						<li class="mui-table-view-cell" id="rerelation_me">
+							<a id="signatureLi">与本人关系：
+								<span class="mui-pull-right" style="margin-right: 10px;">
+								<input id="father" name="relation" class="relation" type="radio" value="父子"></input>
+								<label>父子</label>&nbsp;&nbsp;
+								<input id="mother" name="relation" class="relation" type="radio" value="母子"></input>
+								<label>母子</label>&nbsp;&nbsp;
+								<input id="friend" name="relation" class="relation" type="radio" value="亲友"></input>
+								<label>亲友</label>
+							</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a id="signatureLi">血型：
+								<span class="mui-pull-right" style="">
+								<input id="A" name="bloodType" class="bloodType" type="radio" value="A"></input>
+								<label>A</label>&nbsp;&nbsp;
+								<input id="B" name="bloodType" class="bloodType" type="radio" value="B"></input>
+								<label>B</label>&nbsp;&nbsp;
+								<input id="O" name="bloodType" class="bloodType" type="radio" value="O"></input>
+								<label>O</label>&nbsp;&nbsp;
+								<input id="AB" name="bloodType" class="bloodType" type="radio" value="AB"></input>
+								<label>AB</label>
+							</span>
+							</a>
+						</li>
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell" id="profession_li">
+								<a class="mui-navigate-right">职业：
+									<div class="mui-pull-right" id="profession_span" style="color: #8c8b8b;margin-right: 10px;">请选择职业</div>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" id="allergy">过敏史：</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" id="medicalHistory">既往病史：</a>
+							</li>
+						</ul>
+					</ul>
+				</form>
+
+			</div>
+
+			<!--<div class="" id="detectionMain">
+				<form>
+					<ul class="" id="libiao3" style="border-top: 1px solid #e3e3e5;position: relative;top: -1px;">
+						<div class="tap-fordata">
+							<div class="tap-click" id="blood_pressure">
+
+							</div>
+						</div>
+						<div class="tap-fordata">
+							<div class="tap-click" id="blood_sugar">
+
+							</div>
+						</div>
+					</ul>
+				</form>
+
+			</div>-->
+
+			<div class="mui-content-padded" style="padding-top: 10%;">
+				<button id="save" class="mui-btn mui-btn-color">保存</button>
+			</div>
+
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/arttmpl.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/art/template-web.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+		<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+		<script type="text/javascript" src="../js/IScard.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+		<script type="text/javascript" src="../js/mui.picker.js"></script>
+		<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+		<script type="text/javascript" src="../../js/qs/qs.immersed.js"></script>
+
+		<script>
+			var JSONMESSAGE = {};
+			var JSOMMESSAGEARRAY = [];
+			var html = '';
+			var sex, profession, blood, relation, allergyHistory, illness = "";
+			var myValue;
+			var longitude, latitude;
+			$("#doctorType").hide();
+			//			var user = JSON.parse(localStorage.getItem("USER"));
+
+			$("#detailMain,#detectionMain,.mui-content-padded").hide();
+			$("#detail").click(function() {
+				$("#base ,#detection").removeClass("change-color");
+				$("#detail").addClass("change-color");
+				$("#detailMain,.mui-content-padded").show();
+				$("#baseMain ,#detectionMain").hide();
+			});
+			var detailMsg = function() {
+				//				console.log(111)
+				$("#base ,#detection").removeClass("change-color");
+				$("#detail").addClass("change-color");
+				$("#detailMain,.mui-content-padded").show();
+				$("#baseMain ,#detectionMain").hide();
+			}
+			$("#base").click(function() {
+				$("#detail ,#detection").removeClass("change-color");
+				$("#base").addClass("change-color");
+				$("#detailMain ,#detectionMain,.mui-content-padded").hide();
+				$("#baseMain").show();
+			});
+			$("#detection").click(function() {
+				$("#detail ,#base").removeClass("change-color");
+				$("#detection").addClass("change-color");
+				$("#detailMain ,#baseMain").hide();
+				$("#detectionMain").show();
+				$(".mui-content-padded").hide();
+
+			})
+
+			mui.plusReady(function() {
+
+				mui.init({
+					keyEventBind: {
+						backbutton: true //打开back按键监听
+					},
+
+				});
+				plus.webview.currentWebview().setStyle({
+					softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+				});
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				//				var self = plus.webview.currentWebview();
+				//				var id = self.ID;
+				//				console.log("id___________>" + id);
+				var id = localStorage.getItem("TOKENID");
+				console.log("用户id-------------》" + id);
+
+				var url = serverAddress + "/api/patient/appgetobjectbyuserid/" + id;
+				var success = function(data) {
+					console.log("健康管理个人进入------------》" + JSON.stringify(data));
+					if(data.result == "success") {
+						var user = data.data;
+						longitude = user.ordergps.coordinates[0];
+						latitude = user.ordergps.coordinates[1];
+						sex = user.gender;
+						if(sex == "1") {
+							$("#women").click();
+						} else {
+							$("#men").click();
+						}
+						if(user.realname) {
+							$("#name").val(user.realname);
+						}
+						if(user.idnumber) {
+							$("#idnumber").val(user.idnumber);
+						}
+						if(user.tel) {
+							$("#phone").val(user.tel);
+						}
+						//						myValue = user.homeaddress
+						console.log(data.data.homeaddress);
+						$("#xiangxiaddress").val(user.homeaddress);
+						//						ac.hide();
+						isme = user.relations;
+						if(isme == "自己") {
+							$("#name,#idnumber,#phone,#women,#men,#xiangxiaddress").attr("disabled", "disabled");
+						} else {
+							$("#name,#idnumber,#phone,#women,#men").removeAttr("disabled");;
+						}
+						relation = user.relations
+						if(relation) {
+							if(relation == "自己") {
+								$("#rerelation_me").hide();
+							} else if(relation == "父子") {
+								$("#father").click();
+							} else if(relation == "母子") {
+								$("#mother").click();
+							} else if(relation == "亲友") {
+								$("#friend").click();
+							}
+						}
+						blood = user.blood;
+
+						if(blood) {
+							if(blood == "A") {
+								$("#A").click();
+							} else if(blood == "B") {
+								$("#B").click();
+							} else if(blood == "O") {
+								$("#O").click();
+							} else if(blood == "AB") {
+								$("#AB").click();
+							}
+						}
+						profession = user.occupation;
+						console.log(profession);
+						if(profession) {
+							if(profession !== "undefined") {
+								$("#profession_span").html(profession);
+							}
+						}
+					}
+				};
+
+				//选择男女
+				$(".gender").click(function() {
+					sex = $(this).val();
+				});
+				//选择关系
+				$(".relation").click(function() {
+					relation = $(this).val();
+				});
+				//选择血型
+				$(".bloodType").click(function() {
+					blood = $(this).val();
+				});
+
+				//选择职业
+				var professionButton = document.getElementById('profession_li');
+				var professionResult = document.getElementById('profession_span');
+
+				professionButton.addEventListener('tap', function(event) {
+					var professionPicker = new mui.PopPicker();
+					professionPicker.setData([{
+						text: '自由职业者'
+					}, {
+						text: '退休人员'
+					}, {
+						text: '个体经营者'
+					}, {
+						text: '技术人员'
+					}, {
+						text: '职员'
+					}, {
+						text: '企业管理者'
+					}, {
+						text: '工人'
+					}, {
+						text: '学生'
+					}]);
+
+					professionPicker.show(function(items) {
+						professionResult.innerText = items[0].text;
+						profession = items[0].text;
+					});
+					mui("body").on("tap", ".mui-poppicker-header>  button", function() {
+						professionPicker.dispose();
+					});
+					mui("body").on("tap", ".mui-backdrop", function(e) {
+						professionPicker.dispose();
+					})
+				}, false);
+
+				//				document.getElementById('xiangxiaddress').onclick = function() {
+				//				//地址
+				//				function G(id) {
+				//					return document.getElementById(id);
+				//				}
+				//				var map = new BMap.Map("l-map");
+				//				map.centerAndZoom("长春", 12); // 初始化地图,设置城市和地图级别。
+				//
+				//				var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+				//					{
+				//						"input": "xiangxiaddress",
+				//						"location": map
+				//					});
+				//
+				//				ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
+				//					var str = "";
+				//					var _value = e.fromitem.value;
+				//					var value = "";
+				//					if(e.fromitem.index > -1) {
+				//						value = _value.province + _value.city + _value.district + _value.street + _value.business;
+				//					}
+				//					str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+				//					console.log("up" + value);
+				//					value = "";
+				//					if(e.toitem.index > -1) {
+				//						_value = e.toitem.value;
+				//						value = _value.province + _value.city + _value.district + _value.street + _value.business;
+				//					}
+				//					console.log("down" + value);
+				//					str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+				//
+				//					//G("searchResultPanel_begin").innerHTML = str;
+				//				});
+				//
+				//				ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+				//					myValue = "";
+				//					var _value = e.item.value;
+				//					myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+				//					localStorage.selectedAddress = myValue;
+				//					//										document.getElementById("xiangxiaddress").value = myValue;
+				//					//G("searchResultPanel_begin").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+				//					localStorage.myvalue = myValue;
+				//					setPlace(myValue);
+				//					console.log('over');
+				//				});
+				commonHttpUtils(url, "get", {}, success, error, true);
+
+				function setPlace(myValue) {
+					console.log('setPlace start.');
+					map.clearOverlays(); //清除地图上所有覆盖物
+					//经度
+					var local = new BMap.LocalSearch(map, { //智能搜索
+						onSearchComplete: function() {
+							console.log('onSearchComplete start.');
+							//								alert(JSON.stringify(local.getResults()) )
+							if(local.getResults().getPoi(0) == undefined) {
+								//								boxMsgText = document.querySelector('#xiangxiaddress');
+								//								boxMsgText.blur();
+								//								mui.toast('请填写到小区名字', {
+								//									type: 'div'
+								//								})
+								plus.nativeUI.toast("请填写到小区名字", {
+									'verticalAlign': ''
+								})
+								return false;
+							}
+							var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+
+							longitude = pp.lng;
+							latitude = pp.lat;
+							console.log("经度" + longitude);
+							console.log("纬度" + latitude);
+							if(longitude == "" || latitude == "") {
+								mui.toast("请选择正确地址");
+								return false;
+							}
+
+						}
+					});
+					local.search(myValue);
+				};
+				//				}
+
+				var sevice_id;
+				var url = serverAddress + "/api/patient/appgetidbyuserid/" + id;
+				var success1 = function(data) {
+					console.log("获取服务对象id-------------》" + JSON.stringify(data));
+					sevice_id = data.data;
+
+				};
+				commonHttpUtils(url, "get", {}, success1, error, true)
+				//过敏史
+				mui(".mui-content").on("click", "#allergy", function() {
+					mui.openWindow({
+						url: 'allergy_history.html',
+						id: 'allergy_history',
+						extras: {
+							ID: sevice_id
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				});
+
+				//既往病史
+				mui(".mui-content").on("click", "#medicalHistory", function() {
+					mui.openWindow({
+						url: 'medical_history.html',
+						id: 'medical_history',
+						extras: {
+							ID: sevice_id
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				});
+
+				//血压
+				$("#blood_pressure").click(function(e) {
+					mui.openWindow({
+						url: './health_data/blood_pressure_last.html',
+						id: 'blood_pressure_last',
+						extras: {
+							ID: id
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				});
+
+				//进入血糖页面
+				$("#blood_sugar").click(function(e) {
+					mui.openWindow({
+						url: "health_data/health_tang.html",
+						id: 'health_tang.html',
+						extras: {
+							ID: id,
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				});
+
+				mui(".mui-content").on("click", "#save", function() {
+					var btnArray = ['确定', '取消'];
+					var data = {}
+					mui.confirm('请确认 填写信息正确', '提示', btnArray, function(e) {
+						if(e.index == 0) {
+							var name = document.getElementById("name").value.trim();
+							var idnumber = document.getElementById("idnumber").value.trim();
+							var phone = document.getElementById("phone").value.trim();
+							var xiangxiaddress = $("#xiangxiaddress").val();
+							var now = new Date();
+							//获取年龄
+							var age1 = parseInt(now.getFullYear()) - parseInt(GetAge(idnumber));
+							if(!name) {
+								mui.toast('请填写姓名')
+								return false;
+							}
+							//判断身份证号码
+							if(idnumber == null || isCardID(idnumber) != true) {
+								mui.toast("身份证号码错误");
+								return false;
+							}
+							if(phone.length != 11) {
+								mui.toast("您输入的手机号号码位数不正确");
+								return false;
+							}
+							var phone_validate = /1[3|5|7|8|9|]\d{9}/; //验证手机号码是否正确
+							if(!phone_validate.test(phone)) {
+								mui.toast('手机号码错误');
+								return false;
+							}
+
+							if(xiangxiaddress == "" || longitude == "" || latitude == "" || longitude == undefined || latitude == undefined) {
+								mui.toast("请选择正确地址");
+								return false;
+							}
+							console.log("经度2 " + longitude);
+							console.log("纬度2 " + latitude);
+
+							data = {
+								idnumber: idnumber,
+								gender: sex,
+								realname: name,
+								tel: phone,
+								age: age1,
+								_id: sevice_id,
+								homeaddress: xiangxiaddress,
+								ordergpslng: longitude,
+								ordergpslat: latitude,
+								blood: blood,
+								relations: relation,
+								occupation: profession
+
+							};
+							console.log("上传数据：" + JSON.stringify(data));
+							var url = serverAddress + "/api/patient/appupdateobject";
+							var sussessdata = function(data) {
+								//服务器返回响应，根据响应结果，分析是否登录成功；
+								console.log("返回结果---------->" + JSON.stringify(data));
+								if(data.result == "success") {
+									mui.toast("修改成功");
+									mui.back();
+									var list = plus.webview.currentWebview().opener();
+									//触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+									list.reload(true);
+
+								} else {
+									mui.toast(data.msg);
+								}
+							}
+							commonHttpUtils(url, "post", data, sussessdata, error, true);
+
+						}
+					})
+
+				});
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>柒拾佳护</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<link rel="stylesheet" href="css/animate/pr_animate.css" />
+		<link rel="stylesheet" href="css/iconfont.css" />
+		<link rel="stylesheet" href="css/main.css?time=" +new Date() />
+		<!--<link rel="stylesheet" href="css/main.css"/>-->
+
+		<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x8wP7ck7pQ4P8UAol2pen8B5"></script>-->
+		<style>
+			ul {
+				font-size: 14px;
+				color: #8f8f94;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+			
+			#kefu {
+				font-size: 0.5rem;
+				line-height: 30px;
+			}
+			
+			header button img {
+				width: 0.3rem;
+			}
+			
+			.mui-bar {
+				box-shadow: 0 0 1px rgba(185, 185, 185, 1);
+			}
+			
+			html,
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.mui-icon .mui-badge {
+				padding: 5px 5px;
+				margin-left: -5px;
+			}
+			
+			.mui-bar-tab .mui-tab-item.mui-active {
+				-webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+				transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+				-webkit-animation: gelatine 0.5s 1;
+				animation: gelatine 0.5s 1;
+				/* -webkit-box-shadow: 0 0 0 2px #cff09e, 0 0 0 4px #ff0364;  
+				  box-shadow: 0 0 0 2px #cff09e, 0 0 0 4px #ff0364;  
+				  -webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);  
+				  transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);  
+				  -webkit-animation: gelatine 0.5s 1;  
+				  animation: gelatine 0.5s 1; */
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav" style="padding-right: 15px;" id="header">
+			<h1 id="title" class="mui-title">柒拾佳护</h1>
+			
+			<button id="login" class="mui-btn  mui-btn-link mui-pull-right">
+				<span id="city_name">登录</span>
+			</button>
+			<button id="set_detail" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="display: none;padding-top: 2px;">
+				<i class="mui-icon mui-icon-gear"></i></button>
+		</header>-->
+
+		<input type="hidden" id="customer_id" />
+
+		<div id="allmap"></div>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="defaultTab" class="mui-tab-item mui-active home" href="subpages/tab-webview-subpage-home.html">
+				<span class="mui-icon iconfont icon-shouye1" id="shouye"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+
+			<a class="mui-tab-item zixun" href="subpages/tab-webview-subpage-service-withVue.html">
+				<span class="mui-icon iconfont icon-jiankang1" id="jiankang"></span>
+				<span class="mui-tab-label">健康教育</span>
+			</a>
+			<a class="mui-tab-item wode" href="subpages/tab-webview-subpage-my.html">
+				<span class="mui-icon iconfont icon-wode" id="wode"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+
+		</nav>
+
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="js/constants.js"></script>
+		<script type="text/javascript" src="js/qs/qs.update.js"></script>
+		<script type="text/javascript" src="js/sdk/lib/md5/spark-md5.js"></script>
+		<script type="text/javascript" src="js/sdk/lib/md5/md5.min.js"></script>
+		<!--<script type="text/javascript" src="js/sdk/lib/base64/base64.js?time="+new Date()></script>-->
+		<script type="text/javascript" src="js/sdk/lib/base64/base64.js"></script>
+
+		<script type="text/javascript" src="js/comfirmConnect.js"></script>
+		<!--描述：设置聊天对象-->
+		<script type="text/javascript" src="js/sdk/webim/common/webim.js"></script>
+		<script type="text/javascript" src="js/sdk/webim/private/index_receive_new_msg.js"></script>
+		<script type="text/javascript" src="js/sdk/webim/common/login.js"></script>
+		<script type="text/javascript" src="js/sdk/webim/common/send_common_msg.js"></script>
+		<script>
+			function resultJsFunction(str, msg, timer) {
+				var data = msg;
+				var desc = timer;
+				var ext = "";
+				var i = plus.webview.getWebviewById("im-chat.html");
+				if(i) {
+					i.evalJS("chatSendCustomMsg('" + data + "','" + desc + "','" + ext + "')");
+				}
+			}
+			localStorage.removeItem("upitem");
+			var subpages = ['subpages/tab-webview-subpage-home.html',
+				'subpages/tab-webview-subpage-service-withVue.html',
+				//				'subpages/tab-webview-subpage-talk-new.html',
+				'subpages/tab-webview-subpage-my.html'
+			];
+			//当前激活选项
+			var activeTab = subpages[0];
+			var title = document.getElementById("title");
+			var targetTab;
+			var longitude = "",
+				latitude = "";
+
+			function preload() {
+
+				var menu_style = {
+					left: "-70%",
+					width: '70%',
+					popGesture: "none",
+					render: "always"
+				};
+
+				if(mui.os.ios) {
+					menu_style.zindex = -1;
+				}
+
+			}
+
+			mui.plusReady(function() {
+
+				if(types[plus.networkinfo.getCurrentType()] == "None connection") {
+					mui.confirm("确认手机是否连接网络！");
+					return false;
+				}
+
+				document.addEventListener("netchange", wainshow, false);
+
+				function wainshow() {
+					if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
+						mui.confirm("确认手机是否连接网络！");
+						return false;
+					}
+				}
+
+				//getPos();
+				getGPS();
+
+				var subpage_style = {
+					top: '0px',
+					bottom: '51px'
+				};
+
+				var aniShow = {};
+				var settings = app.getSettings();
+				//				if(localStorage.getItem("num") == "1") {
+				//					mui.toast("您没有实名认证！");
+				//					mui.openWindow({
+				//						url: "geren_message/d02_geren_message.html",
+				//						id: "d02_geren_message.html"
+				//					});
+				//					localStorage.removeItem("num");
+				//					return false;
+				//				}
+				var self = plus.webview.currentWebview();
+				for(var i = 0; i < 3; i++) {
+					var temp = {};
+					var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+					if(i > 0) {
+						sub.hide();
+					} else {
+						temp[subpages[i]] = "true";
+						mui.extend(aniShow, temp);
+					}
+					self.append(sub);
+				}
+
+				plus.navigator.closeSplashscreen();
+
+				//读取本地存储，检查是否为首次启动
+				//				var showGuide = localStorage.getItem("lauchFlag");
+				var showGuide = plus.storage.getItem("lauchFlag");
+
+				console.log("showGuide" + showGuide);
+				//仅支持竖屏显示
+				plus.screen.lockOrientation("portrait-primary");
+				if(showGuide == "true") {
+					//有值，说明已经显示过了，无需显示1是登陆页面过来的；
+					//关闭splash页面；
+					plus.navigator.closeSplashscreen();
+					plus.navigator.setFullscreen(false);
+					//预加载
+					preload();
+					localStorage.removeItem("lauchFlag");
+				} else {
+					//显示启动导航
+					mui.openWindow({
+						id: 'guide',
+						url: 'guide.html',
+						styles: {
+							popGesture: "none"
+						},
+						show: {
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+					//延迟的原因：优先打开启动导航页面，避免资源争夺
+					setTimeout(function() {
+						//预加载
+						preload();
+					}, 200);
+				}
+
+				var chatId;
+
+				//运行环境从前台切换到后台事件
+				document.addEventListener("pause", onAppPause, false);
+
+				function onAppPause() {
+					localStorage.setItem("pause", "true");
+					console.log("pause");
+				}
+
+				//运行环境从后台切换到前台事件
+				document.addEventListener("resume", onAppReume, false);
+
+				function onAppReume() {
+					localStorage.setItem("pause", "false");
+					console.log("resume");
+					getPos();
+				}
+
+				//上传特定信息
+				function set_specific_message(otherinfo, cdcode) {
+					var specific_messageURL = serverAddress + "/api/baseinfo/commitstaticinfo";
+					var success = function(data) {
+						console.log("specific_message" + JSON.stringify(data));
+					}
+					var userid = (localStorage.getItem('TOKENID') == null ? "" : localStorage.getItem('TOKENID'));
+					var userTEL = (localStorage.getItem('TOKEN') == null ? "" : localStorage.getItem('TOKEN'));
+					var uuid = plus.device.uuid;
+					var os = plus.os.name;
+					var obj = {
+						uuid: uuid,
+						ostype: os,
+						userid: userid,
+						username: userTEL,
+						clienttype: "patient",
+						otherinfo: otherinfo,
+						cityCode: cdcode
+					}
+					console.log("——————————》上传信息：" + JSON.stringify(obj));
+					commonHttpUtils2(specific_messageURL, "post", obj, success, error);
+				}
+				//原生获取GPS
+				function getPos() {
+					//confirmGPS("我们将获取您的GPS信息进行推单操作，以便医护针对您的位置进行服务",'','')
+					plus.geolocation.getCurrentPosition(geoInf, function(e) {
+						console.log("获取位置信息失败：" + e.message);
+						//原生获取不到经纬度，使用百度API
+						getGPS();
+
+					}, {
+						geocode: false
+					});
+					return false;
+				}
+
+				function geoInf(position, otherinfo) {
+
+					var str = "";
+					str += "地址：" + position.addresses + "\n"; //获取地址信息
+					str += "坐标类型：" + position.coordsType + "\n";
+					var timeflag = position.timestamp; //获取到地理位置信息的时间戳；一个毫秒数；
+					str += "时间戳：" + timeflag + "\n";
+					var codns = position.coords; //获取地理坐标信息；
+					var lat = codns.latitude; //获取到当前位置的纬度；
+					str += "纬度：" + lat + "\n";
+					var longt = codns.longitude; //获取到当前位置的经度
+					str += "经度：" + longt + "\n";
+					var alt = codns.altitude; //获取到当前位置的海拔信息；
+					str += "海拔：" + alt + "\n";
+					var accu = codns.accuracy; //地理坐标信息精确度信息；
+					str += "精确度：" + accu + "\n";
+					var altAcc = codns.altitudeAccuracy; //获取海拔信息的精确度；
+					str += "海拔精确度：" + altAcc + "\n";
+					var head = codns.heading; //获取设备的移动方向；
+					str += "移动方向：" + head + "\n";
+					var sped = codns.speed; //获取设备的移动速度；
+					str += "移动速度：" + sped + "\n";
+					var citycode = codns.city;
+					str += "城市编码：" + citycode;
+					console.log(JSON.stringify(position));
+					console.log(str);
+					longitude = position.coords.longitude;
+					latitude = position.coords.latitude;
+					var adcode = "";
+					//获取当前地址城市的CODE
+					$.ajax({
+						url: 'http://api.map.baidu.com/geocoder/v2/?ak=x8wP7ck7pQ4P8UAol2pen8B5&location=' + latitude + ',' + longitude + '&output=json&pois=1',
+						dataType: 'jsonp',
+						callback: 'BMap._rd._cbk43398',
+						success: function(res) {
+							console.log(res);
+							var result = res.result,
+								addressComponent = result.addressComponent;
+							adcode = addressComponent.adcode;
+							adcode = adcode.replace(adcode.charAt(adcode.length - 1), "00");
+							adcode = adcode.substring(0, adcode.length - 3) + "00";
+
+							var coordinates = [];
+							coordinates.push(longitude);
+							coordinates.push(latitude);
+							var gps = {};
+							gps["coordinates"] = coordinates;
+							otherinfo = {
+								gps: gps,
+								type: "Point"
+							}
+							console.log("otherinfo" + JSON.stringify(otherinfo));
+							set_specific_message(otherinfo, adcode);
+						}
+					})
+
+				}
+
+				function getGPS() {
+					if(types[plus.networkinfo.getCurrentType()] != "None connection") {
+
+						$.ajax({
+							url: 'https://api.map.baidu.com/location/ip?ak=Kw7ohrBpxoZxhVOHzWbIy1vDojNXujG5',
+							dataType: 'jsonp',
+							callback: 'BMap._rd._cbk43398',
+							success: function(res) {
+								longitude = res.content.point.y;
+								latitude = res.content.point.x;
+								//alert(longitude);
+								//alert(latitude);
+
+								$.ajax({
+									url: 'http://api.map.baidu.com/geocoder/v2/?ak=x8wP7ck7pQ4P8UAol2pen8B5&location=' + latitude + ',' + longitude + '&output=json&pois=1',
+									dataType: 'jsonp',
+									callback: 'BMap._rd._cbk43398',
+									success: function(res) {
+										//alert('http://api.map.baidu.com/geocoder/v2/?ak=x8wP7ck7pQ4P8UAol2pen8B5&location=' + latitude + ',' + longitude + '&output=json&pois=1')
+										console.log(res);
+										var result = res.result,
+											addressComponent = result.addressComponent;
+										adcode = addressComponent.adcode;
+
+										adcode = adcode.replace(adcode.charAt(adcode.length - 1), "00");
+										adcode = adcode.substring(0, adcode.length - 3) + "00";
+										var coordinates = [];
+										coordinates.push(longitude);
+										coordinates.push(latitude);
+										var gps = {};
+										gps["coordinates"] = coordinates;
+										otherinfo = {
+											gps: gps,
+											type: "Point"
+										}
+										console.log("otherinfo" + JSON.stringify(otherinfo));
+										set_specific_message(otherinfo, adcode);
+									}
+								})
+							}
+						});
+
+						//						// 百度地图API功能
+						//						var map = new BMap.Map("allmap");
+						//						var point = new BMap.Point(116.331398, 39.897445);
+						//						map.centerAndZoom(point, 12);
+						//
+						//						var geolocation = new BMap.Geolocation();
+						//
+						//						geolocation.getCurrentPosition(function(r) {
+						//							if(this.getStatus() == BMAP_STATUS_SUCCESS) {
+						//
+						//								var mk = new BMap.Marker(r.point);
+						//								map.addOverlay(mk);
+						//								map.panTo(r.point);
+						//								console.log('您的位置：' + r.point.lng + ',' + r.point.lat);
+						//								longitude = r.point.lng;
+						//								latitude = r.point.lat;
+
+						//							} else {
+						//								console.log('获取位置失败' + this.getStatus());
+						//							}
+						//						}, {
+						//							enableHighAccuracy: true
+						//						})
+					} else {
+						mui.toast("请确认网络开启");
+					}
+					//关于状态码
+					//BMAP_STATUS_SUCCESS	检索成功。对应数值“0”。
+					//BMAP_STATUS_CITY_LIST	城市列表。对应数值“1”。
+					//BMAP_STATUS_UNKNOWN_LOCATION	位置结果未知。对应数值“2”。
+					//BMAP_STATUS_UNKNOWN_ROUTE	导航结果未知。对应数值“3”。
+					//BMAP_STATUS_INVALID_KEY	非法密钥。对应数值“4”。
+					//BMAP_STATUS_INVALID_REQUEST	非法请求。对应数值“5”。
+					//BMAP_STATUS_PERMISSION_DENIED	没有权限。对应数值“6”。(自 1.1 新增)
+					//BMAP_STATUS_SERVICE_UNAVAILABLE	服务不可用。对应数值“7”。(自 1.1 新增)
+					//BMAP_STATUS_TIMEOUT	超时。对应数值“8”。(自 1.1 新增)
+
+				}
+
+				document.addEventListener("error", function() {
+					mui.openWindow({
+						url: './geren_message/error.html',
+						id: 'error.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						},
+						extras: {
+
+						}
+					});
+				});
+
+				plus.navigator.setStatusBarStyle('light');
+				plus.runtime.setBadgeNumber(0);
+
+				// 获取本地应用资源版本号
+				plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+					console.log("版本号:" + inf.version);
+					wgtVer = inf.version;
+					//					alert(localStorage.getItem("TOKENID"));
+					checkUpdateForIndex(wgtVer, function() {
+						//commonHttpUtils(serverAddress + showdetailUrl, "get", {}, sussess, error);
+					});
+				});
+				//plus.push.setAutoNotification(true);
+				//				plus.push.addEventListener("click", function(msg) {
+				//					if(msg.content == "新消息") { //判断是聊天消息
+				//						mui.openWindow({
+				//							url: './familydoctor/message_list.html',
+				//							id: 'familydoctormessage_list.html',
+				//							show: {
+				//								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+				//								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				//							},
+				//							waiting: {
+				//								autoShow: true //自动显示等待框，默认为true
+				//							},
+				//							extras: {
+				//
+				//							}
+				//						});
+				//					} else {
+				//						var data1 = JSON.parse(msg.content);
+				//						//tc="000000"是抢单  "111111"是退单
+				//						if(data1.tc == "000000") {
+				//							//alert("系统根据您的情况，为您匹配" + data1.name + "护士，10分钟之内，医护人员会主动联系您");
+				//							mui.openWindow({
+				//								id: 'c02_order_xiangqing.html',
+				//								url: 'order/c02_order_xiangqing.html',
+				//								show: {
+				//									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+				//									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				//								},
+				//								waiting: {
+				//									autoShow: true //自动显示等待框，默认为true
+				//								},
+				//								extras: {
+				//									orderid: data1.orderid //扩展参数
+				//								}
+				//							});
+				//						} else if(data1.tc == "000003") {
+				//							var template = plus.webview.getWebviewById("subpages/tab-webview-subpage-talk.html");
+				//							template.reload();
+				//						}
+				//					}
+				//
+				//				});
+				plus.push.addEventListener("click", function(msg) {
+					if(localStorage.getItem("TOKENID") == null) {
+						mui.openWindow({
+							url: "login/login.html",
+							id: 'login/login.html'
+						});
+						return false;
+					}
+
+					if(msg.content == "新消息") { //判断是聊天消息
+						plus.webview.getLaunchWebview().show()
+						setItemActive("2", "1");
+					} else {
+						if(plus.os.name == "iOS") {
+							var data1 = null;
+							if(typeof(msg.payload) === 'string') {
+								msg.payload = JSON.parse(msg.payload)
+							}
+							data1 = msg.payload;
+
+							//							alert(data1);
+							//							alert("receive" + data1.tc);
+							//							alert("receive" + data1.noticeId);
+							//							alert("click" + typeof(data1.data));
+
+							//							if(msg.payload && msg.payload.localflag && msg.payload.localflag == "LocalMsg") {
+							//								alert("click1" + JSON.stringify(msg.payload));
+							//								data1 = msg.payload;
+							//							} else {
+							//								alert("click2" + JSON.stringify(msg));
+							//								data1 = msg.payload;
+							//								alert("click3" + data1);
+							//							}
+
+							if(data1.tc == "000000") {
+								//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_order"));
+								localStorage.setItem("red_70", "red_dian_order");
+								if(data1.servicetype == "0") {
+									mui.openWindow({
+										id: 'c02_order_xiangqing.html',
+										url: 'order/c02_order_xiangqing.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										},
+										extras: {
+											orderid: data1.orderid //扩展参数
+										}
+									});
+								} else if(data1.servicetype == "1") {
+									mui.openWindow({
+										id: 'online_answer_order_xiangqing.html',
+										url: 'online_answer_order/online_answer_order_xiangqing.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										},
+										extras: {
+											orderid: data1.orderid //扩展参数
+										}
+									});
+								}
+							} else if(data1.tc == "000003") {
+								var template = plus.webview.getWebviewById("subpages/tab-webview-subpage-talk-new.html");
+								template.reload();
+							} else if(data1.tc == "000004") {
+								mui.openWindow({
+									id: 'd07_my_account.html',
+									url: 'geren_message/d07_my_account.html',
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										TAB: '3' //扩展参数
+									}
+								});
+							} else if(data1.tc == "000005") {
+								localStorage.setItem("red_70", "red_dian_shequ");
+								//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_shequ"));
+								mui.openWindow({
+									id: 'info_any_xiangqing.html',
+									url: 'geren_message/info_any_xiangqing.html',
+									styles: returnstyleTitle("info_any_xiangqing.html", "通知详情"),
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										dataId: data1.noticeId
+									}
+								});
+							} else if(data1.tc == "000006") {
+								localStorage.setItem("red_70", "red_dian_70");
+								//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_70"));
+								mui.openWindow({
+									url: "geren_message/info_any_xiangqing_withComponents.html",
+									id: "info_any_xiangqing_withComponents.html",
+									styles: returnstyleTitle("info_any_xiangqing_withComponents.html", "70精选详情"),
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										dataId: data1.selectedId
+									}
+								});
+
+							}
+
+						} else if(plus.os.name == "Android") {
+							var data1 = msg.payload;
+							//							alert(data1);
+							//							alert("click" + data1.tc);
+							//							alert("click" + data1.data);
+							//							alert("click" + typeof(data1.data));
+
+							if(data1.tc == "000000") {
+								//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_order"));
+								localStorage.setItem("red_70", "red_dian_order");
+								if(data1.servicetype == "0") {
+									mui.openWindow({
+										id: 'c02_order_xiangqing.html',
+										url: 'order/c02_order_xiangqing.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										},
+										extras: {
+											orderid: data1.orderid //扩展参数
+										}
+									});
+								} else if(data1.servicetype == "1") {
+									mui.openWindow({
+										id: 'online_answer_order_xiangqing.html',
+										url: 'online_answer_order/online_answer_order_xiangqing.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										},
+										extras: {
+											orderid: data1.orderid //扩展参数
+										}
+									});
+								}
+							} else if(data1.tc == "000003") {
+								var template = plus.webview.getWebviewById("subpages/tab-webview-subpage-talk-new.html");
+								template.reload();
+							} else if(data1.tc == "000004") {
+								mui.openWindow({
+									id: 'd07_my_account.html',
+									url: 'geren_message/d07_my_account.html',
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										TAB: '3' //扩展参数
+									}
+								});
+							} else if(data1.tc == "000005") {
+								localStorage.setItem("red_70", "red_dian_shequ");
+								//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_shequ"));
+								mui.openWindow({
+									id: 'info_any_xiangqing.html',
+									url: 'geren_message/info_any_xiangqing.html',
+									styles: returnstyleTitle("info_any_xiangqing.html", "通知详情"),
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										dataId: data1.noticeId
+									}
+								});
+							} else if(data1.tc == "000006") {
+								localStorage.setItem("red_70", "red_dian_70");
+								//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_70"));
+								mui.openWindow({
+									url: "geren_message/info_any_xiangqing_withComponents.html",
+									id: "info_any_xiangqing_withComponents.html",
+									styles: returnstyleTitle("info_any_xiangqing_withComponents.html", "70精选详情"),
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										dataId: data1.selectedId
+									}
+								});
+
+							}
+
+							return;
+						}
+					}
+
+				});
+
+				// 接收推送消息
+				plus.push.addEventListener("receive", function(msg) {
+					if(localStorage.getItem("TOKENID") == null) {
+						mui.openWindow({
+							url: "login/login.html",
+							id: 'login/login.html'
+						});
+						return false;
+					}
+					changeReddian();
+					plus.webview.getWebviewById('subpages/tab-webview-subpage-talk-new.html').reload(true);
+					if(msg.content == "新消息") { //判断是聊天消息
+						return;
+					} else {
+						if(plus.os.name == "Android") {
+							var data1 = JSON.parse(msg.payload);
+							//							alert(data1);
+							//							alert("receive" + data1.tc);
+							//							alert("receive" + data1.noticeId);
+
+							if(data1._msgType && data1._msgType == "nf") {
+								if(data1.tc == "000000") {
+									localStorage.setItem("red_70", "red_dian_order");
+									//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_order"));
+									if(data1.servicetype == "0") {
+										mui.openWindow({
+											id: 'c02_order_xiangqing.html',
+											url: 'order/c02_order_xiangqing.html',
+											show: {
+												autoShow: false, //页面loaded事件发生后自动显示，默认为true
+												event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+											},
+											waiting: {
+												autoShow: true //自动显示等待框，默认为true
+											},
+											extras: {
+												orderid: data1.orderid //扩展参数
+											}
+										});
+									} else if(data1.servicetype == "1") {
+										mui.openWindow({
+											id: 'online_answer_order_xiangqing.html',
+											url: 'online_answer_order/online_answer_order_xiangqing.html',
+											show: {
+												autoShow: false, //页面loaded事件发生后自动显示，默认为true
+												event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+											},
+											waiting: {
+												autoShow: true //自动显示等待框，默认为true
+											},
+											extras: {
+												orderid: data1.orderid //扩展参数
+											}
+										});
+									}
+								} else if(data1.tc == "000004") {
+									mui.openWindow({
+										id: 'd07_my_account.html',
+										url: 'geren_message/d07_my_account.html',
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										},
+										extras: {
+											TAB: '3' //扩展参数
+										}
+									});
+								} else if(data1.tc == "000005") {
+									localStorage.setItem("red_70", "red_dian_shequ");
+									//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_shequ"));
+									mui.openWindow({
+										id: 'info_any_xiangqing.html',
+										url: 'geren_message/info_any_xiangqing.html',
+										styles: returnstyleTitle("info_any_xiangqing.html", "通知详情"),
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										},
+										extras: {
+											dataId: data1.noticeId
+										}
+									});
+								} else if(data1.tc == "000006") {
+									localStorage.setItem("red_70", "red_dian_70");
+									//plus.webview.getWebviewById("tab-webview-subpage-talk-new.html").evalJS(changeReddian("red_dian_70"));
+									mui.openWindow({
+										url: "geren_message/info_any_xiangqing_withComponents.html",
+										id: "info_any_xiangqing_withComponents.html",
+										styles: returnstyleTitle("info_any_xiangqing_withComponents.html", "70精选详情"),
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										},
+										extras: {
+											dataId: data1.selectedId
+										}
+									});
+
+								}
+								return;
+							}
+
+						} else if(plus.os.name == "iOS") {
+
+							if(typeof(msg.payload) === 'string') {
+								msg.payload = JSON.parse(msg.payload)
+							}
+							if(msg.payload && msg.payload.localflag && msg.payload.localflag == "LocalMsg") {
+								return;
+							}
+
+							var data1 = msg.payload;
+							data1.localflag = "LocalMsg"
+
+							if(msg.payload._title) {
+								plus.push.createMessage(msg.payload._title, JSON.stringify(data1), null);
+							} else {
+								plus.push.createMessage("柒拾佳护健康管理", data1, null);
+							}
+						}
+					}
+					//tc="000000"是抢单  ,"111111"是退单,"000003"是消息,"000004"是优惠券，"000005"是社区消息，servicetype=0,正常单子，servicetyp=1,报告解读
+				});
+
+				mui.oldBack = mui.back;
+				var backButtonPress = 0;
+				mui.back = function(event) {
+					backButtonPress++;
+					localStorage.removeItem("lauchFlag");
+					if(backButtonPress > 1) {
+						plus.runtime.quit();
+					} else {
+						plus.storage.removeItem("roster");
+						plus.nativeUI.toast('再按一次退出应用');
+					}
+					setTimeout(function() {
+						backButtonPress = 0;
+					}, 1000);
+					return false;
+				};
+
+				//选项卡点击事件
+				mui('.mui-bar-tab').on('tap', 'a', function(e) {
+					if(types[plus.networkinfo.getCurrentType()] == "None connection") {
+						mui.openWindow({
+							id: 'error.html',
+							url: 'geren_message/error.html',
+							waiting: {
+								autoShow: false
+							}
+						});
+						return false;
+					}
+
+					targetTab = this.getAttribute('href');
+					if(targetTab == activeTab) {
+						return;
+					}
+
+					if(targetTab == "subpages/tab-webview-subpage-home.html") {
+						if($("#wode").hasClass("icon-wode1")) {
+							$("#wode").removeClass("icon-wode1").addClass("icon-wode");
+						}
+						if($("#jiankang").hasClass("icon-jiankang")) {
+							$("#jiankang").removeClass("icon-jiankang").addClass("icon-jiankang1");
+						}
+						$(this).children("#shouye").removeClass("icon-shouye").addClass("icon-shouye1");
+						plus.webview.getWebviewById(targetTab).reload(true);
+
+//						var id = localStorage.getItem("TOKENID");
+//						var sussess = function(data) {
+//							console.log("ddddddeeeee_main" + JSON.stringify(data));
+//							//服务器返回响应，根据响应结果，分析是否登录成功；
+//							if(data.result == "success") {
+//								isshiminghoutai = data.data.idapprove
+//								console.log(data.data.node);
+//								qystatus = data.data.node;
+////								alert("main" + qystatus);
+//								if(localStorage.getItem("qystatus") != data.data.node) {
+//									
+//									plus.webview.getWebviewById(targetTab).reload(true);
+//								}
+//
+//								localStorage.setItem("qystatus", data.data.node);
+//								var i = plus.webview.getWebviewById("subpages/tab-webview-subpage-home.html");
+//								if(i) {
+//									//alert("main_eval")
+//									//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+////									plus.webview.getWebviewById(targetTab).reload(true);
+////									i.reload(true);
+//									i.evalJS("updatestatus()");
+//									//						mui.fire(i, 'refresh');
+//								}
+//
+//							}
+//						};
+//						var url = serverAddress + "/api/patient/getmyinfo/" + id;
+//						if(id) {
+//							commonHttpUtils(url, "get", {}, sussess, error, false);
+//						}
+
+					}
+					if(targetTab == "subpages/tab-webview-subpage-service-withVue.html") {
+						if($("#wode").hasClass("icon-wode1")) {
+							$("#wode").removeClass("icon-wode1").addClass("icon-wode");
+						}
+						if($("#shouye").hasClass("icon-shouye1")) {
+							$("#shouye").removeClass("icon-shouye1").addClass("icon-shouye");
+						}
+						$(this).children("#jiankang").removeClass("icon-jiankang1").addClass("icon-jiankang");
+					}
+					if(targetTab == "subpages/tab-webview-subpage-talk-new.html") {
+						if(localStorage.getItem("TOKENID") == null) {
+							mui.openWindow({
+								url: "login/login.html",
+								id: 'login/login.html'
+							});
+							return false;
+						}
+						plus.webview.getWebviewById(targetTab).reload(true);
+						changeReddian_X();
+					}
+
+					if(targetTab == "subpages/tab-webview-subpage-my.html") {
+						if($("#shouye").is(".icon-shouye1")) {
+							$("#shouye").removeClass("icon-shouye1").addClass("icon-shouye");
+						}
+						if($("#jiankang").hasClass("icon-jiankang")) {
+							$("#jiankang").removeClass("icon-jiankang").addClass("icon-jiankang1");
+						}
+						$(this).children("#wode").removeClass("icon-wode").addClass("icon-wode1");
+
+						if(localStorage.getItem("TOKENID") == null) {
+							mui.openWindow({
+								url: "login/login.html",
+								id: 'login/login.html'
+
+							});
+							return false;
+						}
+
+						plus.webview.getWebviewById(targetTab).reload(true);
+					}
+
+					//显示目标选项卡
+					//若为iOS平台或非首次显示，则直接显示
+					if(mui.os.ios || aniShow[targetTab]) {
+						plus.webview.show(targetTab);
+						plus.nativeUI.closeWaiting();
+					} else {
+						//否则，使用fade-in动画，且保存变量
+						var temp = {};
+						temp[targetTab] = "true";
+						mui.extend(aniShow, temp);
+						plus.webview.show(targetTab, "fade-in", 300);
+						plus.nativeUI.closeWaiting();
+					}
+					//隐藏当前;
+					plus.webview.hide(activeTab);
+					//更改当前活跃的选项卡
+					activeTab = targetTab;
+				});
+
+			});
+			//开始登录sdk并监听
+			var startListeners = function() {
+				webim.login(webimLoginInfo, listeners, {},
+					function(resp) {},
+					function(err) {}
+				);
+			}
+			//结束登录sdk并取消监听
+			var endListeners = function() {
+				webim.logout();
+			}
+			this.startListeners();
+
+			var setItemActive = function(itemdown, itemup) {
+				//更换标题
+				//title.innerHTML = "订单";
+				var status = itemdown;
+				var upstatus = itemup;
+				localStorage.setItem("upitem", upstatus);
+				localStorage.setItem("upitem_talk", upstatus);
+
+				mui.fire(plus.webview.getWebviewById('subpages/tab-webview-subpage-order.html'), 'orderend', {
+					UPSTATUS: upstatus
+				});
+				mui.fire(plus.webview.getWebviewById('subpages/tab-webview-subpage-talk-new.html'), 'orderend', {
+					UPSTATUS: upstatus
+				});
+				targetTab = subpages[status];
+
+				if(targetTab != activeTab) {
+
+					if(status == 2) {
+						document.querySelector(".home").setAttribute("class", "mui-tab-item home");
+						document.querySelector(".xinxi").setAttribute("class", "mui-tab-item xinxi mui-active");
+						document.querySelector(".wode").setAttribute("class", "mui-tab-item wode");
+						document.querySelector(".zixun").setAttribute("class", "mui-tab-item zixun");
+						//						mui.trigger(document.querySelector(".xinxi"), 'touchstart');
+						//						mui.trigger(document.querySelector(".xinxi"), 'tap');
+					}
+					plus.webview.show(targetTab);
+					plus.webview.hide(activeTab);
+					plus.webview.getWebviewById(targetTab).reload(true);
+					//更改当前活跃的选项卡
+					activeTab = targetTab;
+				}
+
+				plus.webview.getWebviewById("subpages/tab-webview-subpage-talk-new.html").reload(true);
+			};
+
+			var setItemActiveMain = function() {
+
+				var defaultTab = document.getElementById("defaultTab");
+				//模拟首页点击
+				var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+				if(defaultTab !== current) {
+					current.classList.remove('mui-active');
+					defaultTab.classList.add('mui-active');
+				}
+				activeTab = current;
+				targetTab = subpages[0];
+				mui.trigger(defaultTab, 'tap');
+			};
+
+			var changeReddian = function() {
+				$("#red_dian").show();
+			}
+			var changeReddian_X = function() {
+				$("#red_dian").hide();
+			}
+			$("#login").click(function(e) {
+				mui.openWindow({
+					url: "login/login.html",
+					id: 'login/login.html'
+				});
+			})
+		</script>
+	</body>
+
+</html>

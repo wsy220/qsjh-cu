@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>服务项目分类</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../js/qs/qs.common.new.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<style>
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #FFFFFF;
+				height: 55px;
+				text-align: center;
+				padding-top: 10px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 55px;
+			}
+			
+			.widthdaxiao {
+				width: 15%;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar {
+				background-color: #40ccd2;
+			}
+			
+			.mui-segmented-control {
+				font-size: 12px;
+				font-weight: 400;
+				position: relative;
+				display: table;
+				overflow: hidden;
+				width: 100%;
+				table-layout: fixed;
+				border: 1px solid #007aff;
+				border-radius: 3px;
+				background-color: transparent;
+				-webkit-touch-callout: none;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #40ccd2;
+				font-weight: bold;
+				font-size: 15px;
+			}
+			
+			.mui-scroll-wrapper {
+				bottom: 5px;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-icon img {
+				max-width: 0.9rem !important;
+				/*max-width: 50% !important;*/
+				
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 10px 10px;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 14px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: #EEEEEE;
+			}
+			
+			.LIimage img {
+				width: 0.5rem !important;
+				margin-right: 10px;
+				vertical-align: bottom;
+			}
+			
+			.mui-control-content {
+				height: 150px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				line-height: 1.2;
+			}
+		</style>
+	</head>
+
+	<body onload="init()">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">服务项目</h1>
+		</header>
+
+		<div id="refreshContainer" class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active all" id="all" href="#item1mobile">
+						上门护理
+					</a>
+					<a class="mui-control-item daifukuan" id="daifukuan" href="#item2mobile">
+						上门康复
+					</a>
+					<a class="mui-control-item daiqueren" id="daiqueren" href="#item3mobile">
+						上门陪诊
+					</a>
+
+				</div>
+				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"></div>-->
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroller1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<!--<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>-->
+								<ul class="mui-table-view" id="up_xianshi_item1mobile" style="display: none;">
+									<li class="mui-table-view-cell"><span class="LIimage"><img src="../images/rmff.png"></span><span id="up_name">热门服务</span></li>
+								</ul>
+
+								<div class="item2_2_item1mobile">
+									<script type="text/template" id="radio-tigan1">
+										<ul class="mui-table-view mui-grid-view mui-grid-9">
+											<% for(var i in record){ var item=record[i];%>
+											<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+												<a href="#">
+													<span class="mui-icon"><img class="qs-img-lazyload" src=<%=serviceAddress+"/"+item.icon%> data-lazyload=<%=serviceAddress+"/"+item.icon%>></span>
+													<div class="mui-media-body">
+														<%=item.name%>
+													</div>
+													<input type="hidden" value="<%=item._id%>" id="idhidden" />
+												</a>
+											</li>
+											<%}%>
+										</ul>
+									</script>
+								</div>
+								<div class="item1_1_item1mobile m-rem2">
+									<script type="text/template" id="radio-tigan1">
+										<ul class="mui-table-view mui-grid-view mui-grid-9">
+											<% for(var i in record){ var item=record[i];%>
+											<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+												<a href="#">
+													<span class="mui-icon"><img class="qs-img-lazyload" src=<%=serviceAddress+"/"+item.icon%> data-lazyload=<%=serviceAddress+"/"+item.icon%>></span>
+													<div class="mui-media-body">
+														<%=item.name%>
+													</div>
+													<input type="hidden" value="<%=item._id%>" id="idhidden" />
+												</a>
+											</li>
+											<%}%>
+										</ul>
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroller2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view" id="up_xianshi_item2mobile" style="display: none;">
+									<li class="mui-table-view-cell"><span class="LIimage"><img src="../images/rmff.png"></span><span id="up_name">热门服务</span></li>
+								</ul>
+
+								<div class="item2_2_item2mobile">
+									<script type="text/template" id="radio-tigan1">
+										<ul class="mui-table-view mui-grid-view mui-grid-9">
+											<% for(var i in record){ var item=record[i];%>
+											<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+												<a href="#">
+													<span class="mui-icon"><img class="qs-img-lazyload" src=<%=serviceAddress+"/"+item.icon%> data-lazyload=<%=serviceAddress+"/"+item.icon%>></span>
+													<div class="mui-media-body">
+														<%=item.name%>
+													</div>
+													<input type="hidden" value="<%=item._id%>" id="idhidden" />
+												</a>
+											</li>
+											<%}%>
+										</ul>
+									</script>
+								</div>
+								<div class="item1_1_item2mobile m-rem2">
+									<script type="text/template" id="radio-tigan1">
+										<ul class="mui-table-view mui-grid-view mui-grid-9">
+											<% for(var i in record){ var item=record[i];%>
+											<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+												<a href="#">
+													<span class="mui-icon"><img class="qs-img-lazyload" src=<%=serviceAddress+"/"+item.icon%> data-lazyload=<%=serviceAddress+"/"+item.icon%>></span>
+													<div class="mui-media-body">
+														<%=item.name%>
+													</div>
+													<input type="hidden" value="<%=item._id%>" id="idhidden" />
+												</a>
+											</li>
+											<%}%>
+										</ul>
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="item3mobile" class="mui-slider-item mui-control-content">
+						<div id="scroller3" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<div class="mui-scroll">
+									<ul class="mui-table-view" id="up_xianshi_item3mobile" style="display: none;">
+										<li class="mui-table-view-cell"><span class="LIimage"><img src="../images/rmff.png"></span><span id="up_name">热门服务</span></li>
+									</ul>
+
+									<div class="item2_2_item3mobile">
+										<script type="text/template" id="radio-tigan1">
+											<ul class="mui-table-view mui-grid-view mui-grid-9">
+												<% for(var i in record){ var item=record[i];%>
+												<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+													<a href="#">
+														<span class="mui-icon"><img class="qs-img-lazyload" src=<%=serviceAddress+"/"+item.icon%> data-lazyload=<%=serviceAddress+"/"+item.icon%>></span>
+														<div class="mui-media-body">
+															<%=item.name%>
+														</div>
+														<input type="hidden" value="<%=item._id%>" id="idhidden" />
+													</a>
+												</li>
+												<%}%>
+											</ul>
+										</script>
+									</div>
+									<div class="item1_1_item3mobile m-rem2">
+										<script type="text/template" id="radio-tigan1">
+											<ul class="mui-table-view mui-grid-view mui-grid-9">
+												<% for(var i in record){ var item=record[i];%>
+												<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+													<a href="#">
+														<span class="mui-icon"><img class="qs-img-lazyload" src=<%=serviceAddress+"/"+item.icon%> data-lazyload=<%=serviceAddress+"/"+item.icon%>></span>
+														<div class="mui-media-body">
+															<%=item.name%>
+														</div>
+														<input type="hidden" value="<%=item._id%>" id="idhidden" />
+													</a>
+												</li>
+												<%}%>
+											</ul>
+										</script>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/mui.pullToRefresh.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script>
+		var item_name = '';
+		var record_1 = [];
+		var record_2 = [];
+		mui.init({
+			swipeBack: false, //启用右滑关闭功能
+		});
+
+		function init() {
+			url1 = serverAddress + "/api/item/appitemlist/Nursing" + "/all";
+			url2 = serverAddress + "/api/item/appitemlist/Nursing" + "/hot";
+			processListActive(url1, url2, "item1mobile");
+
+		}
+
+		function processListActive(url1, url2, witchitem) {
+			switch(witchitem) {
+				case "item1mobile":
+					$("#up_name").html("热门服务");
+					$("#up_xianshi_item1mobile").css("display", "block");
+
+					var success1 = function(data) {
+						console.log(JSON.stringify(data));
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						//					if(witchitem=="item1mobile")
+						console.log(witchitem);
+						if(data.length == 0) {
+							document.querySelector(".item1_1_item1mobile").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+//							document.querySelector(".item1_1_item1mobile").hide();
+							//plus.nativeUI.closeWaiting();
+						}
+						record_1 = data;
+						var str = template('radio-tigan1', {
+							"record": record_1,
+							"serviceAddress": serverAddress
+						});
+						document.querySelector(".item1_1_item1mobile").innerHTML = str;
+
+					};
+
+					commonHttpUtilsNoWaiting(url1, "get", {}, success1, error, true);
+
+					var success2 = function(data) {
+						console.log(JSON.stringify(data));
+						if(data.length == 0) {
+							document.querySelector(".item2_2_item1mobile").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							$("#up_xianshi_item1mobile").hide();
+							$(".item2_2_item1mobile").hide();
+							//plus.nativeUI.closeWaiting();
+						} else {
+							record_1 = data;
+							var str = template('radio-tigan1', {
+								"record": record_1,
+								"serviceAddress": serverAddress
+							});
+							document.querySelector(".item2_2_item1mobile").innerHTML = str;
+
+						}
+					};
+					commonHttpUtilsNoWaiting(url2, "get", {}, success2, error, true);
+					break;
+				case "item2mobile":
+					$("#up_name").html("热门服务");
+					$("#up_xianshi_item2mobile").css("display", "block");
+
+					var success1 = function(data) {
+						console.log(JSON.stringify(data));
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						//					if(witchitem=="item1mobile")
+						console.log(witchitem);
+						if(data.length == 0) {
+							document.querySelector(".item1_1_item2mobile").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							//plus.nativeUI.closeWaiting();
+						}
+						record_1 = data;
+						var str = template('radio-tigan1', {
+							"record": record_1,
+							"serviceAddress": serverAddress
+						});
+						document.querySelector(".item1_1_item2mobile").innerHTML = "";
+						document.querySelector(".item1_1_item2mobile").innerHTML = str;
+
+					};
+
+					commonHttpUtilsNoWaiting(url1, "get", {}, success1, error, true);
+
+					var success2 = function(data) {
+						console.log(JSON.stringify(data));
+						if(data.length == 0) {
+							document.querySelector(".item2_2_item2mobile").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							$("#up_xianshi_item2mobile").hide();
+							$(".item2_2_item2mobile").hide();
+							//plus.nativeUI.closeWaiting();
+						} else {
+							record_1 = data;
+							var str = template('radio-tigan1', {
+								"record": record_1,
+								"serviceAddress": serverAddress
+							});
+							document.querySelector(".item2_2_item2mobile").innerHTML = "";
+							document.querySelector(".item2_2_item2mobile").innerHTML = str;
+
+						}
+					};
+					commonHttpUtilsNoWaiting(url2, "get", {}, success2, error, true);
+					break;
+
+				case "item3mobile":
+					var success1 = function(data) {
+						console.log("item3mobile" + JSON.stringify(data));
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						//					if(witchitem=="item1mobile")
+						console.log(witchitem);
+						if(data.length == 0) {
+							document.querySelector(".item1_1_item3mobile").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+							//plus.nativeUI.closeWaiting();
+						}
+						record_1 = data;
+						var str = template('radio-tigan1', {
+							"record": record_1,
+							"serviceAddress": serverAddress
+						});
+						document.querySelector(".item1_1_item3mobile").innerHTML = "";
+						document.querySelector(".item1_1_item3mobile").innerHTML = str;
+					};
+					commonHttpUtilsNoWaiting(url1, "get", {}, success1, error, true);
+					break;
+			}
+
+		}
+		mui.plusReady(function() {
+
+			mui("#scroller1").scroll({
+				indicators: true //是否显示滚动条
+			});
+			mui("#scroller2").scroll({
+				indicators: true //是否显示滚动条
+			});
+			mui("#scroller3").scroll({
+				indicators: true //是否显示滚动条
+			});
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				document.querySelector(".mui-bar-nav~.mui-content .mui-slider.mui-fullscreen").style.top = topoffset;
+			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			mui('.mui-slider').slider().setStopped(true);
+
+			var defaultTab = document.querySelector(".all");
+			var current = document.querySelector("#sliderSegmentedControl>.mui-control-item.mui-active");
+
+			// 刷新页面
+			window.addEventListener('refresh', function(e) {
+				location.reload();
+				return true;
+			});
+
+			mui("#sliderSegmentedControl").on("tap", "a", function(event) {
+				var orderId = this.getAttribute("href");
+				var url1 = "",
+					url2 = "";
+
+				switch(orderId) {
+					case "#item1mobile":
+						{
+							url1 = serverAddress + "/api/item/appitemlist/Nursing" + "/all";
+							url2 = serverAddress + "/api/item/appitemlist/Nursing" + "/hot";
+							processListActive(url1, url2, "item1mobile");
+							break;
+						}
+					case "#item2mobile":
+						{
+							url1 = serverAddress + "/api/item/appitemlist/Recovered" + "/all";
+							url2 = serverAddress + "/api/item/appitemlist/Recovered" + "/hot";
+							processListActive(url1, url2, "item2mobile");
+							break;
+						}
+					case "#item3mobile":
+						{
+							url1 = serverAddress + "/api/item/appitemlist/Comprehensive" + "/all";
+							url2 = serverAddress + "/api/item/appitemlist/Comprehensive" + "/all";
+							processListActive(url1, url2, "item3mobile");
+
+						}
+						break;
+
+				}
+			});
+
+			mui("#up_jingtai").on("tap", "a", function(e) {
+				mui.openWindow({
+					id: 'tl_bank_pay.html',
+					url: '../document/tl_bank_pay.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					}
+				});
+			})
+
+			mui("div[class*='item']").on("tap", "a", function(e) {
+
+				var item_name_xiangqing = $(this).children().eq(1).html();
+				var item_name_id = $(this).children().eq(2).val();
+				console.log(item_name_xiangqing);
+				console.log(item_name_id);
+				mui.openWindow({
+					//					id: 'a015_item_xiangqing.html',
+					//					url: '../order/a015_item_xiangqing.html',
+					id: 'a015_item_xiangqing_withVue.html',
+					url: '../order/a015_item_xiangqing_withVue.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					extras: {
+						biaoshi: "zhengchang", //在下单时做个标识，如果是"zhengchang"就是正常下单，"yihu"就是选择医护下单
+						ITEM_NAME: item_name_xiangqing,
+						ITEM_NAME_ID: item_name_id
+					}
+				});
+				//				var sevice_item_xiangqing = plus.webview.getWebviewById('a015_item_xiangqing.html');
+				var sevice_item_xiangqing = plus.webview.getWebviewById('a015_item_xiangqing_withVue.html');
+
+				sevice_item_xiangqing.addEventListener('loaded', function() {
+					mui.fire(sevice_item_xiangqing, "sevice_item_xiangqing", {
+						ITEM_NAME: item_name_xiangqing,
+						ITEM_NAME_ID: item_name_id
+					});
+				});
+
+			});
+
+		});
+	</script>
+
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>个性服务包</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<style>
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			/* DEMO 3 */
+			
+			.wrapper-dropdown-3 {
+				/* Size and position */
+				position: relative;
+				width: 25%;
+				margin: 0 auto;
+				padding: 10px;
+				/* Styles */
+				background: #fff;
+				border-radius: 7px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
+				cursor: pointer;
+				outline: none;
+				/* Font settings */
+				font-weight: bold;
+				color: #8AA8BD;
+				font-size: 12px;
+			}
+			
+			.wrapper-dropdown-3:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: 15px;
+				top: 50%;
+				margin-top: -3px;
+				border-width: 6px 6px 0 6px;
+				border-style: solid;
+				border-color: #8aa8bd transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown {
+				/* Size & position */
+				position: absolute;
+				top: 140%;
+				left: 0;
+				right: 0;
+				/* Styles */
+				background: white;
+				border-radius: inherit;
+				border: 1px solid rgba(0, 0, 0, 0.17);
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				font-weight: normal;
+				-webkit-transition: all 0.5s ease-in;
+				-moz-transition: all 0.5s ease-in;
+				-ms-transition: all 0.5s ease-in;
+				-o-transition: all 0.5s ease-in;
+				transition: all 0.5s ease-in;
+				list-style: none;
+				/* Hiding */
+				opacity: 0;
+				pointer-events: none;
+				z-index: 1;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 15px;
+				border-width: 0 6px 6px 6px;
+				border-style: solid;
+				border-color: #fff transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:before {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 13px;
+				border-width: 0 8px 8px 8px;
+				border-style: solid;
+				border-color: rgba(0, 0, 0, 0.1) transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li a {
+				display: block;
+				padding: 10px;
+				text-decoration: none;
+				color: #8aa8bd;
+				border-bottom: 1px solid #e6e8ea;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+				-webkit-transition: all 0.3s ease-out;
+				-moz-transition: all 0.3s ease-out;
+				-ms-transition: all 0.3s ease-out;
+				-o-transition: all 0.3s ease-out;
+				transition: all 0.3s ease-out;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li i {
+				float: right;
+				color: inherit;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:first-of-type a {
+				border-radius: 7px 7px 0 0;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:last-of-type a {
+				border: none;
+				border-radius: 0 0 7px 7px;
+			}
+			/* Hover state */
+			
+			.wrapper-dropdown-3 .dropdown li:hover a {
+				background: #f3f8f8;
+			}
+			/* Active state */
+			
+			.wrapper-dropdown-3.active .dropdown {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			/* No CSS3 support */
+			
+			.no-opacity .wrapper-dropdown-3 .dropdown,
+			.no-pointerevents .wrapper-dropdown-3 .dropdown {
+				display: none;
+				opacity: 1;
+				pointer-events: auto;
+			}
+			
+			.no-opacity .wrapper-dropdown-3.active .dropdown,
+			.no-pointerevents .wrapper-dropdown-3.active .dropdown {
+				display: block;
+			}
+			
+			#uptab {
+				width: 100%;
+			}
+			
+			.mui-fullscreen {
+				top: 45px;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 100px;
+			}
+			
+			.mui-control-content {
+				/*height: 500px;*/
+				height: 88vh !important;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				margin-top: 3px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 90px;
+				max-width: 90px;
+				height: 90px;
+			}
+			
+			.mui-media-body ul li {
+				list-style: none;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #D9D9D9;
+			}
+			
+			.mui-table-view .mui-media,
+			.mui-table-view .mui-media-body {
+				overflow: hidden;
+				line-height: 1.5;
+			}
+			
+			.iconfont {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.buyPackage {
+				margin: 2%;
+				background: url(../images/familydoctor/background_already_purchased.png) no-repeat;
+				background-size: 100%, 100%;
+				height: 3rem;
+				color: #FFFFFF;
+			}
+			
+			.havePackage {
+				margin: 2%;
+				background: url(../images/familydoctor/background_not_purchased.png) no-repeat;
+				background-size: 100%, 100%;
+				height: 3rem;
+				color: #FFFFFF;
+			}
+			
+			.mui-col-xs-8 h4,
+			.mui-col-xs-8 h6 {
+				color: #FFFFFF;
+				font-weight: normal;
+			}
+			
+			.mui-col-xs-8 h6 {
+				padding-top: 3%;
+			}
+			
+			.main-tip {
+				padding: 1.5% 5%;
+			}
+			
+			.mui-col-xs-4 {
+				font-size: 20px;
+				text-align: right;
+				padding-top: 0.9rem;
+			}
+			
+			.uparea {
+				height: 1.88rem;
+				padding: 3% 5%;
+			}
+			
+			p {
+				font-size: 10px;
+				color: #4D4D4D;
+			}
+			
+			.mui-col-sm-7 {
+				width: 58%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">个性服务包</h1>
+			<button id="loginBtn" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">已购买服务</button>
+		</header>
+		<div class="mui-content">
+			<div class="mui-slider-group">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					<div id="item1wrapper" class="mui-scroll-wrapper">
+						<div id="wrapper01" class="wrapper">
+							<div id="scroller" class="scroller">
+								<div class="tableUL" id="tableUL">
+									<!--<div class="buyPackage">
+									<div class="mui-row uparea">
+										<div class="mui-col-xs-8">
+											<h4>上呼吸道感染、肺炎</h4>
+											<h6>服务人群：相应人群</h6>
+										</div>
+										<div class="mui-col-xs-4"><span>120</span>元</div>
+									</div>
+									<div class="main-tip mui-row" style=" height: 39px; overflow: hidden;">
+										<h6 class="mui-col-sm-7 mui-col-xs-7" style="line-height: 1.2; font-size:10px !important;"><p>1、数量大幅拉升看见分厘卡时间分厘卡司法会计了撒旦看风景拉萨</p><br><br><p>2、放到路上看见分厘卡撒酒疯了尽量快速减肥了卡死了附件</p><br><br><p>3、并不代表覅都舒服i傻覅u还uh</p><br><br><p>4、送的佛阿斯弗哦哎说法扫地附件哦阿撒旦解放了刷卡鸡豆凉粉</p><br></h6>
+										<h6 class="mui-col-sm-5 mui-col-xs-5" style="color: #4D4D4D; text-align: right; padding-top: 10px;">查看更多...</h6>
+									</div>
+								</div>-->
+									<!--<div class="havePackage">
+									<div class="mui-row">
+										<div class="mui-col-xs-8">
+											<h4>上呼吸道感染、肺炎</h4>
+											<h6>服务人群：相应人群</h6>
+											<h6>截止日期：2016/05/14</h6>
+										</div>
+										<div class="mui-col-xs-4"><span>已购买</span></div>
+									</div>
+									<div class="main-tip">
+										<h6>1、建立健康档案，全年定时跟踪病情4次。</h6>
+										<h6>2、DR肺片两次。</h6>
+									</div>
+								</div>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="../js/muinew/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script type="text/javascript" src="../js/immersed.js"></script>
+	<script type="text/javascript" src="../js/vue/vue.min.js"></script>
+
+	<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.new.js"></script>
+
+	<script>
+		mui.init({
+			swipeBack: false, //启用右滑关闭功能
+			tap: true, //默认为true
+		});
+		var wrapper01;
+
+		function getList() {
+			wrapper01 = $.initIscroll({
+				id: "wrapper01",
+				pullUpAction: processConfimAction,
+				pullDownAction: processConfimAction
+			});
+			processConfimAction(wrapper01)
+		}
+
+		function processConfimAction(myScroll) {
+			var hid = localStorage.getItem("HID");
+			var url = serverAddress + "/api/appfamilydoctorteam/readVipFdtServicePackage" + "?page=" + myScroll.page + "&limit=" + myScroll.limit;
+			var success = function(data) {
+				console.log("收费服务包未购列表------------》" + JSON.stringify(data));
+				if(data && data.data && data.data.length != 0) {
+					if(myScroll.page == 1) {
+						$("#tableUL").html('')
+						$("#tableUL").processTL(templateRegister.fat_package_list, {
+							sub: data.data
+						}, 'html', function() {
+							myScroll.refresh();
+							mui(".mui-content").on("tap", ".buyPackage", function(e) {
+								var ARRYMessage = $(this).attr("data-id");
+								mui.openWindow({
+									url: 'z01_fdtPackage_list_detail.html',
+									id: 'z01_fdtPackage_list_detail.html',
+									extras: {
+										ARRYMessage: ARRYMessage,
+										biaoshi: "wgm"
+									},
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									}
+								});
+							});
+						});
+					} else {
+						if(myScroll.page != 1) {
+							$("#tableUL").processTL(templateRegister.fat_package_list, {
+								sub: data.data
+							}, 'append', function() {
+								myScroll.refresh();
+								mui(".mui-content").on("tap", ".buyPackage", function(e) {
+									var ARRYMessage = $(this).attr("data-id");
+									mui.openWindow({
+										url: 'z01_fdtPackage_list_detail.html',
+										id: 'z01_fdtPackage_list_detail.html',
+										extras: {
+											ARRYMessage: ARRYMessage,
+											biaoshi: "wgm"
+										},
+										show: {
+											autoShow: false, //页面loaded事件发生后自动显示，默认为true
+											event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+										},
+										waiting: {
+											autoShow: true //自动显示等待框，默认为true
+										}
+									});
+
+								});
+							});
+						}
+					}
+					if(data.data.length == myScroll.limit) {
+						myScroll.page = myScroll.page + 1;
+						myScroll.upFlag = true
+					} else {
+						myScroll.upFlag = false
+					}
+				} else {
+					myScroll.upFlag = false
+					document.querySelector(".tableUL").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+				}
+			};
+			commonHttpUtils(url, "get", {
+				hospital: hid
+			}, success, error, true);
+		}
+		mui.plusReady(function() {
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			getList();
+			$("#loginBtn").click(function(e) {
+				mui.openWindow({
+					url: 'z01_fdtPackage_list_yg.html',
+					id: 'z01_fdtPackage_list_yg.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+			});
+		});
+
+//		{
+//			"data": [{
+//				"createdOn": "2018-07-31T02:12:53.984Z",
+//				"status": "1",
+//				"type": "vip",
+//				"_id": "5b5fc5a57a8c0426eca70bb6",
+//				"title": "烧烫伤护理",
+//				"content": "<p>1、啊第三个发送到gas的</p>\n\n<p>2、阿萨德噶三等功经过发动机【【【】】】</p>\n\n<p>3、第三方哈，免费保管，和</p>\n\n<p>4、他的依靠儿童与凯尔特</p>\n\n<p>5、sadgkasjdglkjal</p>\n",
+//				"targetPatient": "烧烫伤患者",
+//				"price": 12000,
+//				"hos": "5b67ea4d3b7ada025cc1f21b",
+//				"__v": 0,
+//				"agree": "5b5eb3251a0f6915d4c874f3",
+//				"introduction": "jianjiejij",
+//				"period": 20,
+//				"times": 5,
+//				"unit": "1"
+//			}, {
+//				"createdOn": "2018-08-06T07:42:18.445Z",
+//				"status": "1",
+//				"type": "vip",
+//				"_id": "5b67fbdabfa4311e3c6e6c41",
+//				"title": "个性服务包",
+//				"content": "<p>1、换药</p>\n\n<p>2、清创</p>\n",
+//				"hos": "5b67ea4d3b7ada025cc1f21b",
+//				"targetPatient": "个性人权",
+//				"price": 200,
+//				"__v": 0,
+//				"introduction": "我是简介",
+//				"period": 2,
+//				"times": 2,
+//				"unit": "1"
+//			}],
+//			"result": "success"
+//		}
+	</script>
+
+</html>

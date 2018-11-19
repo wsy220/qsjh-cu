@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>家庭医生团队</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<link rel="stylesheet" href="../css/jquery-ui.min.css">
+		<style>
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			/* DEMO 3 */
+			
+			.wrapper-dropdown-3 {
+				/* Size and position */
+				position: relative;
+				width: 25%;
+				margin: 0 auto;
+				padding: 10px;
+				/* Styles */
+				background: #fff;
+				border-radius: 7px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
+				cursor: pointer;
+				outline: none;
+				/* Font settings */
+				font-weight: bold;
+				color: #8AA8BD;
+				font-size: 12px;
+			}
+			
+			.wrapper-dropdown-3:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: 15px;
+				top: 50%;
+				margin-top: -3px;
+				border-width: 6px 6px 0 6px;
+				border-style: solid;
+				border-color: #8aa8bd transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown {
+				/* Size & position */
+				position: absolute;
+				top: 140%;
+				left: 0;
+				right: 0;
+				/* Styles */
+				background: white;
+				border-radius: inherit;
+				border: 1px solid rgba(0, 0, 0, 0.17);
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				font-weight: normal;
+				-webkit-transition: all 0.5s ease-in;
+				-moz-transition: all 0.5s ease-in;
+				-ms-transition: all 0.5s ease-in;
+				-o-transition: all 0.5s ease-in;
+				transition: all 0.5s ease-in;
+				list-style: none;
+				/* Hiding */
+				opacity: 0;
+				pointer-events: none;
+				z-index: 1;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 15px;
+				border-width: 0 6px 6px 6px;
+				border-style: solid;
+				border-color: #fff transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:before {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 13px;
+				border-width: 0 8px 8px 8px;
+				border-style: solid;
+				border-color: rgba(0, 0, 0, 0.1) transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li a {
+				display: block;
+				padding: 10px;
+				text-decoration: none;
+				color: #8aa8bd;
+				border-bottom: 1px solid #e6e8ea;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+				-webkit-transition: all 0.3s ease-out;
+				-moz-transition: all 0.3s ease-out;
+				-ms-transition: all 0.3s ease-out;
+				-o-transition: all 0.3s ease-out;
+				transition: all 0.3s ease-out;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li i {
+				float: right;
+				color: inherit;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:first-of-type a {
+				border-radius: 7px 7px 0 0;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:last-of-type a {
+				border: none;
+				border-radius: 0 0 7px 7px;
+			}
+			/* Hover state */
+			
+			.wrapper-dropdown-3 .dropdown li:hover a {
+				background: #f3f8f8;
+			}
+			/* Active state */
+			
+			.wrapper-dropdown-3.active .dropdown {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			/* No CSS3 support */
+			
+			.no-opacity .wrapper-dropdown-3 .dropdown,
+			.no-pointerevents .wrapper-dropdown-3 .dropdown {
+				display: none;
+				opacity: 1;
+				pointer-events: auto;
+			}
+			
+			.no-opacity .wrapper-dropdown-3.active .dropdown,
+			.no-pointerevents .wrapper-dropdown-3.active .dropdown {
+				display: block;
+			}
+			
+			#uptab {
+				width: 100%;
+			}
+			
+			.mui-fullscreen {
+				top: 45px;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 100px;
+			}
+			
+			.mui-control-content {
+				/*height: 500px;*/
+				height: 88vh !important;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				margin-top: 3px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 90px;
+				max-width: 90px;
+				height: 90px;
+			}
+			
+			.mui-media-body ul li {
+				list-style: none;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #D9D9D9;
+			}
+			
+			.mui-table-view .mui-media,
+			.mui-table-view .mui-media-body {
+				overflow: hidden;
+				line-height: 1.5;
+			}
+			
+			.iconfont {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.wutu {
+				height: 87vh;
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.head-img {
+				max-width: 70px;
+				max-height: 70px;
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				border-radius: 50%;
+				margin-left: 10px;
+			}
+			
+			.teamName {
+				font-size: 16px;
+				color: #4D4D4D;
+			}
+			
+			.signing {
+				padding: 9% 24%;
+				color: #41CED3;
+				border: 1px solid #41CED3;
+				border-radius: 17px;
+				margin-top: 24%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">家庭医生团队</h1>
+			<!--<button id="add_health" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				搜索</button>-->
+		</header>
+		<div class="mui-content">
+			<div class="mui-slider-group">
+				<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+					<div id="scroll" class="mui-scroll-wrapper">
+						<div class="mui-scroll item0_0">
+							<ul class="mui-table-view tableUL" id="tableUL">
+								<!--<li class="mui-table-view-cell " data-id="{{value._id}}" style="padding: 4%;">
+									<a class="" id="">
+										<div class="mui-slider-handle mui-row" data-id="{{value._id}}">
+											<div class="mui-col-xs-2 fdtTeam">
+												<img class="" src="../images/003.png" style="border-radius: 50%;">
+											</div>
+											<div class="mui-col-xs-8 fdtTeam" style="padding:0 5%;">
+												<div class="teamName">第一团队（波顿呐街道）</div>
+												<p class='mui-ellipsis-2'>团队由6人组成团队长1名、医生3 名、护师1名、公卫1名</p>
+											</div>
+											<div class="mui-col-xs-2">
+												<p class="signing" style="">签约</p>
+											</div>
+										</div>
+									</a>
+								</li>-->
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		//		mui.init({
+		//			swipeBack: true //启用右滑关闭功能
+		//		});
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+
+		mui.plusReady(function() {
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var self = plus.webview.currentWebview();
+			id = self.ID;
+			console.log("id------------》" + id);
+
+			var url = serverAddress + "/api/appfamilydoctorteam/getFDTByHospital";
+			var success = function(data) {
+				console.log("家庭医生团队------------》" + JSON.stringify(data));
+				if(data.result == "success") {
+					if(data.data.length != 0) {
+						$("#tableUL").processTL(templateRegister.fdt_team_list, {
+							sub: data.data
+						}, "append", function() {});
+
+					} else {
+						document.querySelector(".item0_0").innerHTML = '<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>';
+					}
+				} else {
+					mui.toast(data.msg);
+				}
+
+			};
+			commonHttpUtils(url, "post", {
+				hospital: id
+			}, success, error, true);
+
+			//打开具体家庭医生团队
+			mui(".mui-content").on("tap", ".fdtTeam", function(e) {
+				var detailid = $(this).attr("data-id");
+				mui.openWindow({
+					url: 'z01_teamDoctorList.html',
+					id: 'z01_teamDoctorList',
+					extras: {
+						ID: detailid
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			});
+			//签约
+			mui(".mui-content").on("tap", ".signing", function(e) {
+				var detailid = $(this).attr("data-id");
+				mui.openWindow({
+					url: 'z01_signingDocument.html',
+					id: 'z01_signingDocument',
+					extras: {
+						ID: detailid
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			})
+
+		});
+
+//		{
+//			"result": "success",
+//			"data": [{
+//				"province": {
+//					"code": "220000",
+//					"region": "吉林省"
+//				},
+//				"city": {
+//					"code": "220100",
+//					"region": "长春市"
+//				},
+//				"area": {
+//					"code": "220105",
+//					"region": "二道区"
+//				},
+//				"logo": "\\assets\\uploads\\single-file-1533538537743.png",
+//				"doctorList": [{
+//					"doctor": "5b10ab51570db922140ff4c4",
+//					"memberType": "GWYS"
+//				}, {
+//					"doctor": "5af2ab7a72cbdf14d04f98ea",
+//					"memberType": "GWYS"
+//				}],
+//				"status": "1",
+//				"createdOn": "2018-08-06T06:41:27.333Z",
+//				"_id": "5b67ed973b7ada025cc1f244",
+//				"name": "测试社区团队",
+//				"teamLeader": "5af2ab7a72cbdf14d04f98ea",
+//				"summary": "一个测试社区的团队",
+//				"phone": "18888888881",
+//				"hospital": "5b67ea4d3b7ada025cc1f21b",
+//				"__v": 0
+//			}]
+//		}
+	</script>
+
+</html>

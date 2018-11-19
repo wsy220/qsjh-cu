@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>疾病选择</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/assets/styles/jquery-labelauty.css" />
+		<link rel="stylesheet" href="../css/assets/styles/lby-main.css" />
+		<style>
+			.disease {
+				display: none !important;
+			}
+			
+			
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">疾病选择</h1>
+		</header>
+		<div class="mui-content">
+			<section class="main" id="lby-content">
+				<div class="mui-table-view" id="lby-demo">
+					<ul id="lby-checkbox-demo">
+						
+						
+						
+
+					</ul>
+				</div>
+
+			</section>
+
+		</div>
+		<div class="mui-content-padded">
+			<button id='save' class="mui-btn mui-btn-block mui-btn-warning">保存</button>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../css/assets/scripts/jquery-labelauty.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script>
+		mui.init({
+			beforeback: function() {
+				$(".disease").attr("css", "display:none !important");
+			}
+		});
+
+		mui.plusReady(function() {
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var item_id = currentView.service_item_id;
+
+			var url = serverAddress + "/api/patient/appgetdiseases/" + item_id;
+
+			var success = function(data) {
+				console.log("新接口" + JSON.stringify(data));
+				var value = data.data.diseases;
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+//								$("#lby-content").processTL(templateRegister.illness_select, {
+//									sub: data.data.diseases 
+//								}, 'append', function() {})
+				var html = "";
+				for(var i = 0; i < value.length; i++) {
+					html += '<li style="margin-right:2px;">';
+					html+='<input class="labelauty disease " type="checkbox" name="radio1" data-labelauty="'+value[i].disease+'" value="'+value[i].disease+'" id="' + value[i].department + '"><label for="labelauty"><span class="labelauty-unchecked" style="display:none ">'+value[i].department+'</span><span class="labelauty-checked" style="display:inline-block;">'+value[i].disease+'</span></label>'
+//					html += '<input class="to-labelauty disease" type="checkbox" data-labelauty="' + value[i].disease + '" id="' + value[i].department + '" value="' + value[i].disease + '">';
+					html += '</li>'
+
+				}
+				$("#lby-checkbox-demo").html(html);
+			};
+			commonHttpUtils(url, "get", {}, success, error, false);
+
+			$(document).ready(function() {
+				$(".to-labelauty").labelauty({
+					minimum_width: "50px"
+
+				});
+				$(".to-labelauty-icon").labelauty({
+					label: false
+				});
+			});
+
+			var diseasesArr = [];
+			var illness_item = [];
+
+			function getDiseases() {
+				var diseases = $(".disease");
+				var disArr = []; //最后结果
+				var disease = {}; //结果数组单个对象元素
+				var diseaseArr = []; //对象元素疾病数组
+				diseases.each(function() {
+					if($(this).is(':checked')) {
+						var olddis = disease["department"]
+						var illness_name = $(this).attr("id");
+						console.log("---->" + illness_name);
+						var flag = illness_name != olddis;
+						if(flag) {
+							disease = {};
+							diseaseArr = [];
+							disease["department"] = illness_name;
+						}
+						diseaseArr.push($(this).val());
+						disease["diseases"] = diseaseArr;
+						if(flag) {
+							disArr.push(disease);
+						}
+					}
+				});
+				diseasesArr = disArr;
+			}
+			document.getElementById("save").addEventListener("tap", function(e) {
+				getDiseases();
+				var main3 = plus.webview.getWebviewById("a04_place_order.html");
+				mui.fire(main3, 'illness', JSON.stringify(diseasesArr));
+				mui.back();
+			})
+		});
+	</script>
+
+</html>

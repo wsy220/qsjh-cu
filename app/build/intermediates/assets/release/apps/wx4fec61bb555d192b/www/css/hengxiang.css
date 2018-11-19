@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS index */
+#banner_box { height: 400px; overflow: hidden; position: relative; width: 100%; }
+#gotonext { background: url("../img/next.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); right: 0; display: block; height: 72px; position: fixed; top: 200px; right: 83px; width: 83px; z-index: 100; cursor: pointer; }
+#gotopre { background: url("../img/pre.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); right: 0; display: block; height: 72px; position: fixed; top: 200px; left: 83px; width: 83px; z-index: 100; cursor: pointer; }
+.active_ppt { display: block !important; left: 0; top: 0; }
+.pre { display: block !important; }
+.next { display: block !important; }
+#ppt_overlay { margin: 0 auto; height: 400px; overflow: hidden; width: 1366px; }
+#ppt_box { margin-left: -1366px; width: 4098px; }
+#ppt_box section { display: none; position: relative; height: 400px; overflow: hidden; width: 1366px; float: left; }
+#ppt_box section div { position: absolute; }
+#ppt_bg1 a, #ppt_bg2 a, #ppt_bg3 a, #ppt_bg4 a, #ppt_bg5 a { cursor: pointer; display: block; height: 340px; left: 0; position: absolute; top: 0; width: 100%; z-index: 200; }
+#gotop { width: 40px; height: 40px; position: fixed; bottom: 100px; right: 5%; visibility: hidden; z-index: 100; }
+#gotop_span { background-image: url(../img/fanhuidingbu.png); width: 40px; height: 40px; display: block; float: right; cursor: pointer; }
+.clearfloat { clear: both; height: 0; line-height: 0px; }
+
+
+
+@charset "utf-8";
+/* CSS index */
+#ppt_bg1 { background: url("../img/bg2.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0); }
+.ppt1_1 { background: url("../img/ppt2_1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 320px; left: 344px; top: 38px; width: 403px; }
+.ppt1_2 { background: url("../img/cup1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 320px; left: 661px; top: 32px; width: 627px; }
+#ppt_bg2 { background: url("../img/bg3.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0); }
+.ppt2_1 { background: url("../img/ppt3_1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 320px; left: 344px; top: 38px; width: 403px; }
+.ppt2_2 { background: url("../img/cup1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 320px; left: 661px; top: 32px; width: 627px; }
+#ppt_bg3 { background: url("../img/bg3.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0); }
+.ppt3_1 { background: url("../img/ppt2_1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 320px; left: 344px; top: 38px; width: 403px; }
+.ppt3_2 { background: url("../img/leaf1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 320px; left: 661px; top: 32px; width: 627px; }
+#ppt_bg4 { background: url("../img/bg2.jpg") no-repeat scroll 0 0 rgba(0, 0, 0, 0); }
+.ppt4_1 { background: url("../img/ppt3_1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 320px; left: 344px; top: 38px; width: 403px; }
+.ppt4_2 { background: url("../img/leaf1.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 320px; left: 661px; top: 32px; width: 627px; }

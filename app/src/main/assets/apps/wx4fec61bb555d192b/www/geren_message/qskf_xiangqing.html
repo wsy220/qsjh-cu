@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>客服详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../js/dialogAni/sweetalert2.min.css" />
+
+		<link rel="stylesheet" href="../js/dialogAni/example/example.css">
+		<link rel="stylesheet" href="../js/dialogAni/example/buttons.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<style>
+			.mui-card-content {
+				background-color: #fff;
+			}
+			
+			.mui-popup {
+				position: fixed;
+				z-index: 10000;
+				top: 85%;
+				left: 50%;
+				display: none;
+				overflow: hidden;
+				width: 95%;
+				-webkit-transition-property: -webkit-transform, opacity;
+				transition-property: transform, opacity;
+				-webkit-transform: translate3d(-50%, -50%, 0) scale(1.185);
+				transform: translate3d(-50%, -50%, 0) scale(1.185);
+				text-align: center;
+				opacity: 0;
+				color: #000;
+				border-radius: 13px;
+			}
+			
+			.popup-image {
+				background: url(../images/kf.png) no-repeat;
+				background-size: 100%;
+				height: 1.3rem;
+			}
+			
+			.mui-popup-inner {
+				border-radius: 0;
+			}
+			
+			.mui-table-view.mui-grid-view {
+				padding: 20px 0px 0px 20px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell {
+				padding: 0 0 20px 0;
+			}
+			
+			.mui-popup-inner:after {
+				height: 0;
+			}
+			
+			.mui-btn-warning {
+				background-color: #ffbb45;
+				width: 80%;
+			}
+			
+			button {
+				border: 0;
+				margin: 0;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">客服详情</h1>
+		</header>
+		<div class="mui-content">
+			<div class="phone-call">
+				<div id="item1" class="mui-control-content mui-active">
+					<div id="scroll" class="wrapper">
+						<div class="mui-content">
+							<ul class="mui-table-view" style="text-align: left;">
+								<li class="mui-table-view-cell"><span id="title_big"></span></li>
+							</ul>
+							<div class="mui-card-content">
+								<div class="mui-card-content-inner" id="question_text">
+
+								</div>
+							</div>
+
+							<!--<div class="showcase sweet">
+								<button>显示一个错误信息</button>
+							</div>-->
+
+							<div class="mui-popup mui-popup-in" style="display: block;">
+								<div class="mui-popup-inner popup-image">
+									<div class="mui-popup-title "></div>
+								</div>
+								<div class="mui-popup-inner">
+									<div class="mui-popup-title">以上信息是否解决了您的问题</div>
+								</div>
+								<ul class="mui-table-view mui-grid-view">
+									<li class="mui-table-view-cell mui-media mui-col-xs-6">
+										<button type="button" class="mui-btn-warning mui-action-back mui-col-sm-6 mui-col-xs-6" id="button_yes">
+					是
+				</button>
+									</li>
+									<li class="mui-table-view-cell mui-media mui-col-xs-6">
+										<button type="button" class="mui-btn-warning mui-col-sm-6 mui-col-xs-6" id="button_no">
+					否
+				</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script src="../js/mui.min.js"></script>
+			<script type="text/javascript" src="../js/constants.js"></script>
+			<script type="text/javascript" src="../js/common.js"></script>
+			<script src="../js/mui.previewimage.js"></script>
+			<script src="../js/mui.zoom.js"></script>
+			<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+			<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+			<!--<script type="text/javascript" src="../js/dialogAni/sweetalert2.min.js"></script>-->
+			<script type="text/javascript" src="../js/dialogAni/es6-promise.auto.min.js" ></script>
+			<script type="text/javascript" src="../js/dialogAni/sweetalert2.js"></script>
+			<script type="text/javascript" src="../js/text/kefu.js"></script>
+
+			<!--<script type="text/babel" charset="utf-8">-->
+			<script>
+				mui.init({
+					swipeBack: true //启用右滑关闭功能
+				});
+
+				mui.plusReady(function() {
+					plus.webview.currentWebview().setStyle({
+						softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+					});
+					if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+						// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+						topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+						document.querySelector("header").style.height = topoffset;
+						document.querySelector("header").style.paddingTop = "20px";
+						document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+					}
+					// 加载完毕后关闭等待框，并展示页面
+					var currentView = plus.webview.currentWebview();
+					currentView.show('slide-in-right', 200);
+					plus.nativeUI.closeWaiting();
+					console.log(currentView.question_id);
+
+					var question_id = currentView.question_id;
+					var question_data = text_question[0].children;
+
+					for(var i = 0; i < question_data.length; i++) {
+						if(question_data[i]._id == question_id) {
+							$("#title_big").html(question_data[i].value);
+							$("#question_text").html(question_data[i].text);
+						}
+					}
+
+					$("#button_yes").click(function(e) {
+						mui.back();
+					})
+					$("#button_no").click(function(e) {
+						$(".mui-popup").slideUp("slow");
+						//swal('联系客服', '您是否现在是否拨打400-****-****电话', 'error');
+
+						swal({
+							title: '联系客服',
+							html: '您现在是否拨打400-178-0800电话 ',
+							showCloseButton: true,
+							confirmButtonText: '<div id="kefu_tel"><i class="fa fa-thumbs-up"></i> 现在联系</div>',
+						})
+						$("#kefu_tel").click(function(e) {
+							plus.device.dial('400-178-0800', false);
+						})
+					})
+				});
+			</script>
+
+	</body>
+
+</html>

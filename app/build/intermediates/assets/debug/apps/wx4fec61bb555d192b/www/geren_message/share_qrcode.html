@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>关于我们</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			p {
+				text-indent: 22px;
+				padding: 5px 8px;
+			}
+			
+			html,
+			body,
+			.mui-content {
+				background-color: #fff;
+			}
+			
+			h4 {
+				margin-left: 5px;
+			}
+			
+			.qrcode {
+				/*position: absolute;*/
+				top: 50px;
+				/*left: 50%;*/
+				width: 100%;
+				/*-webkit-transform: translate(-50%, 0);
+				transform: translate(-50%, 0);*/
+				text-align: center;
+			}
+			
+			.qrcode img {
+				margin: 0 auto;
+			}
+			
+			.mui-pull-right {
+				color: #FFFFFF;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="">我的推广码</h1>
+			<span id="share" class="mui-pull-right" onclick="shareHref()"><i class="mui-icon mui-icon-redo"></i>分享</span>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<div class="qrcode" style="padding-top: 20%;">
+					<div id="qrcodeCanvas">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="text-align: center;">已成功推荐<span id='num'></span>人</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/sharemethods.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../js/qrcode/jquery.qrcode.js"></script>
+		<script type="text/javascript" src="../js/qrcode/utf.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					mui.back;
+					return true;
+				}
+			});
+			var url;
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+
+				//渲染二维码
+				url = serverAddress + '/webreg/sharecode.html?pat=' + localStorage.getItem('userID');
+				$('#qrcodeCanvas').qrcode({
+					render: 'canvas', // 设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
+					text: url, // 扫描了二维码后的内容显示,在这里也可以直接填一个网址，扫描二维码后
+					width: '200', // 二维码的宽度
+					height: '200', // 二维码的高度
+					background: '#ffffff', // 二维码的后景色
+					foreground: '#000000', // 二维码的前景色
+					src: '../images/256x256.png' // 二维码中间的图片
+				});
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				updateSerivces();
+				//取到下线人数
+				var getnumurl = serverAddress + '/api/patient/sharepatientregsumbyid';
+				var sussess = function(data) {
+					console.log(JSON.stringify(data));
+					if(data) {
+						if(data.length > 0) {
+							var patientnum = data[0].patientlistQuantity;
+							var doctornum = data[0].doctorlistQuantity;
+							$('#num').html(doctornum + patientnum);
+						}else{
+							$('#num').html(0);
+						}
+					}
+
+				}
+				commonHttpUtils(getnumurl, "post", {
+					id: localStorage.getItem('userID')
+				}, sussess, error, true);
+			});
+			/** 
+			 * 更新分享服务 
+			 */
+			function updateSerivces() {
+				plus.share.getServices(function(s) {
+					shares = {};
+					for(var i in s) {
+						var t = s[i];
+						shares[t.id] = t;
+					}
+					outSet("获取分享服务列表成功");
+				}, function(e) {
+					outSet("获取分享服务列表失败：" + e.message);
+				});
+			}
+			/** 
+			 * 分享操作 
+			 */
+			function shareAction(id, ex) {
+				var s = null;
+				if(!id || !(s = shares[id])) {
+					outLine("无效的分享服务！");
+					return;
+				}
+				if(s.authenticated) {
+					outSet("---已授权---");
+					shareMessage(s, ex);
+				} else {
+					outSet("---未授权---");
+					s.authorize(function() {
+						shareMessage(s, ex);
+					}, function(e) {
+						outLine("认证授权失败");
+					});
+				}
+			}
+			/** 
+			 * 发送分享消息 
+			 */
+			function shareMessage(s, ex) {
+				var msg = {
+					href: url,
+					title: "柒拾，便捷就医新体验",
+					content: "柒拾佳护是柒拾佳护健康管理有限公司推出的医护上门服务平台，是吉林省卫生信息学会居家护理分会主推的互联网医养服务试点项目。通过柒拾佳护APP，患者随时随地预约医护人员进行上门护理、康复、检验以及家庭医生预约签约、在线问诊、健康管理等服务。"+url,
+					thumbs: ["../images/256x256.png"],
+					pictures: ["../images/256x256.png"],
+					//				thumbs: [serverAddress+articlePic],
+					//				pictures: [serverAddress+articlePic],
+					extra: {
+						scene: ex
+					}
+				};
+				s.send(msg, function() {
+					outLine("分享成功!");
+				}, function(e) {
+					console.log(JSON.stringify(e))
+					outLine("分享失败!");
+				});
+			}
+			/** 
+			 * 分享按钮点击事件 
+			 */
+			function shareHref() {
+				var ids = [{
+						id: "weixin",
+						ex: "WXSceneSession" /*微信好友*/
+					}, {
+						id: "weixin",
+						ex: "WXSceneTimeline" /*微信朋友圈*/
+					}, {
+						id: "sinaweibo" /*新浪微博*/
+					}, {
+						id: "qq" /*QQ好友*/
+					}],
+					bts = [{
+						title: "发送给微信好友"
+					}, {
+						title: "分享到微信朋友圈"
+					}, {
+						title: "分享到微博"
+					}];
+				plus.nativeUI.actionSheet({
+						cancel: "取消",
+						buttons: bts
+					},
+					function(e) {
+						var i = e.index;
+						if(i > 0) {
+							shareAction(ids[i - 1].id, ids[i - 1].ex);
+						}
+					}
+				);
+			}
+			// 控制台输出日志 
+			function outSet(msg) {
+				console.log(msg);
+			}
+			// 界面弹出吐司提示 
+			function outLine(msg) {
+				mui.toast(msg);
+			}
+		</script>
+	</body>
+
+</html>

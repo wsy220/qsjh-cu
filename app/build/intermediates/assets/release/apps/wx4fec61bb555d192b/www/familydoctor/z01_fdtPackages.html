@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>健康数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			body,
+			html {
+				height: 100%;
+			}
+			
+			.mui-table-view .mui-media-object {
+				height: auto;
+			}
+			
+			.mui-table-view img {
+				width: 0.65rem;
+			}
+			
+			.mui-media-body {
+				font-size: 14px;
+				color: #333333;
+				padding: 2%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">家庭医生服务</h1>
+		</header>
+		<div class="mui-content" id="content">
+			<div id="show_logo" style="background-color: #FFFFFF;text-align: center;">
+				<img id="teamLogo" src="" data-preview-src="" data-preview-group="1" style="max-height: 5rem;padding: 2%;">
+			</div>
+
+			<div style="padding: 15px;background-color: #FFFFFF;padding-top: 0 !important;">
+				<p id="team_name" style="text-align: center;color: #4D4D4D;"></p>
+				<p id="teamSummary">
+				</p>
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="base_service">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/familydoctor/icon_basics.png"></div>
+						<div class="mui-media-body">基础服务包</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="paid_service">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/familydoctor/icon_charge.png"></div>
+						<div class="mui-media-body">收费包服务</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="in_line">
+						<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/familydoctor/icon_customer_service.png"></div>
+						<div class="mui-media-body">在线诊疗</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		//		mui.init({
+		//			swipeBack: true //启用右滑关闭功能
+		//		});
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+
+		mui.plusReady(function() {
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			var userId = localStorage.getItem("TOKENID");
+
+			var fdtid = localStorage.getItem("fdt");
+			console.log("fdtid------------》" + fdtid);
+			var url = serverAddress + "/api/appfamilydoctorteamforpatient/redaone/" + fdtid;
+			var success = function(data) {
+				console.log("团队介绍------------》" + JSON.stringify(data));
+				if(data.result == "success") {
+					if(data.obj.length != 0) {
+						var logo = data.obj.data.logo;
+						console.log("logo----->" + logo);
+						if(logo == "" || logo == null || logo == undefined) {
+							$("#show_logo").hide();
+						}
+						var picLogo
+						if(logo.indexOf("client") < 0) {
+							picLogo = serverAddress + logo;
+						}
+						if(logo != null && logo != '' && (logo.indexOf("client\\") == 0)) {
+							picLogo = serverAddress + '/' + logo.replace('client', '').replace(/\\/g, "\\");
+
+						}
+						if(logo != null && logo != '' && (logo.indexOf("client/") == 0)) {
+							picLogo = serverAddress + '/' + logo.replace('client', '').replace(/\\/g, "/");
+						}
+						$("#teamLogo").attr("src", picLogo);
+						$("#team_name").html(data.obj.data.name);
+						$("#teamSummary").html(data.obj.data.summary);
+
+					}
+				} else {
+					mui.toast(data.msg);
+				}
+			};
+			commonHttpUtils(url, "get", {}, success, error, true);
+
+			//基础服务包查看
+			mui(".mui-content").on("tap", "#base_service", function(e) {
+				mui.openWindow({
+					url: 'service_package.html',
+					id: 'service_package.html',
+					extras: {
+						ID: userId
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			});
+
+			//打开收费包服务项目列表
+			mui(".mui-content").on("tap", "#paid_service", function(e) {
+				mui.openWindow({
+					url: 'z01_fdtPackage_list.html',
+					id: 'z01_fdtPackage_list',
+					extras: {
+						ID: userId
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			});
+
+			//打开在线诊疗（聊天页面）
+			mui(".mui-content").on("tap", "#in_line", function(e) {
+				mui.openWindow({
+					url: "../familydoctor/z01_chat_list.html",
+					id: "z01_chat_list.html",
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded'
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+					}
+					//styles: returnstyleTitle("tab-webview-subpage-talk-new.html", "消息")
+				});
+
+				//				var fdtid = localStorage.getItem("fdt");
+				//				var url = serverAddress + "/api/appfamilydoctorteamforpatient/redaone/" + fdtid;
+				//				var success = function(data11) {
+				//					console.log("团队介绍------------》" + JSON.stringify(data11));
+				//					if(data11.result == "success") {
+				//						if(data11.obj.length != 0) {
+				//							dataId = data11.obj.data.teamLeader._id;
+				//							name = data11.obj.data.teamLeader.name;
+				//							console.log("老大ID" + dataId);
+				//							console.log("老大名字" + name);
+				//							mui.openWindow({
+				//								url: '../familydoctor/im-chat.html',
+				//								id: 'im-chat.html',
+				//								show: {
+				//									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+				//									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				//								},
+				//								waiting: {
+				//									autoShow: true //自动显示等待框，默认为true
+				//								},
+				//								extras: {
+				//									TO_ACCOUNT: dataId,
+				//									TO_NAME: name
+				//								}
+				//							});
+				//						} else {
+				//
+				//						}
+				//					} else {
+				//						mui.toast(data.msg);
+				//					}
+				//				};
+				//				commonHttpUtils(url, "get", {}, success, error, true);
+
+			});
+
+		});
+	</script>
+
+</html>

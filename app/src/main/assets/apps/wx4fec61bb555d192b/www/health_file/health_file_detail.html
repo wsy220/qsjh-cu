@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>健康信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../fonts/iconfont.css" />
+		<link rel="stylesheet" href="../plugs/qs/qs.common.new.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x8wP7ck7pQ4P8UAol2pen8B5"></script>
+		<style>
+			.text-center {
+				text-align: center;
+				background-color: #FFFFFF;
+				color: #999999;
+				font-size: 14px;
+				font-weight: 600;
+				margin-bottom: 1.5%;
+				position: fixed;
+				top: 0px;
+				z-index: 999;
+				width: 100%;
+			}
+			
+			.padding-top3 {
+				margin: 14% 10% 0 10%;
+				padding-bottom: 11%;
+			}
+			
+			.click-base {
+				border-bottom: 1px solid #43CED3;
+				color: #43CED3;
+			}
+			
+			.background-color-fff {
+				background-color: #FFFFFF;
+				margin-bottom: 2%;
+				margin-bottom: 1.3rem;
+				margin-top: 0.95rem;
+				overflow: hidden;
+			}
+			
+			.mui-content-padded {
+				position: fixed;
+				bottom: 0;
+				width: 100%;
+				margin: 0;
+				padding: 2% 0;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-btn-color {
+				background: -webkit-linear-gradient(left, #33c3cb, #45d0d5);
+				/* Safari 5.1 - 6.0 */
+				background: -o-linear-gradient(right, #33c3cb, #45d0d5);
+				/* Opera 11.1 - 12.0 */
+				background: -moz-linear-gradient(right, #33c3cb, #45d0d5);
+				/* Firefox 3.6 - 15 */
+				background: linear-gradient(to right, #33c3cb, #45d0d5);
+				border-radius: 25px;
+				color: #FFFFFF;
+				height: 0.9rem;
+				font-size: 14px;
+				width: 96%;
+				margin-left: 2%;
+				border: none;
+			}
+			
+			.font-14 {
+				font-size: 14px;
+				color: #4D4D4D;
+			}
+			
+			input[type=color],
+			input[type=date],
+			input[type=datetime-local],
+			input[type=datetime],
+			input[type=email],
+			input[type=month],
+			input[type=number],
+			input[type=password],
+			input[type=search],
+			input[type=tel],
+			input[type=text],
+			input[type=time],
+			input[type=url],
+			input[type=week],
+			select,
+			textarea {
+				line-height: 21px;
+				width: 100%;
+				height: 0.8rem;
+				margin-bottom: 1px;
+				padding: 0px;
+				-webkit-user-select: text;
+				border: none;
+				border-radius: 3px;
+				outline: 0;
+				background-color: #fff;
+				-webkit-appearance: none;
+				text-align: right;
+			}
+			
+			#base_list li,
+			#health_list li,
+			#left_list li,
+			#other_list li {
+				height: 1rem;
+				padding-top: 0.1rem;
+				overflow: inherit;
+			}
+			
+			.width-65 {
+				width: 65%;
+			}
+			
+			.left-padding {
+				padding-top: 0.2rem;
+			}
+			
+			.click-msg {
+				padding-top: 10px;
+			}
+			
+			.margin-right-15 {
+				margin-right: 15px;
+				width: 65%;
+				text-align: right;
+				overflow: hidden;
+			}
+			
+			.mui-navigate-right {
+				top: 5px;
+			}
+			
+			.grey-back {
+				background-color: #EEEEEE;
+				padding: 9px 15px;
+				font-size: 13px;
+				font-weight: bold;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-row text-center" id="top_main">
+				<div class="mui-col-xs-3">
+					<div class="padding-top3 click-base" id="base">基本信息</div>
+				</div>
+				<div class="mui-col-xs-3">
+					<div class="padding-top3" id="health">健康信息</div>
+				</div>
+				<div class="mui-col-xs-3">
+					<div class="padding-top3" id="left">生活习惯</div>
+				</div>
+				<div class="mui-col-xs-3">
+					<div class="padding-top3" id="other">其他信息</div>
+				</div>
+			</div>
+
+			<div class="background-color-fff" id="base_list">
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							姓名：
+						</div>
+						<div class=" mui-pull-right width-65">
+							<input id="name" name="name" type="text" class="font-14" placeholder="请输入姓名">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14" id="gender_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								性别：
+							</div>
+							<div class="click-msg mui-pull-right font-14" id="gender_span">请选择</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							身份证：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="idnumber" name="idnumber" type="text" class="font-14" placeholder="请输入身份证号">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							手机号：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="tel" name="tel" type="text" class="font-14" placeholder="请输入手机号码">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							出生日期<span style="color: red;">(必填)</span>：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="birth" name="birth" type="text" class="font-14" placeholder="请输入出生年月日">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14" id="setting_position">
+						<div class="mui-pull-left left-padding">
+							现住址<span style="color: red;">(必填)</span>：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="address" name="address" type="text" class="font-14" placeholder="请选择通讯地址" readonly="readonly">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14" id="setting_position">
+						<div class="mui-pull-left left-padding">
+							门牌号<span style="color: red;">(必填)</span>：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="menpai_no" name="menpai_no" type="text" class="font-14" placeholder="请输入精确地址">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							国籍：
+						</div>
+						<div class="click-msg mui-pull-right font-14" id="nationality">中国</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							籍贯：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="province" name="province" type="text" class="font-14" placeholder="请输入籍贯">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							民族：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="ethnic" name="ethnic" type="text" class="font-14" placeholder="请输入民族">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14" id="marital_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								婚姻状况：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="marital_span">未婚</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14" id="edu_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								文化程度：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="edu_span">请选择</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14" id="profession_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								职业：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="profession_span">请选择职业</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							工作单位：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="unit" name="unit" type="text" class="font-14" placeholder="请输入单位名称">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							医疗费用类型：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="medtype" name="medtype" type="text" class="font-14" placeholder="请输入医疗费用支付方式">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							定点医疗单位：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="medunit" name="medunit" type="text" class="font-14" placeholder="请输入定点医疗单位">
+						</div>
+					</li>
+
+				</ul>
+
+			</div>
+			<div class="background-color-fff" id="health_list">
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							血型：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="bloodType" name="bloodType" type="text" class="font-14" placeholder="请输入血型">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							身高：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="height" name="height" type="text" class="font-14" placeholder="请输入" style="width: 88%;">
+							<div class="mui-pull-right" style="padding-top:0.2rem">cm</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							体重：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="weight" name="weight" type="text" class="font-14" placeholder="请输入" style="width: 88%;">
+							<div class="mui-pull-right" style="padding-top: 0.2rem">kg</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							药物过敏史：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="allergy" name="allergy" type="text" class="font-14" placeholder="请输入全部过敏源">
+						</div>
+					</li>
+				</ul>
+				<div class="grey-back" style="">
+					既往史
+				</div>
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							疾病：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="illness" name="illness" type="text" class="font-14" placeholder="请输入">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							手术：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="surgery" name="surgery" type="text" class="font-14" placeholder="请描述时间及名称">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							外伤：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="injury" name="injury" type="text" class="font-14" placeholder="请描述时间及名称">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							输血：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="blood_transfusion" name="blood_transfusion" type="text" class="font-14" placeholder="请描述时间及原因">
+						</div>
+					</li>
+				</ul>
+				<div class="grey-back" style="">
+					家族病史
+				</div>
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							遗传病史：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="genetic_disease" name="genetic_disease" type="text" class="font-14" placeholder="请输入个人遗传病">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							父亲：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="father_disease" name="father_disease" type="text" class="font-14" placeholder="请输入父亲所患遗传性疾病">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							母亲：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="mother_disease" name="mother_disease" type="text" class="font-14" placeholder="请输入母亲所患遗传性疾病">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							兄弟姐妹：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="brotherSister_disease" name="brotherSister_disease" type="text" class="font-14" placeholder="请输入兄弟姐妹所患遗传性疾病">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							子女：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="child_disease" name="child_disease" type="text" class="font-14" placeholder="请输入子女所患遗传性疾病">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							残疾情况：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="disability" name="disability" type="text" class="font-14" placeholder="请输入具体情况">
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="background-color-fff" id="left_list">
+				<div class="grey-back" style="">
+					吸烟史
+				</div>
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell font-14" id="smoke_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								是否吸烟：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="smoke_span">否</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14" id="issmoke" style="display: none;">
+						<div class="mui-pull-left left-padding">
+							吸烟时长：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="smoke_time" name="smoke_time" type="text" class="font-14" placeholder="未知" style="width: 88%;">
+							<div class="mui-pull-right" style="padding-top: 0.2rem">年</div>
+						</div>
+					</li>
+				</ul>
+				<div class="grey-back" style="">
+					饮酒史
+				</div>
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell font-14" id="drinking_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								是否饮酒：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="drinking_span">否</div>
+						</a>
+					</li>
+				</ul>
+				<div class="grey-back" style="">
+					体育训练情况
+				</div>
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell font-14" id="workout_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								是否锻炼：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="workout_span">是</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14 isworkout" id="workoutStatus_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								锻炼情况：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="workoutStatus_span">请选择</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14 isworkout">
+						<div class="mui-pull-left left-padding">
+							每次锻炼时长：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="workout_time" name="workout_time" type="text" class="font-14" placeholder="请输入" style="width: 85%;">
+							<div class="mui-pull-right" style="padding-top: 0.2rem">分钟</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14 isworkout">
+						<div class="mui-pull-left left-padding">
+							锻炼类型：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="workout_type" name="workout_type" type="text" class="font-14" placeholder="请输入">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							饮食习惯类型：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="diet_type" name="diet_type" type="text" class="font-14" placeholder="请输入">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14" id="sleep_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								睡眠情况：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="sleep_span">请选择</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							其他习惯：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="other_habit" name="other_habit" type="text" class="font-14" placeholder="请输入">
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="background-color-fff" id="other_list">
+				<ul class="mui-table-view" id="">
+					<li class="mui-table-view-cell font-14" id="census_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								户籍类别：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="census_span">请选择</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14" id="account_li">
+						<a class="mui-navigate-right">
+							<div class="mui-pull-left left-padding">
+								户口类型：
+							</div>
+							<div class="click-msg mui-pull-right font-14 margin-right-15" id="account_span">请选择</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							邮政编码：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="postal_code" name="postal_code" type="text" class="font-14" placeholder="请输入邮政编码">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							所属派出所：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="police_station" name="police_station" type="text" class="font-14" placeholder="请输入所属派出所">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							所属居委会：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="committee" name="committee" type="text" class="font-14" placeholder="请输入所属居委会">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							住宅电话：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="phone" name="phone" type="text" class="font-14" placeholder="请输入住宅电话">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							E-mail：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="e_mail" name="e_mail" type="text" class="font-14" placeholder="请输入邮箱">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							联系人姓名：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="contact_name" name="contact_name" type="text" class="font-14" placeholder="请输入联系人姓名">
+						</div>
+					</li>
+					<li class="mui-table-view-cell font-14">
+						<div class="mui-pull-left left-padding">
+							联系人电话：
+						</div>
+						<div class="mui-pull-right width-65">
+							<input id="contact_number" name="contact_number" type="text" class="font-14" placeholder="请输入联系人电话">
+						</div>
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="mui-content-padded">
+			<button id="save" class="mui-btn mui-btn-color">保存</button>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<!--<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>-->
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/sharemethods.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.new.js"></script>
+	<script type="text/javascript" src="../js/mui.picker.js"></script>
+	<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+	<script>
+		mui.init({
+			beforeback: function() {　　　　 //获得父页面的webview
+				var list = plus.webview.currentWebview().opener();　　　　 //触发父页面的自定义事件(refresh),从而进行刷新
+				mui.fire(list, 'refresh');
+				//返回true,继续页面关闭逻辑
+				return true;
+			},
+			//			swipeBack: true, //启用右滑关闭功能
+		});
+		$("#other_list,#health_list,#left_list").hide();
+		$("#base_list").show();
+
+		function toTop() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+
+		$("#base").click(function() {
+			toTop()
+			$("#health,#left,#other").removeClass("click-base");
+			$("#base").addClass("click-base");
+			$("#health_list,#left_list,#other_list").hide();
+			$("#base_list").show();
+		});
+		$("#health").click(function() {
+			toTop()
+			$("#base,#left,#other").removeClass("click-base");
+			$("#health").addClass("click-base");
+			$("#health_list").show();
+			$("#base_list,#left_list,#other_list").hide();
+		});
+		$("#left").click(function() {
+			toTop()
+			$("#health,#base,#other").removeClass("click-base");
+			$("#left").addClass("click-base");
+			$("#left_list").show();
+			$("#health_list,#base_list,#other_list").hide();
+		});
+		$("#other").click(function() {
+			toTop()
+			$("#health,#left,#base").removeClass("click-base");
+			$("#other").addClass("click-base");
+			$("#other_list").show();
+			$("#left_list,#base_list,#health_list").hide();
+		});
+		var JSONMESSAGE = {};
+		var JSOMMESSAGEARRAY = [];
+		var myvalue = '',
+			longitude = '',
+			latitude = '';
+		var gender, marital, edu, profession, workout, drinking, smoke, workoutStatus, sleep, census, account = null;
+		var danganId;
+
+		if(mui.os.ios) {
+			// 解决在ios上fixed元素focusin时位置出现错误的问题 
+			document.addEventListener('DOMContentLoaded', function() {
+				var footerDom = document.getElementById('top_main');
+
+				document.addEventListener('focusin', function() {
+					footerDom.style.position = 'absolute';
+				});
+				document.addEventListener('focusout', function() {
+					footerDom.style.position = 'fixed';
+				});
+			});
+		}
+		mui.plusReady(function() {
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			$("#name,#idnumber,#tel,#gender_span,#nationality").attr("readonly", "readonly");
+
+			$("#setting_position").click(function(e) {
+				mui.openWindow({
+					url: '../service_object/setting_text.html',
+					id: 'setting_text.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+			});
+			window.addEventListener('refresher', function(event) {
+				//获得事件参数
+				myvalue = event.detail.myvalue;
+				var longitude_inner = event.detail.longitude;
+				var latitude_inner = event.detail.latitude;
+				console.log(myvalue);
+
+				$("#address").val(myvalue);
+
+				longitude = longitude_inner;
+				latitude = latitude_inner;
+				//根据id向服务器请求新闻详情
+			});
+			var id = localStorage.getItem("TOKENID");
+			console.log("用户id-------------》" + id);
+
+			clickPicker();
+
+			var success1 = function(data) {
+				console.log("单独个人居民健康档案列表-------》" + JSON.stringify(data));
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				if(data.result == "success") {
+					sub = data.data
+					$("#name").val(sub.realname);
+					$("#idnumber").val(sub.idnumber);
+					$("#tel").val(sub.tel);
+					$("#gender_span").html(sub.gender > 0 ? "女" : "男");
+					gender = $("#gender_span").html();
+					$("#address").val(sub.homeaddress);
+					$("#menpai_no").val(sub.houseNumber);
+					if(!sub.ordergps) {
+						mui.toast("请重新选择地址")
+					} else {
+						longitude = sub.ordergps.coordinates[0];
+						latitude = sub.ordergps.coordinates[1];
+					}
+					danganId = sub._id;
+					var xxxx = data.data.xxxx;
+					var _xxxx = {};
+					for(var k in xxxx) {
+						//							console.log(k + "===" + xxxx[k]);
+						var v = xxxx[k];
+						if(v !== '' && v !== 'undefined' && v !== 'null') {
+							_xxxx[k] = v;
+						}
+					}
+					console.log('除去null和undefined=' + JSON.stringify(_xxxx));
+					for(var k in _xxxx) {
+						$("#" + k + "").val(_xxxx[k]);
+						$("#" + k + "_span").html(_xxxx[k]);
+						if(k == 'marital') {
+							marital = _xxxx[k]
+						}
+						if(k == 'gender') {
+							gender = gender
+						}
+						if(k == 'edu') {
+							edu = _xxxx[k]
+						}
+						if(k == 'profession') {
+							profession = _xxxx[k]
+						}
+						if(k == 'workout') {
+							workout = _xxxx[k];
+							if(workout == "否") {
+								$(".isworkout").hide();
+							} else {
+								$(".isworkout").show();
+							}
+						}
+						if(k == 'drinking') {
+							drinking = _xxxx[k]
+						}
+						if(k == 'smoke') {
+							smoke = _xxxx[k];
+							if(smoke == "否") {
+								$("#issmoke").hide();
+							} else {
+								$("#issmoke").show();
+							}
+						}
+						if(k == 'workoutStatus') {
+							workoutStatus = _xxxx[k]
+						}
+						if(k == 'sleep') {
+							sleep = _xxxx[k]
+						}
+						if(k == 'census') {
+							census = _xxxx[k]
+						}
+						if(k == 'account') {
+							account = _xxxx[k]
+						}
+					}
+				} else {
+					mui.toast(data.msg);
+				}
+			};
+			var byidUrl = serverAddress + "/api/patient/appgetobjectbyuserid/" + id;
+			commonHttpUtils(byidUrl, "get", {}, success1, error, true);
+
+			mui("body").on("tap", "#save", function() {
+				if(!$("#birth").val()) {
+					mui.toast('请填写出生年月日')
+					return false;
+				};
+				if($("#address").val() == "" || longitude == "" || latitude == "" || longitude == undefined || latitude == undefined) {
+					mui.toast("请选择正确地址");
+					return false;
+				};
+				if($("#menpai_no").val() == "") {
+					mui.toast("请填写门牌号码");
+					return false;
+				}
+				var now = new Date();
+				var age1 = parseInt(now.getFullYear()) - parseInt(GetAge($("#idnumber").val()));
+				var dataUp = {
+					serviceObject: danganId,
+					data: {
+						realname: $("#name").val(),
+						idnumber: $("#idnumber").val(),
+						tel: $("#tel").val(),
+						gender: gender,
+						relations: "自己",
+						homeaddress: $("#address").val(),
+						ordergpslng: longitude,
+						ordergpslat: latitude,
+						houseNumber: $("#menpai_no").val(),
+						age: age1,
+						xxxx: {
+							birth: $("#birth").val(),
+							nationality: "中国",
+							province: $("#province").val(),
+							ethnic: $("#ethnic").val(),
+							marital: marital,
+							edu: edu,
+							profession: profession,
+							unit: $("#unit").val(),
+							medtype: $("#medtype").val(),
+							medunit: $("#medunit").val(),
+							bloodType: $("#bloodType").val(),
+							height: $("#height").val(),
+							weight: $("#weight").val(),
+							allergy: $("#allergy").val(),
+							illness: $("#illness").val(),
+							surgery: $("#surgery").val(),
+							injury: $("#injury").val(),
+							blood_transfusion: $("#blood_transfusion").val(),
+							genetic_disease: $("#genetic_disease").val(),
+							father_disease: $("#father_disease").val(),
+							mother_disease: $("#mother_disease").val(),
+							brotherSister_disease: $("#brotherSister_disease").val(),
+							child_disease: $("#child_disease").val(),
+							disability: $("#disability").val(),
+							smoke: smoke,
+							smoke_time: $("#smoke_time").val(),
+							drinking: drinking,
+							workout: workout,
+							workoutStatus: workoutStatus,
+							workout_time: $("#workout_time").val(),
+							workout_type: $("#workout_type").val(),
+							diet_type: $("#diet_type").val(),
+							sleep: sleep,
+							other_habit: $("#other_habit").val(),
+							census: census,
+							account: account,
+							postal_code: $("#postal_code").val(),
+							police_station: $("#police_station").val(),
+							committee: $("#committee").val(),
+							phone: $("#phone").val(),
+							e_mail: $("#e_mail").val(),
+							contact_name: $("#contact_name").val(),
+							contact_number: $("#contact_number").val(),
+						}
+					}
+				};
+				var url = serverAddress + "/api/appfamilydoctorteam/updateServiceObject";
+				var sussess2 = function(data) {
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data.result == "success") {
+						mui.toast("修改成功");
+						mui.back();
+					} else {
+						mui.toast(data.msg);
+					}
+				};
+				console.log("上传数组-------》" + JSON.stringify(dataUp));
+				commonHttpUtils(url, "post", dataUp, sussess2, error, true);
+
+			});
+
+		});
+
+		function isCardID(sId) {
+			var iSum = 0;
+			var info = "";
+			if(!/^\d{17}(\d|x)$/i.test(sId)) return "你输入的身份证长度或格式错误";
+			sId = sId.replace(/x$/i, "a");
+			if(aCity[parseInt(sId.substr(0, 2))] == null) return "你的身份证地区非法";
+			sBirthday = sId.substr(6, 4) + "-" + Number(sId.substr(10, 2)) + "-" + Number(sId.substr(12, 2));
+			var d = new Date(sBirthday.replace(/-/g, "/"));
+			if(sBirthday != (d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate())) return "身份证上的出生日期非法";
+			for(var i = 17; i >= 0; i--) iSum += (Math.pow(2, i) % 11) * parseInt(sId.charAt(17 - i), 11);
+			if(iSum % 11 != 1) return "你输入的身份证号非法";
+			//aCity[parseInt(sId.substr(0,2))]+","+sBirthday+","+(sId.substr(16,1)%2?"男":"女");//此次还可以判断出输入的身份证号的人性别
+			return true;
+		};
+
+		function GetAge(idCard) {
+			var birthday = "";
+			if(idCard != null && idCard != "") {
+				if(idCard.length == 15) {
+					birthday = "19" + idCard.substr(6, 6);
+				} else if(idCard.length == 18) {
+					birthday = idCard.substr(6, 8);
+				}
+
+				birthday = birthday.replace(/(.{4})(.{2})/, "$1-$2-");
+				birthday = birthday.split("-")[0];
+			}
+
+			return birthday;
+		};
+
+		function clickPicker() {
+			//选择性别
+			//			var genderButton = document.getElementById('gender_li');
+			//			var genderResult = document.getElementById('gender_span');
+			//			genderButton.addEventListener('tap', function(event) {
+			//				var genderPicker = new mui.PopPicker();
+			//				genderPicker.setData([{
+			//					text: '男',
+			//					value: '0'
+			//				}, {
+			//					text: '女',
+			//					value: '1'
+			//				}]);
+			//				document.activeElement.blur();
+			//
+			//				genderPicker.show(function(items) {
+			//					genderResult.innerText = items[0].text;
+			//					gender = items[0].value;
+			//				});
+			//			}, false);
+
+			//选择婚姻状况
+			var maritalButton = document.getElementById('marital_li');
+			var maritalResult = document.getElementById('marital_span');
+			maritalButton.addEventListener('tap', function(event) {
+				var maritalPicker = new mui.PopPicker();
+				maritalPicker.setData([{
+					text: '未婚'
+				}, {
+					text: '已婚'
+				}, {
+					text: '丧偶'
+				}, {
+					text: '离婚'
+				}, {
+					text: '未说明的婚姻状况'
+				}]);
+				document.activeElement.blur();
+				maritalPicker.show(function(items) {
+					maritalResult.innerText = items[0].text;
+					marital = items[0].text;
+				});
+			}, false);
+			//选择文化程度
+			var eduButton = document.getElementById('edu_li');
+			var eduResult = document.getElementById('edu_span');
+			eduButton.addEventListener('tap', function(event) {
+				var eduPicker = new mui.PopPicker();
+				eduPicker.setData([{
+					text: '研究生'
+				}, {
+					text: '大学本科'
+				}, {
+					text: '大学专科和专科学校'
+				}, {
+					text: '中等专业学校'
+				}, {
+					text: '技工学校'
+				}, {
+					text: '高中'
+				}, {
+					text: '初中'
+				}, {
+					text: '小学'
+				}, {
+					text: '文盲或半文盲'
+				}, {
+					text: '不详'
+				}]);
+				document.activeElement.blur();
+				eduPicker.show(function(items) {
+					eduResult.innerText = items[0].text;
+					edu = items[0].text;
+				});
+			}, false);
+			//选择职业
+			var professionButton = document.getElementById('profession_li');
+			var professionResult = document.getElementById('profession_span');
+			professionButton.addEventListener('tap', function(event) {
+				var professionPicker = new mui.PopPicker();
+				professionPicker.setData([{
+					text: '国际机关、党群组织、企业、事业单位负责人'
+				}, {
+					text: '专业技术人员'
+				}, {
+					text: '办事人员和有关人员'
+				}, {
+					text: '商业、服务业人员'
+				}, {
+					text: '农、林、牧、渔、水利业生产人员'
+				}, {
+					text: '生产、运输设备操作人员及有关人员'
+				}, {
+					text: '军人'
+				}, {
+					text: '不便分类的其他从业人员'
+				}, {
+					text: '无职业'
+				}]);
+				document.activeElement.blur();
+				professionPicker.show(function(items) {
+					professionResult.innerText = items[0].text;
+					profession = items[0].text;
+				});
+			}, false);
+			//选择是否吸烟
+			var smokeButton = document.getElementById('smoke_li');
+			var smokeResult = document.getElementById('smoke_span');
+			smokeButton.addEventListener('tap', function(event) {
+				var smokePicker = new mui.PopPicker();
+				smokePicker.setData([{
+					text: '是'
+				}, {
+					text: '否'
+				}]);
+				document.activeElement.blur();
+				smokePicker.show(function(items) {
+					smokeResult.innerText = items[0].text;
+					smoke = items[0].text;
+					if(smoke == "否") {
+						$("#issmoke").hide();
+					} else {
+						$("#issmoke").show();
+					}
+				});
+			}, false);
+			//选择是否饮酒
+			var drinkingButton = document.getElementById('drinking_li');
+			var drinkingResult = document.getElementById('drinking_span');
+			drinkingButton.addEventListener('tap', function(event) {
+				var drinkingPicker = new mui.PopPicker();
+				drinkingPicker.setData([{
+					text: '是'
+				}, {
+					text: '否'
+				}]);
+				document.activeElement.blur();
+				drinkingPicker.show(function(items) {
+					drinkingResult.innerText = items[0].text;
+					drinking = items[0].text;
+				});
+			}, false);
+			//选择是否锻炼
+			var workoutButton = document.getElementById('workout_li');
+			var workoutResult = document.getElementById('workout_span');
+			workoutButton.addEventListener('tap', function(event) {
+				var workoutPicker = new mui.PopPicker();
+				workoutPicker.setData([{
+					text: '是'
+				}, {
+					text: '否'
+				}]);
+				document.activeElement.blur();
+				workoutPicker.show(function(items) {
+					workoutResult.innerText = items[0].text;
+					workout = items[0].text;
+					if(workout == "否") {
+						$(".isworkout").hide();
+					} else {
+						$(".isworkout").show();
+					}
+				});
+			}, false);
+			//选择锻炼情况
+			var workoutStatusButton = document.getElementById('workoutStatus_li');
+			var workoutStatusResult = document.getElementById('workoutStatus_span');
+			workoutStatusButton.addEventListener('tap', function(event) {
+				var workoutStatusPicker = new mui.PopPicker();
+				workoutStatusPicker.setData([{
+					text: '非常好'
+				}, {
+					text: '良好'
+				}, {
+					text: '一般'
+				}, {
+					text: '较差'
+				}, {
+					text: '非常差'
+				}]);
+				document.activeElement.blur();
+				workoutStatusPicker.show(function(items) {
+					workoutStatusResult.innerText = items[0].text;
+					workoutStatus = items[0].text;
+				});
+			}, false);
+			//选择睡眠情况
+			var sleepButton = document.getElementById('sleep_li');
+			var sleepResult = document.getElementById('sleep_span');
+			sleepButton.addEventListener('tap', function(event) {
+				var sleepPicker = new mui.PopPicker();
+				sleepPicker.setData([{
+					text: '非常好'
+				}, {
+					text: '良好'
+				}, {
+					text: '一般'
+				}, {
+					text: '较差'
+				}, {
+					text: '非常差'
+				}]);
+				document.activeElement.blur();
+				sleepPicker.show(function(items) {
+					sleepResult.innerText = items[0].text;
+					sleep = items[0].text;
+				});
+			}, false);
+			//选择户籍类别
+			var censusButton = document.getElementById('census_li');
+			var censusResult = document.getElementById('census_span');
+			censusButton.addEventListener('tap', function(event) {
+				var censusPicker = new mui.PopPicker();
+				censusPicker.setData([{
+					text: '农业户口'
+				}, {
+					text: '非农业户口'
+				}]);
+				document.activeElement.blur();
+				censusPicker.show(function(items) {
+					censusResult.innerText = items[0].text;
+					census = items[0].text;
+				});
+			}, false);
+			//选择户口类别
+			var accountButton = document.getElementById('account_li');
+			var accountResult = document.getElementById('account_span');
+			accountButton.addEventListener('tap', function(event) {
+				var accountPicker = new mui.PopPicker();
+				accountPicker.setData([{
+					text: '常住户口'
+				}, {
+					text: '暂住户口'
+				}]);
+				document.activeElement.blur();
+				accountPicker.show(function(items) {
+					accountResult.innerText = items[0].text;
+					account = items[0].text;
+				});
+			}, false);
+		};
+	</script>
+
+</html>

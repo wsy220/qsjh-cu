@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/htmleaf-demo.css">
+		<link rel="stylesheet" href="../../css/tablecellsselection.css">
+		<link rel="stylesheet" href="../../css/bottom_action/bottom_action.css" />
+		<link rel="stylesheet" href="../../css/ruler/ruler.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="ion.rangeSlider-2.2.0/css/ion.rangeSlider.css" />
+		<link rel="stylesheet" href="ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinSimple.css" />
+		<!--<link rel="stylesheet" href="ion.rangeSlider-2.2.0/css/ion.rangeSlider.skinFlat.css" />-->
+		<title>血糖</title>
+		<style>
+			.container-fluid {
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+			
+			.mui-content {
+				background-color: transparent;
+			}
+			
+			table th,
+			table td {
+				text-align: center;
+			}
+			/* tabBar */
+			
+			.tabBar {
+				width: 100%;
+				font-family: "Microsoft YaHei";
+				margin: 10px auto;
+			}
+			
+			.tabBar .hd ul {
+				z-index: 5;
+				position: relative;
+				zoom: 1;
+			}
+			
+			.tabBar .hd li {
+				float: left;
+				height: 24px;
+				line-height: 24px;
+				margin-top: 4px;
+				padding: 0px 16px 0px 16px;
+				margin-right: 5px;
+				color: #333333;
+				border: 1px solid #c8d1d5;
+				border-bottom: 0px;
+				cursor: pointer;
+			}
+			
+			.tabBar .hd li.on {
+				height: 27px;
+				line-height: 32px;
+				font-weight: bold;
+				overflow: hidden;
+				margin-top: 0px;
+				position: relative;
+				top: 1px;
+				border-top: 2px solid #004ea2;
+				background: #fff;
+			}
+			
+			.tabBar .hd li.on span {
+				font-weight: bold;
+				color: #c00;
+			}
+			
+			.tabBar .bd {
+				border: 1px solid #C8D1D5;
+				padding: 18px 40px 0 1.8rem;
+				clear: both;
+				position: relative;
+				height: 60px;
+				overflow: hidden;
+				font-size: 15px;
+			}
+			/*.tabBar .bd .conWrap {
+				width: 100%;
+			}*/
+			
+			.tabBar .prev,
+			.tabBar .next {
+				position: absolute;
+				left: 10px;
+				top: 15px;
+			}
+			
+			.tabBar .next {
+				left: auto;
+				right: 10px;
+			}
+			
+			.tabBar .prevStop,
+			.tabBar .nextStop {
+				display: none;
+			}
+			
+			.tabBar .bd p {
+				padding-bottom: 10px
+			}
+			
+			.jiantou img {
+				max-width: 50%;
+			}
+			
+			table.gridtable {
+				font-family: verdana, arial, sans-serif;
+				font-size: 0.2rem;
+				color: #888888;
+				border-width: 1px;
+				border-collapse: collapse;
+			}
+			
+			table.gridtable th {
+				border-width: 1px;
+				padding: 8px;
+				border-style: solid;
+				border-color: #666666;
+				background-color: #F0EFEE;
+			}
+			
+			table.gridtable td {
+				border-width: 1px;
+				padding: 8px;
+				border-style: solid;
+				border-color: #666666;
+				background-color: #ffffff;
+			}
+			
+			.table thead>tr>th {
+				vertical-align: inherit;
+				border-bottom: 2px solid #ddd;
+				border-bottom-width: 2px;
+				border-bottom-style: solid;
+				border-bottom-color: rgb(221, 221, 221);
+			}
+			
+			.table thead>tr>th,
+			.table tbody>tr>th,
+			.table tfoot>tr>th,
+			.table thead>tr>td,
+			.table tbody>tr>td,
+			.table tfoot>tr>td {
+				padding: 4px;
+				line-height: 1;
+				vertical-align: inherit;
+				border-top: 1px solid #ddd;
+			}
+			
+			p {
+				margin: 0;
+				font-size: 0.2rem;
+			}
+			
+			.mui-badge {
+				padding: 3px 3px;
+			}
+			
+			.mui-badge-baihui {
+				background-color: #2E7BEF;
+			}
+			
+			.mui-badge-primary {
+				background-color: #DC2D2D;
+			}
+			
+			.mui-badge-success {
+				background-color: #44D56E;
+			}
+			
+			.mui-icon {
+				font-size: 10px;
+			}
+			
+			.mui-table-view-cell {
+				padding-left: 0;
+				padding-right: 0;
+			}
+			
+			li .mui-pull-right {
+				text-align: right;
+				width: 40%;
+				margin-right: 20px;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				margin-left: 0px;
+			}
+			
+			.message {
+				z-index: 999;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">血糖</h1>
+		</header>
+		<div class="container-fluid mui-content" id="root" v-cloak>
+			<div class="row">
+				<div class="tabBar">
+					<div class="bd">
+						<div class="conWrap" id="time_build">
+							<div class="con" v-for="(end,index) in arr_vue">
+								<p style="font-size:15px" v-if="index!=0">{{end[0].day}}～{{end[end.length - 1].day}} </p>
+								<p style="font-size:15px;padding-left:55px;" v-if="index==0">本周</p>
+							</div>
+
+						</div>
+						<a class="prev prevStop jiantou" style="right: 10px;left: auto;" href="javascript:void(0)" id="jiantou_left"><img src="../../images/hengxiang/icon_right.png"></a>
+						<a class="next jiantou" style="right: auto;left: 10px;" href="javascript:void(0)" id="jiantou_right"><img src="../../images/hengxiang/icon_left.png"></a>
+					</div>
+				</div>
+
+				<table class="table table-bordered gridtable" summary="Table selection with plugin" id="tablecellsselection">
+					<thead>
+						<tr>
+							<th rowspan="2">日期</th>
+							<th rowspan="2">凌晨</th>
+							<th colspan="2">早餐</th>
+							<th colspan="2">午餐</th>
+							<th colspan="2">晚餐</th>
+							<th rowspan="2">睡前</th>
+						</tr>
+						<tr>
+							<th>空腹</th>
+							<th>餐后</th>
+							<th>餐前</th>
+							<th>餐后</th>
+							<th>餐前</th>
+							<th>餐后</th>
+						</tr>
+					</thead>
+					<tbody id="history_income_list">
+						<tr>
+							<th id="call_xingqi0"></th>
+							<td class="callmidnight" id="midnight10">+</td>
+							<td class="callmorning1" id="morning10">+</td>
+							<td class="callmorning2" id="morning20">+</td>
+							<td class="callnoon1" id="noon10">+</td>
+							<td class="callnoon2" id="noon20">+</td>
+							<td class="callnight1" id="night10">+</td>
+							<td class="callnight2" id="night20">+</td>
+							<td class="callbeforesleep" id="beforesleep10">+</td>
+						</tr>
+						<tr>
+							<th id="call_xingqi1"></th>
+							<td class="callmidnight" id="midnight11">+</td>
+							<td class="callmorning1" id="morning11">+</td>
+							<td class="callmorning2" id="morning21">+</td>
+							<td class="callnoon1" id="noon11">+</td>
+							<td class="callnoon2" id="noon21">+</td>
+							<td class="callnight1" id="night11">+</td>
+							<td class="callnight2" id="night21">+</td>
+							<td class="callbeforesleep" id="beforesleep11">+</td>
+						</tr>
+						<tr>
+							<th id="call_xingqi2"></th>
+							<td class="callmidnight" id="midnight12">+</td>
+							<td class="callmorning1" id="morning12">+</td>
+							<td class="callmorning2" id="morning22">+</td>
+							<td class="callnoon1" id="noon12">+</td>
+							<td class="callnoon2" id="noon22">+</td>
+							<td class="callnight1" id="night12">+</td>
+							<td class="callnight2" id="night22">+</td>
+							<td class="callbeforesleep" id="beforesleep12">+</td>
+						</tr>
+						<tr>
+							<th id="call_xingqi3"></th>
+							<td class="callmidnight" id="midnight13">+</td>
+							<td class="callmorning1" id="morning13">+</td>
+							<td class="callmorning2" id="morning23">+</td>
+							<td class="callnoon1" id="noon13">+</td>
+							<td class="callnoon2" id="noon23">+</td>
+							<td class="callnight1" id="night13">+</td>
+							<td class="callnight2" id="night23">+</td>
+							<td class="callbeforesleep" id="beforesleep13">+</td>
+						</tr>
+						<tr>
+							<th id="call_xingqi4"></th>
+							<td class="callmidnight" id="midnight14">+</td>
+							<td class="callmorning1" id="morning14">+</td>
+							<td class="callmorning2" id="morning24">+</td>
+							<td class="callnoon1" id="noon14">+</td>
+							<td class="callnoon2" id="noon24">+</td>
+							<td class="callnight1" id="night14">+</td>
+							<td class="callnight2" id="night24">+</td>
+							<td class="callbeforesleep" id="beforesleep14">+</td>
+						</tr>
+						<tr>
+							<th id="call_xingqi5"></th>
+							<td class="callmidnight" id="midnight15">+</td>
+							<td class="callmorning1" id="morning15">+</td>
+							<td class="callmorning2" id="morning25">+</td>
+							<td class="callnoon1" id="noon15">+</td>
+							<td class="callnoon2" id="noon25">+</td>
+							<td class="callnight1" id="night15">+</td>
+							<td class="callnight2" id="night25">+</td>
+							<td class="callbeforesleep" id="beforesleep15">+</td>
+						</tr>
+						<tr>
+							<th id="call_xingqi6"></th>
+							<td class="callmidnight" id="midnight16">+</td>
+							<td class="callmorning1" id="morning16">+</td>
+							<td class="callmorning2" id="morning26">+</td>
+							<td class="callnoon1" id="noon16">+</td>
+							<td class="callnoon2" id="noon26">+</td>
+							<td class="callnight1" id="night16">+</td>
+							<td class="callnight2" id="night26">+</td>
+							<td class="callbeforesleep" id="beforesleep16">+</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="mui-content-padded">
+					<span class="mui-badge mui-badge-baihui"></span>&nbsp;偏低
+					<span class="mui-badge mui-badge-primary"></span>&nbsp;偏高
+					<span class="mui-badge mui-badge-success"></span>&nbsp;正常
+					<span class="mui-icon mui-icon-plusempty"></span>&nbsp;可选监测点
+				</div>
+			</div>
+			<ul class="mui-table-view mui-table-view mui-table-view-striped mui-table-view-condensed tableUL">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" id="allergy">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								治疗药物：
+								<div class="mui-pull-right mui-ellipsis" id="allergy_span" style="color: #8c8b8b;margin-right: 30px;">{{diseaseAndmedicine.medicine}}</div>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell" id="profession_li">
+					<a class="mui-navigate-right">
+						<div class="mui-table">
+							<div class="mui-table-cell mui-col-xs-10">
+								请选择病种：
+								<div class="mui-pull-right mui-ellipsis" id="profession_span" style="color: #8c8b8b;margin-right: 30px;">{{diseaseAndmedicine.disease}}</div>
+							</div>
+						</div>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+
+		<!--
+			作者：35551400@qq.com
+			时间：2018-07-09
+			描述：底部弹出菜单
+		-->
+		<div class="message bottom mui-hidden">
+			<div>请设置血糖值</div>
+			<div id='box'>
+				<div id='value'>血糖<span id='unit'></span>mmol/L</div>
+				<input type="text" id="range" value="" name="range" />
+			</div>
+
+			<div class="action">
+				<button id="cancel" type="button" class="mui-btn mui-btn-blue">取消</button>
+				<button id="install" type="button" class="mui-btn mui-btn-blue">确定</button>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../../js/qs/qs.immersed.js"></script>
+		<script type="text/javascript" src="../../css/ruler/ruler.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../../js/dependence_moment.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+
+		<script type="text/javascript" src="../../js/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../../js/vue/vue-router.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.picker.js"></script>
+		<script type="text/javascript" src="../../js/mui.poppicker.js"></script>
+
+		<script src="ion.rangeSlider-2.2.0/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+
+		<script>
+			window.jQuery || document.write('<script src="../../js/jquery-3.1.1.min.js"><\/script>')
+		</script>
+		<script src="../../js/tablecellsselection.js"></script>
+		<script type="text/javascript">
+			var query_start = '';
+			var query_end = '';
+			var arr = [];
+			var vWeekOfDay = moment().week(moment().week()).format("E");
+			var vWeekOfDays = 7 - vWeekOfDay - 1;
+			var end = moment().week(moment().week()).add('days', vWeekOfDays + 2);
+
+			mui.plusReady(function() {
+				var vm = new Vue({
+					el: '#root',
+					data: {
+						arr_vue: [], //列表信息流数据
+						diseaseAndmedicine: {}
+					},
+					methods: {},
+					mounted: function() {
+						//构建今年时间数组
+						//前12个月的周
+						for(var i = 0; i < 52; i++) {
+							var ends = [];
+							for(var m = 0; m < 7; m++) {
+								end = moment(end).subtract(1, 'days');
+								var weekday = gTime.fGetCurrentWeek(end);
+								ends.push({
+									day: end.format('YYYY-MM-DD'),
+									weekday: weekday
+								});
+							}
+							ends.reverse();
+							arr.push(ends);
+
+						}
+						arr.reverse();
+						this.arr_vue = arr; //初始化标题
+						this.arr_vue.reverse();
+						this.$nextTick(function(e) {
+							initSlide();
+						})
+
+					}
+
+				});
+				var vWeekOfDay = "";
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				//服务对象ID
+				var service_id = currentView.ID;
+
+				var queryMedicineAndill = serverAddress + "/api/appfamilydoctorteam/getHealthDocById";
+				var successQuery = function(data) {
+					console.log("查询药物和病种" + JSON.stringify(data));
+					if(data.obj.healthDoc && data.obj.healthDoc.bloodsugar) {
+						vm.diseaseAndmedicine = data.obj.healthDoc.bloodsugar;
+					}
+				};
+				commonHttpUtils(queryMedicineAndill, "post", {
+					serviceObject: service_id
+				}, successQuery, error, true);
+
+				var professionButton = document.getElementById('profession_li');
+				var professionResult = document.getElementById('profession_span');
+				var professionPicker = new mui.PopPicker();
+
+				//获取病种
+				var getmethodURL = serverAddress + "/api/appfamilydoctorteam/listBloodDisease";
+				var success = function(data) {
+					console.log("血糖病种查询" + JSON.stringify(data));
+					var illnessDate = [];
+					var illnessDateJSON = {};
+					for(var i = 0; i < data.data.length; i++) {
+						illnessDateJSON = {
+							"text": data.data[i].mainLabel
+						};
+						illnessDate.push(illnessDateJSON);
+
+					}
+					professionPicker.setData(illnessDate);
+				}
+				commonHttpUtils(getmethodURL, "get", {}, success, error, true);
+				//存储选择的病种
+				professionButton.addEventListener('tap', function(event) {
+					professionPicker.show(function(items) {
+						professionResult.innerText = items[0].text;
+						profession = items[0].text;
+						mui("body").on("tap", ".mui-poppicker-header>  .mui-poppicker-btn-ok", function() {
+							var HealthDataSchema = {
+								serviceObject: service_id,
+								dataType: "bloodsugar",
+								healthDoc: {
+									bloodsugar: {
+										disease: profession
+									}
+								}
+							};
+							console.log(JSON.stringify(HealthDataSchema))
+							var saveillnessURL = serverAddress + "/api/appfamilydoctorteam/updateMedicineOrDisease";
+							var success = function(data) {
+								console.log("存储血糖", JSON.stringify(data));
+							}
+							commonHttpUtils(saveillnessURL, "post", HealthDataSchema, success, error, true);
+						});
+					});
+
+				}, false);
+
+				$("#allergy").click(function(e) {
+					mui.openWindow({
+						url: 'medicine_tang.html',
+						id: 'medicine_tang.html',
+						extras: {
+							ID: service_id,
+							medcine_string: vm.diseaseAndmedicine
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				})
+
+				var url = serverAddress + "/api/appfamilydoctorteam/getHealthDataNewChartsBloodSugerData";
+
+				var whichone = {};
+
+				function initSlide() {
+					$(".tabBar").slide({
+						mainCell: ".conWrap",
+						defaultIndex: 0,
+						effect: "left",
+						trigger: "click",
+						pnLoop: false,
+						autoPage: true,
+						startFun: function(i, c) {
+							var _ends = arr[i];
+							query_start = _ends[0].day;
+							query_end = _ends[_ends.length - 1].day;
+							HealthDataSchema = {
+								serviceObject: service_id,
+								dataType: "bloodsugar",
+								start: query_start,
+								end: query_end
+							};
+							$("td").html("+");
+
+							for(var m2 = 0; m2 < _ends.length; m2++) {
+								var dayAndWeekDay = _ends[m2];
+								var _dayAndWeekDay = dayAndWeekDay.day.split(query_end.slice(0, 4))[1];
+								var _afterdayAndWeekDay = _dayAndWeekDay.slice(1, _dayAndWeekDay.length);
+								var html = '<span>' + _afterdayAndWeekDay + '</span><p>' + dayAndWeekDay.weekday + '</p><input type="hidden" id="hiddentext" value="' + dayAndWeekDay.day + '">'
+								$("#call_xingqi" + m2).html(html);
+
+							}
+
+							var success = function(data) {
+								console.log("查询血糖表格" + JSON.stringify(data));
+								for(var i = 0; i < data.obj.length; i++) {
+									var hangshu = moment(data.obj[i].createdOn).format("YYYY-MM-DD");
+									var DATAJSON = data.obj[i].data;
+									$("#history_income_list").find("th").each(function() {
+										var th_value = $(this).html();
+										if(th_value.indexOf(hangshu) >= 0) {
+											for(var key in DATAJSON) {
+												innDATAJSON = DATAJSON[key];
+												for(var keyinner in innDATAJSON) {
+													var idlast = key + keyinner.split("d")[1] + this.id.split("call_xingqi")[1];
+													var idlast_pro = key + keyinner.split("d")[1];
+													var html = "";
+													
+													var c = idlast_pro.substring(idlast_pro.length-1, idlast_pro.length);
+													
+													//if(idlast_pro.endsWith("1")) {
+													if(c=="1"){
+														if(parseFloat(innDATAJSON[keyinner]) <= 3.9) {
+															html = "<span style='color:#2E7BEF'>" + innDATAJSON[keyinner] + "</span>";
+														} else if(parseFloat(innDATAJSON[keyinner]) >= 6.1) {
+															html = "<span style='color:#DC2D2D'>" + innDATAJSON[keyinner] + "</span>";
+														} else {
+															html = "<span style='color:#44D56E'>" + innDATAJSON[keyinner] + "</span>";
+														}
+
+													} else if(c=="2") {
+														if(parseFloat(innDATAJSON[keyinner]) <= 3.9) {
+															html = "<span style='color:#2E7BEF'>" + innDATAJSON[keyinner] + "</span>";
+														} else if(parseFloat(innDATAJSON[keyinner]) >= 11.1) {
+															html = "<span style='color:#DC2D2D'>" + innDATAJSON[keyinner] + "</span>";
+														} else {
+															html = "<span style='color:#44D56E'>" + innDATAJSON[keyinner] + "</span>";
+														}
+													}
+													if(idlast_pro.indexOf("midnight") > 0) {
+														if(parseFloat(innDATAJSON[keyinner]) <= 3.8) {
+															html = "<span style='color:#2E7BEF'>" + innDATAJSON[keyinner] + "</span>";
+														} else if(parseFloat(innDATAJSON[keyinner]) >= 6.1) {
+															html = "<span style='color:#DC2D2D'>" + innDATAJSON[keyinner] + "</span>";
+														} else {
+															html = "<span style='color:#44D56E'>" + innDATAJSON[keyinner] + "</span>";
+														}
+													} else if(idlast_pro.indexOf("night") > 0) {
+														if(parseFloat(innDATAJSON[keyinner]) <= 3.8) {
+															html = "<span style='color:#2E7BEF'>" + innDATAJSON[keyinner] + "</span>";
+														} else if(parseFloat(innDATAJSON[keyinner]) >= 6.2) {
+															html = "<span style='color:#DC2D2D'>" + innDATAJSON[keyinner] + "</span>";
+														} else {
+															html = "<span style='color:#44D56E'>" + innDATAJSON[keyinner] + "</span>";
+														}
+													}
+
+													$("#" + idlast).html(html);
+												}
+											}
+										}
+									});
+
+								}
+								if(data.result == "success") {
+									plus.nativeUI.closeWaiting();
+								}
+							}
+							commonHttpUtils(url, "post", HealthDataSchema, success, error, true);
+						}
+					});
+				}
+				var whichone;
+				var current_place;
+				var current_val;
+				var current_year;
+				var flag=false;
+				var mask = mui.createMask(function() {
+					return flag;
+				});
+
+				//加号点击事件
+				$("td[class*='call']").click(function(e) {
+
+					current_place = $(this).attr("class").split(" ")[0];
+					var current_date = $(this).parent().children().text();
+					current_year = $(this).parent().children().find("input").val();
+
+					var reg = new RegExp("call_xingqi", "g");
+					var current_hang = $(this).parent().children().attr("id");
+
+					whichone = this;
+					if(moment(current_year) > moment(new Date())) {
+						mui.toast("不能选择未来日期")
+						return false;
+					} else {
+						mask.show();
+						flag=false;
+						document.querySelector(".message").classList.remove("mui-hidden");
+						//callback为用户点击蒙版时自动执行的回调；
+						//显示遮罩
+
+						//mask.close(); //关闭遮罩
+						
+						//初始化尺子
+						//						var measureRuler = new MeasureRuler({
+						//							wrapperId: "rulerWrapper", //容器ID，页面中写一个DIV就行 (必须)
+						//							max: 30, //刻度尺最大的刻度    (非必须，默认为1000)
+						//							minUnit: 0.1, //刻度尺最小刻度    (非必须，默认为1)
+						//							unitSet: 10, //刻度尺单元长度    (非必须，默认是10)
+						//							value: 0, //初始化数值       (非必须，默认为1)
+						//							mult: 1, //刻度值倍数，默认是最小刻度值为10px，如果定mult为3则最小刻度为30px (非必须，默认为1)
+						//							callback: rulerSetValue, //滑动尺子过程中的回调函数     (非必须)
+						//							min: 0 //刻度尺最小刻度
+						//						})
+
+						$("#range").ionRangeSlider({
+							hide_min_max: true,
+							keyboard: true,
+							min: 0,
+							max: 30,
+							from: 0,
+							type: 'single',
+							step: 0.1,
+							prefix: "",
+							grid: true,
+							onChange: function(obj) { // function-callback, is called on every change
+								//console.log("onchange" + JSON.stringify(obj));
+								//console.log(obj.from_pretty);
+								$("#unit").html($("#range").val());
+							},
+							onFinish: function(obj) { // function-callback, is called once, after slider finished it's work
+								//console.log("onfinsih" + JSON.stringify(obj));
+							}
+						});
+						var dataJSON = {};
+
+					}
+
+				})
+
+				mui(".action").on("tap", ".mui-btn", function() {
+					flag=true;
+					mask.close();
+					//关闭消息框
+					var id = this.getAttribute("id");
+					if(id && id == "install") {
+						console.log($("#unit").text())
+						current_val = $("#unit").text();
+						console.log(current_val)
+						var current_text = current_val;
+						$("#" + whichone.id).html(current_text);
+						whichone = null;
+						console.log(current_place)
+						console.log("current_text" + current_text)
+						dataJSON = getdateJSON(current_place, current_text);
+						//存储血糖接口
+						console.log(JSON.stringify(dataJSON));
+						var url = serverAddress + "/api/appfamilydoctorteam/saveOrUpdateHealthDataNew";
+						var success = function(data) {
+							console.log("存储血糖222" + JSON.stringify(data));
+							if(data.result == "success") {
+								plus.nativeUI.closeWaiting();
+								document.querySelector(".message").classList.add("mui-hidden");
+							}
+						}
+						var HealthDataSchema = {
+							serviceObject: service_id,
+							dataType: "bloodsugar",
+							date: current_year,
+							data: {
+								"data": dataJSON
+							}
+						};
+						console.log("传输数据" + JSON.stringify(HealthDataSchema));
+						commonHttpUtils(url, "post", HealthDataSchema, success, error, true);
+					} else {
+						document.querySelector(".message").classList.add("mui-hidden");
+					}
+				});
+
+				function getdateJSON(IDstr, val) {
+					var JSONMESSAGE = {};
+					var _JSONMESSAGE = {};
+					var Datestr = "";
+					var reg = new RegExp("call", "g");
+					var a = IDstr.replace(reg, "");
+					switch(a) {
+						case "midnight":
+							_JSONMESSAGE = JSONMESSAGE["midnight"];
+							JSONMESSAGE["midnight"] = {
+								"d1": val
+							};
+							break;
+						case "night1":
+							_JSONMESSAGE = JSONMESSAGE["night"];
+							JSONMESSAGE["night"] = {
+								"d1": val
+							};
+							break;
+						case "night2":
+							_JSONMESSAGE = JSONMESSAGE["night"];
+							JSONMESSAGE["night"] = {
+								"d2": val
+							};
+							break;
+						case "morning1":
+							_JSONMESSAGE = JSONMESSAGE["morning"];
+							JSONMESSAGE["morning"] = {
+								"d1": val
+							};
+							break;
+						case "morning2":
+							_JSONMESSAGE = JSONMESSAGE["morning"];
+							JSONMESSAGE["morning"] = {
+								"d2": val
+							};
+							break;
+						case "noon1":
+							_JSONMESSAGE = JSONMESSAGE["noon"];
+							JSONMESSAGE["noon"] = {
+								"d1": val
+							};
+							break;
+						case "noon2":
+							_JSONMESSAGE = JSONMESSAGE["noon"];
+							JSONMESSAGE["noon"] = {
+								"d2": val
+							};
+							break;
+						case "beforesleep":
+							_JSONMESSAGE = JSONMESSAGE["beforesleep"];
+							JSONMESSAGE["beforesleep"] = {
+								"d1": val
+							};
+							break;
+					}
+					return JSONMESSAGE;
+				}
+			});
+
+			
+		</script>
+	</body>
+
+</html>

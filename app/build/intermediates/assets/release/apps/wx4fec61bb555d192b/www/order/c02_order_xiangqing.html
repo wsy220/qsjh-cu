@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>订单详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<style>
+			.jvse {
+				color: #ff9e0d;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 6px;
+				color: #FFFFFF;
+				border-radius: 8px;
+			}
+			
+			.ziti {
+				font-size: 0.3rem;
+				color: #333333;
+				font-weight: bold;
+				line-height: 29px;
+			}
+			
+			.zitijg {
+				font-size: 13px;
+				color: #454545;
+				line-height: 29px;
+				/*margin-left: -5px;*/
+				text-align: right;
+			}
+			
+			.zitijg2 {
+				font-size: 15px;
+				color: #454545;
+				line-height: 25px;
+				text-align: left;
+			}
+			
+			.neirong {
+				font-size: 15px;
+				color: #8f8f94;
+				padding-top: 10px;
+				line-height: 24px;
+			}
+			
+			.neirong1 {
+				font-size: 0.3rem;
+				color: #999999;
+				padding-top: 10px;
+				line-height: 14px;
+			}
+			
+			.mui-table1 {
+				width: 70%;
+				float: left;
+			}
+			
+			.jiage {
+				width: 30%;
+				float: right;
+				text-align: right;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 9px;
+				color: #FFFFFF;
+				border-radius: 8px;
+				background-color: #66cc99;
+				width: 55px;
+				float: right;
+			}
+			
+			.mui-table-view {
+				position: relative;
+				margin-top: 5px;
+				margin-bottom: 0;
+				padding-left: 0;
+				list-style: none;
+				background-color: #fff;
+			}
+			
+			.mui-btn-block {
+				padding: 0px 0;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.mui-badge-huise {
+				color: #FFFFFF;
+				background: rgba(0, 0, 0, .15);
+				background-color: #aeaeae;
+				width: 72px;
+				margin-left: 6px;
+				text-align: center;
+			}
+			
+			.mui-badge-warning {
+				color: #FFFFFF;
+				background: #FF9900;
+			}
+			
+			.mui-badge-huise1 {
+				color: #FFFFFF;
+				background: rgba(0, 0, 0, .15);
+				background-color: #aeaeae;
+				width: 70px;
+				text-align: center;
+				margin-left: 6px;
+			}
+			
+			.mui-badge-red {
+				color: #FFFFFF;
+				background: #ff0000;
+			}
+			
+			.mui-badge-green {
+				color: #FFFFFF;
+				background: #66cc99;
+			}
+			
+			.mui-badge-green2 {
+				color: #FFFFFF;
+				background: #669966;
+			}
+			
+			.mui-table-view .mui-media,
+			.mui-table-view .mui-media-body {
+				overflow: hidden;
+				line-height: 1.5;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 90px;
+				max-width: 90px;
+				height: 90px;
+			}
+			
+			.iconfont {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.shanchang {
+				font-size: 14px;
+				color: #333333;
+				font-weight: bold;
+				white-space: normal!important;
+			}
+			
+			.nei {
+				font-size: 14px;
+				color: #333333;
+				font-weight: 100;
+			}
+			
+			.qiangdan_hushi {
+				display: block;
+			}
+			
+			.qiangdan_jishi {
+				display: none;
+			}
+			
+			#wait_minute {
+				color: #ff9900;
+				font-size: 20px;
+				font-weight: bold;
+				margin-left: 5px;
+				margin-right: 5px;
+			}
+			
+			.zitijg #yaopin,
+			.zitijg #beipin,
+			#queren3 {
+				color: #ff6600;
+				font-size: 12px;
+			}
+			
+			.zitiTotal {
+				background-color: #EEEEEE;
+			}
+			
+			.mui-btn-warning1 {
+				background: #bcbcbc;
+				border-radius: 10px;
+				width: 100%;
+				height: 0.9rem;
+				font-size: 15px;
+				color: #ffffff;
+				height: 42px;
+			}
+			
+			.mui-btn-warning {
+				background: #FCB565;
+				border-radius: 10px;
+				width: 100%;
+				height: 0.9rem;
+				font-size: 15px;
+				height: 42px;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				margin: 0;
+				padding: 15px 2px;
+				vertical-align: top;
+			}
+			
+			.jiage {
+				width: 30%;
+				float: right;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				margin-top: 3px;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 9px;
+				color: #FFFFFF;
+				border-radius: 8px;
+				background-color: #66cc99;
+				width: 55px;
+			}
+			
+			.mui-btn-block {
+				padding: 0px 0;
+			}
+			
+			.tR {
+				text-align: right;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				margin: 0;
+				padding: 0;
+				background-color: #efeff4;
+			}
+			
+			#queren3 {
+				margin-top: -10px;
+			}
+			
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+			
+			.head-img {
+				width: 70px;
+				height: 70px;
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				margin-top: 0.3rem;
+				padding-bottom: 20px;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 9px;
+				color: #FFFFFF;
+				border-radius: 8px;
+				background-color: #66cc99;
+				width: 55px;
+			}
+			
+			.mui-badge-huise {
+				color: #FFFFFF;
+				background: rgba(0, 0, 0, .15);
+				background-color: #aeaeae;
+				width: 72px;
+				margin-left: 6px;
+				text-align: center;
+			}
+			
+			.mui-badge-warning {
+				color: #FFFFFF;
+				background: #FF9900;
+			}
+			
+			.mui-badge-huise1 {
+				color: #FFFFFF;
+				background: rgba(0, 0, 0, .15);
+				background-color: #aeaeae;
+				width: 70px;
+				text-align: center;
+				margin-left: 6px;
+			}
+			
+			.mui-icon-location-filled:before {
+				content: '\e333';
+				color: #34c5ca;
+			}
+			
+			.viewweizhi {
+				border: 0;
+			}
+			
+			.viewweizhi,
+			.liuyan,
+			.tel {
+				font-size: 12px;
+			}
+			
+			.viewweizhi img,
+			.liuyan img,
+			.tel img {
+				width: 15px;
+				vertical-align: inherit;
+				margin-right: 10px;
+			}
+			
+			.mui-ellipsis-2 {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+			}
+			
+			.icon-aixinzhi:before {
+				content: "\e614";
+				font-size: 12px;
+				margin-left: 10px;
+			}
+			
+			.m-rem5 {
+				margin-top: -15px;
+			}
+			
+			#head-img-doctor {
+				width: 70px;
+				height: 70px;
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				border-radius: 50%;
+				margin-left: 10px;
+			}
+			
+			#fukuan {
+				display: none;
+			}
+			
+			.mui-progressbar span {
+				background: #38c7cd;
+			}
+			
+			.mui-progressbar {
+				height: 4px;
+				margin-top: 25px;
+			}
+			
+			.mui-content-padded {
+				margin: 15px;
+			}
+			
+			.yihufont {
+				color: #333333;
+				font-size: 10px;
+			}
+			
+			.mui-progressbar {
+				width: 90%;
+				margin-left: 15px;
+			}
+			
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			.mui-col-xs-2 {
+				width: 20%;
+			}
+			
+			.mui-col-xs-10 {
+				width: 84%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订单详情</h1>
+		</header>
+		<div class="mui-content" style="background-color: #FFF;">
+			<!--进度条  -->
+			<div id="order_yihu_jindu">
+				<div id="progress" class="mui-text-center mui-content-padded">
+					<p class="mui-progressbar mui-progressbar-in" data-progress="20"><span></span></p>
+					<ul id="progressbarBtn1" class="mui-pagination">
+						<div style="position: absolute;left: 4px;" class="position-top">
+							<a href="javascript:;" data-progress="0">
+								<img src="../images/u2404.png" id="yihu_go-home" />
+								<div class="yihufont">医护出发</div>
+							</a>
+						</div>
+						<div style="position: absolute;left: 20%;" class="position-top">
+							<a href="javascript:;" data-progress="25">
+								<img src="../images/u2404.png" id="yihu_arrive" />
+								<div class="yihufont">医护到达</div>
+							</a>
+						</div>
+						<div style="position: absolute;left: 43%;" class="position-top">
+							<a href="javascript:;" data-progress="50">
+								<img src="../images/u2404.png" id="yihu_service" />
+								<div class="yihufont">开始服务</div>
+							</a>
+						</div>
+						<div style="position: absolute;left:65%;" class="position-top">
+							<a href="javascript:;" data-progress="75">
+								<img src="../images/u2404.png" id="yihu_leave" />
+								<div class="yihufont">服务完成</div>
+							</a>
+						</div>
+						<div style="position: absolute;right: 12px;" class="position-top">
+							<a href="javascript:;" data-progress="100">
+								<img src="../images/u2404.png" id="yihu_finish" />
+								<div class="yihufont">医护确认</div>
+							</a>
+						</div>
+					</ul>
+				</div>
+			</div>
+			<div id="order_d">
+
+			</div>
+
+			<!--<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL">
+				<li class="mui-table-view-cell">
+					<div>
+						<div class="" style="display: inline-block;">
+							<p class="ziti" id="item_name">伤口换药</p>
+						</div>
+						<div class="" style="display: inline-block; float: right;">
+							<p class="zitijg"><span id="serviceprice">96yy.9元/1次</span></p>
+						</div>
+					</div>
+					<div>
+						<div class="" style="display: inline-block;">
+							<p class="ziti" id="item_name">备品包价格:</p>
+							<p class="ziti" id="item_name">合计:</p>
+						</div>
+						<div class="" style="display: inline-block; float: right;">
+							<p class="zitijg"><span id="youhuiprice">20yyy.8元</span></p>
+							<p class="zitijg"><span id="serviceprice">50yyy.6元</span></p>
+						</div>
+					</div>
+				</li>
+			</ul>-->
+
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed qiangdan_jishi">
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<p class="ziti">系统根据您的情况为您推荐以下护士为您服务：</p>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="../images/sj.png">
+						<div class="mui-media-body">
+							<ul>
+								<li class="shanchang">系统正在为您匹配护士，<br>预计<span id="wait_minute"></span>分钟内完成匹配</li>
+							</ul>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div id="order_a">
+			</div>
+
+			<div id="order_b"></div>
+			<div id="order_c"></div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/mui.picker.js"></script>
+	<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script src="../js/mui.previewimage.js"></script>
+	<script src="../js/mui.zoom.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		var order_id_page, huishiJSON_MESSAGE, zhifu_money = '';
+		var higherprice = 0;
+		mui.previewImage();
+		//		var userPicker = new mui.PopPicker();
+		//		userPicker.setData([{
+		//			value: 'bo1',
+		//			text: '信息填写错误重新发单'
+		//		}, {
+		//			value: 'bo2',
+		//			text: '我不需要了'
+		//		}, {
+		//			value: 'bo3',
+		//			text: '其他'
+		//		}]);
+		mui.plusReady(function() {
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			var self = plus.webview.currentWebview();
+			hushiJSON_ID = self.orderid;
+			//order_id_page = self.ORDER_ID;
+			$(".position-top").css("top", (immersed + 63))
+
+			if(hushiJSON_ID) {
+				order_id_page = hushiJSON_ID;
+			} else {
+				order_id_page = self.ORDER_ID;
+			}
+			$("#order_id").html(order_id_page);
+			var progressbar1 = mui('#progress');
+			mui(progressbar1).progressbar().setProgress(0);
+			//根据订单ID查询详情
+			var success = function(data) {
+				console.log("订单详情2" + JSON.stringify(data));
+				if(data.result == "success") {
+					var order = data;
+
+					//判断医护服务状态0初始状态（未出发）1-出发 2-到达 3-开始服务 4离开
+					switch(data.dcstatus) {
+						case "1":
+							mui(progressbar1).progressbar().setProgress(24);
+							$("#yihu_go-home").attr('src', "../images/u2437.png");
+							break;
+						case "2":
+							mui(progressbar1).progressbar().setProgress(48);
+							$("#yihu_go-home").attr('src', "../images/u2437.png");
+							$("#yihu_arrive").attr('src', "../images/u2437.png");
+							break;
+						case "3":
+							mui(progressbar1).progressbar().setProgress(75);
+							$("#yihu_go-home").attr('src', "../images/u2437.png");
+							$("#yihu_arrive").attr('src', "../images/u2437.png");
+							$("#yihu_service").attr('src', "../images/u2437.png");
+							break;
+						case "4":
+							mui(progressbar1).progressbar().setProgress(100);
+							$("#yihu_go-home").attr('src', "../images/u2437.png");
+							$("#yihu_arrive").attr('src', "../images/u2437.png");
+							$("#yihu_service").attr('src', "../images/u2437.png");
+							$("#yihu_leave").attr('src', "../images/u2437.png");
+							$("#yihu_finish").attr('src', "../images/u2437.png");
+							break;
+					}
+					$("#order_d").html("");
+					$("#order_d").processTL(templateRegister.orderd, order, "append", function() {});
+
+					$("#order_a").html("");
+					$("#order_a").processTL(templateRegister.ordera, order, "append", function() {});
+					if(data.type == "finish") {
+						var url = serverAddress + "/api/patient/getservicelog/" + order_id_page;
+						var sussess = function(data) {
+							//服务器返回响应，根据响应结果，分析是否登录成功；
+							//console.log("护理记录" + JSON.stringify(data));
+							if(data.result == "success") {
+								var orderjilu = data.data;
+								$("#order_b").html("");
+								$("#order_b").processTL(templateRegister.orderb, orderjilu, "append", function() {
+
+								});
+							}
+						};
+						commonHttpUtils(url, "get", {}, sussess, error, true);
+					}
+					$("#order_c").html("");
+					$("#order_c").processTL(templateRegister.orderc, order, "append", function() {
+
+					});
+
+					var zhifu_money;
+					//如果有优惠券
+					if(data.data.hasOwnProperty("coupon")) {
+						zhifu_money = (data.data.price.servicetotalprice / 100) - (data.data.coupon.amount / 100);
+					} else {
+						zhifu_money = data.data.price.servicetotalprice / 100;
+					}
+					//如果备品需要平台代购
+					if(!data.data.isprovidespares) {
+						zhifu_money = zhifu_money + data.data.orderSpares[0].groupprice / 100;
+					}
+
+					var statuspage = 0;
+					if(data.data.isneedspares == "0" || data.data.isneedspares == "0") {
+						statuspage = 0;
+					} else {
+						statuspage = 1;
+					}
+					if(data.data.states == "orderd" || data.data.states == "finish") { //如果被接单
+						if(data.data.servicepersonal) {
+							//打电话
+							mui("#order_a").on("tap", "#tel", function(e) {
+								plus.device.dial(data.data.servicepersonal.phone, false);
+							});
+							//聊天
+							mui("#order_a").on("tap", "#liuyan", function(e) {
+								mui.openWindow({
+									url: '../familydoctor/im-chat.html',
+									id: 'im-chat.html',
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										TO_ACCOUNT: data.data._id, //订单ID
+										userfaceimage: data.data.servicepersonal.userfaceimage,
+										TO_NAME: data.data.serviceitem + "-" + data.data.servicepersonal.name, //服务项目-医护姓名
+										TYPE: "GROUP" //群组聊天
+									}
+								});
+							});
+							//查看地图
+							mui("#order_a").on("tap", "#mapopen", function(e) {
+								mui.openWindow({
+									id: 'map.html',
+									url: 'map.html',
+									show: {
+										autoShow: false, //页面loaded事件发生后自动显示，默认为true
+										event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+									},
+									waiting: {
+										autoShow: true //自动显示等待框，默认为true
+									},
+									extras: {
+										SERVICENUMBER: data.data.serviceNumber,
+										ORDER_ID: data.data._id,
+										ORDERGPS: data.data.ordergps
+									}
+								});
+							});
+
+						}
+						if(data.data.states == "finish") {
+							$("#mapopen").hide();
+							$("#twobutton_liuyan").hide();
+						}
+					}
+
+					if(data.type == "unconfirm" && data.data.states == "new" || data.type == "waiting" && data.data.states == "new") {
+						$(".qiangdan_jishi").css("display", "block");
+						//倒计时
+						var past_time = 0,
+							begin_time = localStorage.getItem("begin_time_order" + data.data._id),
+							daojishi_current = localStorage.getItem("miao_order" + data.data._id),
+							daojishi2 = localStorage.getItem("daojishi2" + data.data._id);
+						if(daojishi_current == null) {
+							daojishi_current = date_All_format();
+						}
+						if(daojishi2 == null) {
+							daojishi2 = 60;
+						}
+						if(begin_time == null) {
+							begin_time = date_All_format();
+							localStorage.setItem("begin_time_order" + data.data._id, begin_time);
+						}
+
+						//获取最开始时间
+						past_time = date_Time_minus(begin_time, daojishi_current).split(":")[0];
+						daojishi2 = 60 - past_time;
+						var daojishi_interval = setInterval(function() {
+							if(daojishi2 > 0) {
+								$('#wait_minute').html(parseInt(daojishi2));
+								var miaozhen = daojishi2 * 60;
+								miaozhen--;
+								localStorage.setItem("miao_order" + data.data._id, date_All_format());
+								localStorage.setItem("daojishi2" + data.data._id, daojishi2);
+								daojishi2 = miaozhen / 60
+							} else {
+								$('#wait_minute').html("等待时间超过1小时");
+								clearInterval(daojishi_interval);
+								localStorage.removeItem("begin_time_order" + data.data._id);
+								localStorage.removeItem("miao_order" + data.data._id);
+								localStorage.removeItem("daojishi2" + data.data._id);
+								daojishi2 = 60;
+								past_time = 0;
+							}
+						}, 1000);
+					}
+
+					if(data.type == "non-payment") {
+						//付款按钮
+						mui("#order_c").on("tap", "#fukuan", function(e) {
+							mui.openWindow({
+								id: 'wait-payment.html',
+								url: 'wait-payment.html',
+								show: {
+									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								},
+								extras: {
+									ORDER_ID: order_id_page, //扩展参数
+									MONEY_HEJI: zhifu_money,
+									STATUS: statuspage
+								}
+							});
+							var waitpament = plus.webview.getWebviewById("wait-payment.html");
+							mui.fire(waitpament, 'order_id', {
+								ORDER_ID: order_id_page
+							});
+						});
+					}
+					if(data.type == "unevaluate") {
+
+						//评价按钮
+						mui("#order_c").on("tap", "#fukuan", function(e) {
+							mui.openWindow({
+								id: 'pingjia.html',
+								url: 'pingjia.html',
+								show: {
+									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								},
+								extras: {
+									ORDER_ID: order_id_page,
+									Doctor_Name: data.data.servicepersonal.name,
+									Doctor_Type: data.data.servicepersonal.dtype
+								}
+							});
+						});
+					}
+					//患者确认按钮
+					//					if(data.type == "paunconfirm") {
+					//						var url = serverAddress + "/api/patient/confirmorder";
+					//						mui("#order_c").on("tap", "#fukuan", function(e) {
+					//							var sussess = function(data) {
+					//								console.log(JSON.stringify(data));
+					//								//服务器返回响应，根据响应结果，分析是否登录成功；
+					//								if(data.result == "success") {
+					//									mui.back();
+					//								}
+					//							};
+					//							commonHttpUtils(url, "POST", {
+					//								id: order_id_page
+					//							}, sussess, error, true);
+					//						});
+					//					}
+					if(data.type == "unconfirm" || data.type == "waiting" || data.type == "paunconfirm" || data.type == "unorder") {
+						console.log("退款规则" + data.refundType);
+						//退款按钮
+						mui("#order_d").on("tap", ".mui-badge", function(e) {
+							mui.openWindow({
+								id: 'single_back.html',
+								url: 'single_back.html',
+								show: {
+									autoShow: false, //页面loaded事件发生后自动 显示，默认为true
+									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								},
+								extras: {
+									ORDER_ID: order_id_page,
+									TUIKUAN_ROLE: data.refundType
+								}
+							});
+						});
+					} else if(data.type == "non-payment") {
+						//取消订单按钮
+						mui("#order_d").on("tap", ".mui-badge", function(e) {
+							confirmquxiao("取消提示", "您确认取消订单？", "", "", data.data._id);
+						});
+					}
+
+				} else {
+					mui.toast(data.msg);
+				}
+
+			};
+			var url_xiangqing;
+			url_xiangqing = serverAddress + "/api/patient/appgetorder/" + order_id_page;
+			commonHttpUtils(url_xiangqing, "get", {}, success, error, false);
+			//一分钟以后再执行
+			setInterval(function() {
+				commonHttpUtils(url_xiangqing, "get", {}, success, error, false);
+			}, 60000);
+
+		});
+		window.addEventListener('order_id_xiangqing', function(event) {
+			order_id_page = event.detail.ORDER_ID;
+			$("#order_id").html(order_id_page);
+		});
+
+		/*确认退款窗口*/
+		var confirm = function(tishi, content1, content2, onPopupClick, orderid, reason) {
+			var oDiv = document.createElement('div');
+			var mengban = document.createElement('div');
+			mengban.innerHTML = '<div class="mui-popup-backdrop mui-active" style="display: block;"></div>'
+			oDiv.innerHTML = '<div class="mui-popup mui-popup-in"style="display: block;"><div class="mui-popup-inner"><div class="mui-popup-title">' + tishi + '</div><div class="mui-popup-text">' + content1 + '</div><div class="mui-popup-text">' + content2 + '</div></div><div class="mui-popup-buttons"><span class="mui-popup-button" id="quxiao">我再想想</span><span class="mui-popup-button mui-popup-button-bold"id="queding">确定退单</span></div></div>'
+			document.body.appendChild(mengban);
+			document.body.appendChild(oDiv);
+			document.getElementById("queding").addEventListener('tap', function() {
+				var url = serverAddress + "/api/patient/refund";
+				var success = function(data) {
+					console.log("退款" + JSON.stringify(data));
+					if(data.result == "error") {
+						if(data.msg == "STATUS_ERR") {
+							mui.toast("医护已经开始服务，不可以退款");
+							return false;
+						}
+					}
+					if(data.result == "success") {
+						mui.toast("您的退款申请已经提交，请耐心等待");
+						mui.openWindow({
+							id: onPopupClick,
+							url: onPopupClick,
+							show: {
+								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+							},
+							waiting: {
+								autoShow: true //自动显示等待框，默认为true
+							}
+						});
+					}
+
+				};
+				commonHttpUtils(url, "post", {
+					orderId: orderid,
+					reason: reason
+				}, success, error, true);
+
+				document.body.removeChild(mengban);
+				document.body.removeChild(oDiv);
+				return false;
+			});
+			document.getElementById("quxiao").addEventListener('tap', function() {
+				document.body.removeChild(mengban);
+				document.body.removeChild(oDiv);
+				return false;
+			});
+		}
+
+		/*确认取消窗口*/
+		var confirmquxiao = function(tishi, content1, content2, onPopupClick, orderid) {
+			var oDiv = document.createElement('div');
+			var mengban = document.createElement('div');
+			mengban.innerHTML = '<div class="mui-popup-backdrop mui-active" style="display: block;"></div>'
+			oDiv.innerHTML = '<div class="mui-popup mui-popup-in"style="display: block;"><div class="mui-popup-inner"><div class="mui-popup-title">' + tishi + '</div><div class="mui-popup-text">' + content1 + '</div><div class="mui-popup-text">' + content2 + '</div></div><div class="mui-popup-buttons"><span class="mui-popup-button" id="quxiao">我再想想</span><span class="mui-popup-button mui-popup-button-bold"id="queding">确定取消订单</span></div></div>'
+			document.body.appendChild(mengban);
+			document.body.appendChild(oDiv);
+			document.getElementById("queding").addEventListener('tap', function() {
+				var url = serverAddress + "/api/patient/appupdateorder";
+				var cancelInfo = {
+					id: order_id_page,
+					type: "cancel"
+				};
+				var sussess = function(data) {
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					//console.log(JSON.stringify(data));
+					if(data.result == "success") {
+						mui.toast("订单取消成功");
+						mui.back();
+						plus.webview.currentWebview().opener().reload(true);
+						localStorage.removeItem("upitem");
+					}
+				};
+				commonHttpUtils(url, "post", cancelInfo, sussess, error, true);
+
+				document.body.removeChild(mengban);
+				document.body.removeChild(oDiv);
+				return false;
+			});
+			document.getElementById("quxiao").addEventListener('tap', function() {
+				document.body.removeChild(mengban);
+				document.body.removeChild(oDiv);
+				return false;
+			});
+		}
+
+//		{
+//			"result": "success",
+//			"type": "non-payment",
+//			"refundType": "0",
+//			"dcstatus": "0",
+//			"data": {
+//				"timeinterval": {
+//					"intervalbegin": "2018-06-28T08:00:00.000Z",
+//					"intervalend": "2018-06-28T09:00:00.000Z"
+//				},
+//				"price": {
+//					"serviceprice": 9600,
+//					"time": 1,
+//					"discount": 0,
+//					"sparesprice": 0,
+//					"servicetotalprice": 9600,
+//					"totalprice": 9600
+//				},
+//				"additional": {
+//					"pictureurl": [],
+//					"condition": ""
+//				},
+//				"customer": {
+//					"realname": "王殊宇",
+//					"gender": "女",
+//					"age": "37",
+//					"tel": "13364306255",
+//					"homeaddress": "长春市绿园区长春西站",
+//					"idnumber": "220203198102200343",
+//					"ordergps": {
+//						"coordinates": [125.206528, 43.883313],
+//						"type": "Point"
+//					}
+//				},
+//				"orderImgs": {
+//					"drugImgs": [],
+//					"sparesImgs": [],
+//					"recipeImgs": [],
+//					"caseImgs": [],
+//					"environmenImgs": ["client\\assets\\uploads\\single-file-1530156298672.jpg"],
+//					"yingxiangImgs": []
+//				},
+//				"question": {
+//					"pictures": []
+//				},
+//				"answer": {
+//					"pictures": []
+//				},
+//				"remind": {
+//					"serviceStartFlag": "0"
+//				},
+//				"pushtimes": 0,
+//				"backScale": 0,
+//				"refundamount": 0,
+//				"sparesBelong": "hos",
+//				"allowThird": false,
+//				"receivetype": "active",
+//				"paymentstatus": "wfp",
+//				"payamount": 0,
+//				"abnormal": 0,
+//				"timeisconfirm": true,
+//				"drugisconfirm": true,
+//				"doctorisconfirm": true,
+//				"patientisconfirm": true,
+//				"sparesconfirm": true,
+//				"isneeddrugs": "1",
+//				"isneedspares": "0",
+//				"isprovidedrugs": true,
+//				"isprovidespares": true,
+//				"isneedrecipe": false,
+//				"isneedadvice": false,
+//				"isneedphoto": false,
+//				"isneedenvironmen": true,
+//				"isevaluated": false,
+//				"isreminded": false,
+//				"states": "new",
+//				"servicestates": "waiting",
+//				"orderSericedCount": 0,
+//				"isrecommend": false,
+//				"serviceStatus": "0",
+//				"serviceNumber": 1,
+//				"versionKey": 0,
+//				"isAgreed": true,
+//				"ordertime": "2018-06-28T03:25:13.542Z",
+//				"disease": [{
+//					"diseases": ["术后"],
+//					"_id": "5b345519ab307723587f6652",
+//					"department": "外科"
+//				}],
+//				"orderDrugs": [],
+//				"orderSpares": [{
+//					"spares": [{
+//						"_id": "5a44a10b3b6c3b366cee6439",
+//						"manufacturer": "长春",
+//						"unit": "套",
+//						"unitprice": 9,
+//						"standard": "1",
+//						"number": "1",
+//						"name": "一次性换药包"
+//					}, {
+//						"_id": "5a44a10b3b6c3b366cee6438",
+//						"manufacturer": "长春",
+//						"unit": "袋",
+//						"unitprice": 6,
+//						"standard": "2卷（8cmx4.5m）",
+//						"number": "1",
+//						"name": "医用弹性绷带（pbt）"
+//					}, {
+//						"_id": "5a44a10b3b6c3b366cee6437",
+//						"manufacturer": "长春",
+//						"unit": "片",
+//						"unitprice": 2.2,
+//						"standard": "5x7.5cmx10",
+//						"number": "1",
+//						"name": "纱布块"
+//					}, {
+//						"_id": "5a44a10b3b6c3b366cee6436",
+//						"manufacturer": "长春",
+//						"unit": "片",
+//						"unitprice": 3.2,
+//						"standard": "12.5x12.5cmx2",
+//						"number": "1",
+//						"name": "纱布块"
+//					}, {
+//						"_id": "5a44a10b3b6c3b366cee6435",
+//						"manufacturer": "长春",
+//						"unit": "片",
+//						"unitprice": 3.5,
+//						"standard": "8x8cmx8层x10片",
+//						"number": "1",
+//						"name": "医用脱脂纱布块"
+//					}, {
+//						"_id": "5a44a10b3b6c3b366cee6434",
+//						"manufacturer": "长春",
+//						"unit": "盒",
+//						"unitprice": 1.5,
+//						"standard": "2x300cm",
+//						"number": "1",
+//						"name": "医用压敏胶带"
+//					}],
+//					"_id": "5a44a10b3b6c3b366cee6433",
+//					"groupname": "创面护理包",
+//					"groupprice": 2540
+//				}],
+//				"createdOn": "2018-06-28T03:25:13.542Z",
+//				"updatedOn": "2018-06-28T03:25:13.542Z",
+//				"_id": "5b345519ab307723587f6651",
+//				"username": "王殊宇",
+//				"userid": "5abaed1d7a4e00360cc84ed2",
+//				"serviceitem": "伤口换药",
+//				"serviceid": "5a0a4245ac16773082cd5e0d",
+//				"ordernum": "201806281125138086",
+//				"ordergps": {
+//					"coordinates": [125.206528, 43.883313],
+//					"type": "Point"
+//				},
+//				"sparesfrom": "pa",
+//				"servicetype": "0",
+//				"__v": 0
+//			}
+//		}
+	</script>
+
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>医院化验单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link href="../css/hover.css" rel="stylesheet" />
+		<style>
+			.jvse {
+				color: #ff9e0d;
+				padding-top: 90px;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 6px;
+				color: #FFFFFF;
+				border-radius: 8px;
+			}
+			
+			.mui-col-xs-5 {
+				text-align: right;
+				width: 47%;
+			}
+			
+			.ziti {
+				font-size: 15px;
+				color: #454545;
+				font-weight: bold;
+			}
+			
+			.ziti2 {
+				font-size: 18px;
+				color: #E4933C;
+			}
+			
+			.zitijg {
+				font-size: 15px;
+				color: #454545;
+			}
+			
+			.neirong {
+				font-size: 15px;
+				color: #333333;
+				padding-top: 10px;
+				line-height: 22px;
+			}
+			
+			.neirong1 {
+				font-size: 15px;
+				color: #333333;
+				padding-top: 10px;
+				line-height: 14px;
+			}
+			
+			p {
+				font-size: 14px;
+				margin-top: 0;
+				margin-bottom: 10px;
+				color: #333333;
+			}
+			
+			.mui-btn-warning1 {
+				background: #FFFFFF;
+				border-radius: 10px;
+				width: 100%;
+				height: 0.9rem;
+				font-size: 15px;
+				color: #ffffff;
+				height: 42px;
+				border: 1px solid #AEAEAE;
+				color: #1D1D1D;
+			}
+			
+			.mui-btn-warning {
+				background: #FCB565;
+				border-radius: 10px;
+				width: 100%;
+				height: 0.9rem;
+				font-size: 15px;
+				height: 42px;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				margin: 0;
+				padding: 5px 2px;
+				vertical-align: top;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell>a:not(.mui-btn) {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.mui-table1 {
+				width: 100%;
+				float: left;
+			}
+			
+			.jiage {
+				width: 30%;
+				float: right;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				margin-top: 3px;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 9px;
+				color: #FFFFFF;
+				border-radius: 8px;
+				background-color: #66cc99;
+				width: 55px;
+			}
+			
+			.mui-col-xs-7 {
+				width: 53%;
+			}
+			
+			.mui-btn-block {
+				padding: 0px 0;
+			}
+			
+			.tR {
+				text-align: right;
+			}
+			
+			.mui-grid-view.mui-grid-9,
+			.mui-content {
+				margin: 0;
+				padding: 0;
+				background-color: #EEEEEE;
+			}
+			
+			.mui-preview-image.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+			
+			.mui-preview-header,
+			.mui-preview-footer {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				z-index: 10;
+			}
+			
+			.mui-preview-header {
+				height: 44px;
+				top: 0;
+			}
+			
+			.mui-preview-footer {
+				height: 50px;
+				bottom: 0px;
+			}
+			
+			.mui-preview-header .mui-preview-indicator {
+				display: block;
+				line-height: 25px;
+				color: #fff;
+				text-align: center;
+				margin: 15px auto 4;
+				width: 70px;
+				background-color: rgba(0, 0, 0, 0.4);
+				border-radius: 12px;
+				font-size: 16px;
+			}
+			
+			.mui-preview-image {
+				display: none;
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			
+			.mui-preview-image.mui-preview-in {
+				-webkit-animation-name: fadeIn;
+				animation-name: fadeIn;
+			}
+			
+			.mui-preview-image.mui-preview-out {
+				background: none;
+				-webkit-animation-name: fadeOut;
+				animation-name: fadeOut;
+			}
+			
+			.mui-preview-image.mui-preview-out .mui-preview-header,
+			.mui-preview-image.mui-preview-out .mui-preview-footer {
+				display: none;
+			}
+			
+			.mui-zoom-scroller {
+				position: absolute;
+				display: -webkit-box;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+				-webkit-box-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.mui-zoom {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item img {
+				width: auto;
+				height: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+				width: 100%;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+				display: inline-table;
+			}
+			
+			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.mui-preview-loading {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			
+			.mui-preview-loading.mui-active {
+				display: block;
+			}
+			
+			.mui-preview-loading .mui-spinner-white {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -25px;
+				margin-top: -25px;
+				height: 50px;
+				width: 50px;
+			}
+			
+			.mui-preview-image img.mui-transitioning {
+				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+				transition: transform 0.5s ease, opacity 0.5s ease;
+			}
+			
+			@-webkit-keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@keyframes fadeIn {
+				0% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+			
+			@-webkit-keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			@keyframes fadeOut {
+				0% {
+					opacity: 1;
+				}
+				100% {
+					opacity: 0;
+				}
+			}
+			
+			p img {
+				max-width: 100%;
+				height: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">医院化验单</h1>
+		</header>
+		<div class="mui-content ">
+			<div class="mui-content-padded">
+				<ul class="mui-table-view mui-grid-view mui-grid-9">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+						<a href="#">
+							<button id='upload1' class="mui-btn-block mui-btn-warning1 hvr-fade">我要申请报告</button>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+						<a href="#">
+							<button id='upload2' class="mui-btn-block mui-btn-warning1 hvr-fade">我要上传报告</button>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="mui-card">
+				<div class="mui-card-header mui-card-media">
+					<img src="../images/logo.png">
+					<div class="mui-media-body">
+						骨密度检查报告<span class="mui-pull-right">2017/07/24</span>
+						<p>发布者：吉林大学第一医院</p>
+					</div>
+				</div>
+				<div class="mui-card-content">
+					<ul class="mui-table-view mui-grid-view">
+						<li class="mui-table-view-cell mui-media mui-col-xs-6">
+							<a href="#">
+								<img class="mui-media-object" src="../images/u5974.png" data-preview-src="" data-preview-group="1">
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media mui-col-xs-6">
+							<a href="#">
+								<img class="mui-media-object" src="../images/u5975.png" data-preview-src="" data-preview-group="1">
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script src="../js/mui.previewimage.js"></script>
+	<script src="../js/mui.zoom.js"></script>
+	<script>
+		mui.previewImage();
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			$("#upload1").click(function(e) {
+				mui.openWindow({
+					id: 'report_shenqing.html',
+					url: '../geren_message/report_shenqing.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+			});
+		});
+	</script>
+
+</html>

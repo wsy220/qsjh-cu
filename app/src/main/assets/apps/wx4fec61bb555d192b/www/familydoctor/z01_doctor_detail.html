@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>团队医生介绍</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			body,
+			html {
+				/*overflow: hidden;*/
+				height: 100%;
+			}
+			/* DEMO 3 */
+			
+			.wrapper-dropdown-3 {
+				/* Size and position */
+				position: relative;
+				width: 25%;
+				margin: 0 auto;
+				padding: 10px;
+				/* Styles */
+				background: #fff;
+				border-radius: 7px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
+				cursor: pointer;
+				outline: none;
+				/* Font settings */
+				font-weight: bold;
+				color: #8AA8BD;
+				font-size: 12px;
+			}
+			
+			.wrapper-dropdown-3:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: 15px;
+				top: 50%;
+				margin-top: -3px;
+				border-width: 6px 6px 0 6px;
+				border-style: solid;
+				border-color: #8aa8bd transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown {
+				/* Size & position */
+				position: absolute;
+				top: 140%;
+				left: 0;
+				right: 0;
+				/* Styles */
+				background: white;
+				border-radius: inherit;
+				border: 1px solid rgba(0, 0, 0, 0.17);
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				font-weight: normal;
+				-webkit-transition: all 0.5s ease-in;
+				-moz-transition: all 0.5s ease-in;
+				-ms-transition: all 0.5s ease-in;
+				-o-transition: all 0.5s ease-in;
+				transition: all 0.5s ease-in;
+				list-style: none;
+				/* Hiding */
+				opacity: 0;
+				pointer-events: none;
+				z-index: 1;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 15px;
+				border-width: 0 6px 6px 6px;
+				border-style: solid;
+				border-color: #fff transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:before {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 13px;
+				border-width: 0 8px 8px 8px;
+				border-style: solid;
+				border-color: rgba(0, 0, 0, 0.1) transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li a {
+				display: block;
+				padding: 10px;
+				text-decoration: none;
+				color: #8aa8bd;
+				border-bottom: 1px solid #e6e8ea;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+				-webkit-transition: all 0.3s ease-out;
+				-moz-transition: all 0.3s ease-out;
+				-ms-transition: all 0.3s ease-out;
+				-o-transition: all 0.3s ease-out;
+				transition: all 0.3s ease-out;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li i {
+				float: right;
+				color: inherit;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:first-of-type a {
+				border-radius: 7px 7px 0 0;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:last-of-type a {
+				border: none;
+				border-radius: 0 0 7px 7px;
+			}
+			/* Hover state */
+			
+			.wrapper-dropdown-3 .dropdown li:hover a {
+				background: #f3f8f8;
+			}
+			/* Active state */
+			
+			.wrapper-dropdown-3.active .dropdown {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			/* No CSS3 support */
+			
+			.no-opacity .wrapper-dropdown-3 .dropdown,
+			.no-pointerevents .wrapper-dropdown-3 .dropdown {
+				display: none;
+				opacity: 1;
+				pointer-events: auto;
+			}
+			
+			.no-opacity .wrapper-dropdown-3.active .dropdown,
+			.no-pointerevents .wrapper-dropdown-3.active .dropdown {
+				display: block;
+			}
+			
+			#uptab {
+				width: 100%;
+			}
+			
+			.mui-fullscreen {
+				top: 45px;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 100px;
+			}
+			
+			.mui-control-content {
+				/*height: 500px;*/
+				height: 88vh !important;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				margin-top: 3px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 90px;
+				max-width: 90px;
+				height: 90px;
+			}
+			
+			.mui-media-body ul li {
+				list-style: none;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #D9D9D9;
+			}
+			
+			.mui-table-view .mui-media,
+			.mui-table-view .mui-media-body {
+				overflow: hidden;
+				line-height: 1.5;
+			}
+			
+			.iconfont {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.head-img {
+				max-width: 1.2rem;
+				max-height: 1.2rem;
+				background-size: 100% 100%;
+				display: inline-block;
+				position: relative;
+				border-radius: 50%;
+				margin-left: 10px;
+			}
+			
+			.mui-btn-color {
+				background: #43CED3;
+				border: none;
+				border-radius: 25px;
+				color: #FFFFFF;
+				height: 0.8rem;
+				font-size: 14px;
+				width: 100%;
+			}
+			
+			.position-top {
+				position: relative;
+				top: -2.7rem;
+			}
+			
+			.main-dc {
+				margin: 3%;
+				padding: 3% 4%;
+				background-color: #ffffff;
+				border-radius: 15px;
+				/*overflow: hidden;*/
+			}
+			
+			.main-dc div,
+			p,
+			h5 {
+				color: #4D4D4D;
+			}
+			
+			.main-dc div {
+				font-size: 15px;
+			}
+			
+			.main-dc p,
+			h5 {
+				font-size: 12px;
+			}
+			
+			.dc-right {
+				background-color: #33c3cb;
+				padding: 3% 14% 3% 11%;
+				border-top-left-radius: 13px;
+				border-bottom-left-radius: 13px;
+				color: #FFFFFF !important;
+				text-align: right;
+				font-size: 12px !important;
+				position: absolute;
+				right: -0.4rem;
+			}
+			
+			.back-color {
+				height: 2.7rem;
+				background: -webkit-linear-gradient(left, #45d0d5, #33c3cb);
+				background: -o-linear-gradient(right, #45d0d5, #33c3cb);
+				background: -moz-linear-gradient(right, #45d0d5, #33c3cb);
+				background: linear-gradient(to right, #45d0d5, #33c3cb);
+			}
+			
+			.tip-other {
+				text-align: center;
+				width: 100%;
+				color: #40CED3;
+				padding-top: 5%;
+				font-size: 15px;
+			}
+			
+			.teamName {
+				font-size: 15px;
+				padding-bottom: 4%;
+				padding-top: 2%;
+			}
+			
+			.type-dc {
+				color: #FFFFFF;
+				background-color: #43CED3;
+				padding: 1% 3%;
+				border-radius: 15px;
+				font-size: 12px;
+				margin-left: 5%;
+			}
+			.color-black{
+				color: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">社区医生介绍</h1>
+			<!--<button id="add_health" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				搜索</button>-->
+		</header>
+		<div class="mui-content">
+			<div class="back-color">
+			</div>
+			<div class="position-top" id="team_leader">
+				<!--<div class="main-dc">
+					<div class="mui-row">
+						<div class="mui-col-xs-3">
+							<img class="head-img" src="" />
+							<img class="head-img" src="../images/txmrt.png" />
+						</div>
+						<div class="mui-col-xs-6" style="padding-top: 3%;padding-left: 3%;">
+							<div style="display: inline-flex;">
+								{{sub.name}}
+								<i style="padding-left: 5px"><img style="width: 24px;" src="../images/familydoctor/icon_woman.png" /></i>
+							</div>
+							<p style="padding-top: 3%;">{{sub.hid.name}}</p>
+						</div>
+						<div class="mui-col-xs-3" style="padding-top: 4%;">
+							<span class="dc-right">医生</span>
+						</div>
+					</div>
+					<div class="" style="margin-top: 5%;margin-bottom: 5%;">
+						<h6>所属科室:<span class="color-black">无</span></h6>
+					</div>
+					<h6>医生介绍：<span class="color-black">{{sub.introduction}}</span></h6>
+
+				</div>-->
+
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+
+		mui.plusReady(function() {
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var self = plus.webview.currentWebview();
+			var detailMain = self.dataJSON;
+			var id = self.dataId;
+			console.log("id------------》" + id);
+			console.log("医生具体详情------------》" + detailMain);
+			//			console.log("医生具体详情------------》" + JSON.parse(detailMain));
+			detailMain = JSON.parse(detailMain);
+			console.log(detailMain.hid.name);
+			$("#team_leader").processTL(templateRegister.doctor_instruction_index_detail, {
+				sub: detailMain,
+			}, "append", function() {});
+
+		});
+	</script>
+
+</html>

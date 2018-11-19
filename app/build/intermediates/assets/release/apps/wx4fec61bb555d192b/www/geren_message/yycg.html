@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>预约成功</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			body {
+				background-color: #ffffff;
+				/* font-size: 100%; */
+			}
+			
+			img,
+			button {
+				max-width: 70%;
+				margin: 0 auto;
+				display: table;
+			}
+			
+			.mui-bar .mui-btn.mui-pull-right {
+				/* margin-left: 10px; */
+				background-color: #ffffff;
+				color: #333333;
+				height: 20px;
+				margin-top: 12px;
+				text-align: center;
+				/* margin: 0px; */
+				width: 80px;
+			}
+			
+			.mui-bar .mui-btn-link {
+				font-size: 12px;
+				line-height: 20px;
+				top: 0;
+				padding: 0;
+				color: #FFFFFF;
+				border: 0;
+			}
+			
+			.tishizi {
+				font-size: 0.4rem;
+				color: #ff6600;
+				text-align: center;
+			}
+			
+			.mui-bar-nav~.mui-content {
+				padding-top: 44px;
+				background-color: #fff;
+			}
+			
+			.mui-card {
+				font-size: 14px;
+				position: relative;
+				overflow: hidden;
+				margin: 10px;
+				border-radius: 2px;
+				background-color: #fff;
+				background-clip: padding-box;
+				box-shadow: 0 0px 2px rgba(0, 0, 0, .3);
+				margin-top: 50px;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				position: relative;
+				display: block;
+				overflow: hidden;
+				margin: -11px -15px;
+				padding: inherit;
+				white-space: inherit;
+				text-overflow: ellipsis;
+				color: inherit;
+				color: #999999;
+				font-size: 15px;
+				line-height: 24px;
+			}
+			
+			.wxts {
+				text-align: center;
+				color: #999999;
+			}
+			
+			html {
+				font-size: 100%;
+				background-color: #ffffff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">预约成功</h1>
+			<button class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" id="yuyue_list">查看预约列表</button>
+		</header>
+
+		<div class="mui-content ">
+			<div class="mui-content-padded">
+
+				<p>
+					<img src="../images/cg-01.png" data-preview-src="" data-preview-group="1">
+				</p>
+				<p class="tishizi">恭喜您已挂号成功!</p>
+			</div>
+		</div>
+		<div class="mui-card" style="margin-bottom: 35px;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell wxts">
+					<a>
+						温馨提示
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a>
+
+						请在就诊当天凭身份证及预约流水号到门诊挂号收款处或自助挂号机预约取号。要求预约就诊时间段15分钟之前完成挂号逾期未取号者，预约自动作废，号源将开放给现场患者。
+					</a>
+				</li>
+
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script>
+		mui.plusReady(function() {
+		if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+		});
+		$("#yuyue_list").click(function(e){
+			mui.openWindow({
+				url: 'wdyy.html',
+				id: 'wdyy.html',
+				show: {
+					autoShow: false, //页面loaded事件发生后自动显示，默认为true
+					event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+				},
+				waiting: {
+					autoShow: true //自动显示等待框，默认为true
+				}
+			});
+		});
+		
+	</script>
+
+</html>

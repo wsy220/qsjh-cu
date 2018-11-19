@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x8wP7ck7pQ4P8UAol2pen8B5"></script>
+		<title>服务对象增加</title>
+		<style>
+			input,
+			textarea {
+				font-size: 0.3rem;
+			}
+			
+			.mui-content {
+				background: #FFFFFF;
+			}
+			
+			.xingbie a {
+				color: #000000;
+			}
+			
+			.tableUL {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-col-xs-3 {
+				width: 21%;
+			}
+			
+			@media screen and (min-width: 320px) {
+				.mui-col-xs-3 {
+					width: 21%;
+				}
+			}
+			
+			@media screen and (min-width: 400px) {
+				.mui-col-xs-3 {
+					width: 21%;
+				}
+			}
+			
+			.libutton {
+				padding-top: 0;
+			}
+			
+			.mui-btn {
+				padding: 6px 6px !important;
+				margin: 6px 0px;
+			}
+			
+			.mui-table-view-cell {
+				padding: 0px 0px;
+			}
+			
+			ul {
+				list-style-type: none;
+			}
+			
+			li {
+				display: inline-block;
+				margin: 5px 0;
+				width: 50px;
+				float: left;
+				margin-right: 7px;
+				border-radius: 5px;
+			}
+			
+			input.labelauty:checked+label {
+				border: 1px solid #43ced3;
+				color: #43ced3;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background-color: #FFFFFF;
+			}
+			
+			.xingbie {
+				font-size: 0.25rem;
+				margin-top: 10px;
+				padding-bottom: 10px;
+				border-bottom: 1px solid #e3e3e3;
+			}
+			
+			.guanxi {
+				margin-top: 25px;
+			}
+			
+			.mui-table-view:before {
+				height: 0px;
+			}
+			
+			.font-bold {
+				font-size: 0.25rem;
+				padding-left: 10px !important;
+			}
+			
+			.font-bold1 {
+				font-size: 0.25rem;
+				padding-left: 0px;
+			}
+			
+			.guanxi h5 {
+				font-weight: bold;
+				font-size: 0.3rem;
+				color: #000000;
+			}
+			
+			.dibu {
+				padding-bottom: 10px;
+				padding-top: 80px;
+				margin: 0;
+			}
+			
+			.dibuButton {
+				background-color: rgba(215, 215, 215, 1);
+				border-radius: 10px;
+			}
+			
+			.mui-table-view-cell:after,
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			.mui-input-row label {
+				font-size: 0.25rem;
+				width: 30%;
+				padding: 15px 0px;
+				font-weight: inherit;
+				color: #333333;
+			}
+			
+			.mui-input-row label~input {
+				/*border-bottom: 1px solid #E3E3E3;*/
+				width: 70%;
+				height: 45px;
+				font-size: 0.25rem;
+				padding-left: 8px;
+			}
+			
+			.mui-input-row {
+				height: 45px;
+				/*margin-bottom: 10px;*/
+				border-bottom: 1px solid #e3e3e3;
+			}
+			
+			.mui-btn-block {
+				padding: 0;
+			}
+			
+			textarea {
+				border: 1px solid #E3E3E3;
+			}
+			
+			.shurukuang {
+				font-size: 14px;
+				color: #333333;
+				height: 120px;
+				text-align: right;
+			}
+			
+			input[type=color],
+			input[type=date],
+			input[type=datetime-local],
+			input[type=datetime],
+			input[type=email],
+			input[type=month],
+			input[type=number],
+			input[type=password],
+			input[type=search],
+			input[type=tel],
+			input[type=text],
+			input[type=time],
+			input[type=url],
+			input[type=week],
+			select,
+			textarea {
+				line-height: 21px;
+				width: 100%;
+				height: 40px;
+				margin-bottom: 5px;
+				padding: 10px 15px;
+				-webkit-user-select: text;
+				border: 1px solid #E3E3E3;
+				border-radius: 3px;
+				outline: 0;
+				background-color: #fff;
+				-webkit-appearance: none;
+			}
+			
+			.icon-bitian:before {
+				content: "\e607";
+				color: #CF2D28;
+			}
+			
+			.mui-icon {
+				font-weight: 800;
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			input.labelauty+label {
+				border-radius: 15px;
+				text-align: center;
+				padding: 5px;
+				width: 48px;
+				border: 1px solid #999999;
+			}
+			
+			.mui-control-content {
+				height: 350px;
+				height: 90vh;
+				display: block;
+			}
+			
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			
+			.mui-scroll-wrapper {
+				position: absolute;
+				z-index: 0;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				overflow: hidden;
+				width: 100%;
+			}
+			
+			.icon-bitian {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+			}
+			
+			.imgL {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			.xingbiedanxuan {
+				float: right;
+				margin-right: 10px;
+			}
+			
+			.Sync-to-file {
+				margin-left: 20px;
+				margin-top: -5px;
+			}
+			
+			input[type=radio] {
+				display: none;
+				border: none;
+			}
+			
+			.xingbiedanxuan label {
+				display: -moz-box;
+				display: -webkit-box;
+				display: box;
+				float: left;
+				line-height: 0.5rem;
+				text-indent: 0.5rem;
+				background-size: 0.4rem 0.4rem !important;
+				padding-left: 10px;
+			}
+			
+			.xuanze1 {
+				background: url(../images/service_object/icon_nselected.png) no-repeat left top;
+			}
+			
+			.xuanze2 {
+				background: url(../images/service_object/icon_nselected.png) no-repeat left top;
+			}
+			
+			.xingbiedanxuan input:checked+.xuanze1 {
+				background: url(../images/service_object/icon_choice.png) no-repeat left top;
+				background-size: 0.4rem 0.4rem;
+			}
+			
+			.xingbiedanxuan input:checked+.xuanze2 {
+				background: url(../images/service_object/icon_choice.png) no-repeat left top;
+				background-size: 0.4rem 0.4rem;
+			}
+			
+			.sync_xuanze {
+				background: url(../images/service_object/icon_yes.png) no-repeat left top;
+			}
+			
+			.mui-switch.mui-active {
+				border-color: #43ced3;
+				background-color: #43ced3;
+			}
+			
+			.dowebok {
+				float: right;
+				margin-top: 5px;
+			}
+			
+			.mui-btn-warning {
+				background: #43ced3;
+				border: 1px solid #43ced3;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">添加服务对象</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-control-content">
+				<div class="mui-scroll-wrapper" id="scroll">
+					<div class="mui-scroll">
+						<div class="mui-content-padded">
+							<div class="mui-input-row">
+								<label class="font-bold">姓名：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入姓名" id="name">
+							</div>
+							<div class="xingbie">
+								<span class="font-bold">性别：</span>
+								<span class="xingbiedanxuan">
+									<form action="">
+										<span>
+										<input type="radio" name="leixingradio" value="0" id="leixingradio1" checked="checked">
+										<label for="leixingradio1" class="xuanze1" style = "margin-right: 10px;">男</label>
+										</span>
+								<span><input type="radio" name="leixingradio" value="1" id="leixingradio2">
+										<label for="leixingradio2" class="xuanze2">女</label>
+										</span>
+								</form>
+								</span>
+							</div>
+							<div class="mui-input-row">
+								<label class="font-bold">身份证号：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入身份证号" id="shenfencard">
+							</div>
+
+							<div class="mui-input-row">
+								<label class="font-bold">电话：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入联系电话" id="phone" maxlength="11" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')">
+							</div>
+							<div class="mui-input-row" id="setting_position">
+								<label class="font-bold">地址：</label>
+								<input type="text" placeholder="请输入上门详细地址" id="xiangxiaddress" class="shurukuang mui-ellipsis" style="width: 60%; float: inherit;" readonly="readonly">
+								<span><img src="../images/service_object/icon_address.png" width="20px" style="float: right; margin-right: 10px; margin-top: 10px;"></span>
+							</div>
+							<div class="mui-input-row">
+								<label class="font-bold">门牌号：</label>
+								<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="例：7栋1门1201室" id="menpai_no">
+							</div>
+
+							<div class="mui-input-row">
+								<label class="font-bold">与他的关系：</label>
+								<div class="dowebok" id="dowebok">
+									<li><input type="radio" name="radio1" data-labelauty="父子" value="父子" class="labelauty" id="labelauty" style="display: none;" checked="checked"><label for="labelauty"><span class="labelauty-unchecked">父子</span><span class="labelauty-checked">父子</span></label></li>
+									<li><input type="radio" name="radio1" data-labelauty="母子" value="母子" class="labelauty" id="labelauty"><label for="labelauty"><span class="labelauty-unchecked">母子</span><span class="labelauty-checked">母子</span></label></li>
+									<li><input type="radio" name="radio1" data-labelauty="亲友" value="亲友" class="labelauty" id="labelauty"><label for="labelauty"><span class="labelauty-unchecked">亲友</span><span class="labelauty-checked">亲友</span></label></li>
+								</div>
+							</div>
+							<!--<div class="xingbie">
+								<a>
+									<span class="font-bold">是否同步到健康档案：</span>
+									<span class="Sync-to-file xingbiedanxuan" id="switch">
+										<div class="mui-switch">
+											<div class="mui-switch-handle"></div>
+										</div>
+									</span>
+								</a>
+							</div>-->
+
+							<div class="mui-content-padded dibu">
+								<button id='save' class="mui-btn mui-btn-block mui-btn-warning">保存</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+		<script type="text/javascript" src="../js/IScard.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+		<script>
+			var JSONMESSAGE = {};
+			var JSOMMESSAGEARRAY = [];
+			var html = '';
+			var myvalue = "",
+				longitude = '',
+				latitude = '';
+			var leibie = 0;
+			mui.init({
+					keyEventBind: {
+						backbutton: true //打开back按键监听
+					},
+					beforeback: function() {
+						//返回true，继续页面关闭逻辑  
+						mui.back;
+						return true;
+					},
+					swipeBack: true //启用右滑关闭功能
+				}
+
+			);
+			mui('#scroll').scroll({
+					indicators: true //是否显示滚动条
+				}
+
+			);
+
+			var SyncToFile = "no"
+			//			document.getElementById("switch").addEventListener('toggle', function(e) {
+			//				if(e.detail.isActive) {
+			//					SyncToFile = "yes"
+			//				} else {
+			//					SyncToFile = "no"
+			//				}
+			//			});
+			mui.plusReady(function() {
+				//				if(localStorage.getItem("myvalue")&&localStorage.getItem("longitude")&&localStorage.getItem("latitude")) {
+				//					$("#xiangxiaddress").val(localStorage.getItem("myvalue"));
+				//					longitude=localStorage.getItem("longitude");
+				//					latitude=localStorage.getItem("latitude");
+				//				}
+				window.addEventListener('refresher', function(event) {
+					//获得事件参数
+					myvalue = event.detail.myvalue;
+					var longitude_inner = event.detail.longitude;
+					var latitude_inner = event.detail.latitude;
+					
+					$("#xiangxiaddress").val(myvalue);
+					longitude = longitude_inner;
+					latitude = latitude_inner;
+					//根据id向服务器请求新闻详情
+				});
+				if(mui.os.ios || mui.os.ipad || mui.os.iphone) {
+					plus.webview.currentWebview().setStyle({
+						softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+					});
+				}
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				$("#setting_position").click(function(e) {
+					mui.openWindow({
+						url: '../service_object/setting_text.html',
+						id: 'setting_text.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				});
+
+			});
+			$("#save").click(function(e) {
+					var name = decodeURI($("#name").val());
+					var shenfencard = $("#shenfencard").val();
+					//var leibie = ($("input[id='leixingradio']:checked").val()) == 0 ? '男' : '女';
+					var leibie = $("input[name='leixingradio']:checked").val();
+					var relationship = $("input[name='radio1']:checked").val();
+					var menpai_no = $("#menpai_no").val();
+					var phone = $("#phone").val();
+					if(shenfencard == null || isCardID(shenfencard) != true) {
+						mui.toast("身份证号码错误");
+						return false;
+					}
+					var now = new Date();
+					//获取年龄
+					var age = parseInt(now.getFullYear()) - parseInt(GetAge(shenfencard));
+					var xiangxiaddress = $("#xiangxiaddress").val();
+					var account = localStorage.getItem("TOKEN");
+					//将字符串转时间类型
+					//				var arr1 = jiuzhen_time.split("-");
+					//				var date1 = new Date(arr1[0], parseInt(arr1[1]) - 1, arr1[2]);
+					var phone_validate = /1[3|5|7|8|9|]\d{9}/; //验证手机号码是否正确
+					if(!phone_validate.test(phone)) {
+						mui.toast('手机号码错误');
+						return false;
+					}
+					if(xiangxiaddress == "" || longitude == "" || latitude == "" || longitude == undefined || latitude == undefined) {
+						mui.toast("请选择正确地址");
+						return false;
+					}
+					if(menpai_no==""){
+						mui.toast("请填写门牌号码");
+						return false;
+					}
+					var userid = localStorage.getItem("TOKENID");
+					//编辑服务对象
+					var url = serverAddress + "/api/patient/appcreateobject";
+					var messageInfo = {
+						account: account,
+						realname: name,
+						gender: leibie,
+						isarchives: SyncToFile,
+						tel: phone,
+						relations: relationship,
+						idnumber: shenfencard,
+						homeaddress: xiangxiaddress,
+						age: age,
+						userid: userid,
+						ordergpslng: longitude,
+						ordergpslat: latitude,
+						houseNumber:menpai_no
+					};
+					console.log("添加信息" + JSON.stringify(messageInfo));
+					var sussess = function(data) {
+						console.log("tianjia------------》" + JSON.stringify(data));
+						if(data.result == "success") {
+							mui.back();
+							var list = plus.webview.currentWebview().opener();
+							//触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+							mui.fire(list, 'refresh');
+						} else {
+							mui.toast(data.msg);
+						}
+					};
+					commonHttpUtils(url, "post", messageInfo, sussess, error, true);
+				}
+
+			)
+
+
+		</script>
+	</body>
+
+</html>

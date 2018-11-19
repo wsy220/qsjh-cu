@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的预约</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.mui-table-view-cell2 {
+				position: relative;
+				overflow: hidden;
+				padding: 11px 15px;
+				-webkit-touch-callout: none;
+				height: 173px;
+				background: url(../images/wode/ygq.png) round;
+			}
+			
+			.mui-table-view-cell1 {
+				position: relative;
+				overflow: hidden;
+				padding: 11px 15px;
+				-webkit-touch-callout: none;
+				height: 173px;
+			}
+			
+			.mui-table-view {
+				position: relative;
+				margin-top: 3px;
+				margin-bottom: 0;
+				padding-left: 0;
+				list-style: none;
+				background-color: #fff;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				-webkit-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				font-size: 15px;
+				color: #999999;
+			}
+			
+			p {
+				font-size: 15px;
+				margin-top: 0;
+				margin-bottom: 5px;
+				color: #333333;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的预约</h1>
+
+		</header>
+		<div class="mui-content">
+			<div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">2017年08月31日 星期四</li>
+					<li class="mui-table-view-cell1">
+						<p> <strong>预约流水号：Y0025789</strong></p>
+						<p>下单时间：2017/08/31 8:30</p>
+						<p>预约医院：吉大一院</p>
+						<p>预约科室：呼吸科</p>
+						<p>预约专家：李明</p>
+						<p>预约时间：2017/09/01 8：50</p>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">2017年08月31日 星期四</li>
+					<li class="mui-table-view-cell2">
+						<p> <strong>预约流水号：Y0025789</strong></p>
+						<p>下单时间：2017/08/31 8:30</p>
+						<p>预约医院：吉大一院</p>
+						<p>预约科室：呼吸科</p>
+						<p>预约专家：李明</p>
+						<p>预约时间：2017/09/01 8：50</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script>
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop=topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+		});
+	</script>
+
+</html>

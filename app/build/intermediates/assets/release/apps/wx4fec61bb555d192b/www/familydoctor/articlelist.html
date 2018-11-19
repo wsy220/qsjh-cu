@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<!--<link rel="stylesheet" href="../css/familydoctor/familydoctor.css" />-->
+		<style>
+			.mui-table-view-chevron .mui-table-view-cell {
+				padding-right: 40px;
+			}
+			
+			.mui-content {
+				margin-top: 20px;
+				background: #EEEEEE;
+			}
+			
+			.mui-content p {
+				font-size: 14px;
+				color: #333333;
+			}
+		</style>
+	</head>
+	<div class="mui-content" id="content">
+		<div id="baseinfoListUl" class="memberListUl">
+
+		</div>
+	</div>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="title"></h1>
+		</header>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../plugs/qs/qs.immersed.js"></script>
+		<script type="text/javascript" src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/sharemethods.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/art/template-web.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+		<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+				}
+				// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var article = JSON.parse(currentView.article);
+			var title = currentView.title;
+			$("#title").html(title);
+
+			//				var article = currentView.article;
+			//				console.log("articlearticleID页面===>"+currentView.articleID);
+			$("#baseinfoListUl").processTL(templateRegister.fdtbaseinfolistul, {
+				arr: article
+			}, 'append', function() {
+
+			})
+			mui("#baseinfoListUl").on("tap", ".hang", function() {
+				var dataId = $(this).attr("data-id");
+				getOneBaseInfo(dataId);
+			});
+			
+			function getOneBaseInfo(dataId) {
+				var filter = {};
+				filter.id = dataId;
+				var article = {};
+				var fdtiurl = serverAddress + "/api/baseinfo/appgetbaseinfo";
+				var artsuccess = function(articles) {
+					if(articles.result == "success") {
+						//						artid = articles.data[0];
+						article = articles.data;
+						mui.openWindow({
+							url: 'article.html',
+							id: 'article.html',
+							show: {
+								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+							},
+							waiting: {
+								autoShow: true //自动显示等待框，默认为true
+							},
+							extras: {
+								article: JSON.stringify(article)
+							}
+						});
+					}
+
+				}
+				commonHttpUtils(fdtiurl, "post", filter, artsuccess, error, true);
+			}
+			});
+			
+		</script>
+
+	</body>
+
+</html>

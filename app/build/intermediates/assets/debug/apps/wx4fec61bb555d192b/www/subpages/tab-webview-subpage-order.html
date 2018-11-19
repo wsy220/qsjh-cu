@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>订单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #FFFFFF;
+				height: 55px;
+				text-align: center;
+				padding-top: 10px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+				width: 100%;
+			}
+			
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+				border: 0;
+				margin-top: 18px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 42px;
+				max-width: 130px;
+				height: 100px;
+			}
+			
+			.doctor {
+				color: #FFE5CC;
+			}
+			
+			.mui-ellipsis {
+				overflow: hidden;
+				white-space: normal;
+				text-overflow: ellipsis;
+				font-weight: bold;
+				font-size: 15px;
+				color: #333333;
+			}
+			
+			.tableUL {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 3px 3px;
+				color: #FFFFFF;
+				border-radius: 100px;
+				background-color: red;
+				/*border-color: #000000;*/
+				width: 20px;
+				position: absolute;
+			}
+			
+			.mui-badge-huise {
+				color: #FFFFFF;
+				background: rgba(0, 0, 0, .15);
+				background-color: #aeaeae;
+				width: 72px;
+				margin-left: 6px;
+				text-align: center;
+			}
+			
+			.mui-badge-warning {
+				color: #FFFFFF;
+				background: #FF9900;
+			}
+			
+			.mui-badge-huise1 {
+				color: #FFFFFF;
+				background: rgba(0, 0, 0, .15);
+				background-color: #aeaeae;
+				width: 70px;
+				text-align: center;
+				margin-left: 6px;
+			}
+			
+			.mui-badge-red {
+				color: #FFFFFF;
+				background: #ff0000;
+			}
+			
+			.mui-badge-green {
+				color: #FFFFFF;
+				background: #66cc99;
+			}
+			
+			.mui-badge-green2 {
+				color: #FFFFFF;
+				background: #669966;
+			}
+			
+			.mui-col-xs-8 {
+				width: 70%;
+			}
+			
+			.mui-col-xs-4 {
+				width: 30%;
+			}
+			
+			@media screen and (min-width: 320px) {
+				.mui-col-xs-8 {
+					width: 60%;
+				}
+				.mui-col-xs-4 {
+					width: 60%;
+					text-align: right;
+				}
+			}
+			
+			@media screen and (min-width: 400px) {
+				.mui-col-xs-8 {
+					width: 60%;
+				}
+				.mui-col-xs-4 {
+					width: 40%;
+					text-align: right;
+				}
+				.mui-col-xs-10 {
+					width: 60%;
+				}
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 40px;
+			}
+			
+			.widthdaxiao {
+				width: 15%;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar {
+				background-color: #40ccd2;
+			}
+			
+			.mui-segmented-control {
+				font-size: 12px;
+				font-weight: 400;
+				position: relative;
+				display: table;
+				overflow: hidden;
+				width: 100%;
+				table-layout: fixed;
+				border: 1px solid #007aff;
+				border-radius: 3px;
+				background-color: transparent;
+				-webkit-touch-callout: none;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #40ccd2;
+				font-weight: bold;
+				font-size: 15px;
+			}
+			
+			.mui-scroll-wrapper {
+				bottom: 5px;
+			}
+			
+			.no_red {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的订单</h1>
+		</header>
+
+		<div id="refreshContainer" class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item mui-active all" id="all" href="#item1mobile">
+						全部
+					</a>
+					<a class="mui-control-item daifukuan" id="daifukuan" href="#item2mobile">
+						待付款
+						<span id="tongzhi_count_daifukuan" class="mui-badge no_red"></span>
+					</a>
+					<a class="mui-control-item daifuwu" id="daifuwu" href="#item4mobile">
+						待服务
+						<span id="tongzhi_count_daifuwu" class="mui-badge no_red"></span>
+					</a>
+					<a class="mui-control-item daipingjia" id="daipingjia" href="#item5mobile">
+						待评价
+						<span id="tongzhi_count_daipingjia" class="mui-badge no_red"></span>
+					</a>
+
+				</div>
+				<!--<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-2"></div>-->
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="item1wrapper" class="mui-scroll-wrapper">
+							<div id="wrapper01" class="wrapper">
+								<div id="scroller" class="scroller">
+									<div id="waitConfimBillDiv">
+										<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="item2wrapper" class="mui-scroll-wrapper">
+							<div id="wrapper02" class="wrapper">
+								<div id="scroller" class="scroller">
+									<div id="waitPaymentDiv">
+										<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item4mobile" class="mui-slider-item mui-control-content">
+						<div id="item4wrapper" class="mui-scroll-wrapper">
+							<div id="wrapper04" class="wrapper">
+								<div id="scroller" class="scroller">
+									<div id="waitServiceDiv">
+										<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div id="item5mobile" class="mui-slider-item mui-control-content">
+						<div id="item5wrapper" class="mui-scroll-wrapper">
+							<div id="wrapper05" class="wrapper">
+								<div id="scroller" class="scroller">
+									<div id="waitPingjiaDiv">
+										<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/mui.pullToRefresh.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.new.js"></script>
+	<!--<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>-->
+
+	<script>
+		mui.init({
+			swipeBack: false, //启用右滑关闭功能
+			tap: true, //默认为true
+		});
+
+		var wrapper01;
+		var wrapper02;
+		var wrapper03;
+		var wrapper04;
+		var wrapper05;
+
+		var upstatus = null;
+
+		function loaded() {
+			wrapper01 = $.initIscroll({
+				id: "wrapper01",
+				bussType: "all",
+				pullUpAction: processConfimAction,
+				pullDownAction: processConfimAction
+			});
+			wrapper02 = $.initIscroll({
+				id: "wrapper02",
+				bussType: "non-payment",
+				pullUpAction: processConfimAction,
+				pullDownAction: processConfimAction
+			});
+
+			wrapper04 = $.initIscroll({
+				id: "wrapper04",
+				bussType: "waiting",
+				pullUpAction: processConfimAction,
+				pullDownAction: processConfimAction
+			});
+			wrapper05 = $.initIscroll({
+				id: "wrapper05",
+				bussType: "unevaluate",
+				pullUpAction: processConfimAction,
+				pullDownAction: processConfimAction
+			});
+
+			initFunction();
+		};
+
+		var initFunction = function() {
+
+			$('#item1mobile').addClass('mui-active')
+			initAll(wrapper01);
+			upstatus = localStorage.getItem("upitem");
+			if(upstatus == "0") {
+				mui.trigger(document.getElementById('all'), 'touchstart');
+				mui.trigger(document.getElementById('all'), 'tap');
+			}
+			//取消支付,进入待付款
+			if(upstatus == "1") {
+				mui.trigger(document.getElementById('daifukuan'), 'touchstart');
+				mui.trigger(document.getElementById('daifukuan'), 'tap');
+			}
+			//支付成功,进入待服务
+			if(upstatus == "2") {
+				mui.trigger(document.getElementById('daifuwu'), 'touchstart');
+				mui.trigger(document.getElementById('daifuwu'), 'tap');
+			}
+			if(upstatus == "3") {
+				mui.trigger(document.getElementById('daipingjia'), 'touchstart');
+				mui.trigger(document.getElementById('daipingjia'), 'tap');
+			}
+		}
+
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				document.querySelector(".mui-bar-nav~.mui-content .mui-slider.mui-fullscreen").style.top = topoffset;
+			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			mui('.mui-slider').slider().setStopped(true);
+
+			var defaultTab = document.querySelector(".all");
+			var current = document.querySelector("#sliderSegmentedControl>.mui-control-item.mui-active");
+
+			// 刷新页面
+			window.addEventListener('refresh', function(e) {
+				location.reload();
+				return true;
+			});
+			loaded();
+		});
+
+		function initAll(myScroll) {
+			var url = serverAddress + "/api/patient/appgetorderlist?type=" + myScroll.bussType + "&page=" + myScroll.page + "&limit=" + myScroll.limit;
+			console.log(url);
+			var success = function(data) {
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				console.log("订单详情1" + JSON.stringify(data));
+				//console.log(myScroll.bussType);
+				if(data && data.msg != "TOKEN_ERROR") {
+
+					if(data.count["non-payment"] != 0) {
+						$("#tongzhi_count_daifukuan").html(data.count["non-payment"]);
+						$("#tongzhi_count_daifukuan").show();
+
+					} else {
+						$("#tongzhi_count_daifukuan").hide();
+					}
+
+					if(data.count["waiting"] != 0) {
+						$("#tongzhi_count_daifuwu").html(data.count.waiting);
+						$("#tongzhi_count_daifuwu").show();
+
+					} else {
+						$("#tongzhi_count_daifuwu").hide();
+					}
+
+					if(data.count["unevaluate"] != 0) {
+						$("#tongzhi_count_daipingjia").html(data.count.unevaluate);
+						$("#tongzhi_count_daipingjia").show();
+
+					} else {
+						$("#tongzhi_count_daipingjia").hide();
+					}
+					//					switch(myScroll.bussType) {
+					//						case "all":
+					//							if(data && data.data && data.data.length != 0) {
+					//
+					//								$("#waitConfimBillDiv").html('');
+					//								$("#waitConfimBillDiv").processTL(templateRegister.orderListALL, {
+					//									sub: data.data
+					//								}, 'html', function() {
+					//									myScroll.refresh();
+					//								});
+					//
+					//							} else {
+					//								myScroll.upFlag = false
+					//							}
+					//							break;
+					//
+					//					}
+				}
+			}
+			commonHttpUtils2(url, "get", {}, success, error, true);
+		}
+
+		function processConfimAction(myScroll) {
+			var url = serverAddress + "/api/patient/appgetorderlist?type=" + myScroll.bussType + "&page=" + myScroll.page + "&limit=" + myScroll.limit;
+			console.log(url)
+			var success = function(data) {
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				console.log("订单详情222" + JSON.stringify(data));
+				console.log("bussType========================" + myScroll.bussType)
+				if(data && data.msg != "TOKEN_ERROR") {
+					switch(myScroll.bussType) {
+						case "all":
+							if(data && data.data && data.data.length != 0) {
+								if(myScroll.page == 1) {
+									$("#waitConfimBillDiv").html('')
+
+									$("#waitConfimBillDiv").processTL(templateRegister.orderListALL, {
+										sub: data.data
+									}, 'html', function() {
+										myScroll.refresh();
+									});
+								} else {
+
+									if(myScroll.page != 1) {
+										$("#waitConfimBillDiv").processTL(templateRegister.orderListALL, {
+											sub: data.data
+										}, 'append', function() {
+											myScroll.refresh();
+										});
+									}
+								}
+								if(data.data.length == myScroll.limit) {
+									myScroll.page = myScroll.page + 1;
+									myScroll.upFlag = true
+								} else {
+									myScroll.upFlag = false
+								}
+							} else {
+								myScroll.upFlag = false
+							}
+							
+							
+							if(data.count["non-payment"] != 0) {
+								$("#tongzhi_count_daifukuan").html(data.count["non-payment"]);
+								$("#tongzhi_count_daifukuan").show();
+							} else {
+								$("#tongzhi_count_daifukuan").hide();
+							}
+							if(data.count["waiting"] != 0) {
+								$("#tongzhi_count_daifuwu").html(data.count.waiting);
+								$("#tongzhi_count_daifuwu").show();
+
+							} else {
+								$("#tongzhi_count_daifuwu").hide();
+							}
+							if(data.count["unevaluate"] != 0) {
+								$("#tongzhi_count_daipingjia").html(data.count.unevaluate);
+								$("#tongzhi_count_daipingjia").show();
+							} else {
+								$("#tongzhi_count_daipingjia").hide();
+							}
+
+							break;
+
+						case "non-payment":
+
+							if(data && data.data && data.data.length != 0) {
+								if(myScroll.page == 1) {
+									$("#waitPaymentDiv").html('')
+								}
+								if(data.data.length == myScroll.limit) {
+									myScroll.page = myScroll.page + 1;
+									myScroll.upFlag = true
+								} else {
+									myScroll.upFlag = false
+								}
+
+								$("#waitPaymentDiv").processTL(templateRegister.orderListALL, {
+									sub: data.data
+								}, 'append', function() {
+									myScroll.refresh();
+								});
+							} else {
+								myScroll.upFlag = false
+							}
+							if(data.count["non-payment"] == 0) {
+								$("#tongzhi_count_daifukuan").hide();
+							} else {
+								$("#tongzhi_count_daifukuan").html(data.count["non-payment"]);
+								$("#tongzhi_count_daifukuan").show();
+							}
+							break;
+						case "waiting":
+
+							if(data && data.data && data.data.length != 0) {
+								if(myScroll.page == 1) {
+									$("#waitServiceDiv").html('')
+								}
+								if(data.data.length == myScroll.limit) {
+									myScroll.page = myScroll.page + 1;
+									myScroll.upFlag = true
+								} else {
+									myScroll.upFlag = false
+								}
+								$("#waitServiceDiv").processTL(templateRegister.orderListALL, {
+									sub: data.data
+								}, 'append', function() {
+									myScroll.refresh();
+
+								})
+							} else {
+								myScroll.upFlag = false
+							}
+							if(data.count["waiting"] == 0) {
+								$("#tongzhi_count_daifuwu").hide();
+							} else {
+								$("#tongzhi_count_daifuwu").html(data.count.waiting);
+								$("#tongzhi_count_daifuwu").show();
+							}
+							break;
+						case "unevaluate":
+							if(data && data.data && data.data.length != 0) {
+								if(myScroll.page == 1) {
+									$("#waitPingjiaDiv").html('')
+								}
+								if(data.data.length == myScroll.limit) {
+									myScroll.page = myScroll.page + 1;
+									myScroll.upFlag = true
+								} else {
+									myScroll.upFlag = false
+								}
+								$("#waitPingjiaDiv").processTL(templateRegister.orderListALL, {
+									sub: data.data
+								}, 'append', function() {
+									myScroll.refresh();
+								})
+							} else {
+								myScroll.upFlag = false
+							}
+							if(data.count["unevaluate"] == 0) {
+								$("#tongzhi_count_daipingjia").hide();
+							} else {
+								$("#tongzhi_count_daipingjia").html(data.count.unevaluate);
+								$("#tongzhi_count_daipingjia").show();
+							}
+							break;
+					}
+				}
+			};
+			commonHttpUtils2(url, "get", {}, success, error, false);
+		}
+
+		mui("#sliderSegmentedControl").on("tap", "a", function(event) {
+			var orderId = this.getAttribute("href");
+			switch(orderId) {
+				case "#item1mobile":
+					processConfimAction(wrapper01);
+					break;
+				case "#item2mobile":
+					processConfimAction(wrapper02);
+					break;
+				case "#item4mobile":
+					processConfimAction(wrapper04);
+					break;
+				case "#item5mobile":
+					processConfimAction(wrapper05);
+					break;
+			}
+		});
+		mui("body").on("tap", "button", function(e) {
+			var order_id = this.id;
+			confirm_querenbeipin_s("", "是否确认备品已收到？", "", "", order_id);
+			return false;
+		});
+		mui(".mui-scroll-wrapper").on("tap", "ul", function() {
+			var order_type = $(this).attr("data-order-type");
+			if(order_type == 0) {
+				mui.openWindow({
+					url: '../order/c02_order_xiangqing.html',
+					id: 'c02_order_xiangqing.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						ORDER_ID: this.id //扩展参数
+					}
+				});
+			} else if(order_type == 1) {
+				mui.openWindow({
+					url: '../online_answer_order/online_answer_order_xiangqing.html',
+					id: 'online_answer_order_xiangqing.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						ORDER_ID: this.id //扩展参数
+					}
+				});
+			}
+
+			var waitpament = plus.webview.getWebviewById("c02_order_xiangqing.html");
+			mui.fire(waitpament, 'order_id_xiangqing', {
+				ORDER_ID: this.id
+			});
+		});
+
+		/*确认备品送达*/
+		var confirm_querenbeipin_s = function(tishi, content1, content2, onPopupClick, orderid) {
+			var oDiv = document.createElement('div');
+			var mengban = document.createElement('div');
+			mengban.innerHTML = '<div class="mui-popup-backdrop mui-active" style="display: block;"></div>'
+			oDiv.innerHTML = '<div class="mui-popup mui-popup-in"style="display: block;"><div class="mui-popup-inner"><div class="mui-popup-title">' + tishi + '</div><div class="mui-popup-text">' + content1 + '</div><div class="mui-popup-text">' + content2 + '</div></div><div class="mui-popup-buttons"><span class="mui-popup-button" id="quxiao">取消</span><span class="mui-popup-button mui-popup-button-bold"id="queding">确定</span></div></div>'
+			document.body.appendChild(mengban);
+			document.body.appendChild(oDiv);
+			document.getElementById("queding").addEventListener('tap', function() {
+				var url = serverAddress + "/api/patient/confirmorder";
+
+				var sussess = function(data) {
+					console.log(JSON.stringify(data));
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data.result == "success") {
+
+					}
+				};
+				commonHttpUtils(url, "POST", {
+					id: orderid
+				}, sussess, error, true);
+
+				document.body.removeChild(mengban);
+				document.body.removeChild(oDiv);
+				return false;
+			});
+			document.getElementById("quxiao").addEventListener('tap', function() {
+				document.body.removeChild(mengban);
+				document.body.removeChild(oDiv);
+				return false;
+			});
+		}
+	</script>
+
+</html>

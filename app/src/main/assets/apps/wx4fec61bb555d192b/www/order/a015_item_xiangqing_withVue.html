@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>项目详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/bottom_action/bottom_action.css" />
+		<script type="text/javascript" src="../js/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../js/vue/vue-router.min.js"></script>
+		<script type="text/javascript" src="../components_vue/App.js"></script>
+		<style>
+		.media-img {
+				height: 40vw;
+			}
+			
+			.mui-card-footer {
+				background: #FFFFFF;
+			}
+			
+			.mui-card {
+				margin: 0;
+				box-shadow: none;
+				margin-bottom: 4px;
+			}
+			
+			.mui-content>.mui-card:first-child {
+				margin-top: 0;
+			}
+			
+			.mui-card-header:before {
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.middle {
+				text-align: center;
+				justify-content: center;
+			}
+			
+			table.gridtable {
+				font-family: verdana, arial, sans-serif;
+				font-size: 11px;
+				color: #333333;
+				border-width: 1px;
+				border-color: #666666;
+				border-collapse: collapse;
+				width: 100%;
+				text-align: center;
+			}
+			
+			table.gridtable th {
+				border-width: 1px;
+				padding: 8px;
+				border-style: solid;
+				border-color: #666666;
+				background-color: #dedede;
+			}
+			
+			table.gridtable td {
+				border-width: 1px;
+				padding: 8px;
+				border-style: solid;
+				border-color: #D9D9D9;
+				background-color: #ffffff;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.jiage-footer:before {
+				height: 0;
+			}
+			
+			.jiage-footer {
+				color: #FF9E0D;
+				height: 30px;
+			}
+			
+			.smallkf {
+				width: 1.3rem;
+				float: right;
+			}
+		}
+		h3.head1 {
+			font-size: 27px;
+			font-weight: normal;
+			font-family: 'Ubuntu Condensed', sans-serif;
+			padding-bottom: 60px;
+			position: relative;
+			color: #FA5C59;
+		}
+		h3.head1:before {
+			content: '';
+			background-color: #dcdcdc;
+			height: 3px;
+			width: 26%;
+			left: 10px;
+			top: 40px;
+			display: block;
+			position: absolute;
+		}
+		h3.head1:after {
+			content: '';
+			background-color: #24e8ff;
+			height: 3px;
+			width: 10%;
+			left: 10px;
+			top: 40px;
+			display: block;
+			position: absolute;
+		}
+		.test-w3ls {
+			background-color: #fff0f0;
+			padding: 20px;
+			color: #323232;
+		}
+		p {
+			color: #323232;
+		}
+		.mui-card-header:before,
+		.mui-card-header:after {
+			height: 0;
+		}
+		h3 {
+			margin-top: 0;
+		}
+		.service_item_pc {
+			background-color: #FFFFFF;
+			margin-bottom: 10px;
+		}
+		.mui-action-back {
+			color: #FFFFFF !important;
+			text-decoration: none;
+		}
+		a:link {
+			text-decoration: none;
+			/* 指正常的未被访问过的链接*/
+		}
+		a:visited {
+			text-decoration: none;
+			/*指已经访问过的链接*/
+		}
+		a:hover {
+			text-decoration: none;
+			/*指鼠标在链接*/
+		}
+		a:active {
+			text-decoration: none;
+			/* 指正在点的链接*/
+		}
+		li {
+			list-style: none;
+		}
+		/*.mui-media-body {
+			font-size: 16px;
+			padding-top: 0.4rem;
+			padding-left: 10px;
+		}*/
+		.mui-table-view-cell:last-child:after,
+		.mui-table-view-cell:last-child:before {
+			height: 1px;
+		}
+		.3lie.mui-media-body {
+			font-size: 8px;
+		}
+		.divcss5_1 {
+			text-decoration: line-through
+		}
+		.mui-badge-baihui {
+			width: 60px;
+			overflow: hidden;
+		}
+		.mui-content-padded{
+			padding-top: 10px;
+		}
+		.mui-card .mui-table-view .mui-table-view-cell:first-child, .mui-card .mui-table-view .mui-table-view-divider:first-child{
+			border-top-left-radius: 0px; 
+    		border-top-right-radius: 0px; 
+		}
+		.mui-card .mui-table-view{
+			border-radius: 0px; 
+		}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">项目详情</h1>
+			<button id="share" class="mui-btn  mui-btn-link mui-pull-right">
+				<span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;<span>分享</span>
+			</button>
+		</header>
+
+		<div class="mui-content">
+			<div class="mui-scroll">
+				<div class="mui-loading">
+					<div class="item1_1" id="sharecontent">
+						<div class="mui-card">
+							<div class="media-img"><img :src="items.cover"></div>
+							<div class="mui-card-footer jiage-footer" style="margin:0 ,auto ;display:inline-block;">
+								<div style="float:left"><img src="../images/jiage.png" height="30px"><span style="vertical-align: text-top; ">价格：{{items.price}}</span> <span class="mui-badge mui-badge-baihui mui-ellipsis" style="background-color:#ffab19; color: #FFFFFF;" v-if="items.otherpricestatus=='0'">{{items.otherpricelabel}}</span></div><br>
+								<p v-if="items.otherpricestatus=='0'"> <span style="vertical-align: text-top; padding-left: 30px; color: #D1D1D1; " class="divcss5_1">价格：{{items.otherprice}}元/1次</span> </p>
+							</div>
+							<span style="float:right;padding-top: 15px;padding-right: 10px; color: #FF9E0D;">已有<span>{{items.orderCount}}</span>人购买</span>
+						</div>
+						<div class="mui-card" style="background-color: transparent;">
+							
+							<my-item-content v-for="(post,index) in props" v-bind:key="post._id" v-bind:index="index" v-bind:post="post"></my-item-content>
+
+							<!--<div class="service_item_pc">
+								<h3 class="head1 mui-card-header">适合人群：</h3>
+								<div class="mui-card-content">
+									<div class="mui-card-content-inner test-w3ls">' + data.data.crowd + '</div>
+								</div>
+							</div>
+							<div class="service_item_pc">
+								<h3 class="head1 mui-card-header">适合人群：</h3>
+								<div class="mui-card-content">
+									<div class="mui-card-content-inner test-w3ls">' + data.data.crowd + '</div>
+								</div>
+							</div>
+							<div class="service_item_pc">
+								<h3 class="head1 mui-card-header">适合人群：</h3>
+								<div class="mui-card-content">
+									<div class="mui-card-content-inner test-w3ls">' + data.data.crowd + '</div>
+								</div>
+							</div>-->
+
+							<!--<div class="service_item_pc">
+								<div class="mui-content-padded" style="text-align: center;">平台优势</div>
+								<ul class="mui-table-view mui-grid-view mui-grid-9" style="background-color: #FFFFFF;">
+									<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+										<a href="#" class="3lie">
+											<span class="mui-icon"><img class="qs-img-lazyload" src="../images/baogaojiedu_icon.png" style="max-width: 1rem;"></span>
+											<div class="mui-media-body" style="font-size: 0.2rem;">
+												职业服务&nbsp;专业服务
+											</div>
+										</a>
+									</li>
+									<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+										<a href="#" class="3lie">
+											<span class="mui-icon"><img class="qs-img-lazyload" src="../images/baogaojiedu_icon.png" style="max-width: 1rem;"></span>
+											<div class="mui-media-body" style="font-size: 0.2rem;">
+												医患投保&nbsp;全程安心
+											</div>
+										</a>
+									</li>
+									<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+										<a href="#" class="3lie">
+											<span class="mui-icon"><img class="qs-img-lazyload" src="../images/baogaojiedu_icon.png" style="max-width: 1rem;"></span>
+											<div class="mui-media-body" style="font-size: 0.2rem;">
+												专业团队&nbsp;随时售后
+											</div>
+										</a>
+									</li>
+								</ul>
+								<ul class="mui-table-view firstUl" id="table-viewX_1">
+									<li class="mui-table-view-cell mui-media">
+										<a class="mui-navigate-right" id="wodeyihu">
+											<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/wdyh.png"></div>
+											<div class="mui-media-body" style="padding-top: 0.25rem;">医生资质保障</div>
+										</a>
+									</li>
+								</ul>
+
+								<ul class="mui-table-view" id="table-viewX_2">
+									<li class="mui-table-view-cell">
+										<a class="mui-navigate-right" id="service_object">
+											<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/wode/ffdx.png" /></div>
+											<div class="mui-media-body" style="padding-top: 0.25rem;">
+												退款取消
+											</div>
+										</a>
+
+									</li>
+								</ul>
+
+							</div>-->
+							<!--<div class="service_item_pc">
+								<ul class="mui-table-view firstUl" id="table-viewX_1">
+									<li class="mui-table-view-cell mui-media">
+										<a class="mui-navigate-right" id="wodeyihu">
+											<div class="tubiao"><img class="mui-media-object mui-pull-left" src="../images/item_xiangqing/icon_refund.png" style=" width:0.39rem;height:0.46rem;vertical-align:text-bottom"></div>
+											<div class="mui-media-body" style="" v-on:click="greet(post.value)">是文字</div>
+										</a>
+									</li>
+								</ul>
+							</div>-->
+
+						</div>
+						<div class="mui-content-padded">
+							<div class="smallkf"><img src="../images/kf_small.png"></div><button id="xiadan" class="mui-btn mui-btn-block mui-btn-warning" type="submit">立即预约</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!--
+	作者：35551400@qq.com
+	时间：2018-07-09
+	描述：底部弹出菜单
+-->
+		<div class="message bottom mui-hidden" style="height: 300px;">
+			<div class="mui-content-padded mui-scroll-wrapper" id="pullrefresh">
+				<div class="mui-scroll" style="width: 90%;">
+					<div class="icon">
+						<span class="mui-icon mui-icon-info"></span>
+					</div>
+
+					<p class="content" id="bottom_value">应用当前版本过低，存在安全漏洞，请升级至最新版</p>
+
+					<div class="action">
+						<button id="install" type="button" class="mui-btn mui-btn-blue">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/arttmpl.js"></script>
+
+		<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+		<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+			});
+			mui('#pullrefresh').scroll({
+				indicators: true //是否显示滚动条
+			});
+			var item_name_xiangqing = '',
+				item_name_id = '',
+				isDrugs = '',
+				biaoshi = '',
+				yihuid = '',
+				higherprice = '',
+				ishigherprice = '';
+			var panduanJSON = {};
+			var priceJSON = [];
+			var beipinJSON = [];
+			var shares = null;
+
+			var vm = new Vue({
+				el: '#sharecontent',
+				data: {
+					items: {}, //列表信息流数据
+					props: [],
+					currentView: 'comhtml'
+				},
+				components: {
+					comhtml: 'my-item-content',
+					comimg: 'my-item-content2',
+				},
+				methods: {
+					handleChangeView: function(component) {
+						this.currentView = 'com' + component;
+					}
+				}
+			});
+			mui.plusReady(function() {
+				//				mui.scroll("#pullrefresh")
+				updateSerivces();
+				var self = plus.webview.currentWebview();
+				biaoshi = self.biaoshi;
+				yihuid = self.yihuid;
+				item_name_id = self.ITEM_NAME_ID;
+				item_name_xiangqing = self.ITEM_NAME;
+				$(".mui-title").html(item_name_xiangqing);
+
+				self.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				var url = serverAddress + "/api/item/appitemdetails/" + item_name_id;
+				var success = function(data) {
+					console.log("项目详情" + JSON.stringify(data));
+					isDrugs = data.data.isneeddrugs;
+					isneedspares = data.data.isneedspares;
+					isneedrecipe = data.data.isneedrecipe;
+					isneedadvice = data.data.isneedadvice;
+					isneedphoto = data.data.isneedphoto;
+					isneedenvironmen = data.data.isneedenvironmen;
+					higherprice = data.data.higherprice;
+					ishigherprice = data.data.ishigherprice;
+					panduanJSON = {
+						isDrugs: isDrugs,
+						isneedspares: isneedspares,
+						isneedrecipe: isneedrecipe,
+						isneedadvice: isneedadvice,
+						isneedphoto: isneedphoto,
+						isneedenvironmen: isneedenvironmen,
+						higherprice: higherprice,
+						ishigherprice: ishigherprice
+					}
+					beipinJSON = data.data.sparesgroupid;
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					priceJSON = [{
+						price: data.data.price,
+						times: 1
+					}];
+
+					vm.items = convert(data.data);
+
+					var getplatURL = serverAddress + "/api/baseinfo/getinfo/pafixedcontent";
+					var getplatsuccess = function(data1) {
+						console.log("平台优势" + JSON.stringify(data1));
+						if(data.data.displayContent.length==0){
+							return false;
+						}
+						vm.props = convertPro(data.data.displayContent, data1.data);
+					}
+					commonHttpUtils(getplatURL, "get", {}, getplatsuccess, error, true);
+
+					var pros_array1 = [],
+						pros_array2 = [],
+						pro_arrayqita = [];
+					pros_array1 = data.data.displayContent[0];
+					pros_array2 = data.data.displayContent[1];
+
+					for(var i = 0; i < vm.props.length; i++) {
+						console.log(JSON.stringify(vm.props[i]));
+					}
+				}
+				commonHttpUtils(url, "get", {}, success, error, true);
+			})
+
+			function convert(items) {
+				var newItems = {};
+				var cover;
+				var html2 = "";
+
+				cover = formatHttpString(items.cover);
+				newItems["cover"] = cover;
+				for(var i = 0; i < items.discount.length; i++) {
+					html2 += (items.price / 100) + "元/" + items.discount[i].times + "次";
+
+				}
+				newItems["price"] = html2;
+				newItems["orderCount"] = items.orderCount;
+				newItems["news"] = items.crowd;
+				newItems["otherpricelabel"] = items.otherpricelabel;
+				newItems["otherpricestatus"] = items.otherpricestatus
+				newItems["otherprice"] = items.otherprice;
+				return newItems;
+			}
+
+			function convertPro(items, youshi) {
+				var pro_data = [];
+				var pro_data_subJSON = {};
+
+				//pro_data = items.displayContent;
+				pro_data = items;
+				for(var i = 0; i < pro_data.length; i++) {
+					console.log(JSON.stringify(pro_data[i]));
+					vm.handleChangeView(pro_data[i].displayType);
+					console.log(vm.currentView);
+				}
+				console.log('1111', JSON.stringify(youshi));
+				//				youshi.reverse();
+				if(pro_data.length > 0) {
+					for(var m = 0; m < youshi.length; m++) {
+						var obj = youshi[m];
+						pro_data.splice(m + 1, 0, {
+							label: obj.title,
+							value: obj.content,
+							displayType: 'html'
+						});
+					}
+				}
+				console.log(JSON.stringify(pro_data));
+				return pro_data;
+			}
+			mui(".item1_1").on("tap", ".smallkf", function(e) {
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html",
+						id: "login/login.html"
+					});
+					return false;
+				}
+
+				mui.openWindow({
+					id: 'xqzx_auto.html',
+					url: '../geren_message/xqzx/xqzx_auto.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					extras: {
+						biaoshi: "zhengchang" //在下单时做个标识，如果是"zhengchang"就是正常下单，"yihu"就是选择医护下单
+					}
+				});
+			})
+			mui(".item1_1").on("tap", "button", function(e) {
+				if(localStorage.getItem("TOKENID") == null) {
+					mui.openWindow({
+						url: "../login/login.html",
+						id: "login/login.html"
+					});
+					return false;
+				}
+
+				var id = localStorage.getItem("TOKENID");
+				var head_photo = localStorage.getItem('HEAD_PHOTO');
+				var gerenname = localStorage.getItem("GEREN_NAME");
+				var hospital = localStorage.getItem("hospital");
+				var isshiminghoutai = " ";
+				var success = function(data) {
+					if(data.result == "success") {
+						//是否实名认证
+						isshiminghoutai = data.data.idapprove;
+						//后台审核实名认证成功与否
+						if(isshiminghoutai == "2") {
+							mui.openWindow({
+								id: 'a04_place_order.html',
+								url: '../order/a04_place_order.html',
+								show: {
+									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								},
+								extras: {
+									ITEM_NAME: item_name_xiangqing,
+									ITEM_ID: item_name_id,
+									BIAOSHI: biaoshi,
+									YIHU_ID: yihuid,
+									PANDUAN_JSON: panduanJSON,
+									BEIPIN_JSON: beipinJSON,
+									PRICE_JSON: priceJSON
+								}
+							});
+							var sevice_item_xiangqing = plus.webview.getWebviewById('a04_place_order.html');
+							sevice_item_xiangqing.addEventListener('loaded', function() {
+								mui.fire(sevice_item_xiangqing, "sevice_item_xiangqing", {
+									ITEM_NAME: item_name_xiangqing,
+									ITEM_ID: item_name_id,
+									BIAOSHI: biaoshi,
+									YIHU_ID: yihuid,
+									PANDUAN_JSON: panduanJSON,
+									BEIPIN_JSON: beipinJSON,
+									PRICE_JSON: priceJSON
+								});
+							});
+						} else if(isshiminghoutai == "1") {
+							mui.toast("请耐心等待审核！");
+							return false;
+						} else {
+							mui.toast("请实名认证后再进行下单操作！");
+							mui.openWindow({
+								url: "../geren_message/d02_geren_message.html",
+								id: "d02_geren_message.html"
+							});
+							return false;
+						}
+					}
+				};
+				var url = serverAddress + "/api/patient/getmyinfo/" + id;
+				commonHttpUtils(url, "get", {}, success, error, true);
+			})
+
+			$("#share").click(function(e) {
+				shareHref();
+				console.log(item_name_id);
+				console.log(item_name_xiangqing);
+			})
+
+			//分享
+			function updateSerivces() {
+				plus.share.getServices(function(s) {
+					shares = {};
+					for(var i in s) {
+						var t = s[i];
+						shares[t.id] = t;
+					}
+				}, function(e) {
+					outSet('获取分享服务列表失败：' + e.message);
+				});
+			}
+
+			function shareAction(sb, bh) {
+				var url2 = serverAddress + "/shareitem/" + item_name_id
+				var msg = {};
+				if(mui.os.ios || mui.os.ipad || mui.os.iphone) {
+					msg = {
+						thumbs: ["../images/logo.png"],
+						pictures: ["../images/logo.png"],
+						extra: {
+							scene: sb.x
+						},
+						title: '分享',
+						content: item_name_xiangqing + "" + url2,
+						href: url2,
+					};
+
+				} else {
+					msg = {
+						thumbs: ["../images/logo.png"],
+						pictures: ["../images/logo.png"],
+						extra: {
+							scene: sb.x
+						},
+						title: '分享' + item_name_xiangqing + " " + url2,
+						href: url2,
+						content: item_name_xiangqing + " " + url2
+					};
+				}
+
+				msg.href = url2;
+				if(sb.s.authenticated) {
+					console.log('---已授权---');
+					shareMessage(msg, sb.s);
+				} else {
+					console.log('---未授权---');
+					sb.s.authorize(function() {
+						shareMessage(msg, sb.s);
+					}, function(e) {
+						console.log('认证授权失败：' + e.code + ' - ' + e.message);
+					});
+				}
+
+			}
+
+			function shareHref() {
+				var shareBts = [];
+				// 更新分享列表
+				var ss = shares['weixin'];
+				ss && ss.nativeClient && (shareBts.push({
+						title: '微信朋友圈',
+						s: ss,
+						x: 'WXSceneTimeline'
+					}),
+					shareBts.push({
+						title: '微信好友',
+						s: ss,
+						x: 'WXSceneSession'
+					}));
+				ss = shares['sinaweibo'];
+				ss && shareBts.push({
+					title: '新浪微博',
+					s: ss
+				});
+				// 弹出分享列表
+				shareBts.length > 0 ? plus.nativeUI.actionSheet({
+					title: '分享链接',
+					cancel: '取消',
+					buttons: shareBts
+				}, function(e) {
+					(e.index > 0) && shareAction(shareBts[e.index - 1], true);
+				}) : plus.nativeUI.alert('当前环境无法支持分享链接操作!');
+			}
+
+			function shareMessage(msg, s) {
+				console.log(JSON.stringify(msg));
+				s.send(msg, function() {
+					mui.toast('分享到"' + s.description + '"成功！');
+				}, function(e) {
+					if(e.code == "-100") {
+						mui.toast("请下载新浪微博授权使用");
+					}
+					console.log('分享到"' + s.description + '"失败: ' + JSON.stringify(e));
+				});
+			}
+
+			mui(".action").on("tap", ".mui-btn", function() {
+				//关闭消息框
+				var id = this.getAttribute("id");
+				if(id && id == "install") {
+					document.querySelector(".message").classList.add("mui-hidden");
+				}
+			});
+
+
+		</script>
+	</body>
+
+</html>

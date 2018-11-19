@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>模版页面</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+		<link rel="stylesheet" href="../plugs/cropperjs/cropper.min.css" />
+
+		<style>
+			.img {
+				max-width: 100%;
+			}
+			
+			.cropper-view-box,
+			.cropper-face {
+				border-radius: 50%;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+				font-size: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ptitle">编辑头像</h1>
+			<a id="save" style="font-size: 14px;vertical-align: middle;color:#fff;line-height:3.2em;" class="mui-pull-right"><span>保存</span></a>
+		</header>
+		<div class="mui-content" id="content">
+			<img class="img" style="width: 100%;height: 100%;" id="image" src="">
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../plugs/cropperjs/cropper.min.js"></script>
+
+	<script>
+		var image = document.getElementById('image');
+		$("#image").height(window.screen.height - 137)
+		var cropper = null;
+		var resImg = null;
+		var username = localStorage.getItem("TOKEN");
+		var id = localStorage.getItem("TOKENID");
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				mui.back;
+				//获得列表界面的webview
+				var i = plus.webview.getWebviewById("d02_geren_messageTouxiang.html");
+				if(i) {
+					i.reload(true)
+				}
+				return true;
+			}
+		});
+
+		mui.plusReady(function() {
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			image.src = currentView.imgPath;
+			initCropper();
+			mui(".mui-bar-nav").on("click", "#save", function() {
+				getImg(true)
+			})
+
+			function initCropper() {
+				cropper = new Cropper(image, {
+					aspectRatio: 1 / 1,
+					viewMode: 1,
+					dragMode: 'move',
+					rotatable: true,
+					minCropBoxWidth: 200,
+					minCropBoxHeight: 200,
+					minContainerWidth: 200,
+					minContainerHeight: 200,
+				});
+			}
+
+			/**
+			 * 获取图片的方法
+			 * @param {Boolean} flag
+			 */
+			function getImg(flag) {
+				//如果flag传入true,生成base64资源   
+				if(cropper){
+					resImg = cropper.getCroppedCanvas({
+						width: 400,
+						height: 400
+					}).toDataURL();
+				}
+				var b = new plus.nativeObj.Bitmap();
+				b.loadBase64Data(resImg, function() {
+					b.save('../doc/headImg.jpg', {
+						overwrite: true
+					}, function(e) {
+						zoomImage(e.target, "image" + Math.random() + ".jpg");
+						mui.toast("保存成功");
+					}, function() {
+						console.log("保存失败");
+					});
+				}, function() {
+					console.log("创建失败");
+				});
+			}
+
+			//缩放图片
+			function zoomImage(filename, name) {
+				plus.nativeUI.showWaiting();
+				plus.zip.compressImage({
+						src: filename,
+						dst: name,
+						width: "30%",
+						quality: 50,
+						overwrite: true
+					},
+					function(event) {
+						var task = plus.uploader.createUpload(serverAddress + "/api/uploadImg", {
+								method: "POST",
+								blocksize: 204800,
+								priority: 100
+							},
+							function(t1, status) {
+								// 上传完成
+								if(t1.responseText != null) {
+									var data1 = JSON.parse(t1.responseText);
+									if(status == 200) {
+										plus.nativeUI.closeWaiting();
+										if(data1.result == "success") {
+											var imagePath = formatHttpString(data1.obj.path.toString());
+											var url = serverAddress + "/api/patient/appverification";
+											var success = function(data) {
+												console.log("修改头像返回"+JSON.stringify(data));
+												//服务器返回响应，根据响应结果，分析是否登录成功；
+												if(data.result = "success") {
+													
+													mui.back();
+												}
+											};
+											commonHttpUtils(url, "post", {
+												patientavatar: data1.obj.path,
+												type: 0,
+												tel: username,
+												account: id
+											}, success, error, true);
+										}
+									} else {
+										plus.nativeUI.closeWaiting();
+										mui.alert("上传失败2: " + status);
+									}
+								}
+							}
+						);
+						task.addFile(event.target, {
+							key: "single-file"
+						});
+						task.start();
+					},
+					function(e) {
+						plus.nativeUI.closeWaiting();
+					});
+			}
+		});
+	</script>
+
+</html>

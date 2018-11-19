@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<link rel="stylesheet" href="../css/familydoctor/messagelist.css" />
+
+		<style>
+			.mui-table-view {
+				background-color: #EEEEEE;
+			}
+			
+			.mui-table-view:before {
+				height: 0;
+			}
+			
+			.imgmsg {
+				max-width: 45%;
+				margin: 0 auto;
+				display: table;
+				padding-top: 50px;
+			}
+			
+			.mui-table-view:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				height: 0px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.read-color {
+				color: #8f8f94;
+			}
+			
+			.mui-badge {
+				padding: 5px 5px;
+				margin-left: -15px;
+				font-size: 10px;
+				line-height: 1.4;
+				position: absolute;
+				top: 10px;
+				left: 60px;
+				background: red;
+				border-radius: 50px;
+			}
+			
+			.cus-badge-box {
+				position: relative;
+			}
+			
+			.mui-table-view-chevron .mui-table-view-cell>a:not(.mui-btn) {
+				margin-right: -70px;
+			}
+			
+			.cus-time {
+				margin-right: 10px;
+				font-size: 12px;
+				float: right;
+				color: #8f8f94;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				padding: 12px 20px;
+				background-color: #fff;
+			}
+			
+			.cus-title {
+				color: #353535;
+				line-height: 24px;
+			}
+			
+			.mui-ellipsis-10 {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 10;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-navigate-right:after,
+			.mui-push-right:after {
+				right: 10px;
+				content: '\e583';
+			}
+			
+			.doctor {
+				font-size: 12px;
+			}
+			
+			.mui-ellipsis-3 {
+				overflow: hidden;
+				white-space: normal;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				/*-webkit-line-clamp: 3;*/
+				-webkit-box-orient: vertical;
+			}
+			
+			.inchat {
+				position: absolute;
+				top: 0;
+				z-index: 999;
+				width: 100%;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			/*.wrapper {
+				top: 75px;
+			}*/
+			
+			.tableDIV {
+				border-top: 0px solid #dddddd;
+				border-right: 1px solid #dddddd;
+				border-bottom: 1px solid #dddddd;
+				background-color: #FFFFFF;
+				text-align: center;
+				height: 60px;
+			}
+			
+			#messageUL:after {
+				height: 0px;
+			}
+			
+			.mui-table-view:after {
+				height: 1px;
+			}
+			
+			.mingxi {
+				background-color: #44cfd4;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+				margin-top: 8px;
+			}
+			
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 435px;
+			}
+			
+			.mui-segmented-control {
+				border: 0;
+				border-bottom: 1px solid #d9d9d9;
+				height: 60px;
+			}
+			
+			.mui-segmented-control .mui-control-item.mui-active {
+				background: none;
+				color: #44cfd4;
+				border-bottom: 2px solid;
+				font-weight: bold;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				color: #666666;
+				border-left: 0;
+			}
+			
+			.uptab {
+				background: #FFFFFF;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				line-height: 60px;
+			}
+			
+			.no_red {
+				display: none !important;
+			}
+			
+			.mui-badgenum {
+				font-size: 10px;
+				line-height: 1;
+				display: inline-block;
+				padding: 3px 3px;
+				color: #FFFFFF;
+				border-radius: 100px;
+				background-color: red;
+				width: 20px;
+				position: absolute;
+				top: 10px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+
+		<!--<div class="uptab">
+			<div id="segmentedControl" class="mui-segmented-control">
+				<a id="xtxx" class="mui-control-item mui-active" href="#item1">订单 消息<span id="message_xitong" class="mui-badgenum no_red" style="left: 180px;"></span></a>
+				<a id="ltxx" class="mui-control-item youhuijuan_Item" href="#item2">聊天<span id="message_chat" class="mui-badgenum" style="right: 56px ;"></span></a>
+			</div>
+		</div>-->
+
+		<div id="item1" class="mui-control-content mui-active">
+			<div id="wrapper01" class="wrapper" style="bottom: 2px;">
+				<ul id="scroller" class="scroller" style="margin: 0; padding: 0;">
+					<ul class="mui-table-view" id="messageUL">
+						<div id="refreshContainer">
+							<div id="wrapper01" class="wrapper" style="bottom: 2px;">
+								<ul id="scroller" class="scroller" style="margin: 0; padding: 0;">
+									<ul class="mui-table-view mui-table-view-chevron">
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</ul>
+				</ul>
+			</div>
+		</div>
+		<div id="item2" class="mui-control-content">
+			<div id="refreshContainer" class="mui-content-chat">
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/immersed.js"></script>
+
+	<script type="text/javascript" src="../js/sdk/lib/jquery.json2html-master/json2html.js"></script>
+	<script type="text/javascript" src="../js/sdk/lib/jquery.json2html-master/jquery.json2html.js"></script>
+
+	<script type="text/javascript" src="../js/sdk/webim/common/webim.js"></script>
+	<!--描述：展示获取的一条消息-->
+	<!--描述：设置聊天对象-->
+	<script type="text/javascript" src="../js/sdk/webim/common/sdk_sendmsg_api.js"></script>
+	<!--描述：获取新消息-->
+	<script type="text/javascript" src="../js/sdk/webim/common/receive_new_msg.js"></script>
+	<!--描述：聊天登录-->
+	<script type="text/javascript" src="../js/sdk/webim/common/login.js"></script>
+	<!--描述：发消息-->
+	<script type="text/javascript" src="../js/sdk/webim/common/send_common_msg.js"></script>
+	<!--描述：上传图片-->
+	<script type="text/javascript" src="../js/sdk/webim/common/upload_and_send_pic_msg.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/get_history_msg.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/recent_contact_list_manager.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/show_one_msg.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/receive_new_msg.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/private/switch_chat_obj.js"></script>
+	<script type="text/javascript" src="../js/sdk/webim/common/group_manager.js"></script>
+
+	<script>
+		mui.init({
+			//swipeBack: true, //启用右滑关闭功能
+		});
+		var upstatus = null;
+
+		var wrapper01;
+		var cuToId;
+		var loaded = null;
+		var initFunction = null;
+		var userId = null;
+		var notificationurl = null;
+		userId = localStorage.getItem("TOKENID");
+		var showRed = localStorage.getItem("showRed"); //显示红点与否   
+
+		$("#message_chat").hide();
+
+		$(".mui-control-content").css("height", (screenHeight - 60 - 60 -10));
+
+		if(showRed == "true") {
+			$("#red_dian").show();
+			console.log("show");
+		} else {
+			$("#red_dian").hide();
+			console.log("hide");
+		}
+		var changeRed = function() {
+			$("#red_dian").show();
+		}
+		//notificationurl = serverAddress + '/api/getnotification?id=' + userId;
+		notificationurl = serverAddress + '/api/__DoOVES70/Od676Z8998_0/P/GNTF';
+
+		console.log(notificationurl);
+		//		$('#messagechat').load('../familydoctor/message_list.html');
+		var reloadlist = function() {
+			plus.webview.currentWebview().reload();
+
+			//				webim.login(webimLoginInfo, listeners, {},function(resp) {},function(err) {});
+
+		}
+		mui.plusReady(function() {
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			upstatus = localStorage.getItem("upitem_talk");
+			console.log("upitem_talk" + upstatus);
+			if(upstatus == "0") {
+				mui.trigger(document.getElementById('xtxx'), 'touchstart');
+				mui.trigger(document.getElementById('xtxx'), 'tap');
+			}
+			//取消支付,进入待付款
+			if(upstatus == "1") {
+				mui.trigger(document.getElementById('ltxx'), 'touchstart');
+				mui.trigger(document.getElementById('ltxx'), 'tap');
+			}
+
+			//判断是否为聊天返回
+			var chatback = localStorage.getItem("chatback");
+			console.log("!!!chatback===>" + chatback);
+			if(chatback == "true") {
+				mui.trigger(document.getElementById('ltxx'), 'touchstart');
+				mui.trigger(document.getElementById('ltxx'), 'tap');
+				localStorage.setItem("chatback", false);
+			};
+
+			//开始登录sdk并监听
+			webim.login(webimLoginInfo, listeners, {},
+				function(resp) {
+					initRecentContactList(function() {}, function() {});
+				},
+				function(err) {}
+			);
+			//删除聊天列表中的成员
+			$('.mui-content-chat').on('tap', '.mui-btn', function(event) {
+				var el = $(this)
+				console.log("this---")
+				console.log(el[0].innerHTML)
+				var pel = $(el.parent().parent().parent())
+
+				console.log("pel---")
+				console.log(pel[0].innerHTML)
+
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				var to_id = $(li).attr("data-id")
+				var sess_type = $(li).attr("data-type");
+				var chatType = 1;
+				if(sess_type !== "C2C") {
+					chatType = 2;
+				}
+				var btnArray = ['确认', '取消'];
+				mui.confirm('确认删除？', '提示', btnArray, function(e) {
+					if(e.index == 0) {
+						var data = {
+							'To_Account': to_id,
+							'chatType': chatType
+						}
+						webim.deleteChat(
+							data,
+							function(resp) {}
+						);
+						pel.remove()
+					} else {
+						setTimeout(function() {
+							mui.swipeoutClose(li);
+						}, 0);
+					}
+				});
+
+			});
+
+			//点击进入聊天详情页 
+			mui(".mui-content-chat").on("tap", ".mui-table-view-cell", function() {
+				//					webim.setAutoRead(selSess, false, false);
+				var to_id = $(this).attr("data-id");
+				var to_name = $(this).attr("data-name");
+				var sess_type = $(this).attr("data-type");
+				sendMsgSelType = sess_type;
+				console.log("mui(#content).on(tap.mui-table-view-cell--sendMsgSelType-->>" + sendMsgSelType);
+				//					document.getElementById("toID").innerHTML = to_name;
+				console.log("to_id=" + to_id + "-------sess_type=" + sess_type);
+				var selSess = webim.MsgStore.sessByTypeId(sess_type, to_id)
+				webim.setAutoRead(selSess, true, false);
+				//					localStorage.setItem("cuToId", to_id);
+				//					localStorage.setItem("sendMsgSelType", sendMsgSelType);
+				var numbericom = document.getElementById("number-icon" + to_id);
+				numbericom.style.display = "none";
+				//判断会话类型，给name赋值
+				mui.openWindow({
+					url: '../familydoctor/im-chat.html',
+					id: 'im-chat.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						TO_ACCOUNT: to_id, //订单ID
+						//						userfaceimage: userfaceimage,
+						TO_NAME: to_name, //服务项目-医护姓名
+						TYPE: sess_type, //群组聊天
+						ENTRANCE: "list"
+					}
+				});
+
+				//					if(sess_type == "C2C") {
+				//						var getPrePageC2CHistroyMsgInfoMap = {};
+				//						selType = "C2C";
+				//						getLastC2CHistoryMsgs(to_id, function(msgList) {
+				//							//得到聊天记录
+				//							$("#modal").addClass("mui-active");
+				//						}, function() {});
+				//					} else {
+				//						console.log("to_id==========================>"+to_id);
+				//						cuToId = to_id;
+				//						var getPrePageGroupHistroyMsgInfoMap = {}
+				//						selType = "GROUP";
+				//						webim.MsgStore.delSessByTypeId(selType, to_id);
+				//						getLastGroupHistoryMsgs(function(msgList) {
+				//							$("#modal").addClass("mui-active");
+				////							getHistoryMsgCallback(msgList);
+				//						}, function(err) {
+				//						});
+				//					}
+
+			});
+
+			var msgFlagStr_unread = JSON.parse(plus.storage.getItem('msgFlag_unread') ? plus.storage.getItem('msgFlag_unread') : "{}");
+
+			//status:1已读，status:0未读
+			//toId": {
+			//	"status": "1",
+			//}
+			function processConfimAction(myScroll) {
+				var sussess = function(data) {
+					console.log("消息列表" + JSON.stringify(data));
+					if(data.result == "success") {
+						if(data.obj) {
+							if(myScroll.page == 1 && data.obj.length == 0) {
+								$("#message_xitong").hide();
+								$("#messageUL").html('<p><img class="imgmsg" src="../images/no_data/1-01.png" data-preview-src="" data-preview-group="1"></p>');
+								var i = plus.webview.getLaunchWebview();
+								if(i) {
+									//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+									i.evalJS("changeReddian_X()");
+									mui.fire(i, 'refresh');
+								}
+							} else if(data.obj.length != 0) {
+								if(myScroll.page == 1) {
+									$("#messageUL").html('')
+								}
+								if(data.obj.length == myScroll.limit) {
+									myScroll.page = myScroll.page + 1;
+									myScroll.upFlag = true
+								} else {
+									myScroll.upFlag = false
+								}
+
+								var msgFlagStr = plus.storage.getItem('msgFlag')
+								if(!msgFlagStr) {
+									msgFlagStr = "{}"
+								}
+								var msgFlag = JSON.parse(msgFlagStr);
+								//console.log("------->"+msgFlagStr);
+
+								//msgFlagStr_unread = JSON.parse(plus.storage.getItem('msgFlag_unread') ? plus.storage.getItem('msgFlag_unread') : "{}");
+
+								if(!msgFlagStr_unread) {
+									msgFlagStr_unread = {};
+								}
+								for(var i = 0; i < data.obj.length; i++) {
+									msgFlagStr_unread[data.obj[i]._id] = "unread";
+									comparedjson(msgFlag, msgFlagStr_unread);
+								}
+
+								plus.storage.setItem('msgFlag_unread', JSON.stringify(msgFlagStr_unread));
+
+								//alert("后台获取未读个数" + data.sub[0].nrcount);
+
+								if(data.sub.length != 0 && data.sub[0].nrcount == 0) {
+									$("#message_xitong").hide();
+									var i = plus.webview.getLaunchWebview();
+									if(i) {
+										//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+										i.evalJS("changeReddian_X()");
+										mui.fire(i, 'refresh');
+									}
+								} else if(data.sub.length != 0 && data.sub[0].nrcount != 0) {
+									var nrcount = data.sub[0].nrcount.toString();
+									$("#message_xitong").removeClass("no_red");
+									if(nrcount.length <= 2) {
+										$("#message_xitong").html(data.sub[0].nrcount);
+									} else if(nrcount.length >= 3) {
+										$("#message_xitong").html("...");
+									}
+									$("#message_xitong").show();
+									var i = plus.webview.getLaunchWebview();
+									if(i) {
+										//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+										//i.evalJS("changeReddian()");
+										mui.fire(i, 'refresh');
+									}
+								}
+
+								var phone = plus.storage.getItem("TOKEN")
+								var datestr = plus.storage.getItem(phone + "MSGTIME")
+								console.log("---->" + data.sub[0].nrcount);
+								$("#messageUL").processTL(templateRegister.common, {
+									sub: data.obj,
+									msgFlag: msgFlag,
+									datestr: datestr,
+									dataparent: data.sub[0].nrcount
+								}, 'append', function() {
+									myScroll.refresh()
+
+								})
+							} else {
+								myScroll.upFlag = false
+							}
+						}
+					} else {
+						//mui.toast(data.msg);
+					}
+				};
+				commonHttpUtils2(notificationurl + "?page=" + myScroll.page + "&limit=" + myScroll.limit, "get", "", sussess, error);
+			}
+
+			var btnArraydel = ['确认', '取消'];
+
+			$('#messageUL').on('click', '.mui-btn', function(event) {
+				var elem = this;
+				var li = elem.parentNode.parentNode;
+				var dataId = $(this).attr("data-id");
+
+				mui.confirm('确认删除该条记录？', '柒拾佳护', btnArraydel, function(e) {
+					if(e.index == 0) {
+						var delmessageUrl = serverAddress + '/api/__DoOVES70/Od676Z8998_0/P/USTF/' + dataId;
+						console.log("删除消息" + delmessageUrl);
+						var delsuccess = function(data) {
+							console.log("删除消息后台" + JSON.stringify(data));
+							if(data.result == "success") {
+								li.parentNode.removeChild(li);
+								var i = plus.webview.getWebviewById("subpages/tab-webview-subpage-talk.html");
+								i.reload(true);
+
+							}
+						}
+						commonHttpUtils2(delmessageUrl, "post", "", delsuccess, error);
+
+					} else {
+						setTimeout(function() {
+							mui.swipeoutClose(li);
+						}, 0);
+					}
+				});
+			});
+
+			var init = function() {
+				wrapper01 = $.initIscroll({
+					id: "wrapper01",
+					pullUpAction: processConfimAction,
+					pullDownAction: processConfimAction,
+					limit: 15
+				});
+				processConfimAction(wrapper01);
+			}
+			init();
+			var dataConfig = {
+				"MSG001": {
+					"name": "普通消息",
+					"code": "MSG001",
+					"type": "sm",
+					"icon": "../images/news/xtxx.png",
+					"link": "",
+					"opentype": "1",
+					"introduction": "普通消息列表，点击更改消息状态",
+					"target": "all",
+					"status": "1",
+				},
+				"MSG002": {
+					"name": "随访消息",
+					"code": "MSG002",
+					"type": "sm",
+					"icon": "../images/news/ddxx.png",
+					"link": "../set/follow_manage.html",
+					"opentype": "3",
+					"introduction": "随访消息列表，点击打开新页面",
+					"target": "pat",
+					"status": "1",
+				},
+				"MSG003": {
+					"name": "普通消息",
+					"code": "MSG003",
+					"type": "bm",
+					"icon": "../images/news/ddxx.png",
+					"link": "",
+					"opentype": "1",
+					"introduction": "普通消息列表，点击更改消息状态",
+					"target": "all",
+					"status": "1",
+				},
+				//				"MSG004": {
+				//					"name": "普通消息",
+				//					"code": "MSG004",
+				//					"type": "bm",
+				//					"icon": "../images/news/ddxx.png",
+				//					"link": "../familydoctor/jiuzhen_notice.html",
+				//					"opentype": "3",
+				//					"introduction": "就诊提醒消息列表，点击更改消息状态",
+				//					"target": "all",
+				//					"status": "1",
+				//				},
+				"MSG005": {
+					"name": "跳转消息",
+					"code": "MSG005",
+					"type": "bm",
+					"icon": "../images/news/ddxx.png",
+					"link": "../order/c02_order_xiangqing.html",
+					"opentype": "5",
+					"introduction": "普通消息列表，点击更改消息状态",
+					"target": "all",
+					"status": "1",
+				},
+				"MSG006": {
+					"name": "订单完成消息",
+					"code": "MSG006",
+					"type": "bm",
+					"icon": "../images/news/ddxx.png",
+					"link": "tab-webview-subpage-order.html",
+					"opentype": "6",
+					"introduction": "普通消息列表，点击更改消息状态",
+					"target": "all",
+					"status": "1",
+				},
+				"MSG005S": {
+					"name": "跳转消息",
+					"code": "MSG005",
+					"type": "bm",
+					"icon": "../images/news/ddxx.png",
+					"link": "../online_answer_order/online_answer_order_xiangqing.html",
+					"opentype": "5",
+					"introduction": "普通消息列表，点击更改消息状态",
+					"target": "all",
+					"status": "1",
+				},
+				"MSG006S": {
+					"name": "订单完成消息",
+					"code": "MSG006",
+					"type": "bm",
+					"icon": "../images/news/ddxx.png",
+					"link": "tab-webview-subpage-order.html",
+					"opentype": "6s",
+					"introduction": "普通消息列表，点击更改消息状态",
+					"target": "all",
+					"status": "1",
+				},
+				"MSG007": {
+					"name": "订单优惠券消息",
+					"code": "MSG007",
+					"type": "bm",
+					"icon": "../images/news/ddxx.png",
+					"link": "../geren_message/d07_my_account.html",
+					"opentype": "7",
+					"introduction": "订单优惠券消息列表",
+					"target": "all",
+					"status": "1",
+				},
+				"MSG008": {
+					"name": "跳转消息",
+					"code": "MSG008",
+					"type": "bm",
+					"icon": "../images/news/ddxx.png",
+					"link": "../order/c02_order_xiangqing.html",
+					"opentype": "8",
+					"introduction": "订单到时间未付款自动取消，或者是已付款但没有人接单",
+					"target": "all",
+					"status": "1",
+				},
+			}
+
+			initFunction = function() {
+				processConfimAction(wrapper01);
+			}
+			loaded = function() {
+				initFunction();
+			}
+
+			mui(".mui-control-content").on("tap", ".cus-msg-box", function() {
+				var dataId = $(this).attr("data-id");
+				var dataType = $(this).attr("data-type");
+				var extras = $(this).attr("data-ext");
+				var dataisread = $(this).attr("data-isread");
+				if(dataisread == 0) {
+					var i = plus.webview.getLaunchWebview();
+					if(i) {
+						//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+						i.evalJS("changeReddian_X()");
+						mui.fire(i, 'refresh');
+					}
+				} else {
+					var i = plus.webview.getLaunchWebview();
+					if(i) {
+						//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+						//i.evalJS("changeReddian()");
+						mui.fire(i, 'refresh');
+					}
+				}
+				//更新消息已读状态
+				var messageFlagURL = serverAddress + "/api/__DoOVES70/Od676Z8998_0/P/UNTF/" + dataId;
+				var meesageFlagsussess = function(data) {
+					console.log("====>更新状态" + JSON.stringify(data));
+				}
+				commonHttpUtils2(messageFlagURL, "post", "", meesageFlagsussess, error);
+				changeRead(dataId);
+
+				var def = dataConfig[dataType];
+				if(def.opentype == "3") {
+					mui.openWindow({
+						url: def.link,
+						id: def.link,
+						extras: {
+							msgId: dataId,
+							extras: extras
+						},
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded'
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+						}
+					});
+				}
+				if(def.opentype == "5" || def.opentype == "8") {
+					mui.openWindow({
+						url: def.link,
+						id: def.link,
+						extras: {
+							ORDER_ID: extras,
+						},
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded'
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+						}
+					});
+				}
+				if(def.opentype == "6") {
+					localStorage.setItem("upitem", 3);
+					mui.openWindow({
+						url: def.link,
+						id: def.link,
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded'
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+						}
+					});
+				}
+				if(def.opentype == "6s") {
+					localStorage.setItem("upitem", 3);
+					mui.openWindow({
+						url: def.link,
+						id: def.link,
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded'
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+						}
+					});
+				}
+				if(def.opentype == "7") {
+					mui.openWindow({
+						url: def.link,
+						id: def.link,
+						extras: {
+							TAB: '3'
+						},
+						show: {
+							autoShow: true, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded'
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+						}
+					});
+				}
+				plus.webview.getWebviewById("subpages/tab-webview-subpage-talk.html").reload(true);
+			});
+
+			function changeRead(dataId) {
+				var div = $("[data-id='" + dataId + "']")
+				div.find(".mui-badge").hide()
+				div.find(".mui-media-body").addClass("read-color")
+				var msgFlag = JSON.parse(plus.storage.getItem('msgFlag') ? plus.storage.getItem('msgFlag') : "{}");
+				if(!msgFlag) {
+					msgFlag = {};
+				}
+				msgFlag[dataId] = "read"
+				delete msgFlagStr_unread[dataId];
+				plus.storage.setItem('msgFlag', JSON.stringify(msgFlag));
+				plus.storage.setItem("msgFlag_unread", JSON.stringify(msgFlagStr_unread));
+			}
+		});
+
+		document.addEventListener('touchmove', function(e) {
+			e.preventDefault();
+		}, isPassive() ? {
+			capture: false,
+			passive: false
+		} : false);
+
+		function isPassive() {
+			var supportsPassiveOption = false;
+			try {
+				addEventListener("test", null, Object.defineProperty({}, 'passive', {
+					get: function() {
+						supportsPassiveOption = true;
+					}
+				}));
+			} catch(e) {}
+			return supportsPassiveOption;
+		}
+
+		function comparedjson(json1, json2) {
+			//循环遍历其中一个json对象
+			for(var key in json1) {
+				if(typeof(json1[key]) != "object" || json1[key] == null) {
+					if(json2[key] != null) {
+						if(json1[key] != json2[key]) {
+							//console.log('发现不同' + key + '：' + json1[key], json2[key]);
+							delete json2[key];
+						}
+					} else {
+						//console.log('发现删除' + key + '：' + json1[key], json2[key]);
+					}
+				}
+			}
+		}
+	</script>
+</html>

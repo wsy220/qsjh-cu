@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<title>选择套餐</title>
+		<style>
+			.tableUL {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-col-xs-3 {
+				width: 24.5%;
+			}
+			
+			@media screen and (min-width: 320px) {
+				.mui-col-xs-3 {
+					width: 23%;
+				}
+			}
+			
+			@media screen and (min-width: 400px) {
+				.mui-col-xs-3 {
+					width: 23%;
+				}
+			}
+			
+			.libutton {
+				padding-top: 0;
+			}
+			
+			.dowebok li {
+				margin-top: 10px;
+				margin-right: 15px;
+				background-color: #ffffff;
+				border-radius: 10px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				text-align: -webkit-center;
+				font-size: 12px;
+			}
+			
+			.mui-btn {
+				padding: 6px 0px;
+			}
+			
+			.sixzi {
+				width: 28%;
+			}
+			
+			.mui-btn:enabled:active {
+				color: #fff;
+				background-color: #EC971F;
+				border: 0;
+			}
+			
+			ul {
+				list-style-type: none;
+			}
+			
+			li {
+				display: inline-block;
+			}
+			
+			li {
+				margin: 5px 0;
+			}
+			
+			input.labelauty+label {
+				font: 15px "Microsoft Yahei";
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-ellipsis {
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-size: 15px;
+				font-weight: bold;
+			}
+			
+			.tishizi {
+				font-size: 13px;
+				color: #cc6633;
+			}
+			
+			.labelauty+label {
+				display: table;
+				font-size: 12px;
+				padding: 10px;
+				/* color: #b3b3b3; */
+				cursor: pointer;
+				border-radius: 3px 3px 3px 3px;
+				-moz-border-radius: 3px 3px 3px 3px;
+				-webkit-border-radius: 3px 3px 3px 3px;
+				transition: background-color 0.25s;
+				-moz-transition: background-color 0.25s;
+				/* -webkit-transition: background-color 0.25s; */
+				-o-transition: background-color 0.25s;
+				-moz-user-select: none;
+				-khtml-user-select: none;
+				-webkit-user-select: none;
+				-o-user-select: none;
+			}
+			
+			input.labelauty+label>span.labelauty-unchecked,
+			input.labelauty+label>span.labelauty-checked {
+				display: table;
+				/*	line-height: 16px;*/
+				vertical-align: bottom;
+				font-size: 12px;
+				margin-top: 10px;
+				margin-right: 15px;
+				width: 28%;
+				background-color: #ffffff;
+				border-radius: 5px;
+				text-align: -webkit-center;
+				font-size: 12px;
+			}
+			
+			input.labelauty+label {
+				border-radius: 8px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选择套餐</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL">
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<span class="mui-ellipsis">选择套餐</span>
+							<p class="tishizi">本订单为预约1次服务的订单。如您购买了多次服务套餐，可与接单的医护人员沟通剩余套餐次数的服务时间。</p>
+						</div>
+					</div>
+				</li>
+				<!--<li class="mui-table-view-cell libutton">
+					<div class="mui-table">
+						<div class="mui-table-cell">
+							<button type="button" class="mui-btn mui-col-xs-3" value="护士">护士</button>
+							<button type="button" class="mui-btn mui-col-xs-3" value="护师">护师</button>
+							<button type="button" class="mui-btn mui-col-xs-3" value="主管护师">主管护师</button>
+							<button type="button" class="mui-btn mui-col-xs-3" value="副主任护师">副主任护师</button>
+							<button type="button" class="mui-btn mui-col-xs-3" value="主任护师">主任护师</button>
+							<!--<button type="button" class="mui-btn mui-col-xs-3">默认</button>
+						</div>
+					</div>
+				</li>-->
+				<li class="mui-table-view-cell libutton">
+					<ul class="dowebok" id="dowebok">
+						<!--<li><input type="radio" name="radio1" data-labelauty="200元/1次" value="200元/1次></li>
+						<li><input type="radio" name="radio1" data-labelauty="200元/1次" value="200元/1次"></li>
+						<li><input type="radio" name="radio1" data-labelauty="主管护师" value="主管护师"></li>
+						<li><input type="radio" name="radio1" data-labelauty="副主任护师" value="副主任护师"></li>
+						<li><input type="radio" name="radio1" data-labelauty="主任护师" value="主任护师"></li>
+						<li><input type="radio" name="radio1" data-labelauty="主任护师" value="主任护师"></li>-->
+					</ul>
+				</li>
+			</ul>
+
+			<div class="mui-content-padded">
+				<button id='queding' class="mui-btn mui-btn-block mui-btn-warning">确定</button>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+	<!--<script type="text/javascript" src="../js/zhiwei.data.js"></script>-->
+	<script>
+		var selectItem = '',
+			selectItem_taocan = '',
+			service_item = '',
+			service_item_taocan = '',
+			item_name_id = '',
+			discount='';
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+		});
+		/**
+		 * @param selectItem 用于存储级别HTML
+		 * @param selectItem_taocan 用于存储套餐价格HTML
+		 */
+
+		(function($, doc) {
+			$.init();
+			$.ready(function() {
+				/**
+				 * 获取对象属性的值
+				 * 主要用于过滤三级联动中，可能出现的最低级的数据不存在的情况，实际开发中需要注意这一点；
+				 * @param {Object} obj 对象
+				 * @param {String} param 属性名
+				 */
+				window.addEventListener('sevice_item_xiangqing', function(e) {
+					item_name_id = e.detail.ITEM_ID;
+					//获取服务套餐
+					var url = serverAddress + "/api/patient/appgetprice/" + item_name_id;
+					console.log(url);
+					var success = function(data) {
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						console.log(JSON.stringify(data));
+						if(data.result == "success") {
+							for(var i = 0; i < data.data.length; i++) {
+								var selectString = data.data[i].price + "元/" + data.data[i].times + "次";
+								var selectStringValue=data.data[i].price + "元/" + data.data[i].times + "次"+"/"+data.data[i].discount;
+								discount=data.data[i].discount;
+								selectItem += '<li><input type="radio" name="radio1" data-labelauty="' + selectString + '" value="' + selectStringValue + '" class="labelauty" id="labelauty" style="display: none;"><label for="labelauty"><span class="labelauty-unchecked>' + selectString + '</span><span class="labelauty-checked">' + selectString + '</span></label></li>';
+								document.getElementById("dowebok").innerHTML = selectItem;
+							}
+						}
+					};
+					commonHttpUtils(url, "get", {}, success, error, true);
+				});
+				mui(".libutton").on("tap", "li", function(event) {
+					service_item = this.firstChild;
+//					for(var i = 0; i < zhiweiData[0].children.length; i++) {
+//						if(zhiweiData[0].children[i].text == service_item.value) {
+							selectItem_taocan += '<li><input type="radio" name="radio" data-labelauty="' + service_item.value.text + '" value="' + service_item.value.text + '" class="labelauty" id="labelauty1" style="display: none;"><label for="labelauty1"><span class="labelauty-unchecked">' + service_item.value.text + '</span><span class="labelauty-checked">' + service_item.value.text + '</span></label></li>';
+							service_item_taocan = service_item.value;
+//						}
+//					}
+				});
+				mui(".libutton2").on("tap", "li", function(event) {
+					service_item_taocan = this.firstChild;
+					document.getElementById("queding").setAttribute("class", "mui-btn mui-btn-block mui-btn-warning");
+				});
+
+			});
+		})(mui, document);
+
+		$(function() {
+			$(':input').labelauty();
+		});
+		document.getElementById("queding").addEventListener("tap", function(e) {
+			if(service_item.value) {
+				mui.back();
+				var main3 = plus.webview.getWebviewById('a04_place_order.html');
+				mui.fire(main3, 'taocan', service_item.value);
+
+			} else if(service_item.value == undefined) {
+				mui.toast("请选择套餐");
+				return false;
+			}
+		});
+	</script>
+
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>实名认证</title>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<style>
+			.mui-content {
+				margin-top: 0.08rem;
+				font-size: 0.2916rem;
+			}
+			
+			#zhaoxiang {
+				height: 2rem;
+			}
+			
+			#zhaoxiang.mui-table-view-cell {
+				padding-top: 0.5rem;
+				height: 130px;
+			}
+			
+			#zhaoxiang a span:after {
+				top: 40%;
+			}
+			
+			#head_image {
+				width: 90px;
+				height: 90px;
+				border-radius: 50px;
+				margin-top: 10px;
+			}
+			
+			.head {
+				margin-top: -0.6rem;
+				margin-right: 15px;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-bottom: 0.08rem;
+			}
+			
+			#libiao li {
+				height: 1.0rem;
+				padding-top: 0.25rem;
+			}
+			
+			#libiao li span {
+				/*margin-right: 20px;*/
+				font-size: 14px;
+			}
+			
+			.qianming {
+				width: 50%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: right;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-navigate-right:after {
+				font-size: 25px;
+				right: 5px;
+			}
+			
+			.mui-table-view-cell a {
+				color: #424242;
+				font-size: 15px;
+			}
+			
+			.mui-table-view-cell span {
+				color: #999999;
+			}
+			
+			#forward {
+				font-size: 0.3124rem;
+				font-weight: 400;
+			}
+			
+			#male {
+				color: #00c0ff;
+				height: 1.1rem;
+			}
+			
+			#female {
+				color: #ff0072;
+				height: 1.1rem;
+			}
+			
+			#male div,
+			#female div {
+				background: url(../../../images/tubiao2.png) no-repeat;
+			}
+			
+			.redword {
+				color: #FF3300 !important;
+			}
+			
+			.shengfen_upload {
+				max-width: 100%;
+				background: #FFFFFF;
+				height: 200px;
+				padding-top: 70px;
+			}
+			
+			.mui-content-padded a {
+				margin: 3px;
+				width: 50px;
+				height: 50px;
+				display: block;
+				text-align: center;
+				background-color: #fff;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				margin: 0 auto;
+			}
+			
+			.mui-content-padded a .mui-icon {
+				margin-top: 12px;
+				color: #000000;
+				margin-top: -7px;
+				margin-left: -6px;
+			}
+			
+			.mui-icon {
+				font-size: 60px;
+			}
+			
+			.upload_word {
+				margin: 10px auto;
+				display: block;
+				text-align: center;
+			}
+			
+			.shenfen_card,
+			.sign_name {
+				width: 70% !important;
+				height: 20px !important;
+				font-size: 14px;
+			}
+			
+			.error_shenfen_card {
+				border: 1px dotted rgba(0, 0, 0, 0) !important;
+			}
+			
+			.right_shenfen_card {
+				border: 1px solid rgba(0, 0, 0, 0) !important;
+			}
+			
+			.tishi {
+				width: 93%;
+				font-size: 13px;
+				color: #999999;
+				margin: auto;
+			}
+			
+			html,
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.mui-content {
+				height: 100%;
+				overflow: auto;
+			}
+			
+			.address label~input,
+			.menpai label~input {
+				width: 70%;
+				height: 35px;
+				font-size: 14px;
+				border: 0;
+				margin-left: 0.2rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">实名认证</h1>
+		</header>
+		<div class="mui-content">
+			<form action="">
+				<ul class="mui-table-view" id="libiao">
+					<li class="mui-table-view-cell">
+						<a id="geren_name">手机号：<span class="mui-pull-right" id="user_name">13112345678</span></a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a>性&nbsp;&nbsp;&nbsp;&nbsp;别：<span class="mui-pull-right">
+						<label>男</label>
+						<input id="leixingradio" name="leixingradio" type="radio" value="0" checked="checked">
+						<label>女</label>
+						<input id="leixingradio" name="leixingradio" type="radio" value="1"></span>
+						</a>
+					</li>
+
+					<li class="mui-table-view-cell">
+						<a id="signatureLi">真实姓名：<input type="text" class="sign_name error_shenfen_card mui-input" placeholder="请输入您的姓名" id="sign_name"><span class="mui-icon mui-icon-checkmarkempty duihao" style="font-size: 24px; display: none;"></span> </a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="signatureLi">身份证号：<input type="text" class="shenfen_card error_shenfen_card" placeholder="请输入您的身份证号" id="shenfen_card"><span class="mui-icon mui-icon-checkmarkempty duihao" style="font-size: 24px; display: none;"></span></a>
+					</li>
+					<li class="mui-table-view-cell address">
+						<div id="l-map"></div>
+						<label class="font-bold"><span class="mui-icon iconfont icon-bitian"></span>地&nbsp;&nbsp;&nbsp;&nbsp;址：</label>
+						<input type="text" placeholder="请输入上门详细地址" id="xiangxiaddress" class="shurukuang">
+					</li>
+					<li class="mui-table-view-cell menpai">
+						<label class="font-bold">门牌号：</label>
+						<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="例：7栋1门1201室" id="menpai_no">
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="signatureLi">身份证正反面照片上传<span class="redword">&nbsp;&nbsp;(3个工作日内通知审核结果)</span></a>
+					</li>
+				</ul>
+			</form>
+			<div class="mui-content-padded">
+				<div id="feedback" class="mui-page feedback">
+					<div class="mui-page-content">
+						<div id='image-list' class="row image-list">
+						</div>
+						<div class="tishi">
+							本人承诺以上信息的真实性，如若不填或填写虚假信息引发的结果 由本人自负。未实名认证者，不能使用系统的订单功能。
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<button id='send_ok' class="mui-btn mui-btn-block mui-btn-warning mui-disabled">确定</button>
+				<button id='enter_main' class="mui-btn mui-btn-block mui-btn-warning">进入首页</button>
+			</div>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/mui.picker.js"></script>
+		<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+		<script type="text/javascript" src="../js/exif.js"></script>
+		<script type="text/javascript" src="../js/mobileBUGFix.mini.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+		<script type="text/javascript" src="../js/IScard.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x8wP7ck7pQ4P8UAol2pen8B5"></script>
+		<script>
+			var username, leixing, nameinput, shenfen_cardinput, shenfen_img = [],
+				houseNum;
+			var longitude = '',
+				latitude = '';
+			mui.plusReady(function() {
+				//feedback.newPlaceholder(2);
+				qs.initImageList({
+					id: 'image-list',
+					num: 2
+				});
+				mui.init({
+					keyEventBind: {
+						backbutton: true //打开back按键监听
+					},
+					beforeback: function() {
+						//返回true，继续页面关闭逻辑  
+						mui.back;
+						//获得列表界面的webview
+						var list = plus.webview.getWebviewById("subpages/tab-webview-subpage-my.html");
+						//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+						mui.fire(list, 'refresh');
+						//返回true，继续页面关闭逻辑
+						return true;
+					}
+				});
+				plus.webview.currentWebview().setStyle({
+					softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+				});
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+
+				function G(id) {
+					return document.getElementById(id);
+				}
+
+				var map = new BMap.Map("l-map");
+				map.centerAndZoom("长春", 12); // 初始化地图,设置城市和地图级别。
+
+				var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+					{
+						"input": "xiangxiaddress",
+						"location": map
+					});
+
+				ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
+					var str = "";
+					var _value = e.fromitem.value;
+					var value = "";
+					if(e.fromitem.index > -1) {
+						value = _value.province + _value.city + _value.district + _value.street + _value.business;
+					}
+					str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+					console.log("up" + value);
+					value = "";
+					if(e.toitem.index > -1) {
+						_value = e.toitem.value;
+						value = _value.province + _value.city + _value.district + _value.street + _value.business;
+					}
+					console.log("down" + value);
+					str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+
+					//G("searchResultPanel_begin").innerHTML = str;
+				});
+
+				var myValue = "";
+
+				ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+					myValue = '';
+					var _value = e.item.value;
+					myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+					localStorage.selectedAddress = myValue;
+
+					document.getElementById("xiangxiaddress").value = myValue;
+					//G("searchResultPanel_begin").innerHTML = "onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+					localStorage.myvalue = myValue;
+					//setCookie("myvalue", myValue);
+					if(myValue != "") {
+						setPlace(myValue);
+						console.log('over');
+					}
+				});
+
+				function setPlace(myValue) {
+					console.log('setPlace start.');
+					map.clearOverlays(); //清除地图上所有覆盖物
+					//经度
+
+					var local = new BMap.LocalSearch(map, { //智能搜索
+						onSearchComplete: function() {
+							console.log('onSearchComplete start.');
+							var pp = local.getResults().getPoi(0).point; //获取第一个智能搜索的结果
+							longitude = pp.lng;
+							latitude = pp.lat;
+							//console.log("经度" + longitude);
+							//console.log("纬度" + latitude);
+							if(longitude == "" || latitude == "") {
+								mui.toast("请选择正确地址");
+								return false;
+							}
+
+						}
+					});
+					local.search(myValue);
+				}
+
+				username = localStorage.getItem("TOKEN");
+				if(username == null) {
+					var self = plus.webview.currentWebview();
+					username = self.USER_TEL;
+				}
+				var id = localStorage.getItem("TOKENID");
+				if(id == null) {
+					var self = plus.webview.currentWebview();
+					id = self.USER_ID;
+				}
+
+				var success = function(data) {
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data.result == "success") {
+						//是否实名认证
+						isshiminghoutai = data.data.idapprove;
+						localStorage.setItem("SHIMING_TOKEN", isshiminghoutai);
+						$("#user_name").html(data.data.tel);
+						$("#sign_name").val(data.data.realname == undefined ? "" : data.data.realname); //真实姓名字段不确定，明天修改
+						$("#shenfen_card").val(data.data.idnumber == undefined ? "" : data.data.idnumber); //身份证号码字段不确定，明天修改
+						$("#menpai_no").val(data.data.houseNumber == undefined ? "" : data.data.houseNumber);
+						//‘0'未认证 '1'待审核 '2'通过审核 '3'未通过审核
+						if(isshiminghoutai == "0") {
+							$("#send_ok").removeClass("mui-disabled");
+						} else if(isshiminghoutai == "1") {
+							$("#send_ok").addClass("mui-disabled");
+						} else if(isshiminghoutai == "2") {
+							$("#send_ok").addClass("mui-disabled");
+						} else if(isshiminghoutai == "3") {
+							$("#send_ok").removeClass("mui-disabled");
+						}
+					}
+				};
+				var url = serverAddress + "/api/patient/getmyinfo/" + id;
+				commonHttpUtils(url, "get", {}, success, error, true);
+
+				$("#send_ok").click(function(e) {
+					nameinput = $("#sign_name").val().trim();
+					localStorage.setItem("GEREN_NAME", nameinput);
+					shenfen_cardinput = $(".shenfen_card").val().trim();
+					houseNum = $("#menpai_no").val().trim();
+					//leixing = localStorage.getItem("leixing") == null ? "0" : localStorage.getItem('leixing');
+					leixing = $("input[type='radio']:checked").val();
+					xiangxiaddress = $("#xiangxiaddress").val();
+					if($$.getImageFilesPath("image-list").length == 0 || $$.getImageFilesPath("image-list").length != 2) {
+						mui.toast("请上传身份证照片");
+						return false;
+					}
+
+					if(nameinput == null || nameinput == '') {
+						mui.toast("请填写姓名");
+						return false;
+					}
+					if(shenfen_cardinput == null || isCardID(shenfen_cardinput) != true) {
+						mui.toast("身份证号码错误");
+						return false;
+					}
+					if(xiangxiaddress == "" || longitude == "" || latitude == "" || longitude == undefined || latitude == undefined) {
+						mui.toast("请选择正确地址");
+						return false;
+					}
+					if(houseNum==""||houseNum==null){
+						mui.toast("请填写门牌号");
+						return false;
+					}
+					var now = new Date();
+					//获取年龄
+					var age = parseInt(now.getFullYear()) - parseInt(GetAge(shenfen_cardinput));
+					//type:1实名认证，type:0个人信息
+					var url = serverAddress + "/api/patient/appverification";
+					var messageInfo = {
+						gender: leixing,
+						idfaceavatar: $$.getImageFilesPath("image-list")[0],
+						idbackavatar: $$.getImageFilesPath("image-list")[1],
+						idnumber: shenfen_cardinput,
+						realname: nameinput,
+						account: id,
+						type: 1,
+						tel: username,
+						ordergpslng: longitude,
+						ordergpslat: latitude,
+						homeaddress: xiangxiaddress,
+						age: age,
+						houseNumber: houseNum
+					};
+					console.log("实名认证---《》》" + JSON.stringify(messageInfo));
+					var success = function(data) {
+						//服务器返回响应，根据响应结果，分析是否登录成功；
+						if(data.result = "success") {
+							mui.toast("您已经提交实名认证，请等待审核！");
+							//var main = plus.webview.getLaunchWebview();
+							// 获取所有Webview窗口
+
+							
+
+							var curr = plus.webview.currentWebview();
+							var index = plus.webview.getLaunchWebview();
+							if(index) {
+								index.reload(true);
+							}
+
+							if(plus.webview.getWebviewById("login.html")) {
+								plus.webview.getWebviewById("login.html").close("none");
+							}
+							if(plus.webview.getWebviewById("reg.html")) {
+								plus.webview.getWebviewById("reg.html").close("none");
+							}
+							plus.webview.currentWebview().close("none");
+
+						}
+
+					};
+					commonHttpUtils(url, "post", messageInfo, success, error, true);
+					// 刷新父页面
+					var list = plus.webview.currentWebview().opener();
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新  
+					mui.fire(list, 'refresh');
+				});
+				$("#enter_main").click(function() {
+					var main = plus.webview.getLaunchWebview();
+					// 获取所有Webview窗口
+					var curr = plus.webview.currentWebview();
+					var wvs = plus.webview.all();
+					for(var i = 0, len = wvs.length; i < len; i++) {
+						//关闭除setting页面外的其他页面
+						if(wvs[i].getURL() == curr.getURL())
+							continue;
+						//						if(wvs[i].getURL()==main.getURL())
+						//								continue;
+						plus.webview.close(wvs[i]);
+					}
+					//打开login页面后再关闭setting页面
+					plus.webview.open("../main.html");
+					curr.close();
+				});
+			});
+
+			$("#sign_name").bind('input', function() {
+				$("#sign_name").removeClass("error_shenfen_card");
+				$("#sign_name").addClass("right_shenfen_card");
+				if($("#sign_name").val().length == 0) {
+					$("#sign_name").addClass("error_shenfen_card");
+				}
+			});
+			$('.shenfen_card').bind('input', function() {
+				if(isCardID(this.value) == true) {
+					$(".duihao").attr("style", "font-size: 24px;");
+					$(".shenfen_card").toggleClass("error_shenfen_card");
+				} else {
+					$(".duihao").attr("style", "font-size: 24px; display: none;");
+					$(".shenfen_card").addClass("error_shenfen_card");
+				}
+			});
+
+			function GetAge(idCard) {
+				var birthday = "";
+				if(idCard != null && idCard != "") {
+					if(idCard.length == 15) {
+						birthday = "19" + idCard.substr(6, 6);
+					} else if(idCard.length == 18) {
+						birthday = idCard.substr(6, 8);
+					}
+
+					birthday = birthday.replace(/(.{4})(.{2})/, "$1-$2-");
+					birthday = birthday.split("-")[0];
+				}
+
+				return birthday;
+			}
+		</script>
+	</body>
+
+</html>

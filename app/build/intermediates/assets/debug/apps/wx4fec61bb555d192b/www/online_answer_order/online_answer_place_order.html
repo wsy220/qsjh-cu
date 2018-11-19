@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+
+		<link href="../css/mui.picker.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+		<title>报告解读下单页面</title>
+		<style>
+			body,
+			.mui-content,
+			html {
+				background: #FFFFFF;
+			}
+			
+			input[type=text] {
+				margin-bottom: 0;
+				font-size: 0.2rem;
+				width: 50%;
+				float: right;
+				border: 0;
+				height: 0;
+			}
+			
+			.tableUL {
+				font-size: 15px;
+			}
+			
+			.mui-table-view:after {
+				height: 1px;
+			}
+			
+			textarea {
+				margin-bottom: 0px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				background-color: #C7C7CC;
+				border-radius: 10px;
+				height: 60px !important;
+			}
+			
+			p {
+				margin-top: -20px;
+				color: #cc6633;
+			}
+			
+			.mui-icon {
+				font-weight: 800;
+			}
+			
+			.photo {
+				margin-top: 20px;
+				background: none;
+			}
+			
+			.photo:before,
+			.photo:after {
+				height: 0;
+			}
+			
+			.radio {
+				display: inline-flex;
+				display: -webkit-inline-box;
+				line-height: 2.5;
+			}
+			
+			.wenzi {
+				vertical-align: -webkit-baseline-middle;
+			}
+			
+			.zhiqing {
+				margin-top: 30px;
+			}
+			
+			li .mui-pull-right {
+				text-align: right;
+				width: 40%;
+			}
+			
+			.icon-bitian {
+				font-size: 8px;
+				color: #CF2D28;
+				padding-right: 10px;
+			}
+			
+			.row {
+				margin: 0;
+			}
+			
+			.ui-widget-content {
+				border: 0;
+				background: none;
+				color: #000000;
+			}
+			
+			.isbeipin {
+				text-align: right;
+			}
+			
+			a {
+				color: #FFFFFF;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				margin: -7px -15px;
+			}
+			
+			label {
+				display: inline-block;
+				margin-bottom: 5px;
+				font-weight: normal;
+			}
+			
+			#user_document {
+				color: #990000;
+			}
+			
+			.size12 {
+				color: #333333;
+			}
+			
+			.mui-content-anniu {
+				margin-top: 20px;
+			}
+			
+			.feedback p {
+				padding: 10px 0px 0;
+				font-size: 12px;
+			}
+			
+			#time_message_pull_right {
+				width: 60%;
+			}
+			
+			.wureddian {
+				/*padding-left: 35px !important;*/
+			}
+			
+			[data-type=hour] .mui-dtpicker-title h5,
+			[data-type=hour] .mui-picker {
+				width: 15%;
+			}
+			
+			[data-type=hour] [data-id=picker-h],
+			[data-type=hour] [data-id=title-h],
+			[data-type=datetime] [data-id=picker-h],
+			[data-type=datetime] [data-id=title-h] {
+				width: 55% !important;
+			}
+			
+			.mui-poppicker-header {
+				padding: 6px;
+				font-size: 14px;
+				color: #888;
+				background-color: #40ced2;
+			}
+			
+			.mui-btn-blue {
+				color: #333;
+				border: 1px solid #FFFFFF;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell,
+			.mui-table-view-cell.mui-collapse .mui-collapse-content {
+				background-color: #F1F1F1;
+				font-size: 12px;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn).mui-active,
+			.mui-table-view-cell>a:not(.mui-btn) {
+				background: #FFFFFF;
+			}
+			
+			.feedback-drug p {
+				padding-top: 20px;
+				padding-left: 15px;
+			}
+			
+			.feedback-drug .image-item .image-up {
+				height: 65px;
+				width: 65px;
+				border-radius: 10px;
+				line-height: 65px;
+				color: #ccc;
+				display: list-item;
+				text-align: center;
+				background: #EEEEEE !important;
+				z-index: 999;
+			}
+			
+			.feedback-drug .image-item .image-up .content {
+				padding-top: 40px;
+			}
+			
+			.isyaopin label {
+				font-size: 12px;
+			}
+			
+			.space_p {
+				color: #FF9E0D;
+			}
+			
+			.mui-poppicker-body {
+				height: 150px;
+			}
+			
+			.icon-tishi {
+				color: #75d2d5;
+			}
+			
+			.baoxianimg {
+				max-width: 50%;
+			}
+			
+			#baoxian_document {
+				height: 110px;
+			}
+			
+			.jiner {
+				margin-top: 20px;
+				color: #000;
+				font-size: 14px;
+			}
+			
+			.dahuangzi {
+				color: #ff9900;
+				font-size: 30px;
+				margin-top: 15px;
+			}
+			
+			.mui-input-row label {
+				font-size: 0.25rem;
+				width: 30%;
+				padding: 11px 0px;
+				font-weight: inherit;
+				color: #333333;
+			}
+			
+			.mui-input-row label~input {
+				/*border-bottom: 1px solid #E3E3E3;*/
+				width: 70%;
+				height: 35px;
+				font-size: 14px;
+				padding-left: 8px;
+			}
+			
+			.shurukuang {
+				font-size: 14px;
+				color: #333333;
+				height: 120px;
+			}
+			
+			.mui-table-view-cell {
+				padding: 5px 15px;
+			}
+			
+			.xingbieDIV {
+				font-size: .25rem;
+			}
+			
+			.feedback .image-item .image-up {
+				height: 65px;
+				width: 65px;
+				border-radius: 10px;
+				line-height: 65px;
+				color: #ccc;
+				display: list-item;
+				text-align: center;
+				background: #EEEEEE;
+			}
+			
+			input:-moz-placeholder,
+			textarea:-moz-placeholder {
+				/* Mozilla Firefox 4 to 18 */
+				color: #CCCCCC;
+			}
+			
+			input::-moz-placeholder,
+			textarea::-moz-placeholder {
+				/* Mozilla Firefox 19+ */
+				color: #CCCCCC;
+			}
+			
+			input:-ms-input-placeholder,
+			textarea:-ms-input-placeholder {
+				/* Internet Explorer 10+ */
+				color: #CCCCCC;
+			}
+			
+			.mui-table-view-cell.youhuijuanLI .mui-table-view {
+				margin-top: 0px;
+				margin-right: 0px;
+				margin-bottom: 5px;
+				margin-left: 5px;
+				border: 0;
+			}
+			
+			.youhuijuanLI.mui-collapse .mui-table-view .mui-table-view-cell {
+				padding-left: 15px;
+			}
+			
+			.bg_white {
+				background-color: #FFFFFF !important;
+				color: #858585;
+			}
+			
+			.bg_huise {
+				background-color: #e8e8e8 !important;
+				color: #ecaa38;
+			}
+			
+			#youhuijuan_pull_right {
+				margin-right: 20px;
+			}
+			
+			.youhuijuanLI {
+				padding: 11px 15px;
+				font-size: 0.25rem;
+			}
+		</style>
+	</head>
+
+	<body onresize="document.activeElement.scrollIntoView(true);">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">报告解读</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="baoxian_document">
+				<li class="mui-table-view-cell">
+					<a href="#" class="">
+						<div class="mui-table">
+							<div class="mui-table-cell">
+								<p class="jiner">总金额：（元）</p>
+								<p class="dahuangzi" id="jine_money">100.00</p>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="service_object" style="padding-top: 10px;">
+				<li class="mui-table-view-cell">
+					<a>
+						<div class="xingbieDIV">
+							<span class="mui-icon iconfont icon-bitian"></span>性别：
+							<span class="mui-pull-right isyaopin">
+							<input id="leixingradio" name="leixingradio" type="radio" value="0">
+							<label>男</label>
+							<input id="leixingradio" name="leixingradio" type="radio" value="1">
+							<label>女</label>
+							</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="service_taocan">
+				<li class="mui-table-view-cell">
+					<a href="#">
+						<div class="mui-input-row">
+							<label class="font-bold"><span class="mui-icon iconfont icon-bitian"></span>真实姓名：</label>
+							<input type="text" class="mui-input shurukuang mui-input-clear" data-input-password="3" placeholder="请输入姓名" id="name" style="color: #acacac;">
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="illness_select">
+				<li class="mui-table-view-cell">
+					<a href="#">
+						<div class="mui-input-row">
+							<label class="font-bold"><span class="mui-icon iconfont icon-bitian"></span>年龄：</label>
+							<input type="text" class="mui-input shurukuang mui-input-clear" data-input-password="3" placeholder="请输入年龄" id="age" style="color: #acacac;">
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="youhuijuan">
+				<li class="mui-table-view-cell mui-collapse youhuijuanLI">
+					<a href="#" class="mui-navigate-right wureddian">
+						<span>可用优惠券<span id="youhuijuan_pull_right" class="mui-pull-right">无</span></span>
+					</a>
+					<div class="mui-collapse-content" id="youhuijuanLI_collapse_content">
+
+						<!--<ul class="mui-table-view title">
+							<li class="mui-table-view-cell bg_white" id="daijin1"><span class="mui-pull-left">-100代金券</span></li>
+						</ul>
+						<ul class="mui-table-view title">
+							<li class="mui-table-view-cell bg_white" id="daijin2"><span class="mui-pull-left">-200代金券</span></li>
+						</ul>
+						<ul class="mui-table-view title">
+							<li class="mui-table-view-cell bg_white" id="daijin3"><span class="mui-pull-left">-300代金券</span></li>
+						</ul>-->
+
+					</div>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL" id="uploadtupian" style="display: none;">
+				<li class="mui-table-view-cell">
+					<a href="#" class="mui-navigate-right">
+						<span class="mui-icon iconfont icon-bitian"></span><span id="miaoshu_wenzi">上传就医凭证</span>
+					</a>
+				</li>
+			</ul>
+
+			<div class="mui-input-row" style="margin: 10px 15px;">
+				<p style="padding-top: 20px;color: #000000; font-size: .25rem;">问题描述:</p>
+				<textarea id="illmiaoshu" rows="5" placeholder="请详细描述您的疑问、症状或身体情况（最多支持输入300字）如有相关照片请点击添加照片"></textarea>
+			</div>
+			<div id="feedback" class="mui-page feedback">
+				<div class="mui-page-content">
+					<div class="mui-content-padded">
+						<div id='image-list-online-report' class="row image-list">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="mui-content-padded">
+				<button id='xiadan' class="mui-btn mui-btn-block mui-btn-warning"><span>提交</span></button>
+			</div>
+
+		</div>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/mui.picker.min.js"></script>
+	<script type="text/javascript" src="../js/base64.js"></script>
+	<script type="text/javascript" src="../js/exif.js"></script>
+	<script type="text/javascript" src="../js/mobileBUGFix.mini.js"></script>
+	<script type="text/javascript" src="../js/feedbackMUI2.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min_old.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script type="text/javascript" src="../js/getDate.js"></script>
+
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+
+	<script src="../js/mui.picker.js"></script>
+	<script src="../js/mui.poppicker.js"></script>
+	<script>
+		mui.init({
+			swipeBack: true, //启用右滑关闭功能
+			beforeback: function() {
+				var i = plus.webview.getWebviewById("online_answer_index.html");
+				i.evalJS("resetimg()");
+			}
+		});
+		var online_order_JSON = {};
+		var customer = {};
+		var question = {};
+		var coupon = {}; //优惠券JSON
+		var item_money;
+		mui.plusReady(function() {
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			//获取在线解读类别ID以及金额
+			//			console.log(currentView.ONLINE_ID);
+			//			console.log(currentView.ONLINE_JIE);
+
+			var ONLINE_ID = currentView.ONLINE_ID;
+			var ONLINE_JIE = currentView.ONLINE_JIE;
+			var item_money = currentView.ONLINE_JIE;
+			$("#jine_money").html(parseFloat(currentView.ONLINE_JIE).toFixed(2));
+
+			plus.webview.currentWebview().setStyle({
+				softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+			});
+
+			qs.initImageList({
+				id: 'image-list-online-report',
+				num: 20,
+				biaoshi: "order_report"
+			});
+
+			var get_youhuijuan_url = serverAddress + "/api/medicalreport/coupons/" + ONLINE_ID;
+			var sucess_get_youhuijuan = function(data) {
+				console.log("dddd" + JSON.stringify(data));
+				var youhuijuan_dataArry = data.data;
+				if(data.result == "success") {
+					if(data.data && data.data.length == 0) {
+						$(".youhuijuanLI").removeClass("mui-collapse");
+					} else if(data.data && data.data.length != 0) {
+						$(".youhuijuanLI").addClass("mui-collapse");
+						var max = youhuijuan_dataArry[0].amount / 100;
+						//						youhuijuan_dataArry.forEach(function(element) {
+						//							if(element.amount >= max) {
+						//								console.log(max);
+						//								max = element.amount / 100;
+						//								$("#youhuijuan_pull_right").html("-" + max + "代金券");
+						//							}
+						//						});
+						$("#youhuijuan_pull_right").html("-" + max + "代金券");
+						coupon["couponId"] = youhuijuan_dataArry[0]._id;
+						coupon["amount"] = youhuijuan_dataArry[0].amount;
+						//如果有优惠券
+						$("#youhuijuanLI_collapse_content").processTL(templateRegister.order_youhuijuan, {
+							sub: data.data
+						}, 'append', function() {
+							//点击优惠券选择事件
+							mui("#youhuijuanLI_collapse_content").on("tap", "li", function(e) {
+								console.log(this.id);
+								console.log($(this).children("span").text());
+								var couponId = this.id;
+								var amount = $(this).children("span").text();
+								$("#youhuijuan_pull_right").html($(this).children("span").text());
+								var lis = Array.prototype.slice.call(document.getElementById('youhuijuanLI_collapse_content').getElementsByTagName('ul'));
+								var activeLen = document.querySelectorAll('.bg_huise').length;
+
+								if($(this).hasClass("bg_huise")) {
+									$(this).removeClass("bg_huise");
+									$(this).addClass("bg_white");
+
+								} else {
+									if(!activeLen) {
+										$(this).addClass("bg_huise");
+									} else {
+										lis.forEach(function(item) {
+											$(item).children("li").removeClass("bg_huise");
+											$(item).children("li").addClass("bg_white");
+										})
+										$(this).addClass("bg_huise");
+									}
+								}
+								coupon["couponId"] = couponId;
+								coupon["amount"] = amount.replace("-", "").replace("代金券", "")*100;
+								console.log("DDDDDDD=>>>>>" + JSON.stringify(coupon));
+							})
+
+						});
+					}
+				}
+			}
+			commonHttpUtils(get_youhuijuan_url, "get", {}, sucess_get_youhuijuan, error, true);
+
+			//获取注册人的信息
+			var account = localStorage.getItem('TOKEN');
+			var accountid = localStorage.getItem('TOKENID');
+			var url = serverAddress + "/api/patient/appgetobjectlist/" + accountid;
+			var sussess = function(data) {
+				//console.log("下单" + JSON.stringify(data));
+				if(data.data.length != 0) {
+					var male = data.data[0].gender == "1" ? "女" : "男";
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data.result == "success") {
+						customer = {
+							realname: data.data[0].realname,
+							gender: male,
+							age: data.data[0].age,
+
+						}
+						$("#name").val(data.data[0].realname);
+						$("#age").val(data.data[0].age);
+
+						if(data.data[0].gender == "0") {
+							$("input[name='leixingradio'][value='0']").attr("checked", true);
+						}
+						if(data.data[0].gender == "1") {
+							$("input[name='leixingradio'][value='1']").attr("checked", true);
+						}
+					}
+				} else {
+
+				}
+			};
+			commonHttpUtils(url, "get", {}, sussess, error, true);
+
+			//点击优惠券选择事件
+			mui("#youhuijuanLI_collapse_content").on("tap", "li", function(e) {
+				console.log(this.id);
+				console.log($(this).children("span").text());
+				$("#youhuijuan_pull_right").html($(this).children("span").text());
+				var lis = Array.prototype.slice.call(document.getElementById('youhuijuanLI_collapse_content').getElementsByTagName('ul'));
+				var activeLen = document.querySelectorAll('.bg_huise').length;
+
+				if($(this).hasClass("bg_huise")) {
+					$(this).removeClass("bg_huise");
+					$(this).addClass("bg_white");
+
+				} else {
+					if(!activeLen) {
+						$(this).addClass("bg_huise");
+					} else {
+						lis.forEach(function(item) {
+							$(item).children("li").removeClass("bg_huise");
+							$(item).children("li").addClass("bg_white");
+						})
+						$(this).addClass("bg_huise");
+					}
+				}
+			})
+
+			$("#xiadan").click(function(e) {
+				if($("#name").val().trim() == "") {
+					mui.toast("请填写真实姓名");
+					return false;
+				}
+				if($("#age").val().trim() == "") {
+					mui.toast("请填写年龄");
+					return false;
+				}
+				if($.trim($("#illmiaoshu").val()) == "") {
+					mui.toast("请填写问题描述");
+					return false;
+				}
+
+				customer = {
+					realname: $("#name").val().trim(),
+					gender: $("input[id='leixingradio']:checked").val() == "1" ? "女" : "男",
+					age: $("#age").val().trim(),
+
+				}
+				aryonline_report = $$.getImageFilesPath("image-list-online-report");
+				if(aryonline_report.length == 0) {
+					mui.toast("请上传图片");
+					return false;
+				}
+
+				if(!jQuery.isEmptyObject(coupon)) {
+					online_order_JSON["coupon"] = coupon;
+					ONLINE_JIE = ONLINE_JIE - coupon.amount / 100;
+				}
+
+				question["description"] = $.trim($("#illmiaoshu").val());
+				question["pictures"] = aryonline_report;
+				online_order_JSON["itemid"] = ONLINE_ID;
+				online_order_JSON["price"] = {
+					"totalprice": item_money
+				};
+				online_order_JSON["question"] = question;
+				online_order_JSON["customer"] = customer;
+
+				console.log("======<" + JSON.stringify(online_order_JSON));
+
+				var xiadanUrl = serverAddress + "/api/patient/createreportorder";
+				var process = function(id) {
+
+					mui.openWindow({
+						id: 'online_answer_queren_zhifu.html',
+						url: 'online_answer_queren_zhifu.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						},
+						extras: {
+							ORDER_ID: id, //扩展参数
+							ONLINE_JINE: ONLINE_JIE,
+							CUSTOMER_JSON: JSON.stringify(customer),
+							QUESTION: JSON.stringify(question)
+						}
+					});
+					//plus.webview.currentWebview().opener().opener().close(true);
+					plus.webview.currentWebview().opener().close(true);
+					plus.webview.currentWebview().close(true);
+
+				}
+				var sussess = function(data) {
+					console.log("下单" + JSON.stringify(data));
+
+					if(data.result == "success") {
+						if(data.date.serviceid) {
+							process(data.date._id);
+						}
+					}
+
+				};
+				commonHttpUtils(xiadanUrl, "post", online_order_JSON, sussess, error, true);
+
+			});
+		});
+	</script>
+
+</html>

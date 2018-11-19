@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>知情同意书</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.mui-content {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-card {
+				font-size: 14px;
+				position: relative;
+				overflow: hidden;
+				margin: 10px;
+				border-radius: 2px;
+				background-color: #fff;
+				background-clip: padding-box;
+				box-shadow: 0 0px 0px rgba(0, 0, 0, .0);
+				color: #333333;
+			}
+			
+			.mui-card-content-inner {
+				color: #333333;
+			}
+			
+			.mui-content>.mui-card:first-child {
+				margin-top: 0px;
+			}
+			
+			* {
+				font-family: "微软雅黑";
+				font-size: 15px;
+				color: #333333;
+			}
+			
+			p {
+				color: #333333;
+			}
+			
+			.mui-card-content-inner {
+				padding-top: 50px;
+			}
+		</style>
+	</head>
+
+	<body class="bg-whf5">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">诊疗行为说明</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<div class="mui-card-content-inner">
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家庭医生——常见病诊疗是指签约团队为契约家庭成员</p>
+
+					<p>提供一般常见病、多发病的诊疗服务及签约家庭的健康</p>
+
+					<p>咨询、家庭护理和家庭康复指导、用药指导以及家庭药</p>
+
+					<p>箱管理等服务。为行动不便的签约居民提供上门访视服务。</p>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiachenshi.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js" ></script>
+	<script>
+		mui.plusReady(function() {
+			plus.webview.currentWebview().setStyle({
+				softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+			});
+//			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+//				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+//				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+//				document.querySelector("header").style.height = topoffset;
+//				document.querySelector("header").style.paddingTop = "20px";
+//			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+		});
+	</script>
+
+</html>

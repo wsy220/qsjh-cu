@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>签名</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.main-height {
+				/*height: 531px;*/
+			}
+			
+			canvas {
+				background: #fff;
+				height: 400px;
+				width: 100%;
+			}
+			
+			.mui-btn-color {
+				background: #43CED3;
+				border: none;
+				border-radius: 25px;
+				color: #FFFFFF;
+				height: 0.9rem;
+				font-size: 14px;
+				width: 100%;
+			}
+			
+			.mui-bar-nav~.mui-content {
+				/*margin-top: 44px !important;*/
+				padding-top: 0 !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">签名</h1>
+			<button id="clear_canvas" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				重置</button>
+		</header>
+		<div class="mui-content">
+			<div class="main-height">
+				<canvas id="canvas">
+        		</canvas>
+
+			</div>
+			<p style="color: #999999;padding: 2%;">请在输入区域填写您的签名</p>
+			<!--<img id="canvaspic" src="" height="100px" width="100px" style="background: red;" />-->
+
+			<div class="mui-content-padded" style="margin-top: 15%;">
+				<button id="save_canvas" class=" mui-btn mui-btn-color">保存</button>
+			</div>
+
+		</div>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		//		mui.init({
+		//			swipeBack: true //启用右滑关闭功能
+		//		});
+
+		/** 侦听touchstart事件 **/
+		document.body.addEventListener('touchstart', function() {
+			event.preventDefault(); //手指滑动时，浏览器会上下左右翻屏
+		});
+		var oCanvas = document.getElementById("canvas");
+		oCanvas.width = $(window).width();
+		oCanvas.height = $(document.body).width();
+		var cxt = oCanvas.getContext("2d");
+		cxt.lineWidth = 1;
+		// 将canvas的透明背景设置成白色   
+		var imageData = cxt.getImageData(0, 0, oCanvas.width, oCanvas.height);
+		for(var i = 0; i < imageData.data.length; i += 4) {
+			// 当该像素是透明的，则设置成白色   
+			if(imageData.data[i + 3] == 0) {
+				imageData.data[i] = 255;
+				imageData.data[i + 1] = 255;
+				imageData.data[i + 2] = 255;
+				imageData.data[i + 3] = 255;
+			}
+		}
+		cxt.putImageData(imageData, 0, 0);
+		var posX = 0; //x坐标
+		var posY = 0; //y坐标
+		var position = null;
+
+		//手指触摸屏幕可记录此时的位置作为起点
+		oCanvas.addEventListener("touchstart", function() {
+			posX = event.changedTouches[0].clientX;
+			posY = event.changedTouches[0].clientY;
+
+			cxt.moveTo(posX, posY);
+		});
+
+		//手指屏滑动画线
+		oCanvas.addEventListener("touchmove", function() {
+			posX = event.changedTouches[0].clientX;
+			posY = event.changedTouches[0].clientY;
+			cxt.lineTo(posX, posY);
+			cxt.stroke();
+		});
+		//清空画布事件
+		var btn_clear = document.getElementById('clear_canvas');
+		btn_clear.addEventListener("tap", function() {
+			console.log("clear");
+			var tempWidth = oCanvas.width;
+			oCanvas.width = oCanvas.height;
+			oCanvas.width = tempWidth;
+			// 将canvas的透明背景设置成白色   
+			var imageData = cxt.getImageData(0, 0, oCanvas.width, oCanvas.height);
+			console.log(imageData.data.length);
+			for(var i = 0; i < imageData.data.length; i += 4) {
+				// 当该像素是透明的，则设置成白色   
+				if(imageData.data[i + 3] == 0) {
+					imageData.data[i] = 255;
+					imageData.data[i + 1] = 255;
+					imageData.data[i + 2] = 255;
+					imageData.data[i + 3] = 255;
+				}
+			}
+			cxt.putImageData(imageData, 0, 0);
+			//			cxt.clearRect(0, 0, oCanvas.width, oCanvas.height);
+		});
+
+		//保存图片事件 
+		var btn_save = document.getElementById('save_canvas');
+		btn_save.addEventListener("tap", function() {
+			var signature = canvas.toDataURL();
+			$("#canvaspic").attr("src", signature);
+			var image1 = signature.replace('data:image/png;base64,', '');
+			console.log(image1);
+			var b = new plus.nativeObj.Bitmap();
+			b.loadBase64Data(image1, function() {
+				b.save('../doc/signImg.jpg', {
+					overwrite: true
+				}, function(e) {
+					zoomImage(e.target, "image" + Math.random() + ".jpg");
+					mui.toast("保存成功");
+				}, function() {
+					console.log("保存失败");
+				});
+			}, function() {
+				console.log("创建失败");
+			});
+
+			//			var newImg = new Image();
+			//			newImg.src = canvas.toDataURL("image/png");
+			//			console.log(newImg.src);
+		});
+
+		//缩放图片
+		function zoomImage(filename, name) {
+			plus.nativeUI.showWaiting();
+			//			plus.zip.compressImage({
+			//					src: filename,
+			//					dst: name,
+			//					width: "30%",
+			//					quality: 50,
+			//					overwrite: true
+			//				},
+			//				function(event) {
+			var task = plus.uploader.createUpload(serverAddress + "/api/uploadImg", {
+					method: "POST",
+					blocksize: 204800,
+					priority: 100
+				},
+				function(t1, status) {
+					// 上传完成
+					if(t1.responseText != null) {
+						var data1 = JSON.parse(t1.responseText);
+						if(status == 200) {
+							plus.nativeUI.closeWaiting();
+							if(data1.result == "success") {
+								var imagePath = data1.obj.path.toString();
+								console.log("imagePath--------->" + imagePath);
+								var main3 = plus.webview.getWebviewById("z01_signingDocument");
+								var main4=plus.webview.getWebviewById("z01_signingDocument_gx.html");
+								mui.fire(main3, 'setImage', {
+									imgUrl: imagePath
+								});
+								
+								mui.fire(main4, 'setImage', {
+									imgUrl: imagePath
+								});
+								mui.back();
+							}
+						} else {
+							plus.nativeUI.closeWaiting();
+							mui.alert("上传失败: " + status);
+						}
+					}
+				}
+			);
+			task.addFile(filename, {
+				key: "single-file"
+			});
+			task.start();
+			//				},
+			//				function(e) {
+			//					plus.nativeUI.closeWaiting();
+			//				});
+		}
+
+		mui.plusReady(function() {
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			var url = serverAddress + " ";
+			var success = function(data) {
+				console.log("健康数据列表------------》" + JSON.stringify(data));
+			};
+			//			commonHttpUtils(url, "get", {}, success, error, true);
+		});
+	</script>
+
+</html>

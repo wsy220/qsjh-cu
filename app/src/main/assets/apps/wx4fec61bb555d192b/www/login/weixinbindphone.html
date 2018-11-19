@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group {
+				margin-top: 10px;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 110px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+				height: 0.9rem;
+				font-size: 14px;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+				border-radius: 20px;
+				width: 100%;
+				height: 0.9rem;
+				margin: 0 auto;
+			}
+			
+			.link-area {
+				display: block;
+				margin-top: 25px;
+				text-align: center;
+			}
+			
+			.spliter {
+				color: #bbb;
+				padding: 0px 19px;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			
+			input[type=text] {
+				width: 60%;
+			}
+			
+			.verification {
+				width: 5.6em;
+				height: 2.0625em;
+				line-height: 2.0625em;
+				padding: 2px 0;
+				right: 10px;
+				float: right;
+				border: 0;
+				font-size: 1em;
+			}
+			
+			button:enabled:active {
+				background-color: #FFFFFF;
+				color: #000000;
+			}
+			
+			.mui-input-group {
+				background: none;
+			}
+			
+			.mui-input-group:before,
+			.mui-input-group:after {
+				height: 0;
+			}
+			
+			.mui-input-group input {
+				background-color: #FFFFFF !important;
+				width: 95% !important;
+				border-radius: 25px !important;
+				margin: 10px 0px 10px 0px!important;
+				margin-top: 10px;
+				padding-left: 55px !important;
+				float: inherit !important;
+			}
+			
+			.mui-input-group .mui-input-row:after {
+				height: 0;
+			}
+			
+			.mui-input-group .mui-input-row {
+				text-align: center;
+			}
+			
+			.mui-input-group .mui-input-row {
+				height: inherit;
+			}
+			
+			p {
+				font-size: 14px;
+				margin-top: 20px;
+				margin-bottom: 10px;
+				color: #8f8f94;
+			}
+			
+			p a {
+				color: #7b7b7b;
+				padding: 0 20px;
+			}
+			
+			.mui-content {
+				background: none;
+			}
+			
+			.mui-input-group label {
+				position: absolute;
+				top: 5px;
+				left: -5px;
+			}
+			
+			.mui-input-group img {
+				width: 0.69rem;
+				vertical-align: -webkit-baseline-middle;
+			}
+			
+			.oauth-area {
+				position: absolute;
+				bottom: 20px;
+				left: 0px;
+				text-align: center;
+				width: 100%;
+				padding: 0px;
+				margin: 0px;
+			}
+			
+			.oauth-area .oauth-btn {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				background-size: 30px 30px;
+				background-position: center center;
+				background-repeat: no-repeat;
+				margin: 0px 20px;
+				/*-webkit-filter: grayscale(100%); */
+				border: solid 1px #ddd;
+				border-radius: 25px;
+			}
+			
+			.oauth-area .oauth-btn:active {
+				border: solid 1px #aaa;
+			}
+			
+			.oauth-area .oauth-btn.disabled {
+				background-color: #ddd;
+			}
+			
+			html,
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content">
+			<form id='login-form' class="mui-input-group">
+				<div class="mui-input-row">
+					<label><img src="../images/exit/dl.png" /></label>
+					<input id='username' name='username' type="text" class="mui-input" placeholder="请输入您的手机号码" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')"></input>
+				</div>
+				<div class="mui-input-row">
+					<label><img src="../images/exit/mm.png" /></label>
+					<input id='password' name='password' type="password" class="mui-input password" placeholder="请输入密码">
+				</div>
+				<div class="mui-content-padded">
+					<button id='login' class="mui-btn mui-btn-block mui-btn-primary">绑定微信并登录</button>
+					<p>
+						<a id="reg">用户注册</a>
+						<!--<a id="forget">忘记密码?</a>-->
+					</p>
+				</div>
+			</form>
+			<div class="mui-content-padded oauth-area" id="oauth-area">
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/mui.enterfocus.js"></script>
+		<script src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.validate.js"></script>
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/json_time.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.update.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js" ></script>
+
+		<!--web im sdk-->
+		<script type="text/javascript" src="../sdk/json2.js"></script>
+		<script type="text/javascript" src="../sdk/webim.js"></script>
+		<script>
+			mui.init({
+				keyEventBind: {
+					backbutton: true //打开back按键监听
+				},
+				beforeback: function() {
+					//返回true，继续页面关闭逻辑  
+					var i = plus.webview.getLaunchWebview();
+					if(i) {
+						//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+						i.evalJS("setItemActiveMain()");
+						mui.fire(i, 'refresh');
+					}
+					mui.back;
+					return true;
+				}
+			});
+			var client_id = '';
+			var usernameArray = Array();
+			mui.plusReady(function() {
+				var wgtVer = null;
+				// 获取本地应用资源版本号
+				plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+					wgtVer = inf.version;
+					$("#appVersion").html(wgtVer)
+				});
+
+				plus.webview.currentWebview().setStyle({
+					softinputMode: "adjustResize" // 弹出软键盘时自动改变webview的高度
+				});
+				var currentView = plus.webview.currentWebview();
+				var weixinInfo = currentView.weixinInfo;
+				plus.nativeUI.closeWaiting();
+//				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+//					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+//					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+//					document.querySelector("header").style.height = topoffset;
+//					document.querySelector("header").style.paddingTop = "20px";
+//					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+//				}
+
+				// 输入参数
+				var loginConfig = {
+					username: mui("#username")[0],
+					password: mui("#password")[0]
+				};
+				$("#login").click(function(event) {
+					localStorage.clear();
+					var username = loginConfig.username.value;
+					var password = loginConfig.password.value;
+					// 电话号码校验
+					if(!isMobile(username)) {
+						mui.toast("电话号码格式不正确");
+						return;
+					}
+					if(username.length != 11) {
+						mui.toast("电话号码位数不正确");
+						return;
+					}
+					// 密码非空校验
+					if(!isEmpty(password)) {
+						mui.toast('密码不能为空');
+						return;
+					}
+
+					var loginInfo = {
+						PHONE: username,
+						CODE: password,
+						IMEI_PHONE: plus.device.uuid,
+						CLIENT_ID: plus.push.getClientInfo().clientid,
+						os: plus.os.name,
+						weixinInfo: weixinInfo
+					};
+					var success = function(data) {
+						console.log("登录信息" + JSON.stringify(data))
+						if(data.result == "success") {
+							localStorage.setItem('TOKEN', username);
+							localStorage.setItem('TOKENMD5', data.access_token);
+							localStorage.setItem("TOKENID", data.id);
+							localStorage.setItem("currentPatient", JSON.stringify(data.patient));
+							//云通讯sdk的getsdkinfo
+							var sdkurl = serverAddress + "/api/sdk/getsign";
+							var sdkdata = {
+								userID: data.id
+							};
+							var sdksussess = function(data) {
+								localStorage.setItem("lauchFlag", "1");
+								localStorage.setItem("adminID", data.adminID);
+								localStorage.setItem("adminSig", data.adminSig);
+								localStorage.setItem("userID", data.userID);
+								localStorage.setItem("userSig", data.userSig);
+							}
+							commonHttpUtils(sdkurl, "post", sdkdata, sdksussess, error, false);
+					
+							var index = plus.webview.getLaunchWebview();
+							index.reload(true);
+							var i = plus.webview.getWebviewById("login/login.html");
+							if(i) {
+								i.close("none");
+							}
+							plus.webview.currentWebview().close("none");
+
+						}
+
+						if(data.result == "non-existent") {
+							mui.toast("账户不存在，请注册");
+							plus.nativeUI.closeWaiting();
+							//plus.webview.currentWebview().opener().close(true);
+							//							plus.webview.open('reg.html', 'reg.html');
+							//							plus.webview.currentWebview().close("none");
+							return false;
+						}
+
+						if(data.result == "password is wrong") {
+							mui.toast("密码错误");
+							return false;
+						}
+					};
+					var url = serverAddress + "/api/patient/bingweixinlogin";
+					commonHttpUtils(url, "post", loginInfo, success, error, false);
+				});
+
+				// 注册页面
+				$("#reg").click(function(event) {
+					mui.openWindow({
+						url: 'reg.html',
+						id: 'reg.html',
+						extras: {
+							weixinInfo: weixinInfo,
+						},
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+
+				});
+				$("#forget").click(function(e) {
+					mui.openWindow({
+						id: 'forget_password1.html',
+						url: 'forget_password1.html',
+						show: {
+							autoShow: false, //页面loaded事件发生后自动显示，默认为true
+							event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+						},
+						waiting: {
+							autoShow: true //自动显示等待框，默认为true
+						}
+					});
+				})
+				// 退出的逻辑
+				//				var backButtonPress = 0;
+				//				mui.back = function(event) {
+				//					backButtonPress++;
+				//					if(backButtonPress > 1) {
+				//						plus.runtime.quit();
+				//					} else {
+				//						plus.nativeUI.toast('再按一次退出应用');
+				//					}
+				//					setTimeout(function() {
+				//						backButtonPress = 0;
+				//					}, 1000);
+				//					return false;
+				//				};
+			})
+			// 是否为电话号码
+			function isMobile(value) {
+				var validateReg = /1[3|5|7|8|9|]\d{9}/;
+				return validateReg.test(value);
+			}
+
+			// 是否为空
+			function isEmpty(value) {
+				var validateReg = /^\S+$/;
+				return validateReg.test(value);
+			}
+
+			/*通过prototype定义了数组方法，这样就可以在任意数组调用contains方法*/
+			Array.prototype.contains = function(needle) {
+				for(i in this) {
+					if(this[i] == needle) return true;
+				}
+				return false;
+			}
+		</script>
+	</body>
+
+</html>

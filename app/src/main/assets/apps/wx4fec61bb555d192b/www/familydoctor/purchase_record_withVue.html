@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>购买记录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../js/qs/qs.common.css" />
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+
+		<style>
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+				border: 0;
+				margin-top: 8px;
+			}
+			
+			.mui-table-view .mui-media-object {
+				line-height: 42px;
+				max-width: 130px;
+				height: 100px;
+			}
+			
+			.doctor {
+				color: #d98502;
+				font-size: 12px;
+			}
+			
+			.mui-ellipsis {
+				overflow: hidden;
+				white-space: normal;
+				text-overflow: ellipsis;
+			}
+			
+			.mui-media-body p img {
+				line-height: 42px;
+				max-width: 130px;
+				max-height: 100px;
+				margin-right: 10px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper {
+				height: 55px;
+			}
+			
+			.mui-fullscreen .mui-segmented-control~.mui-slider-group {
+				top: 50px;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+				padding: 10px 10px;
+				width: 19.5%;
+			}
+			
+			.mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+				width: 100%;
+				height: 40px;
+				white-space: nowrap;
+			}
+			
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				color: #40ccd2;
+				font-weight: bold;
+				font-size: 15px;
+			}
+			
+			.mui-segmented-control {
+				font-size: 12px;
+				font-weight: 400;
+				position: relative;
+				display: table;
+				overflow: hidden;
+				width: 100%;
+				table-layout: fixed;
+				border: 1px solid #007aff;
+				border-radius: 3px;
+				background-color: transparent;
+				-webkit-touch-callout: none;
+			}
+			
+			.tableUL {
+				background: #FFFFFF;
+				margin-top: 0.1rem;
+			}
+			
+			.mui-table-view {
+				background-color: #eee;
+				/*min-height: 500px;*/
+				/*min-height: 100%;*/
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item .mui-table-view:after,
+			.mui-slider .mui-slider-group .mui-slider-item .mui-table-view:before {
+				height: 0;
+			}
+			
+			#tableUL:after {
+				display: none;
+			}
+			
+			.mui-slider .mui-slider-group .mui-slider-item .mui-table-view:before {
+				display: none;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.mui-content-padded {
+				background-color: transparent;
+			}
+			
+			.mui-ellipsis-2 {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 1;
+				-webkit-box-orient: vertical;
+				font-size: ;
+			}
+			
+			.mui-ellipsis-3 {
+				overflow: hidden;
+				white-space: normal;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-media {
+				background: #FFFFFF;
+			}
+			
+			.mui-table-view-cell {
+				margin-bottom: 0.05rem;
+			}
+			
+			.wenzi_time {
+				position: absolute;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+			
+			.imgwenzhang {
+				border: 1px solid #e5e5e5;
+			}
+			
+			[v-cloak] {
+				display: none;
+			}
+			
+			.goumaidate {
+				color: #999999;
+				font-size: 12px;
+			}
+			
+			.pkgname {
+				color: #4D4D4D;
+				font-size: 16px;
+			}
+			
+			#d1 {
+				width: 80%;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				/*兼容性*/
+				-webkit-text-overflow: ellipsis;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">购买历史</h1>
+		</header>
+
+		<div class="mui-content" id="news">
+			<div id="slider" class="mui-slider mui-fullscreen">
+
+				<div class="mui-slider-group">
+					<div class="mui-slider-item mui-control-content mui-active">
+						<div class=" mui-scroll-wrapper ">
+							<div id="wrapper01" class="wrapper">
+								<div id="scroller" class="scroller">
+									<!--<ul class="mui-table-view" v-cloak>-->
+									<ul class="mui-table-view">
+
+										<li class="wutu" v-if="items.length==0"><img src="../images/no_data/1-01.png" style="width: 150px;"></li>
+
+										<li class="mui-table-view-cell" v-else-if="items.length!=0" style="background-color: #FFFFFF;" v-for="(item,index) in items" id="neirong">
+
+											<a href="javascript:;" :data-guid="item.guid" class="mui-row">
+												<!--<a href="javascript:;" :data-guid="item.guid" id="news_click">-->
+												<div style="float:left;" class="mui-col-sm-8 mui-col-xs-8 ">
+													<div class="pkgname ">
+														<p id="d1">{{item.title}}</p>
+													</div>
+													<div class="goumaidate">购买日期:{{item.time}}</div>
+												</div>
+												<div class="mui-col-sm-4 mui-col-xs-4">
+													<div style="float: right;font-size: 10px; color: #959595;" v-if="item.status==2">{{item.status|Switchstatus}}</div>
+													<div style="float: right;font-size: 10px; color: #F51515;" v-if="item.status==1">{{item.status|Switchstatus}}</div>
+												</div>
+											</a>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="../js/muinew/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+		<script type="text/javascript" src="../js/json_time.js"></script>
+		<script type="text/javascript" src="../js/immersed.js"></script>
+		<script type="text/javascript" src="../js/vue/vue.min.js"></script>
+
+		<script type="text/javascript" src="../js/art/template-web.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+		<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+
+		<script>
+			var firsttab;
+			var webview_detail = null; //详情页webview
+			var wrapper01;
+			var pkgname = "";
+			var news = new Vue({
+				el: '#news',
+				data: {
+					banner: {}, //顶部banner数据
+					items: [] //列表信息流数据
+				},
+				methods: {
+
+				},
+				filters: {
+					Switchstatus: function(status) {
+						var itemstatus = "";
+						switch(status) {
+							case "1":
+								itemstatus = "购买成功"
+								break;
+							case "2":
+								itemstatus = "已退款"
+								break;
+						}
+						return itemstatus;
+					}
+				}
+			});
+			var topoffset;
+			mui.plusReady(function() {
+				$(".mui-control-content").css("height", (screenHeight - 30));
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				pkgname = currentView.pkgname;
+				getList()
+				
+				
+				
+			});
+			var options = {
+				popGesture: "close"
+			};
+
+			function updownAction(myScroll) {
+				myScroll.downFlag = false
+			}
+
+			//下拉上拉方法
+			function processConfimAction(myScroll) {
+				if(window.plus && plus.networkinfo.getCurrentType() === plus.networkinfo.CONNECTION_NONE) {
+					plus.nativeUI.toast('似乎已断开与互联网的连接', {
+						verticalAlign: 'top'
+					});
+					return;
+				}
+				var data = {};
+				var url = serverAddress + "/api/personality_pkg/app/singleHistory?page=" + (myScroll.page + 1) + "&limit=" + myScroll.limit;
+				console.log("[url]" + url);
+				//请求最新列表信息流
+
+				var success = function(data) {
+					console.log("下拉" + JSON.stringify(data.data));
+					var rsp = data.data.rows;
+					if(rsp && rsp.length > 0) {
+						if(myScroll.page == 1) {
+							news.items = convert(rsp);
+							myScroll.page = myScroll.page + 1;
+							myScroll.upFlag = true
+							myScroll.refresh();
+
+						} else {
+							if(rsp.length == myScroll.limit) {
+								myScroll.page = myScroll.page + 1;
+								myScroll.upFlag = true
+							} else {
+								myScroll.upFlag = false
+							}
+						}
+						news.items = news.items.concat(convert(rsp));
+						myScroll.refresh();
+					} else {
+						myScroll.upFlag = false
+					}
+				};
+				commonHttpUtils(url, "get", {pkgName: pkgname}, success, error, true);
+
+			}
+
+			//初始化时候的列表和banner
+			function getList() {
+				$(".mui-control-content").css("height", (screenHeight - 30));
+				wrapper01 = $.initIscroll({
+					id: "wrapper01",
+					pullUpAction: processConfimAction,
+					pullDownAction: updownAction,
+					downFlag: false
+				});
+				//myScroll.downFlag = false
+				var url = serverAddress + "/api/personality_pkg/app/singleHistory?page=" + 1 + "&limit=" + 5;
+				var success = function(data) {
+					//$("#neirong").attr("style","display: block;")
+					console.log("当前包初始" + JSON.stringify(data));
+					news.items = convert(data.data.rows);
+
+				};
+				commonHttpUtilsNoWaiting(url, "get", {
+					pkgName: pkgname
+				}, success, error, false);
+
+			}
+
+			function convert(items) {
+				var newItems = [];
+				if(items && items != undefined) {
+					if(topoffset) {
+						$(".mui-bar~.mui-content .mui-fullscreen").css("top", topoffset);
+					} else {
+						$(".mui-bar~.mui-content .mui-fullscreen").css("top", 70);
+					}
+					items.forEach(function(item) {
+
+						newItems.push({
+							guid: item._id,
+							title: item.pkgName,
+							status: item.paymentstatus,
+							time: getDate(item.createdOn)
+						});
+					});
+				}
+				return newItems;
+			}
+			
+			//						{
+			//							"result": "success",
+			//							"msg": "获取个性包购买历史成功",
+			//							"data": {
+			//								"totalCount": 1,
+			//								"rows": [{
+			//									"_id": "5b99cce1161ded3c90fb2221",
+			//									"status": "0",
+			//									"paymentstatus": "1",
+			//									"unit": "0",
+			//									"createdOn": "2018-09-13T02:35:13.546Z",
+			//									"user": "5b6ac0ac405696036882aaf9",
+			//									"hospital": "5b67ea4d3b7ada025cc1f21b",
+			//									"fdt": "5b67ed973b7ada025cc1f244",
+			//									"orderNum": "20180913103513742700",
+			//									"pkgName": "烧烫伤护理",
+			//									"price": 120,
+			//									"crowd": "烧烫伤患者",
+			//									"introduction": "簡介",
+			//									"content": "<p>1、啊第三个发送到gas的</p>\n\n<p>2、阿萨德噶三等功经过发动机【【【】】】</p>\n\n<p>3、第三方哈，免费保管，和</p>\n\n<p>4、他的依靠儿童与凯尔特</p>\n\n<p>5、sadgkasjdglkjal</p>\n",
+			//									"paymentchannel": "ali",
+			//									"ptPercent": 10,
+			//									"__v": 0,
+			//									"_rid": 1
+			//								}]
+			//							}
+			//						}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>二维码扫描</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			#bcid {
+				width: 100%;
+				position: absolute;
+				top: 0px;
+				bottom: 0px;
+				text-align: center;
+			}
+			
+			.tip {
+				color: #43CED3;
+				font-weight: bold;
+				text-shadow: 0px -1px #ffffff;
+			}
+			
+			footer {
+				width: 100%;
+				height: 44px;
+				position: absolute;
+				bottom: 0px;
+				line-height: 44px;
+				text-align: center;
+				color: #FFF;
+			}
+			
+			.fbt {
+				width: 50%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.8);
+				float: left;
+				opacity: 0.8;
+			}
+			
+			.fbt:active {
+				-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+				box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+			}
+			
+			a:hover {
+				color: #ffffff;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">扫一扫</h1>
+			<button id="photo" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				相册</button>
+		</header>
+
+		<div class="mui-content " id='content' style="background-color: #fff;">
+			<div id="bcid">
+				<div style="height:40%"></div>
+				<p class="tip">...载入中...</p>
+			</div>
+			<!--<footer>
+				<div class="fbt" onclick="scanSwitch()" id="btCancel">暂　停</div>
+				<div class="fbt" onclick="scanPicture()">选择图片</div>
+			</footer>-->
+		</div>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/constants.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+		<script type="text/javascript">
+			var ws = null,
+				wo = null;
+			var scan = null,
+				domready = false,
+				bCancel = false;
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			// 从相册中选择二维码图片 
+			function scanSwitch() {
+				if(bCancel) {
+					scan.start({
+						conserve: true,
+						filename: '_doc/barcode/'
+					});
+					btCancel && (btCancel.innerText = '暂　停');
+				} else {
+					scan.cancel();
+					btCancel && (btCancel.innerText = '开　始');
+				}
+				bCancel = !bCancel;
+			}
+
+			function plusReady() {
+				document.getElementById("bcid").style.marginTop = (immersed + 45) + "px";
+				if(ws || !window.plus || !domready) {
+					return;
+				}
+				// 获取窗口对象
+				ws = plus.webview.currentWebview();
+				ws.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+				wo = ws.opener();
+				// 开始扫描
+				ws.addEventListener('show', function() {
+					scan = new plus.barcode.Barcode('bcid', [plus.barcode.QR, plus.barcode.EAN8, plus.barcode.EAN13], {
+						frameColor: '#00FF00',
+						scanbarColor: '#00FF00'
+					});
+					scan.onmarked = onmarked;
+					scan.start({
+						conserve: true,
+						filename: '_doc/barcode/'
+					});
+				});
+				// 显示页面并关闭等待框
+				ws.show('pop-in');
+				// 从相册中选择二维码图片 
+				$("#photo").click(function(e) {
+					plus.gallery.pick(function(path) {
+						plus.barcode.scan(path, onmarked, function(error) {
+							plus.nativeUI.alert('无法识别此图片');
+						});
+					}, function(err) {
+						console.log('Failed: ' + err.message);
+					});
+				})
+
+				// 二维码扫描成功
+				function onmarked(type, result, file) {
+					switch(type) {
+						case plus.barcode.QR:
+							type = 'QR';
+							break;
+						case plus.barcode.EAN13:
+							type = 'EAN13';
+							break;
+						case plus.barcode.EAN8:
+							type = 'EAN8';
+							break;
+						default:
+							type = '其它' + type;
+							break;
+					}
+					result = result.replace(/\n/g, '');
+					console.log("医护端二维码连接111------------->" + result);
+				    result = result.replace(/\"/g, '');
+					console.log("医护端二维码连接222------------->" + result);
+					var res = result.split(":")
+					if(res[0] == "http"){
+						mui.toast("暂不支持转跳外部链接");
+					}else if(res[0] == "sign"){
+						var arrStr = result.split("?");
+						var arr = arrStr[1].split("&");
+						var fdtid = arr[0];
+						var dcId = arr[1];
+						mui.openWindow({
+							url: '../familydoctor/z01_signingDocument.html',
+							id: 'z01_signingDocument',
+							extras: {
+								ID: fdtid,
+								DCID: dcId
+							},
+							show: {
+								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+							},
+							waiting: {
+								autoShow: true //自动显示等待框，默认为true
+							}
+						});
+					} else {
+						mui.toast("暂不支持转跳外部链接")
+					}
+
+//					var arrStr = result.split("?");
+//					console.log("arrStr[0]------------->" + arrStr[0]);
+//					var http1;
+//					if(plus.os.name == "iOS"){
+//						http1="http://www.70jiahu.com/downloadpageforpat.html"
+//					}else{
+//						http1="\"http://www.70jiahu.com/downloadpageforpat.html"
+//					}
+//					console.log("arrStr------------->" + http1);
+//					if(arrStr[0] == http1) {
+//						var arr = arrStr[1].split("&");
+//						console.log("获取签约团队id和医生id------------->" + arr);
+//
+//						var fdtid = arr[0];
+//						var dcId = arr[1];
+//
+//						//签约
+//						ws.close()
+//
+//						mui.openWindow({
+//							url: '../familydoctor/z01_signingDocument.html',
+//							id: 'z01_signingDocument',
+//							extras: {
+//								ID: fdtid,
+//								DCID: dcId
+//							},
+//							show: {
+//								autoShow: false, //页面loaded事件发生后自动显示，默认为true
+//								event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+//							},
+//							waiting: {
+//								autoShow: true //自动显示等待框，默认为true
+//							}
+//						});
+//					} else {
+//						mui.toast("暂不支持转跳外部链接")
+//					}
+
+					//wo.evalJS("scaned('" + type + "','" + result + "','" + file + "');");
+					//					mui.back();
+					ws.close()
+				}
+
+			}
+			if(window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+			// 监听DOMContentLoaded事件
+			document.addEventListener('DOMContentLoaded', function() {
+				domready = true;
+				plusReady();
+			}, false);
+		</script>
+
+	</body>
+
+</html>

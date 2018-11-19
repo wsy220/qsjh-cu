@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>社区信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../js/qs/qs.common.new.css" />
+
+		<style>
+			.mui-table-view {
+				background-color: #EEEEEE;
+			}
+			
+			.mui-table-view:before {
+				height: 0;
+			}
+			
+			.read-color {
+				color: #8f8f94;
+			}
+			
+			.mui-badge {
+				padding: 5px 5px;
+				margin-left: -15px;
+				font-size: 10px;
+				line-height: 1.4;
+				position: absolute;
+				top: 10px;
+				left: 60px;
+				background: red;
+				border-radius: 50px;
+			}
+			
+			.cus-badge-box {
+				position: relative;
+			}
+			
+			.mui-table-view-chevron .mui-table-view-cell>a:not(.mui-btn) {
+				margin-right: -70px;
+			}
+			
+			.cus-time {
+				margin-right: 10px;
+				font-size: 12px;
+				float: right;
+				color: #8f8f94;
+			}
+			
+			.mui-table-view-cell>a:not(.mui-btn) {
+				padding: 12px 20px;
+				background-color: #fff;
+			}
+			
+			.cus-title {
+				color: #353535;
+				line-height: 24px;
+			}
+			
+			.mui-ellipsis-10 {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 10;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-navigate-right:after,
+			.mui-push-right:after {
+				right: 10px;
+				content: '\e583';
+			}
+			
+			.doctor {
+				font-size: 12px;
+			}
+			
+			.mui-ellipsis-3 {
+				overflow: hidden;
+				white-space: normal;
+				text-overflow: ellipsis;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+			}
+			
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			
+			.tableDIV {
+				border-top: 0px solid #dddddd;
+				border-right: 1px solid #dddddd;
+				border-bottom: 1px solid #dddddd;
+				background-color: #FFFFFF;
+				text-align: center;
+				height: 60px;
+			}
+			
+			#messageUL:after {
+				height: 0px;
+			}
+			
+			.mui-table-view:after {
+				height: 1px;
+			}
+			
+			.mingxi {
+				background-color: #44cfd4;
+			}
+			
+			.mui-content-padded {
+				margin: 0;
+				margin-top: 8px;
+			}
+			
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 300px;
+			}
+			
+			.mui-segmented-control {
+				border: 0;
+				border-bottom: 1px solid #d9d9d9;
+				height: 60px;
+			}
+			
+			.mui-segmented-control .mui-control-item.mui-active {
+				background: none;
+				color: #44cfd4;
+				border-bottom: 2px solid;
+				font-weight: bold;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				color: #666666;
+				border-left: 0;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				line-height: 60px;
+			}
+			
+			.mui-badgenum {
+				font-size: 10px;
+				line-height: 1;
+				display: inline-block;
+				padding: 3px 3px;
+				color: #FFFFFF;
+				border-radius: 100px;
+				background-color: red;
+				width: 20px;
+				position: absolute;
+				top: 10px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		
+		
+		
+		<div id="item1" class="mui-control-content mui-active">
+		<div class=" mui-scroll-wrapper ">
+			<div id="wrapper01" class="wrapper" style="bottom: 2px;">
+				<ul id="scroller" class="scroller" style="margin: 0; padding: 0;">
+					<ul class="mui-table-view" id="messageUL">
+						<div id="refreshContainer">
+							<div id="wrapper01" class="wrapper" style="bottom: 2px;">
+								<ul id="scroller" class="scroller" style="margin: 0; padding: 0;">
+									<ul class="mui-table-view mui-table-view-chevron">
+
+
+
+										<!--<li class="mui-table-view-cell mui-media" id="{{value._id}}" data-id="{{value._id}}">
+											<a class="cus-msg-box mui-slider-handle" href="javascript:;" data-id="{{value._id}}">
+
+												<div class="mui-media-body">
+
+													<div class="mui-row">
+
+														<span class="ziti mui-ellipsis mui-col-sm-6 mui-col-xs-6">reiwuriuewiruiewuriweweuriewruiewuriewuriewfjkdsjfkds</span>
+
+														<span class="doctor mui-pull-right mui-col-sm-6 mui-col-xs-6">{{value.createdOn | formatString 'datestr'}}</span>
+
+													</div>
+
+													<p class="mui-ellipsis-3 ">{{value.introduction}}</p>
+
+												</div>
+
+											</a>
+										</li>-->
+										
+										
+
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</ul>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/app.js"></script>
+	<script type="text/javascript" src="../../js/constants.js"></script>
+	<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
+
+	<script type="text/javascript" src="../../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../../js/immersed.js"></script>
+
+	<script>
+		mui.init({
+			swipeBack: true, //启用右滑关闭功能
+		});
+		var wrapper01;
+		var loaded = null;
+		var initFunction = null;
+		var userId = null;
+		var shequ_notificationurl = null;
+		shequ_notificationurl = serverAddress + '/api/notice/app/list';
+		$(".mui-control-content").css("height", (screenHeight - 50));
+		var reloadlist = function() {
+			plus.webview.currentWebview().reload();
+		}
+		mui.plusReady(function() {
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			function processConfimAction(myScroll) {
+				var adcode=localStorage.getItem("adcode");
+				var sussess = function(data) {
+					console.log("社区消息列表" + JSON.stringify(data));
+					if(data.result == "success") {
+						if(data.data) {
+							if(myScroll.page == 1 && data.data.length == 0) {
+								$("#messageUL").html('<p><img class="imgmsg" src="../images/no_data/1-01.png" data-preview-src="" data-preview-group="1"></p>');
+							} else if(data.data.length != 0) {
+								if(myScroll.page == 1) {
+									$("#messageUL").html('')
+								}
+								if(data.data.length == myScroll.limit) {
+									myScroll.page = myScroll.page + 1;
+									myScroll.upFlag = true
+								} else {
+									myScroll.upFlag = false
+								}
+								$("#messageUL").processTL(templateRegister.shequcommon, {
+									sub: data.data,
+								}, 'append', function() {
+									myScroll.refresh()
+								})
+
+							} else {
+								myScroll.upFlag = false
+							}
+						}
+					} else {
+						mui.toast(data.msg);
+					}
+				};
+				commonHttpUtils2(shequ_notificationurl + "?page=" + myScroll.page + "&limit=" + myScroll.limit, "get", {cityCode: adcode,userType:'pa'}, sussess, error);
+			}
+
+			var init = function() {
+				wrapper01 = $.initIscroll({
+					id: "wrapper01",
+					pullUpAction: processConfimAction,
+					pullDownAction: processConfimAction,
+					limit: 15
+				});
+				processConfimAction(wrapper01);
+			}
+			init();
+			initFunction = function() {
+				processConfimAction(wrapper01);
+			}
+			loaded = function() {
+				initFunction();
+			}
+
+			mui(".mui-control-content").on("tap", ".cus-msg-box", function() {
+				var dataId = $(this).attr("data-id");
+				mui.openWindow({
+					url: "../../geren_message/info_any_xiangqing.html",
+					id: "info_any_xiangqing.html",
+					styles: returnstyleTitle("info_any_xiangqing.html", "通知详情"),
+					extras: {
+						dataId: dataId,
+					}
+				});
+			});
+		});
+	</script>
+
+</html>

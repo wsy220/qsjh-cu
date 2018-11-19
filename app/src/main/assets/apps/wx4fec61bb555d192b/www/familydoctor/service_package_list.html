@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>诊疗行为列表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<link rel="stylesheet" href="../css/mui.imageviewer.css" />
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+
+		<style>
+			.give-margin {
+				margin: 5px 0;
+			}
+			
+			.font-bold {
+				font-weight: 900;
+			}
+			
+			.give-width {
+				padding-left: 6%;
+				padding-right: 6%;
+				font-size: 15px;
+				color: grey;
+			}
+			
+			.pic-array {
+				width: 100%;
+			}
+			
+			.pic-array-5 {
+				float: left;
+				width: 20%;
+				padding: 2px;
+			}
+			
+			.pic-fixed-size {
+				width: 65px;
+				height: 65px;
+			}
+			.mui-table-view-cell.mui-collapse.mui-active {
+    			margin-top: 0px; 
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ptitle">诊疗行为列表</h1>
+		</header>
+		<div class="mui-content" id="content">
+			<!--<ul class="mui-table-view" id="zhenliaoxingwei_document">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						诊疗行为说明
+					</a>
+				</li>
+			</ul>-->
+			
+			
+			<ul class="mui-table-view"> 
+		        <li class="mui-table-view-cell mui-collapse">
+		            <a class="mui-navigate-right" href="#">诊疗行为说明</a>
+		            <div class="mui-collapse-content">
+		                <p>家庭医生——常见病诊疗是指签约团队为契约家庭成员</p>
+
+						<p>提供一般常见病、多发病的诊疗服务及签约家庭的健康</p>
+	
+						<p>咨询、家庭护理和家庭康复指导、用药指导以及家庭药</p>
+	
+						<p>箱管理等服务。为行动不便的签约居民提供上门访视服务。</p>
+		            </div>
+		        </li>
+    		</ul>
+			<div id="signedDataDiv"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/mui.zoom.js"></script>
+	<script type="text/javascript" src="../js/mui.previewimage.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script>
+		function findServicePackageItemsList(fdt, patient, serviceType) {
+			var findServicePackageItemsListURL = serverAddress + "/api/appfamilydoctorteam/getDTBList";
+			console.log("获取家庭医生团队" + fdt + "为患者" + patient + "提供的" + serviceType + "类型的诊疗行为列表:" + findServicePackageItemsListURL)
+			var filter = {};
+			filter.fdt = fdt;
+			filter.patient = patient;
+			filter.serviceType = serviceType;
+			var sussess = function(data) {
+				console.log("获取家庭医生团队" + fdt + "为患者" + patient + "提供的" + serviceType + "类型的诊疗行为列表返回数据:" + JSON.stringify(data))
+				if(data.result == "success") {
+					var tlData = {
+						sub: data.obj
+					}
+					$("#signedDataDiv").processTL(templateRegister.diagnosisBehaviorList, tlData, 'append', function() {
+
+					})
+				} else {
+					mui.toast(data.msg);
+				}
+			};
+			commonHttpUtils(findServicePackageItemsListURL, "post", filter, sussess, error, false);
+		}
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				//返回true，继续页面关闭逻辑  
+				mui.back;
+				return true;
+			}
+		});
+
+		mui.plusReady(function() {
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+//			mui("#zhenliaoxingwei_document").on("tap", "a", function() {
+//				mui.openWindow({
+//					url: '../document/zhenliaoxingwei_document.html',
+//					id: 'document.html',
+//					show: {
+//						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+//						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+//					},
+//					waiting: {
+//						autoShow: true //自动显示等待框，默认为true
+//					}
+//				});
+//			});
+			var currentFDTID = localStorage.getItem("currentFDT");
+			var patientId = currentView.patientId;
+			var serviceType = currentView.serviceType;
+			findServicePackageItemsList(currentFDTID, patientId, serviceType);
+		});
+	</script>
+
+</html>

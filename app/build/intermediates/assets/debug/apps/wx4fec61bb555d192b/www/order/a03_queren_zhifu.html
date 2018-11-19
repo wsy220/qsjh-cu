@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>确认支付</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.jvse {
+				color: #ff9e0d;
+				padding-top: 90px;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 6px;
+				color: #FFFFFF;
+				border-radius: 8px;
+			}
+			
+			.mui-col-xs-5 {
+				text-align: right;
+				width: 47%;
+			}
+			
+			.ziti {
+				font-size: 15px;
+				color: #454545;
+				font-weight: bold;
+			}
+			
+			.ziti2 {
+				font-size: 18px;
+				color: #E4933C;
+			}
+			
+			.zitijg {
+				font-size: 15px;
+				color: #454545;
+			}
+			
+			.neirong {
+				font-size: 15px;
+				color: #333333;
+				padding-top: 10px;
+				line-height: 22px;
+			}
+			
+			.neirong1 {
+				font-size: 15px;
+				color: #333333;
+				padding-top: 10px;
+				line-height: 14px;
+			}
+			
+			p {
+				font-size: 14px;
+				margin-top: 0;
+				margin-bottom: 10px;
+				color: #333333;
+			}
+			
+			.mui-btn-warning1 {
+				background: #bcbcbc;
+				border-radius: 10px;
+				width: 100%;
+				height: 0.9rem;
+				font-size: 15px;
+				color: #ffffff;
+				height: 42px;
+			}
+			
+			.mui-btn-warning {
+				background: #FCB565;
+				border-radius: 10px;
+				width: 100%;
+				height: 0.9rem;
+				font-size: 15px;
+				height: 42px;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				margin: 0;
+				padding: 15px 2px;
+				vertical-align: top;
+			}
+			
+			.mui-table1 {
+				width: 100%;
+				float: left;
+			}
+			
+			.jiage {
+				width: 30%;
+				float: right;
+			}
+			
+			.mui-ios .mui-table-view-cell {
+				margin-top: 3px;
+			}
+			
+			.mui-table-view-cell:after {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+				background-color: #c8c7cc;
+			}
+			
+			.mui-badge {
+				font-size: 12px;
+				line-height: 1;
+				display: inline-block;
+				padding: 6px 9px;
+				color: #FFFFFF;
+				border-radius: 8px;
+				background-color: #66cc99;
+				width: 55px;
+			}
+			
+			.mui-col-xs-7 {
+				width: 53%;
+			}
+			
+			.mui-btn-block {
+				padding: 0px 0;
+			}
+			
+			.tR {
+				text-align: right;
+			}
+			
+			.mui-grid-view.mui-grid-9 {
+				margin: 0;
+				padding: 0;
+				background-color: #efeff4;
+			}
+			
+			.no_xian:after {
+				height: 0;
+			}
+			
+			.ziti1 {
+				font-size: 15px;
+				color: #E4933C;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">确认支付</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL">
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-7">
+							<p>您选择的服务费用如下：</p>
+						</div>
+
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL">
+				<li class="mui-table-view-cell">
+					<div class="mui-table1">
+						<div class="mui-table-cell mui-col-xs-10">
+							<p class="ziti">服务对象：</p>
+							<p class="neirong">名字：<span id="name">张** </span>&nbsp;&nbsp;性别：&nbsp;&nbsp;<span id="male">女 </span>&nbsp;&nbsp;<span id="age">30</span></p>
+							<p class="neirong">地址：<span id="address">长春市宽城区国家级科技企业孵化器盛得大街西 C301室 </span></p>
+							<p class="neirong">电话：<span id="tel">13112345678</span></p>
+						</div>
+					</div>
+
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<p class="ziti">上门时间：</p>
+							<p class="neirong1"><span id="time">2017/7/31 15:30-16:30</span></p>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-col-xs-10">
+							<p class="ziti">服务类别：</p>
+							<p class="neirong1" id="item_name">新生儿护理</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL">
+				<li class="mui-table-view-cell no_xian">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-row">
+							<p class="mui-col-xs-6">服务费用：</p>
+							<p class="mui-pull-right mui-col-xs-6 tR" id="money_service">400元/次</p>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" id="erwai_service_up" style="display: none;">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-row">
+							<p class="mui-col-xs-6">高级费用：</p>
+							<p class="mui-pull-right mui-col-xs-6 tR" id="erwai_service">50元/次</p>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" id="beipin_money_up" style="display: block;">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-row">
+							<p class="mui-col-xs-6">备品费用：</p>
+							<p class="mui-pull-right mui-col-xs-6 tR" id="beipin_money">50元/次</p>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell" id="youhuijuan_money" style="display: none;">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-row">
+							<p class="mui-col-xs-6">优惠券：</p>
+							<p class="mui-pull-right mui-col-xs-6 tR" id="youhui_money">50元/次</p>
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-row">
+							<p class="ziti2 mui-col-xs-6"></p>
+							<p class="ziti2 mui-pull-right mui-col-xs-6 tR" id="heji">合计：350元</p>
+						</div>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell">
+					<div class="mui-table">
+						<div class="mui-table-cell mui-row">
+							<p class="ziti1" id="tishi_wenzi"></p>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="mui-content-padded">
+				<ul class="mui-table-view mui-grid-view mui-grid-9">
+					<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+						<a href="#">
+							<button id='cancel' class="mui-btn-block mui-btn-warning1">取消</button>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-6 mui-col-sm-6">
+						<a href="#">
+							<button id='queding' class="mui-btn-block mui-btn-warning">现在支付</button>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/json_time.js"></script>
+	<script>
+		var JSONMESSAGENEW = {};
+		var order_id;
+		var heji_jine = 0;
+		mui.plusReady(function() {
+			var self = plus.webview.currentWebview();
+			order_id = self.ORDER_ID;
+			erwai_service = self.ERWAI_SERVICE;
+			erwai_service_text = self.ERWAI_SERVICE_TEXT;
+			status_uppage = self.STATUS;
+			beipinmoneyOUT = self.BEIPIN_MONEY;
+			youhui_je = self.YOUHUI_JE;
+			//alert("是否需要药品"+status_uppage);
+			// 加载完毕后关闭等待框，并展示页面
+			//var currentView = plus.webview.currentWebview();
+			self.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			var success = function(data) {
+				console.log("支付确认" + JSON.stringify(data));
+				if(data.result == "success") {
+					$("#time").html(getDate(data.data.ordertime).toLocaleString());
+					$("#item_name").html(data.data.serviceitem);
+					$("#money_service").html((data.data.price.servicetotalprice / 100) + "元/" + data.data.price.time + "次");
+					$("#name").html(data.data.customer.realname);
+					$("#tel").html(data.data.customer.tel);
+					$("#age").html(data.data.customer.age);
+					$("#address").html(data.data.customer.homeaddress);
+					$("#time").html(getDate(data.data.timeinterval.intervalbegin).toLocaleString() + "～" + getDate(data.data.timeinterval.intervalend).toLocaleString().split(" ")[1]);
+					$("#male").html(data.data.customer.gender);
+					//console.log(data.data.hasOwnProperty("coupon"));
+					if(data.data.hasOwnProperty("coupon")) {
+						//alert(parseFloat(data.data.price.serviceprice) - parseFloat(data.data.coupon.amount / 100));
+						//var heji_after_youhui = parseFloat(data.data.price.serviceprice / 100) - parseFloat(data.data.coupon.amount / 100);
+						heji_jine = parseFloat(data.data.price.serviceprice / 100) - parseFloat(data.data.coupon.amount / 100);
+
+						$("#youhuijuan_money").css("display", "block");
+						$("#youhui_money").html(data.data.coupon.amount / 100 + "元");
+
+					} else {
+						$("#erwai_service_up").css("display", "none");
+						heji_jine = parseFloat(data.data.price.serviceprice / 100);
+					}
+					//如果平台代购备品
+					if(!data.data.isprovidespares) {
+						$("#beipin_money").html(data.data.orderSpares[0].groupprice / 100 + "元");
+						$("#beipin_money_up").css("display", "block")
+						heji_jine = heji_jine + parseFloat(data.data.orderSpares[0].groupprice / 100);
+						$("#tishi_wenzi").html("您所支付的钱款为医护人员上门服务费用以及备品费用。");
+					} else {
+						$("#beipin_money_up").css("display", "none");
+						$("#tishi_wenzi").html("您所支付的钱款仅为医护人员上门服务费。在医护为您服务之前，您需自备好药品备品。");
+					}
+
+					$("#heji").html("合计：" + heji_jine + "元");
+					//					if(erwai_service == 0) {
+					//						$("#erwai_service_up").css("display", "block");
+					//						$("#erwai_service").html(parseFloat(erwai_service_text) * parseFloat(data.data.price.time) + "元/" + data.data.price.time + "次");
+					//						$("#heji").html("合计：" + (parseFloat(data.data.price.serviceprice) + parseFloat(erwai_service_text) * parseFloat(data.data.price.time)) + "元");
+					//
+					//					} else if(erwai_service == 1) {
+					//						$("erwai_service_up").css("display", "none");
+					//						$("#heji").html("合计：" + parseFloat(data.data.price.serviceprice) + "元");
+					//					}
+
+				}
+			};
+			var url = serverAddress + "/api/patient/appgetorder/" + order_id;
+			commonHttpUtils(url, "get", {}, success, error, false);
+			$("#queding").click(function(e) {
+				var heji = $("#heji").html().split("：")[1];
+				mui.openWindow({
+					id: 'wait-payment.html',
+					url: 'wait-payment.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					},
+					extras: {
+						ORDER_ID: order_id, //扩展参数
+						MONEY_HEJI: heji,
+						STATUS: status_uppage
+					}
+				});
+				var waitpament = plus.webview.getWebviewById("wait-payment.html");
+				mui.fire(waitpament, 'order_id', {
+					ORDER_ID: order_id
+				});
+
+			});
+			$("#cancel").click(function(e) {
+				mui.alert("您的预约已生成，请尽快完成支付，否则预约将过期。");
+				localStorage.setItem("upitem", 1);
+				mui.openWindow({
+					id: 'subpages/tab-webview-subpage-order.html',
+					url: '../subpages/tab-webview-subpage-order.html',
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: false //自动显示等待框，默认为true
+					},
+					extras: {
+						TITLE: '订单',
+						UPSTATUS: 1
+					}
+				});
+				var quxiao_current = plus.webview.currentWebview().close(true);
+			});
+		});
+
+
+	</script>
+
+</html>

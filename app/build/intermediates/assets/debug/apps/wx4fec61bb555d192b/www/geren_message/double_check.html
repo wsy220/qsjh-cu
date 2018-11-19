@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>复查通知</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			.title {
+				margin: 20px 15px 10px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+			
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			
+			.oa-contact-content {
+				width: 100%;
+			}
+			
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			
+			.oa-contact-name,
+			.oa-contact-position {
+				float: left;
+			}
+			
+			.price {
+				position: absolute;
+				top: 35px;
+				right: 0px;
+				font-size: 16px;
+				font-weight: bold;
+				color: #FF0000;
+			}
+			
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 435px;
+			}
+			
+			.mui-segmented-control {
+				border: 0;
+				border-bottom: 1px solid #C8C7CC;
+				height: 60px;
+			}
+			
+			.mui-segmented-control .mui-control-item.mui-active {
+				background: none;
+				color: #15B5E9;
+				border-bottom: 2px solid;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				color: #666666;
+				border-left: 0;
+			}
+			
+			.uptab {
+				background: #FFFFFF;
+				margin-top: 8px;
+			}
+			
+			.mui-segmented-control .mui-control-item {
+				line-height: 60px;
+			}
+			
+			.mui-ellipsis-2 {
+				display: -webkit-box;
+				overflow: hidden;
+				white-space: normal!important;
+				text-overflow: ellipsis;
+				word-wrap: break-word;
+				-webkit-line-clamp: 6;
+				-webkit-box-orient: vertical;
+				padding-top: 10px;
+				font-size: 15px;
+			}
+			
+			.tableUL {
+				background: #FFFFFF;
+			}
+			
+			.mui-table-view {
+				background-color: #eee;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0;
+			}
+			
+			.mui-pull-right {
+				font-size: 14px;
+				color: #737372;
+				font-weight: bold;
+			}
+			
+			.ziti {
+				font-size: 15px;
+				color: #000000;
+				font-weight: bold;
+			}
+			.mui-scroll-wrapper {
+    			top: 44px;
+			}
+			.mui-badge {
+			    font-size: 8px;
+			    line-height: 1;
+			    display: inline-block;
+			    padding: 6px 6px;
+			    color: #333;
+			    border-radius: 100px;
+			    background-color: red;
+			    position: absolute;
+			    left: 45px;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">复查通知</h1>
+		</header>
+		<div class="mui-content">
+			<div id="scroll" class="">
+				<div class="">
+					<ul class="mui-table-view" id="messageUL">
+						<li class="mui-table-view-cell mui-media tableUL">
+							<a href="javascript:;" data-title-type="native">
+								<img class="mui-media-object mui-pull-left" src="../images/xtxx.png">
+								<div class="mui-media-body">
+									<span class="ziti">复查通知</span>
+									<span class="doctor mui-pull-right">吉大一院  2017年7月27日</span>
+									<p class="mui-ellipsis-2">术后7天拆线，一个月后请您到吉大一院骨科进行复查，并取化验结果</p>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media tableUL">
+							<a href="javascript:;">
+								<div><span class="mui-badge"></span><img class="mui-media-object mui-pull-left" src="../images/xtxx.png"></div>
+								<div class="mui-media-body">
+									<span class="ziti">复查通知</span>
+									<span class="doctor mui-pull-right">吉大一院  2017年7月27日</span>
+									<p class="mui-ellipsis-2">术后7天拆线，一个月后请您到吉大一院骨科进行复查，服药里一个疗程请来院里进行复查检查，看一下标准值情况。</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js" ></script>
+	<script>
+		mui.plusReady(function() {
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+		});
+	</script>
+
+</html>

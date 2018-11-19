@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>健康数据</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<style>
+			body,
+			html {
+				overflow: hidden;
+				height: 100%;
+			}
+			
+			.mui-table-view .mui-media-object {
+				height: auto;
+			}
+			
+			.mui-table-view img {
+				width: 0.9rem;
+				/*height: 0.65rem;*/
+			}
+			
+			.mui-media-body {
+				font-size: 14px;
+				color: #333333;
+				padding: 1% 6%;
+			}
+			
+			.mui-media-body p {
+				font-size: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">健康档案</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<a class="mui-navigate-right" id="line_meter">
+						<div class="tubiao">
+							<img class=" mui-pull-left" src="../images/healthdata/icon_blood_glucose_meter.png">
+						</div>
+						<div class="mui-media-body">
+							<span style="font-weight: bold;">华益血糖仪</span>
+							<p id="no_line">请点击进行绑定</p>
+							<p id="yes_line">设备型号：<span id="numHyxt">SVUED123</span></p>
+						</div>
+					</a>
+				</li>
+
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/arttmpl.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+
+	<script>
+		//		mui.init({
+		//			swipeBack: true //启用右滑关闭功能
+		//		});
+		mui('#scroll').scroll({
+			indicators: true //是否显示滚动条
+		});
+		$("#yes_line").hide();
+
+		mui.plusReady(function() {
+
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			//			mui(".mui-content").on("tap", "#line_meter", function(e) {
+			//				mui.toast("正在与华仪血糖联调中……")
+			//			});
+
+			var userId = localStorage.getItem("TOKENID");
+			var url = serverAddress + "/api/patient/getHyxt";
+			var sussess1 = function(data) {
+				console.log("是否绑定华益血糖仪------------》" + JSON.stringify(data));
+				if(data.result == "success") {
+					if(data.data.hyxt.no) {
+						$("#no_line").hide();
+						$("#yes_line").show();
+						$("#numHyxt").html(data.data.hyxt.no);
+						//去华益血糖仪提供页面
+						mui(".mui-content").on("tap", "#line_meter", function(e) {
+							mui.openWindow({
+								url: 'huayi_detail.html',
+								id: 'huayi_detail',
+								extras: {
+									ID: userId,
+									deviceId:data.data.hyxt.no
+								},
+								show: {
+									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								}
+							});
+
+						});
+
+					} else {
+						$("#yes_line").hide();
+						$("#no_line").show();
+						//连接华益血糖仪
+						mui(".mui-content").on("tap", "#line_meter", function(e) {
+							mui.openWindow({
+								url: 'huayi_suger_line.html',
+								id: 'huayi_suger_line',
+								extras: {
+									ID: userId
+								},
+								show: {
+									autoShow: false, //页面loaded事件发生后自动显示，默认为true
+									event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+								},
+								waiting: {
+									autoShow: true //自动显示等待框，默认为true
+								}
+							});
+
+						});
+					}
+				}
+			};
+						commonHttpUtils(url, "post", {}, sussess1, error, true);
+
+		});
+	</script>
+
+</html>

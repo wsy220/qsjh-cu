@@ -1,0 +1,101 @@
+/* CSS Document 滚动面板样式*/
+
+
+
+input,
+button,
+select,
+textarea {
+	outline: none;
+}
+
+ul,
+li,
+dl,
+ol {
+	list-style: none;
+}
+
+
+
+.box {
+	width: 100%;
+	margin: 0 auto;
+	background: #FFFFFF;
+}
+
+
+
+.list_lh {
+	height: 40px;
+	overflow: hidden;
+}
+
+.list_lh li {
+	padding: 10px;
+}
+
+.list_lh li.lieven {
+	/*background: #F0F2F3;*/
+}
+
+.list_lh li p {
+	height: 24px;
+	line-height: 24px;
+}
+
+.list_lh li p a {
+	float: left;
+}
+
+.list_lh li p em {
+	width: 80px;
+	color: #FF3300;
+	float: right;
+	display: inline-block;
+}
+
+.list_lh li p span {
+	color: #999;
+	float: right;
+}
+
+.list_lh li p a.btn_lh {
+	/*background: #28BD19;*/
+	height: 17px;
+	line-height: 17px;
+	color: #fff;
+	padding: 0 5px;
+	margin-top: 4px;
+	display: inline-block;
+	float: right;
+}
+
+.btn_lh:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.list_lh {
+	background: #f0f0f0;
+	border: none;
+	border-radius: 20px;
+	box-shadow: none;
+	padding: 0 20px 0 45px;
+	height: 40px;
+	transition: all 0.3s ease 0s;
+}
+
+
+.list_lh i {
+    position: absolute;
+    top: 40px;
+    left: 380px;
+    font-size: 17px;
+    color: #c8c8c8;
+    transition: all 0.5s ease 0s;
+}
+.btm p {
+	font: normal 12px/24px 'Microsoft YaHei';
+	text-align: center;
+}

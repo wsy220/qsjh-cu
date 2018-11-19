@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>疾病选择</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<style>
+			.wrapper-dropdown-3 {
+				position: relative;
+				width: 90%;
+				margin: 10px auto;
+				padding: 10px;
+				background: #fff;
+				border-radius: 7px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);
+				cursor: pointer;
+				outline: none;
+				font-weight: inherit;
+				color: #333;
+				font-size: 15px;
+			}
+			
+			.wrapper-dropdown-3:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: 15px;
+				top: 50%;
+				margin-top: -3px;
+				border-width: 6px 6px 0 6px;
+				border-style: solid;
+				border-color: #8aa8bd transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown {
+				position: absolute;
+				top: 140%;
+				left: 0;
+				right: 0;
+				background: white;
+				border-radius: inherit;
+				border: 1px solid rgba(0, 0, 0, 0.17);
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				font-weight: normal;
+				-webkit-transition: all 0.5s ease-in;
+				-moz-transition: all 0.5s ease-in;
+				-ms-transition: all 0.5s ease-in;
+				-o-transition: all 0.5s ease-in;
+				transition: all 0.5s ease-in;
+				list-style: none;
+				opacity: 0;
+				pointer-events: none;
+				z-index: 1;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 15px;
+				border-width: 0 6px 6px 6px;
+				border-style: solid;
+				border-color: #fff transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:before {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 13px;
+				border-width: 0 8px 8px 8px;
+				border-style: solid;
+				border-color: rgba(0, 0, 0, 0.1) transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li a {
+				display: block;
+				padding: 10px;
+				text-decoration: none;
+				color: #333;
+				border-bottom: 1px solid #e6e8ea;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+				-webkit-transition: all 0.3s ease-out;
+				-moz-transition: all 0.3s ease-out;
+				-ms-transition: all 0.3s ease-out;
+				-o-transition: all 0.3s ease-out;
+				transition: all 0.3s ease-out;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li i {
+				float: right;
+				color: inherit;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:first-of-type a {
+				border-radius: 7px 7px 0 0;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:last-of-type a {
+				border: none;
+				border-radius: 0 0 7px 7px;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:hover a {
+				background: #f3f8f8;
+			}
+			
+			.wrapper-dropdown-3.active .dropdown {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			
+			.no-opacity .wrapper-dropdown-3 .dropdown,
+			.no-pointerevents .wrapper-dropdown-3 .dropdown {
+				display: none;
+				opacity: 1;
+				pointer-events: auto;
+			}
+			
+			.no-opacity .wrapper-dropdown-3.active .dropdown,
+			.no-pointerevents .wrapper-dropdown-3.active .dropdown {
+				display: block;
+			}
+			
+			.mui-content {
+				background-color: #FFFFFF;
+			}
+			
+			.dowebok ul {
+				/*list-style-type: none !important;*/
+			}
+			
+			.dowebok li {
+				display: inline-block;
+				margin-top: 10px;
+				margin-right: 15px;
+				background-color: #ffffff;
+				border-radius: 10px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				text-align: -webkit-center;
+				font-size: 12px;
+			}
+			
+			input.labelauty+label {
+				font: 12px "Microsoft Yahei";
+				padding-left: 15px;
+				padding-right: 15px;
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-table-view:before {
+				height: 0px;
+			}
+			
+			.labelauty+label {
+				display: table;
+				font-size: 15px;
+				padding: 10px;
+				border-radius: 10px;
+				cursor: pointer;
+				border-radius: 10px 10px 10px 10px;
+				-moz-border-radius: 3px 3px 3px 3px;
+				-webkit-border-radius: 3px 3px 3px 3px;
+				transition: background-color 0.25s;
+				-moz-transition: background-color 0.25s;
+				-o-transition: background-color 0.25s;
+				-moz-user-select: none;
+				-khtml-user-select: none;
+				-webkit-user-select: none;
+				-o-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			
+			input.labelauty+label>span.labelauty-unchecked,
+			input.labelauty+label>span.labelauty-checked {
+				display: table;
+				vertical-align: bottom;
+				font-size: 12px;
+				border-radius: 9px;
+				text-align: -webkit-center;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">疾病选择</h1>
+		</header>
+		<div class="mui-content">
+			<section class="main" id="illness_query">
+				<!--<div class="wrapper-demo">
+					<div id="dd" class="wrapper-dropdown-3" tabindex="1">
+						<span>请选择被服务患者所患疾病</span>
+						<ul class="dropdown" id="dropdown">
+							<li id="1">
+								<a><i class="icon-envelope icon-large"></i>无</a>
+							</li>
+							<li id="59c4d74b56c2b44440f62bb3">
+								<a><i class="icon-truck icon-large"></i>内分泌科</a>
+							</li>
+							<li id="59c4d74c56c2b44440f62bb4">
+								<a><i class="icon-truck icon-large"></i>产科</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>-->
+
+				<!--<div class="mui-table-view">
+					<div class="tableUL">
+						<li class="libutton">
+							<ul class="dowebok" id="dowebok">
+								<li><input type="checkbox" name="radio1" data-labelauty="{{value.department}}" value="{{value.disease}}" class="labelauty disease" id="labelauty" style="display: none;"><label for="labelauty"><span class="labelauty-unchecked" style="display:none">{{value.department}}</span><span class="labelauty-checked" style="display:inline-block;">{{value.disease}}</span></label></li>
+							</ul>
+						</li>
+					</div>
+				</div>-->
+
+					<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed tableUL">
+						<li class="mui-table-view-cell libutton">
+							<ul class="dowebok" id="dowebok">
+							</ul>
+						</li>
+					</ul>
+			</section>
+
+		</div>
+		<div class="mui-content-padded">
+			<button id='save' class="mui-btn mui-btn-block mui-btn-warning">保存</button>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-labelauty.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+
+	<script type="text/javascript" src="../plugs/moment/moment.min.js"></script>
+	<script type="text/javascript" src="../js/art/template-web.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.art.extend.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.template.js"></script>
+	<script type="text/javascript" src="../js/iscroll/iscroll-probe.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.iscroll.js"></script>
+	<script>
+		mui.plusReady(function() {
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var item_id = currentView.service_item_id;
+
+			//var url = serverAddress + "/api/patient/appgetdisdepartment/"+item_id;
+			var url = serverAddress + "/api/patient/appgetdiseases/" + item_id;
+
+			var success = function(data) {
+				console.log("新接口" + JSON.stringify(data));
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				var value = data.data.diseases;
+								$("#illness_query").processTL(templateRegister.illness_select, {
+									sub: data.data.diseases
+								}, 'append', function() {})
+				/*var html = "";
+				 * if(data.result == "success") {
+					for(var i = 0; i < data.data.diseases.length; i++)
+						//html += '<li id="' + data.data.diseases[i]._id + '"><a><i class="icon-envelope icon-large"></i>' + data.data.diseases[i].department + '</a></li>'
+						html += '<span>' + data.data.diseases[i].department + '</span>'
+				}
+				//$("#title").html(html);*/
+
+				var html = "";
+				for(var i = 0; i < value.length; i++) {
+
+					//					html+='<li style="margin-right:2px;">';
+					//					html+='<input class="to-labelauty disease" type="checkbox" data-labelauty="'+value[i].disease+'" id="'+value[i].department+'" value="'+value[i].disease+'">';
+					//					html+='</li>'
+
+					html += '<li>';
+					html+='<input type="checkbox" name="radio1" data-labelauty="'+value[i].department+'" value="'+value[i].disease+'" class="labelauty disease labelauty-unchecked" id="labelauty" style="display: none !important;"><label for="labelauty"><span class="labelauty-unchecked" style="display:none ">'+value[i].department+'</span><span class="labelauty-checked" style="display:inline-block;">'+value[i].disease+'</span></label>'
+					html+='</li>';
+				}
+				$("#dowebok").html(html);
+
+			};
+			commonHttpUtils(url, "get", {}, success, error, false);
+			var diseasesArr = [];
+
+			var illness_item = [];
+
+			/*下拉选择框*/
+			function DropDown(el) {
+				this.dd = el;
+				this.placeholder = this.dd.children('span');
+				this.opts = this.dd.find('ul.dropdown > li');
+				this.val = '';
+				this.index = -1;
+				this.initEvents();
+				this.opts2 = this.dd.find('ul.dropdown>li>a');
+			}
+			DropDown.prototype = {
+				initEvents: function() {
+					var obj = this;
+					obj.dd.on('click', function(event) {
+						$(this).toggleClass('active');
+						return false;
+					});
+					obj.opts.on('click', function() {
+						var selectItem = '';
+						var opt = $(this);
+						//obj.id = obj.opt2.attr("href");
+						obj.val = opt.text(); //获取value值
+						obj.index = opt.index();
+						obj.id = opt.attr("id"); //获取ID值
+						obj.placeholder.text(obj.val);
+						var item = obj.val.trim();
+						//获取服务套餐
+						service_item.value = obj.val.trim();
+
+					});
+				},
+				getValue: function() {
+					return this.val;
+				},
+				getIndex: function() {
+					return this.index;
+				}
+			}
+
+			$(function() {
+				//var dd = new DropDown($('#dd'));
+				$(document).click(function() {
+					$('.wrapper-dropdown-3').removeClass('active');
+				});
+
+			});
+			$(function() {
+				$(':input').labelauty();
+			});
+			/*mui("#illness_query").on("tap", 'li', function(e) {
+				console.log('come')
+				//service_item.illnessname = this.firstChild.value;
+				var illness_value=this.firstChild.value;
+				console.log('illness_value',illness_value);
+				var illness_name=$(this).parents().parents().parents().siblings().children("span").text();
+				console.log('illness_name',illness_name);
+				! function(e) {
+					var service_item = {};
+					if(illness_value){
+						illness_item.push(illness_value);
+					}
+					if(illness_name){
+						service_item.department=illness_name;
+					}
+					service_item.diseases=illness_item;
+					console.log('service_item',JSON.stringify(service_item));
+					disease.push(service_item);
+					console.log('disease',JSON.stringify(disease));
+					
+				}(e);
+				console.log(disease.length);
+			})*/
+
+			function getDiseases() {
+				var diseases = $(".disease");
+				var disArr = []; //最后结果
+				var disease = {}; //结果数组单个对象元素
+				var diseaseArr = []; //对象元素疾病数组
+				diseases.each(function() {
+					if($(this).is(':checked')) {
+						var olddis = disease["department"]
+						//var illness_name = $(this).siblings().children("span").text(); //分类
+						var illness_name = $(this).attr("data-labelauty");
+						var flag = illness_name != olddis;
+						if(flag) {
+							disease = {};
+							diseaseArr = [];
+							disease["department"] = illness_name;
+						}
+						diseaseArr.push($(this).val());
+						disease["diseases"] = diseaseArr;
+						if(flag) {
+							disArr.push(disease);
+						}
+					}
+				});
+				diseasesArr = disArr;
+			}
+			document.getElementById("save").addEventListener("tap", function(e) {
+				getDiseases();
+				//console.log(JSON.stringify(diseasesArr));
+				mui.back();
+				var main3 = plus.webview.getWebviewById("a04_place_order.html");
+				mui.fire(main3, 'illness', JSON.stringify(diseasesArr));
+			})
+		});
+	</script>
+
+</html>

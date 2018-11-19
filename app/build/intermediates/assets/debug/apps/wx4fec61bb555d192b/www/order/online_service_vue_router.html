@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/jquery-labelauty.css" />
+		<title>线上服务</title>
+		<style>
+			.mui-grid-view.mui-grid-9 {
+				background-color: #FFFFFF;
+			}
+			
+			.mui-icon img {
+				max-width: 50%;
+			}
+			
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				padding: 10px 10px;
+				background-color: #FFFFFF;
+			}
+			
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				font-size: 14px;
+			}
+			
+			.wutu {
+				text-align: center;
+				padding-top: 1.8rem;
+				background: #EEEEEE;
+			}
+			
+			.LIimage img {
+				width: 2rem;
+				vertical-align: bottom;
+				margin-top: 10px;
+			}
+			
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				line-height: 1.2;
+			}
+			
+		</style>
+		<script type="text/javascript" src="../js/vue/vue.min.js"></script>
+		<script type="text/javascript" src="../js/vue/vue-router.min.js"></script>
+		<script type="text/javascript" src="../components_vue/router_components.js"></script>
+		<script type="text/javascript" src="../components_vue/router.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">线上服务</h1>
+		</header>
+
+		<div class="mui-content" id="app">
+			<ul class="mui-table-view mui-grid-view mui-grid-9" id="up_jingtai" style="display: block;">
+				<router-link to="/yuyueguahao">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+						<span class="mui-icon"><span class="LIimage"><img src="../images/guahao.png"></span></span>
+						<div class="mui-media-body">
+							预约挂号
+						</div>
+					</li>
+				</router-link>
+				<router-link to="/baogaojiedu">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+						<span class="mui-icon"><span class="LIimage"><img src="../images/baogaojiedu_icon.png"></span></span>
+						<div class="mui-media-body">
+							报告解读
+						</div>
+					</li>
+				</router-link>
+				<router-link to="/tijianbaogao">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+						<span class="mui-icon"><span class="LIimage"><img src="../images/checkbody.png"></span></span>
+						<div class="mui-media-body">
+							体检报告
+						</div>
+					</li>
+				</router-link>
+			</ul>
+			<router-view></router-view>
+		</div>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+
+	<script type="text/javascript" src="../js/qs/md5/md5.min.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.feedback.js"></script>
+	<script type="text/javascript" src="../js/qs/qs.immersed.js"></script>
+	<script>
+		const app = new Vue({
+			router
+		}).$mount('#app')
+		
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				plus.webview.currentWebview().close(true);
+			}
+		});
+
+		mui.plusReady(function() {
+			// 加载完毕后关闭等待框，并展示页面
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+
+			if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
+				mui.toast("确认手机是否连接网络！");
+				$(".mui-content").html('<div class="mui-content-padded wutu"><img src="../images/no_data/1-01.png" style="width: 150px;"></div>');
+				return false;
+			}
+		});
+	</script>
+
+</html>

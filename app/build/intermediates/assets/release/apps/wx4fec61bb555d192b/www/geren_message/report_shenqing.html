@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/iconfont.css" />
+		<title>报告申请</title>
+		<style>
+			input {
+				font-size: 0.3rem;
+				color: #000000;
+			}
+			
+			.mui-content {
+				background: #FFFFFF;
+			}
+			
+			.xingbie a {
+				color: #000000;
+			}
+			
+			.tableUL {
+				margin-top: 0.08rem;
+			}
+			
+			.mui-col-xs-3 {
+				width: 21%;
+			}
+			
+			@media screen and (min-width: 320px) {
+				.mui-col-xs-3 {
+					width: 21%;
+				}
+			}
+			
+			@media screen and (min-width: 400px) {
+				.mui-col-xs-3 {
+					width: 21%;
+				}
+			}
+			
+			.mui-table-view-cell.mui-active {
+				background-color: #FFFFFF;
+			}
+			
+			.dibu {
+				padding-bottom: 10px;
+				margin: 0;
+			}
+			
+			.dibuButton {
+				background-color: rgba(215, 215, 215, 1);
+				border-radius: 10px;
+			}
+			
+			.mui-table-view-cell:after,
+			.mui-table-view:after {
+				height: 0;
+			}
+			
+			.mui-input-row label {
+				font-size: 0.25rem;
+				width: 20%;
+				padding: 11px 0px;
+				font-weight: bold;
+			}
+			.heizi{
+				font-weight: bold;
+				font-size: 0.25rem;
+				color: #000000;
+			}
+			.mui-input-row label~input {
+				border: 1px solid #E3E3E3;
+				width: 80%;
+				height: 35px;
+				font-size: 14px;
+				padding-left: 8px;
+			}
+			
+			.mui-input-row {
+				margin-bottom: 10px;
+			}
+			
+			.mui-btn-block {
+				padding: 0;
+			}
+			
+			.xuanze {
+				padding-left: 30px;
+			}
+			
+			.mui-content-padded {
+				margin: 10px;
+			}
+			
+			.icon-bitian:before {
+				content: "\e607";
+				font-size: 15px;
+				color: #CF2D28;
+			}
+			
+			.mui-icon {
+				font-weight: 800;
+			}
+			
+			html,
+			body {
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.wrapper-dropdown-3 {
+				/* Size and position */
+				position: relative;
+				width: 100%;
+				margin: 10px auto;
+				padding: 10px;
+				/* Styles */
+				background: #fff;
+				border-radius: 3px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				/*box-shadow: 0 1px 1px rgba(50, 50, 50, 0.1);*/
+				cursor: pointer;
+				outline: none;
+				font-size: 0.3rem;
+			}
+			
+			.wrapper-dropdown-3:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: 15px;
+				top: 50%;
+				margin-top: -3px;
+				border-width: 6px 6px 0 6px;
+				border-style: solid;
+				border-color: #8aa8bd transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown {
+				/* Size & position */
+				position: absolute;
+				top: 140%;
+				left: 0;
+				right: 0;
+				/* Styles */
+				background: white;
+				border-radius: inherit;
+				border: 1px solid rgba(0, 0, 0, 0.17);
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+				font-weight: normal;
+				-webkit-transition: all 0.5s ease-in;
+				-moz-transition: all 0.5s ease-in;
+				-ms-transition: all 0.5s ease-in;
+				-o-transition: all 0.5s ease-in;
+				transition: all 0.5s ease-in;
+				list-style: none;
+				/* Hiding */
+				opacity: 0;
+				pointer-events: none;
+				z-index: 999;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:after {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 15px;
+				border-width: 0 6px 6px 6px;
+				border-style: solid;
+				border-color: #fff transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown:before {
+				content: "";
+				width: 0;
+				height: 0;
+				position: absolute;
+				bottom: 100%;
+				right: 13px;
+				border-width: 0 8px 8px 8px;
+				border-style: solid;
+				border-color: rgba(0, 0, 0, 0.1) transparent;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li a {
+				display: block;
+				padding: 10px;
+				text-decoration: none;
+				color: #000;
+				border-bottom: 1px solid #e6e8ea;
+				box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+				-webkit-transition: all 0.3s ease-out;
+				-moz-transition: all 0.3s ease-out;
+				-ms-transition: all 0.3s ease-out;
+				-o-transition: all 0.3s ease-out;
+				transition: all 0.3s ease-out;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li i {
+				float: right;
+				color: inherit;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:first-of-type a {
+				border-radius: 7px 7px 0 0;
+			}
+			
+			.wrapper-dropdown-3 .dropdown li:last-of-type a {
+				border: none;
+				border-radius: 0 0 7px 7px;
+			}
+			/* Hover state */
+			
+			.wrapper-dropdown-3 .dropdown li:hover a {
+				background: #f3f8f8;
+			}
+			/* Active state */
+			
+			.wrapper-dropdown-3.active .dropdown {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			/* No CSS3 support */
+			
+			.no-opacity .wrapper-dropdown-3 .dropdown,
+			.no-pointerevents .wrapper-dropdown-3 .dropdown {
+				display: none;
+				opacity: 1;
+				/* If opacity support but no pointer-events support */
+				pointer-events: auto;
+				/* If pointer-events support but no pointer-events support */
+			}
+			
+			.no-opacity .wrapper-dropdown-3.active .dropdown,
+			.no-pointerevents .wrapper-dropdown-3.active .dropdown {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">报告申请</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<section class="main">
+					<div class="wrapper-demo">
+						<div id="dd" class="wrapper-dropdown-3" tabindex="1">
+							<span>请选择医院</span>
+							<ul class="dropdown">
+								<li id="1">
+									<a><i class="icon-envelope icon-large"></i>吉大一院</a>
+								</li>
+								<li id="59c4d74b56c2b44440f62bb3">
+									<a><i class="icon-truck icon-large"></i>吉大二院</a>
+								</li>
+								<li id="59c4d74c56c2b44440f62bb4">
+									<a><i class="icon-truck icon-large"></i>中日联谊医院</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<input type="text" class="mui-input shurukuang" data-input-password="3" placeholder="请输入医院就诊卡号：" id="name">
+				<div class="dibuliebiao">
+					<p class="heizi">如果没有就诊卡，请输入一下内容名：</p>
+					<div class="mui-input-row">
+						<label>医保卡号：</label>
+						<input type="text" id="jiuzhen_time" placeholder="请输入医保卡号">
+					</div>
+					<div class="mui-input-row">
+						<label>身份证号：</label>
+						<input type="text" id="jiuzhen_hospital" placeholder="请输入身份证号">
+					</div>
+					<div class="mui-input-row">
+						<label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+						<input type="text" id="jiuzhen_keshi" placeholder=" 请输入姓名">
+					</div>
+
+				</div>
+				<div class="mui-content-padded dibu">
+					<button id='save' class="mui-btn mui-btn-block mui-btn-warning">保存</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../js/mui.min.js"></script>
+		<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script>
+			mui.plusReady(function() {
+				if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+					// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+					topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+					document.querySelector("header").style.height = topoffset;
+					document.querySelector("header").style.paddingTop = "20px";
+					document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+				}
+				// 加载完毕后关闭等待框，并展示页面
+				var currentView = plus.webview.currentWebview();
+				currentView.show('slide-in-right', 200);
+				plus.nativeUI.closeWaiting();
+			});
+
+			/*下拉选择框*/
+			function DropDown(el) {
+				this.dd = el;
+				this.placeholder = this.dd.children('span');
+				this.opts = this.dd.find('ul.dropdown > li');
+				this.val = '';
+				this.index = -1;
+				this.initEvents();
+				this.opts2 = this.dd.find('ul.dropdown>li>a');
+			}
+			DropDown.prototype = {
+				initEvents: function() {
+					var obj = this;
+					obj.dd.on('click', function(event) {
+						$(this).toggleClass('active');
+						return false;
+					});
+					obj.opts.on('click', function() {
+						var selectItem = '';
+						var opt = $(this);
+						obj.val = opt.text(); //获取value值
+						obj.index = opt.index();
+						obj.id = opt.attr("id"); //获取ID值
+						obj.placeholder.text(obj.val);
+						var item = obj.val.trim();
+					});
+
+				},
+				getValue: function() {
+					return this.val;
+				},
+				getIndex: function() {
+					return this.index;
+				}
+			}
+
+			$(function() {
+				var dd = new DropDown($('#dd'));
+				$(document).click(function() {
+					// all dropdowns
+					$('.wrapper-dropdown-3').removeClass('active');
+				});
+			});
+		</script>
+	</body>
+
+</html>

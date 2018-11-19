@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>基础服务包</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css" />
+		<link rel="stylesheet" href="../css/mui.poppicker.css" />
+		<link rel="stylesheet" href="../css/feedback.css" />
+		<!--图标-->
+		<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+
+		<style>
+			.title {
+				color: #6d6d72;
+				font-size: 15px;
+				background-color: #EBFEFF;
+				height: 43px;
+			}
+			
+			.title .titleinner {
+				margin: 0px 15px 7px;
+				padding-top: 10px;
+				color: #39C9CF;
+			}
+			
+			.service-package-item {
+				font-size: 15px;
+				color: #4D4D4D;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" id="ptitle">基础服务包</h1>
+			<button id="show_sign" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right" style="padding-top: 2px;">
+				签约协议</button>
+		</header>
+		<div class="mui-content" id="content">
+			<div class="title">
+				<div class="titleinner">基本医疗服务</div>
+			</div>
+
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="CJBZL">常见病诊疗<span class="mui-badge mui-badge-inverted">未进行</span></li>
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="JZZJJ">急重症急救<span class="mui-badge mui-badge-inverted">未进行</span></li>
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="XSJYYZZ">向上级医院转诊<span class="mui-badge mui-badge-inverted">未进行</span></li>
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="SJYYZZJS">上级医院转诊接受<span class="mui-badge mui-badge-inverted">未进行</span></li>
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="YLTZJZL">医联体专家诊疗<span class="mui-badge mui-badge-inverted">未进行</span></li>
+			</ul>
+			<div class="title">
+				<div class="titleinner">公共卫生服务</div>
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="JBGGWSFW">基本公共卫生服务<span class="mui-badge mui-badge-inverted">未进行</span></li>
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="ZDGGWSFW">重大公共卫生服务<span class="mui-badge mui-badge-inverted">未进行</span></li>
+			</ul>
+			<div class="title">
+				<div class="titleinner">健康管理服务</div>
+			</div>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="TGJC">体格检查<span class="mui-badge mui-badge-inverted">未进行</span></li>
+				<li class="mui-table-view-cell service-package-item mui-disabled" id="JKZD">健康指导<span class="mui-badge mui-badge-inverted">未进行</span></li>
+			</ul>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../plugs/qs/qs.immersed.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<script type="text/javascript" src="../js/constants.js"></script>
+	<script type="text/javascript" src="../js/sharemethods.js"></script>
+	<script type="text/javascript" src="../js/xiangyingshi.js"></script>
+	<script type="text/javascript" src="../js/jquery-3.1.1.min.js"></script>
+
+	<script>
+		mui.init({
+			keyEventBind: {
+				backbutton: true //打开back按键监听
+			},
+			beforeback: function() {
+				//返回true，继续页面关闭逻辑  
+				mui.back;
+				return true;
+			}
+		});
+		$(".mui-badge").hide();
+
+		mui.plusReady(function() {
+			var currentView = plus.webview.currentWebview();
+			currentView.show('slide-in-right', 200);
+			plus.nativeUI.closeWaiting();
+			var patientId = localStorage.getItem("TOKENID");
+
+			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+				// 获取状态栏高度并根据业务需求处理，这里重新计算了子窗口的偏移位置
+				topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 45) + 'px';
+				document.querySelector("header").style.height = topoffset;
+				document.querySelector("header").style.paddingTop = "20px";
+				document.querySelector(".mui-bar-nav~.mui-content").style.paddingTop = topoffset;
+			}
+
+			refreshPage(patientId);
+
+			//基础服务包查看签约合同
+			$("#show_sign").click(function(e) {
+				mui.openWindow({
+					url: 'z01_showSigning.html',
+					id: 'z01_showSigning.html',
+					extras: {
+						ID: patientId
+					},
+					show: {
+						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+					},
+					waiting: {
+						autoShow: true //自动显示等待框，默认为true
+					}
+				});
+
+			});
+
+			//用的统一的class名称，每行都可以点开，后期要改
+			//			mui(".mui-content").on("tap", ".service-package-item", function() {
+			//				//console.log("查看诊疗行为列表："+$(this).attr("id"))
+			//				//console.log("查看诊疗行为列表："+patientId);
+			//				var serviceType = $(this).attr("id");
+			//				mui.openWindow({
+			//					url: 'service_package_list.html',
+			//					id: 'service_package_list.html',
+			//					extras:{
+			//						patientId:patientId,
+			//						serviceType:serviceType
+			//					},
+			//					show: {
+			//						autoShow: false, //页面loaded事件发生后自动显示，默认为true
+			//						event: 'loaded' //页面显示时机，默认为titleUpdate事件时显示
+			//					},
+			//					waiting: {
+			//						autoShow: true //自动显示等待框，默认为true
+			//					}
+			//				});
+			//			});
+
+		});
+
+		var refreshPage = function(patientId) {
+			var currentFDTID = localStorage.getItem("fdt");
+			console.log("FDTID------------>" + currentFDTID);
+			console.log("patientId--------------->" + patientId);
+			var getServicePackageDTBQuantity = serverAddress + "/api/appfamilydoctorteam/getServicePackageDTBQuantity";
+			//console.log("獲取服務包接口:"+getServicePackageDTBQuantity)
+			var func = function(data) {
+				console.log("统计服务包中的项目执行的次数:" + JSON.stringify(data))
+				if(data.result == "success") {
+					//1、遍歷集合
+					for(var ii = 0; ii < data.obj.length; ii++) {
+						var itemId = data.obj[ii]._id.serviceType;
+						//console.log("ddd "+itemId);
+						var foo = "#" + itemId + " span";
+						var foo2 = "#" + itemId;
+						$(foo).html("已进行");
+						$(foo).css("color", "red");
+						$(foo2).removeClass("mui-disabled");
+
+					}
+
+				} else {
+					mui.toast(data.msg);
+				}
+			};
+			commonHttpUtils(getServicePackageDTBQuantity, 'POST', {
+				fdt: currentFDTID,
+				patient: patientId
+			}, func, error, false);
+		}
+	</script>
+
+</html>
